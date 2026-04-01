@@ -1,0 +1,36 @@
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.icon svg {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+
+/* ── Sizes — font-size drives FA icon dimensions ── */
+
+.xs {
+  font-size: var(--icon-width-static-xs); /* 8px */
+}
+
+.small {
+  font-size: var(--icon-width-static-small); /* 12px */
+}
+
+.medium {
+  font-size: var(--icon-width-static-medium); /* 16px */
+}
+
+.large {
+  font-size: var(--icon-width-static-large); /* 24px */
+}
+
+.xl {
+  font-size: var(--icon-width-static-xl); /* 32px */
+}

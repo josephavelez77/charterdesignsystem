@@ -1,0 +1,18 @@
+/*
+ * Storybook-specific overrides.
+ * Uses CSS variables so backgrounds respond to data-theme on <html>.
+ */
+
+/* Canvas view (individual story page) */
+#storybook-root,
+.sb-show-main,
+.sb-main-padded {
+  background-color: var(--container-color-themeable-primary) !important;
+}
+
+/* Docs page — story canvas blocks */
+.sb-story,
+.docs-story,
+.sbdocs-preview .innerZoomElementWrapper > div {
+  background-color: var(--container-color-themeable-primary) !important;
+}
