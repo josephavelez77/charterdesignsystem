@@ -1,0 +1,67 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--container-width-static-xl);
+  height: var(--container-height-static-xl);
+  padding: 0;
+  border: none;
+  border-radius: var(--border-radius-static-circle);
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 120ms ease;
+}
+
+.iconButton:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.iconButton:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Variant: brandPrimary ────────────────────────────────────────────────── */
+
+.brandPrimary {
+  color: var(--icon-color-static-brand-primary);
+}
+
+.brandPrimary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+}
+
+.brandPrimary:disabled {
+  color: var(--icon-color-themeable-disabled);
+}
+
+/* ── Variant: brandSecondary ──────────────────────────────────────────────── */
+
+.brandSecondary {
+  color: var(--icon-color-static-brand-secondary);
+}
+
+.brandSecondary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover-brand-secondary);
+}
+
+.brandSecondary:disabled {
+  color: var(--icon-color-themeable-disabled);
+}
+
+/* ── Variant: neutral ─────────────────────────────────────────────────────── */
+
+.neutral {
+  color: var(--icon-color-themeable-primary);
+}
+
+.neutral:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.neutral:disabled {
+  color: var(--icon-color-themeable-disabled);
+}

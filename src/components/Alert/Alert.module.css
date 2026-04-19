@@ -1,0 +1,73 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.alert {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-small);
+  padding: var(--container-padding-static-small);
+  border: var(--border-width-static-primary) solid;
+  border-radius: var(--border-radius-static-primary);
+  min-width: 200px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-small);
+  flex: 1;
+  min-width: 0;
+}
+
+.leadingIcon {
+  flex-shrink: 0;
+}
+
+.message {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Severity variants ────────────────────────────────────────────────────── */
+
+.error {
+  border-color: var(--border-color-static-state-error);
+}
+
+.error .leadingIcon {
+  color: var(--icon-color-static-state-error);
+}
+
+.warning {
+  border-color: var(--border-color-static-state-warning);
+}
+
+.warning .leadingIcon {
+  color: var(--icon-color-static-state-warning);
+}
+
+.success {
+  border-color: var(--border-color-static-state-success);
+}
+
+.success .leadingIcon {
+  color: var(--icon-color-static-state-success);
+}
+
+.info {
+  border-color: var(--border-color-static-state-information);
+}
+
+.info .leadingIcon {
+  color: var(--icon-color-static-state-information);
+}
+
