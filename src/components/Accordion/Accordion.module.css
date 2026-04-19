@@ -1,0 +1,141 @@
+/* ── Container ────────────────────────────────────────────────────────────── */
+
+.accordion {
+  width: 100%;
+  background-color: var(--container-color-themeable-tertiary);
+  border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 48px;
+  padding: var(--container-padding-static-xs) var(--container-padding-static-none)
+    var(--container-padding-static-xs) var(--container-padding-static-small);
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-color-themeable-primary);
+  transition: background-color 120ms ease;
+}
+
+.header:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.header:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring-offset);
+}
+
+.header:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Left content ─────────────────────────────────────────────────────────── */
+
+.leftContent {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+.leadingIcon {
+  flex-shrink: 0;
+  color: var(--icon-color-themeable-primary);
+}
+
+.header:disabled .leadingIcon {
+  color: var(--icon-color-themeable-disabled);
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-none);
+  min-width: 0;
+  font-family: var(--text-family-static-body);
+  font-weight: var(--text-weight-static-regular);
+  letter-spacing: var(--text-letter-static-primary);
+}
+
+.title {
+  font-size: var(--text-size-static-body2);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header:disabled .title {
+  color: var(--text-color-themeable-disabled);
+}
+
+.subtitle {
+  font-size: var(--text-size-static-caption);
+  line-height: var(--text-line-static-caption);
+  color: var(--text-color-themeable-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header:disabled .subtitle {
+  color: var(--text-color-themeable-disabled);
+}
+
+/* ── Chevron ──────────────────────────────────────────────────────────────── */
+
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--container-width-static-xl);
+  height: var(--container-height-static-xl);
+  flex-shrink: 0;
+  color: var(--icon-color-themeable-primary);
+  transition: transform 200ms ease, color 120ms ease;
+}
+
+.chevronExpanded {
+  transform: rotate(180deg);
+}
+
+.header:disabled .chevron {
+  color: var(--icon-color-themeable-disabled);
+}
+
+/* ── Body — CSS grid trick for smooth height animation ────────────────────── */
+
+.body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 200ms ease;
+}
+
+.bodyExpanded {
+  grid-template-rows: 1fr;
+}
+
+.bodyInner {
+  overflow: hidden;
+}
+
+.bodyContent {
+  padding: var(--container-padding-static-small);
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  max-width: var(--container-width-static-max-content);
+}

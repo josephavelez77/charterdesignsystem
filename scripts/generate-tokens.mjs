@@ -108,7 +108,9 @@ const lightEntries = [...themeable]
   .filter((k) => lightFlat[k])
   .map((k) => [k, toCSSValue(lightFlat[k])])
 
-const header = `/**
+const header = `@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Poppins:wght@400;500;600&display=swap');
+
+/**
  * Base Design System — Design Tokens
  * ⚠️  Auto-generated — do not edit by hand.
  *    Run \`npm run tokens\` to regenerate.

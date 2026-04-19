@@ -1,0 +1,60 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-static-circle);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+/* ── Sizes ────────────────────────────────────────────────────────────────── */
+
+.default {
+  width: var(--container-width-static-xl);   /* 32px */
+  height: var(--container-height-static-xl); /* 32px */
+}
+
+.small {
+  width: var(--container-width-static-large);   /* 24px */
+  height: var(--container-height-static-large); /* 24px */
+}
+
+/* ── Types ────────────────────────────────────────────────────────────────── */
+
+.initials,
+.icon {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--icon-color-static-light);
+}
+
+/* ── Initials text ────────────────────────────────────────────────────────── */
+
+.initialsText {
+  font-family: var(--text-family-static-body);
+  font-weight: var(--text-weight-static-regular);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-static-light);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.initialsText_default {
+  font-size: var(--text-size-static-body2); /* 14px */
+}
+
+.initialsText_small {
+  font-size: var(--text-size-static-caption); /* 12px */
+}
+
+/* ── Image ────────────────────────────────────────────────────────────────── */
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--border-radius-static-circle);
+  pointer-events: none;
+}
