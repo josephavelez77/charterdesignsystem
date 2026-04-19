@@ -67,6 +67,7 @@ export const FullCard: Story = {
 export const TitleOnly: Story = {
   args: {
     title: 'Card title',
+    subtitle: undefined,
     content: SAMPLE_CONTENT,
   },
 }
