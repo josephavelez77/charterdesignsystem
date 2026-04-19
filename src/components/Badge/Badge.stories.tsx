@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { faMessage } from '@fortawesome/free-solid-svg-icons'
 import { Badge } from './Badge'
+import { IconButton } from '../IconButton/IconButton'
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',
@@ -39,6 +41,22 @@ export const NumericUnderMax: Story = {
 
 export const Dot: Story = {
   args: { variant: 'dot' },
+}
+
+// ── In context ───────────────────────────────────────────────────────────────
+
+export const OnIconButton: Story = {
+  render: () => (
+    <div style={{ position: 'relative', display: 'inline-flex' }}>
+      <IconButton icon={faMessage} aria-label="Messages" variant="neutral" />
+      <Badge
+        variant="numeric"
+        value={12}
+        max={99}
+        style={{ position: 'absolute', top: '-6px', right: '-6px' }}
+      />
+    </div>
+  ),
 }
 
 // ── All variants ──────────────────────────────────────────────────────────────
