@@ -1,0 +1,40 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-static-circle);
+  background-color: var(--container-color-static-state-error);
+  flex-shrink: 0;
+}
+
+/* ── Numeric ─────────────────────────────────────────────────────────────────── */
+
+.numeric {
+  padding: var(--container-padding-static-xxs) var(--container-padding-static-xs);
+  gap: 0;
+  white-space: nowrap;
+}
+
+.value {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-static-light);
+}
+
+.plus {
+  font-family: var(--text-family-static-body);
+  font-size: 7.74px;
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  color: var(--text-color-static-light);
+}
+
+/* ── Dot ─────────────────────────────────────────────────────────────────────── */
+
+.dot {
+  width: var(--container-width-static-xs);
+  height: var(--container-height-static-xs);
+}
