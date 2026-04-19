@@ -1,0 +1,92 @@
+/* ── Root ─────────────────────────────────────────────────────────────────── */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: var(--container-color-themeable-tertiary);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  width: 472px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ── Media ────────────────────────────────────────────────────────────────── */
+
+.mediaWrapper {
+  padding: var(--container-padding-static-small);
+  flex-shrink: 0;
+}
+
+.mediaImg {
+  display: block;
+  width: 100%;
+  height: 246px;
+  object-fit: cover;
+  border-radius: var(--border-radius-static-primary);
+  pointer-events: none;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: var(--container-padding-static-small);
+  flex-shrink: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--text-family-static-headline);
+  font-size: var(--text-size-static-headline2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-headline2);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--text-family-static-headline);
+  font-size: var(--text-size-static-headline3);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-headline3);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-secondary);
+  white-space: nowrap;
+}
+
+/* ── Content ──────────────────────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--container-padding-static-small);
+  flex-shrink: 0;
+  flex: 1;
+}
+
+.contentText {
+  margin: 0;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--container-gap-static-small);
+  padding: var(--container-padding-static-small);
+  flex-shrink: 0;
+}
