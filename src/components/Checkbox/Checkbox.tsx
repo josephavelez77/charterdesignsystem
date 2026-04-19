@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { faSquare } from '@fortawesome/free-regular-svg-icons'
+import { faSquareCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './Checkbox.module.css'
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -7,9 +10,27 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ label, required, disabled, className, id, ...props }, ref) => {
+  ({ label, required, disabled, className, id, checked, defaultChecked, onChange, ...props }, ref) => {
+    const isControlled = checked !== undefined
+    const [isChecked, setIsChecked] = useState(isControlled ? checked : (defaultChecked ?? false))
+
+    useEffect(() => {
+      if (isControlled) setIsChecked(checked)
+    }, [checked, isControlled])
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (!isControlled) setIsChecked(e.target.checked)
+      onChange?.(e)
+    }
+
+    const iconColor = disabled
+      ? 'var(--icon-color-themeable-disabled)'
+      : isChecked
+        ? 'var(--icon-color-static-brand-primary)'
+        : 'var(--icon-color-themeable-primary)'
+
     return (
-      <label className={[styles.wrapper, disabled ? styles.disabled : '', className ?? ''].filter(Boolean).join(' ')}>
+      <label className={[styles.wrapper, disabled ? styles.disabled : '', isChecked ? styles.checked : '', className ?? ''].filter(Boolean).join(' ')}>
         <span className={styles.hitArea}>
           <input
             ref={ref}
@@ -18,13 +39,15 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             className={styles.input}
             disabled={disabled}
             required={required}
+            checked={isControlled ? checked : isChecked}
+            onChange={handleChange}
             {...props}
           />
-          <span className={styles.box} aria-hidden="true">
-            <svg className={styles.check} viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </span>
+          <FontAwesomeIcon
+            icon={isChecked ? faSquareCheck : faSquare}
+            style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
+            aria-hidden
+          />
         </span>
 
         {label && (

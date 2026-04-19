@@ -27,7 +27,7 @@
   background-color: var(--container-color-themeable-hover);
 }
 
-.wrapper:not(.disabled):hover .hitArea:has(.input:checked) {
+.wrapper.checked:not(.disabled):hover .hitArea {
   background-color: var(--container-color-themeable-hover-brand-primary);
 }
 
@@ -42,51 +42,11 @@
   pointer-events: none;
 }
 
-/* ── Custom box ──────────────────────────────────────────────────────────── */
-
-.box {
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+/* Focus visible — targets the FA icon sibling */
+.input:focus-visible ~ svg {
+  outline: 2px solid var(--border-color-static-brand-primary);
+  outline-offset: 2px;
   border-radius: var(--border-radius-static-small);
-  background-color: transparent;
-  color: transparent;
-  flex-shrink: 0;
-  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
-}
-
-/* Checked */
-.input:checked + .box {
-  background-color: var(--container-color-static-brand-primary);
-  border-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
-}
-
-/* Focus visible */
-.input:focus-visible + .box {
-  box-shadow: var(--focus-ring-offset);
-}
-
-/* Disabled unchecked */
-.input:disabled + .box {
-  border-color: var(--border-color-themeable-disabled);
-}
-
-/* Disabled checked */
-.input:disabled:checked + .box {
-  background-color: var(--container-color-themeable-disabled);
-  border-color: var(--container-color-themeable-disabled);
-}
-
-/* ── Checkmark SVG ───────────────────────────────────────────────────────── */
-
-.check {
-  width: 10px;
-  height: 8px;
-  flex-shrink: 0;
 }
 
 /* ── Label ───────────────────────────────────────────────────────────────── */
