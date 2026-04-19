@@ -10,7 +10,7 @@ const SAMPLE_CONTENT =
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',
   component: Card,
-  parameters: { layout: 'centered' },
+  parameters: { layout: 'padded' },
   tags: ['autodocs'],
   args: {
     title: 'Card title',
