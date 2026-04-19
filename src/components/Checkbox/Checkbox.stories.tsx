@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import type { Meta, StoryObj } from '@storybook/react'
 import { Checkbox } from './Checkbox'
 
@@ -61,6 +62,51 @@ export const Controlled: Story = {
   },
 }
 
+// ── Indeterminate ─────────────────────────────────────────────────────────────
+
+export const Indeterminate: Story = {
+  args: { label: 'Checkbox label', indeterminate: true },
+}
+
+export const NestedGroup: Story = {
+  render: () => {
+    const [items, setItems] = useState([false, false, false])
+
+    const allChecked = items.every(Boolean)
+    const someChecked = items.some(Boolean) && !allChecked
+
+    const toggleParent = () => {
+      const next = !allChecked
+      setItems([next, next, next])
+    }
+
+    const toggleItem = (i: number) => {
+      setItems((prev) => prev.map((v, idx) => (idx === i ? !v : v)))
+    }
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <Checkbox
+          label="Select all"
+          checked={allChecked}
+          indeterminate={someChecked}
+          onChange={toggleParent}
+        />
+        <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: '16px' }}>
+          {['Option one', 'Option two', 'Option three'].map((opt, i) => (
+            <Checkbox
+              key={opt}
+              label={opt}
+              checked={items[i]}
+              onChange={() => toggleItem(i)}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  },
+}
+
 // ── All states ────────────────────────────────────────────────────────────────
 
 export const AllStates: Story = {
@@ -68,6 +114,7 @@ export const AllStates: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
       <Checkbox label="Unchecked" />
       <Checkbox label="Checked" defaultChecked />
+      <Checkbox label="Indeterminate" indeterminate />
       <Checkbox label="Disabled" disabled />
       <Checkbox label="Disabled checked" disabled defaultChecked />
       <Checkbox label="Required" required />
