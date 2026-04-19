@@ -27,6 +27,10 @@
   background-color: var(--container-color-themeable-hover);
 }
 
+.wrapper:not(.disabled):hover .hitArea:has(.input:checked) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+}
+
 /* ── Native input (visually hidden) ──────────────────────────────────────── */
 
 .input {
