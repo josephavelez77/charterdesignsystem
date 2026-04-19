@@ -1,0 +1,115 @@
+/* ── Wrapper (label) ─────────────────────────────────────────────────────── */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wrapper.disabled {
+  cursor: not-allowed;
+}
+
+/* ── Hit area (hover circle) ─────────────────────────────────────────────── */
+
+.hitArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--container-padding-static-small);
+  border-radius: var(--border-radius-static-circle);
+  flex-shrink: 0;
+  transition: background-color 120ms ease;
+}
+
+.wrapper:not(.disabled):hover .hitArea {
+  background-color: var(--container-color-themeable-hover);
+}
+
+/* ── Native input (visually hidden) ──────────────────────────────────────── */
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* ── Custom box ──────────────────────────────────────────────────────────── */
+
+.box {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-small);
+  background-color: transparent;
+  color: transparent;
+  flex-shrink: 0;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+/* Checked */
+.input:checked + .box {
+  background-color: var(--container-color-static-brand-primary);
+  border-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+}
+
+/* Focus visible */
+.input:focus-visible + .box {
+  box-shadow: var(--focus-ring-offset);
+}
+
+/* Disabled unchecked */
+.input:disabled + .box {
+  border-color: var(--border-color-themeable-disabled);
+}
+
+/* Disabled checked */
+.input:disabled:checked + .box {
+  background-color: var(--container-color-themeable-disabled);
+  border-color: var(--container-color-themeable-disabled);
+}
+
+/* ── Checkmark SVG ───────────────────────────────────────────────────────── */
+
+.check {
+  width: 10px;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Label ───────────────────────────────────────────────────────────────── */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+}
+
+.disabled .label {
+  color: var(--text-color-themeable-disabled);
+}
+
+/* ── Required asterisk ───────────────────────────────────────────────────── */
+
+.asterisk {
+  color: var(--text-color-static-state-error);
+  font-size: 9px;
+  line-height: 1;
+  align-self: flex-start;
+  margin-top: 2px;
+}
