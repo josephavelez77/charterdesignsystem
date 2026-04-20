@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import { Button } from '../Button/Button'
 import { Dialog } from './Dialog'
+
+// CSS transform scopes position:fixed children to this container
+const withBoundedScrim = (Story: StoryFn) => (
+  <div style={{ height: '400px', transform: 'translateZ(0)', overflow: 'hidden' }}>
+    <Story />
+  </div>
+)
 
 const SAMPLE_CONTENT =
   'This action cannot be undone. Please confirm you want to continue, or cancel to go back.'
@@ -25,15 +32,19 @@ type Story = StoryObj<typeof meta>
 
 // ── Static variants (open=true for docs) ─────────────────────────────────────
 
-export const Default: Story = {}
+export const Default: Story = {
+  decorators: [withBoundedScrim],
+}
 
 export const TitleOnly: Story = {
+  decorators: [withBoundedScrim],
   args: {
     subtitle: undefined,
   },
 }
 
 export const WithActions: Story = {
+  decorators: [withBoundedScrim],
   args: {
     primaryAction: { label: 'Confirm' },
     secondaryAction: { label: 'Cancel' },
@@ -41,6 +52,7 @@ export const WithActions: Story = {
 }
 
 export const NoDismiss: Story = {
+  decorators: [withBoundedScrim],
   args: {
     dismissible: false,
     primaryAction: { label: 'Confirm' },
@@ -49,6 +61,7 @@ export const NoDismiss: Story = {
 }
 
 export const WithCustomContent: Story = {
+  decorators: [withBoundedScrim],
   render: () => (
     <Dialog open title="Custom content" subtitle="Children slot example" dismissible>
       <ul
