@@ -1,0 +1,91 @@
+/* ── Scrim ─────────────────────────────────────────────────────────────────── */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ── Dialog panel ─────────────────────────────────────────────────────────── */
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-color-themeable-tertiary);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  width: 480px;
+  max-width: calc(100vw - 32px);
+  overflow: hidden;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--container-padding-static-small);
+  flex-shrink: 0;
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--text-family-static-headline);
+  font-size: var(--text-size-static-headline2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-headline2);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--text-family-static-headline);
+  font-size: var(--text-size-static-headline3);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-headline3);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-secondary);
+}
+
+/* ── Content ──────────────────────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--container-padding-static-small);
+  flex: 1;
+}
+
+.contentText {
+  margin: 0;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--container-gap-static-small);
+  padding: var(--container-padding-static-small);
+  flex-shrink: 0;
+}

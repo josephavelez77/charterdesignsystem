@@ -7,3 +7,6 @@ export type { IconProps, IconSize } from './components/Icon/Icon'
 
 export { TextField } from './components/TextField'
 export type { TextFieldProps } from './components/TextField'
+
+export { Dialog } from './components/Dialog'
+export type { DialogProps, DialogAction } from './components/Dialog'
