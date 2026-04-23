@@ -1,3 +1,25 @@
+/* ── Animations ───────────────────────────────────────────────────────────── */
+
+@keyframes scrimFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scrimFadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes drawerSlideIn {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes drawerSlideOut {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100%); }
+}
+
 /* ── Scrim ─────────────────────────────────────────────────────────────────── */
 
 .scrim {
@@ -5,6 +27,14 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
+}
+
+.scrimEnter {
+  animation: scrimFadeIn 280ms ease forwards;
+}
+
+.scrimExit {
+  animation: scrimFadeOut 280ms ease forwards;
 }
 
 /* ── Drawer panel ─────────────────────────────────────────────────────────── */
@@ -24,6 +54,14 @@
     0px 4px 6px -1px var(--container-shadow-themeable-shadow-10),
     0px 2px 4px -1px var(--container-shadow-themeable-shadow-6);
   overflow: hidden;
+}
+
+.drawerEnter {
+  animation: drawerSlideIn 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.drawerExit {
+  animation: drawerSlideOut 280ms cubic-bezier(0.55, 0, 0.1, 1) forwards;
 }
 
 /* ── Header ───────────────────────────────────────────────────────────────── */

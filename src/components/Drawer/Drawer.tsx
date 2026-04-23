@@ -1,4 +1,4 @@
-import React, { useId } from 'react'
+import React, { useEffect, useId, useState } from 'react'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '../Button/Button'
 import { IconButton } from '../IconButton/IconButton'
@@ -36,17 +36,36 @@ export const Drawer = ({
   className,
 }: DrawerProps) => {
   const titleId = useId()
+  const [isVisible, setIsVisible] = useState(open)
+  const [isExiting, setIsExiting] = useState(false)
 
-  if (!open) return null
+  useEffect(() => {
+    if (open) {
+      setIsVisible(true)
+      setIsExiting(false)
+    } else if (isVisible) {
+      setIsExiting(true)
+    }
+  }, [open])
+
+  const handleAnimationEnd = () => {
+    if (isExiting) {
+      setIsVisible(false)
+      setIsExiting(false)
+    }
+  }
+
+  if (!isVisible) return null
 
   return (
-    <div className={styles.scrim} onClick={onClose}>
+    <div className={[styles.scrim, isExiting ? styles.scrimExit : styles.scrimEnter].join(' ')} onClick={onClose}>
       <aside
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={[styles.drawer, className].filter(Boolean).join(' ')}
+        className={[styles.drawer, isExiting ? styles.drawerExit : styles.drawerEnter, className].filter(Boolean).join(' ')}
         onClick={(e) => e.stopPropagation()}
+        onAnimationEnd={handleAnimationEnd}
       >
         <div className={styles.header}>
           <div className={styles.headerText}>
