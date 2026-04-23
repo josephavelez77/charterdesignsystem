@@ -1,0 +1,81 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-small);
+  padding: var(--container-padding-static-small) var(--container-padding-static-primary);
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  text-decoration: none;
+}
+
+/* ── Interactive ──────────────────────────────────────────────────────────── */
+
+.interactive {
+  cursor: pointer;
+  outline: none;
+  transition: background-color 120ms ease;
+}
+
+.interactive:not(:disabled):hover {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.interactive:focus-visible {
+  box-shadow: var(--focus-ring-offset);
+}
+
+.interactive:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Leading slot ─────────────────────────────────────────────────────────── */
+
+.leading {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Text block ───────────────────────────────────────────────────────────── */
+
+.text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtitle {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-tertiary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Disabled text ────────────────────────────────────────────────────────── */
+
+.interactive:disabled .title,
+.interactive:disabled .subtitle {
+  color: var(--text-color-themeable-disabled);
+}

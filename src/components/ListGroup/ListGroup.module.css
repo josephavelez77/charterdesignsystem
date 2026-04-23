@@ -1,0 +1,11 @@
+.listGroup {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-color-themeable-secondary);
+  border-radius: var(--border-radius-static-primary);
+  overflow: hidden;
+}
+
+.itemWrapper {
+  border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+}

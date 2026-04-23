@@ -1,0 +1,48 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-small);
+  padding: var(--container-padding-static-small) var(--container-padding-static-primary);
+  background-color: var(--container-color-themeable-secondary);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-small);
+}
+
+/* ── File type icon ───────────────────────────────────────────────────────── */
+
+.fileIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--icon-color-themeable-primary);
+}
+
+/* ── Content block ────────────────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-xxs);
+  flex: 1;
+  min-width: 0;
+}
+
+.fileName {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fileSize {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-tertiary);
+}
+

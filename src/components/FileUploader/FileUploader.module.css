@@ -1,0 +1,114 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-xxs);
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  color: var(--text-color-themeable-primary);
+}
+
+/* ── Outer container ──────────────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  overflow: hidden;
+  transition: border-color 120ms ease, border-style 120ms ease;
+}
+
+.dragActive {
+  border-style: dashed;
+  border-color: var(--border-color-static-brand-primary);
+}
+
+/* ── Drop zone ────────────────────────────────────────────────────────────── */
+
+.dropZone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  padding: var(--container-padding-static-primary) var(--container-padding-static-large);
+  text-align: center;
+}
+
+.uploadIcon {
+  width: 32px;
+  height: 32px;
+  color: var(--icon-color-themeable-primary);
+}
+
+.dropText {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  color: var(--text-color-themeable-primary);
+  margin: 0;
+}
+
+.clickToUpload {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: var(--text-color-static-brand-primary);
+  text-decoration: none;
+  outline: none;
+}
+
+.clickToUpload:hover {
+  text-decoration: underline;
+}
+
+.clickToUpload:focus-visible {
+  box-shadow: var(--focus-ring-offset);
+  border-radius: var(--border-radius-static-small);
+}
+
+.requirements {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-tertiary);
+  margin: 0;
+}
+
+/* ── File list ────────────────────────────────────────────────────────────── */
+
+.fileList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-xxs);
+  padding: var(--container-padding-static-xxs) var(--container-padding-static-small) var(--container-padding-static-small);
+}
+
+/* ── Helper text ──────────────────────────────────────────────────────────── */
+
+.helperText {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-tertiary);
+}
+
+/* ── Hidden input ─────────────────────────────────────────────────────────── */
+
+.hiddenInput {
+  display: none;
+}

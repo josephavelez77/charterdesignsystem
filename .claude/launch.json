@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "storybook",
-      "runtimeExecutable": "node",
-      "runtimeArgs": ["node_modules/storybook/bin/index.cjs", "dev", "-p", "6006"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 6006
     }
   ]
