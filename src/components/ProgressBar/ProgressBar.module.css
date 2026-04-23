@@ -1,0 +1,30 @@
+/* ── Track ────────────────────────────────────────────────────────────────── */
+
+.track {
+  width: 100%;
+  height: 8px;
+  background-color: var(--container-color-themeable-secondary);
+  border-radius: var(--border-radius-static-circle);
+  overflow: hidden;
+}
+
+/* ── Fill ─────────────────────────────────────────────────────────────────── */
+
+.fill {
+  height: 100%;
+  background-color: var(--container-color-static-brand-primary);
+  border-radius: var(--border-radius-static-circle);
+  transition: width 200ms ease;
+}
+
+/* ── Indeterminate animation ──────────────────────────────────────────────── */
+
+.indeterminate {
+  width: 40%;
+  animation: sweep 1.4s ease-in-out infinite;
+}
+
+@keyframes sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}

@@ -1,0 +1,9 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-xxs);
+  padding: var(--container-padding-static-xxs);
+  background-color: var(--container-color-themeable-secondary);
+  border-radius: var(--border-radius-static-primary);
+  min-width: 160px;
+}

@@ -1,0 +1,74 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.menuItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  width: 100%;
+  padding: var(--container-padding-static-xs) var(--container-padding-static-small);
+  border: none;
+  border-radius: var(--border-radius-static-small);
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  text-align: left;
+  transition: background-color 120ms ease;
+  overflow: hidden;
+}
+
+.menuItem::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  transition: background-color 120ms ease;
+  pointer-events: none;
+}
+
+.menuItem:focus-visible {
+  box-shadow: var(--focus-ring-offset);
+}
+
+/* ── Hover ────────────────────────────────────────────────────────────────── */
+
+.menuItem:not(:disabled):not(.selected):hover {
+  background-color: var(--container-color-themeable-hover);
+}
+
+/* ── Selected ─────────────────────────────────────────────────────────────── */
+
+.selected {
+  background-color: var(--container-color-static-brand-primary);
+}
+
+.selected:not(:disabled):hover::after {
+  background-color: var(--container-color-static-hover-darken);
+}
+
+/* ── Disabled ─────────────────────────────────────────────────────────────── */
+
+.menuItem:disabled {
+  cursor: not-allowed;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+  flex: 1;
+}
+
+.selected .label {
+  color: var(--text-color-static-light);
+}
+
+.menuItem:disabled .label {
+  color: var(--text-color-themeable-disabled);
+}
