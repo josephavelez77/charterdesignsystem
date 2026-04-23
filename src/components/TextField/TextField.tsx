@@ -1,43 +1,128 @@
-import React, { useId } from 'react'
+import React, { useId, useRef, useState } from 'react'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { faCircleXmark, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconButton } from '../IconButton/IconButton'
 import styles from './TextField.module.css'
 
 export interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'id'> {
   label?: string
   error?: string
   hint?: string
+  leadingIcon?: IconDefinition
+  trailingIcon?: IconDefinition
 }
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
-  ({ label, error, hint, className, disabled, ...props }, ref) => {
+  (
+    { label, error, hint, leadingIcon, trailingIcon, className, disabled, onFocus, onBlur, ...props },
+    ref,
+  ) => {
     const generatedId = useId()
     const id = props['aria-label'] ? undefined : generatedId
     const errorId = error ? `${generatedId}-error` : undefined
     const hintId = hint ? `${generatedId}-hint` : undefined
 
-    const inputClass = [
-      styles.input,
-      error ? styles.inputError : '',
-      className ?? '',
-    ]
-      .filter(Boolean)
-      .join(' ')
+    const inputRef = useRef<HTMLInputElement>(null)
+    const [isFocused, setIsFocused] = useState(false)
+
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(true)
+      onFocus?.(e)
+    }
+
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      setIsFocused(false)
+      onBlur?.(e)
+    }
+
+    const handleClear = () => {
+      const input = inputRef.current
+      if (!input) return
+      const nativeValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set
+      nativeValueSetter?.call(input, '')
+      input.dispatchEvent(new Event('input', { bubbles: true }))
+    }
+
+    const iconColor = disabled
+      ? 'var(--icon-color-themeable-disabled)'
+      : 'var(--icon-color-themeable-primary)'
+
+    const wrapperClass = [
+      styles.inputWrapper,
+      isFocused ? styles.wrapperFocused : '',
+      error ? styles.wrapperError : '',
+      disabled ? styles.wrapperDisabled : '',
+    ].filter(Boolean).join(' ')
+
+    const trailingSlot = (() => {
+      if (error) {
+        return (
+          <FontAwesomeIcon
+            icon={faTriangleExclamation}
+            style={{ color: 'var(--icon-color-static-state-error)', width: 16, height: 16, flexShrink: 0 }}
+            aria-hidden
+          />
+        )
+      }
+      if (isFocused) {
+        return (
+          <IconButton
+            icon={faCircleXmark}
+            variant="brandPrimary"
+            iconSize="small"
+            aria-label="Clear"
+            tabIndex={-1}
+            onMouseDown={(e) => { e.preventDefault(); handleClear() }}
+          />
+        )
+      }
+      if (trailingIcon) {
+        return (
+          <FontAwesomeIcon
+            icon={trailingIcon}
+            style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
+            aria-hidden
+          />
+        )
+      }
+      return null
+    })()
 
     return (
-      <div className={`${styles.root} ${disabled ? styles.disabled : ''}`}>
+      <div className={[styles.root, disabled ? styles.disabled : '', className ?? ''].filter(Boolean).join(' ')}>
         {label && (
           <label htmlFor={id} className={styles.label}>
             {label}
           </label>
         )}
-        <input
-          ref={ref}
-          id={id}
-          className={inputClass}
-          disabled={disabled}
-          aria-invalid={!!error}
-          aria-describedby={[errorId, hintId].filter(Boolean).join(' ') || undefined}
-          {...props}
-        />
+
+        <div className={wrapperClass}>
+          {leadingIcon && (
+            <FontAwesomeIcon
+              icon={leadingIcon}
+              style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
+              aria-hidden
+            />
+          )}
+          <input
+            ref={(el) => {
+              (inputRef as React.MutableRefObject<HTMLInputElement | null>).current = el
+              if (typeof ref === 'function') ref(el)
+              else if (ref) (ref as React.MutableRefObject<HTMLInputElement | null>).current = el
+            }}
+            id={id}
+            className={styles.input}
+            disabled={disabled}
+            aria-invalid={!!error}
+            aria-describedby={[errorId, hintId].filter(Boolean).join(' ') || undefined}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            {...props}
+          />
+          {trailingSlot}
+        </div>
+
         {error && (
           <span id={errorId} className={styles.errorText} role="alert">
             {error}

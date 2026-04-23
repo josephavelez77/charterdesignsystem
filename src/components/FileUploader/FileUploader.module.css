@@ -1,16 +1,16 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--container-gap-static-xxs);
+  gap: var(--container-gap-static-xs);
 }
 
 /* ── Label ────────────────────────────────────────────────────────────────── */
 
 .label {
   font-family: var(--text-family-static-body);
-  font-size: var(--text-size-static-body1);
+  font-size: var(--text-size-static-body2);
   font-weight: var(--text-weight-static-regular);
-  line-height: var(--text-line-static-body1);
+  line-height: var(--text-line-static-body2);
   color: var(--text-color-themeable-primary);
 }
 
@@ -93,7 +93,7 @@
 .fileList {
   display: flex;
   flex-direction: column;
-  gap: var(--container-gap-static-xxs);
+  gap: var(--container-gap-static-xs);
   padding: var(--container-padding-static-xxs) var(--container-padding-static-small) var(--container-padding-static-small);
 }
 
