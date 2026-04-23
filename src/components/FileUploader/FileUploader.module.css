@@ -19,10 +19,13 @@
 .container {
   display: flex;
   flex-direction: column;
-  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border: var(--border-width-static-primary) solid
+    var(--border-color-themeable-primary);
   border-radius: var(--border-radius-static-primary);
   overflow: hidden;
-  transition: border-color 120ms ease, border-style 120ms ease;
+  transition:
+    border-color 120ms ease,
+    border-style 120ms ease;
 }
 
 .dragActive {
@@ -37,7 +40,8 @@
   flex-direction: column;
   align-items: center;
   gap: var(--container-gap-static-xs);
-  padding: var(--container-padding-static-primary) var(--container-padding-static-large);
+  padding: var(--container-padding-static-primary)
+    var(--container-padding-static-large);
   text-align: center;
 }
 
