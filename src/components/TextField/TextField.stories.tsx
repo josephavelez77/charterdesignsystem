@@ -1,4 +1,6 @@
+import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { faHouse, faEnvelope, faMagnifyingGlass, faUser } from '@fortawesome/free-solid-svg-icons'
 import { TextField } from './TextField'
 
 const meta = {
@@ -18,6 +20,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
+// ── Base states ───────────────────────────────────────────────────────────────
+
 export const Default: Story = {
   args: {
     label: 'Username',
@@ -33,19 +37,19 @@ export const WithValue: Story = {
   },
 }
 
-export const WithError: Story = {
-  args: {
-    label: 'Username',
-    placeholder: 'Enter username',
-    error: 'Username is required',
-  },
-}
-
 export const WithHint: Story = {
   args: {
     label: 'Username',
     placeholder: 'Enter username or email address',
     hint: 'Use your company email address',
+  },
+}
+
+export const WithError: Story = {
+  args: {
+    label: 'Username',
+    placeholder: 'Enter username',
+    error: 'Username is required',
   },
 }
 
@@ -55,4 +59,63 @@ export const Disabled: Story = {
     placeholder: 'Enter username',
     disabled: true,
   },
+}
+
+// ── With icons ────────────────────────────────────────────────────────────────
+
+export const WithLeadingIcon: Story = {
+  args: {
+    label: 'Username',
+    placeholder: 'Enter username',
+    leadingIcon: faUser,
+  },
+}
+
+export const WithTrailingIcon: Story = {
+  args: {
+    label: 'Search',
+    placeholder: 'Search...',
+    trailingIcon: faMagnifyingGlass,
+  },
+}
+
+export const WithBothIcons: Story = {
+  args: {
+    label: 'Email',
+    placeholder: 'Enter email address',
+    leadingIcon: faEnvelope,
+    trailingIcon: faEnvelope,
+  },
+}
+
+export const WithIconsDisabled: Story = {
+  args: {
+    label: 'Email',
+    placeholder: 'Enter email address',
+    leadingIcon: faEnvelope,
+    trailingIcon: faEnvelope,
+    disabled: true,
+  },
+}
+
+export const WithIconsError: Story = {
+  args: {
+    label: 'Email',
+    placeholder: 'Enter email address',
+    leadingIcon: faEnvelope,
+    trailingIcon: faEnvelope,
+    error: 'Please enter a valid email address',
+  },
+}
+
+// ── All states ────────────────────────────────────────────────────────────────
+
+export const AllStates: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 352 }}>
+      <TextField label="Label" placeholder="Placeholder" leadingIcon={faHouse} trailingIcon={faHouse} hint="Helper text" />
+      <TextField label="Label" placeholder="Placeholder" leadingIcon={faHouse} trailingIcon={faHouse} hint="Helper text" disabled />
+      <TextField label="Label" placeholder="Placeholder" leadingIcon={faHouse} trailingIcon={faHouse} error="Helper text" />
+    </div>
+  ),
 }

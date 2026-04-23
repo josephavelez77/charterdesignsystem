@@ -24,12 +24,13 @@
   gap: var(--container-gap-static-xs);
   width: 100%;
   height: var(--container-height-static-2xl);
-  padding: 0 var(--container-padding-static-small);
+  padding: 0 0 0 var(--container-padding-static-small);
   border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
   border-radius: var(--border-radius-static-primary);
   background-color: transparent;
   box-sizing: border-box;
   transition: border-color 120ms ease, box-shadow 120ms ease;
+  overflow: hidden;
 }
 
 .inputWrapper:hover:not(.wrapperDisabled) {
@@ -80,6 +81,61 @@
   cursor: not-allowed;
 }
 
+/* Hide browser number spinners */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+/* ── Stepper ──────────────────────────────────────────────────────────────── */
+
+.stepper {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 28px;
+  flex-shrink: 0;
+  border-left: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+}
+
+.stepperBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--icon-color-themeable-primary);
+  transition: background-color 100ms ease;
+}
+
+.stepperBtn:hover:not(:disabled) {
+  background-color: var(--background-color-themeable-secondary);
+}
+
+.stepperBtn:disabled {
+  cursor: not-allowed;
+  color: var(--icon-color-themeable-disabled);
+}
+
+.stepperDivider {
+  height: var(--border-width-static-primary);
+  background-color: var(--border-color-themeable-primary);
+  flex-shrink: 0;
+}
+
+/* ── Error icon trailing padding ──────────────────────────────────────────── */
+
+.errorIcon {
+  margin-right: var(--container-padding-static-small);
+}
 
 /* ── Disabled ─────────────────────────────────────────────────────────────── */
 

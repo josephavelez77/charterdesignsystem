@@ -37,3 +37,6 @@ export type { FileUploaderListItemProps } from './components/FileUploaderListIte
 
 export { FileUploader } from './components/FileUploader'
 export type { FileUploaderProps } from './components/FileUploader'
+
+export { NumberField } from './components/NumberField'
+export type { NumberFieldProps } from './components/NumberField'
