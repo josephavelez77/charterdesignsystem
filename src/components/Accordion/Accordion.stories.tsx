@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { faHouse, faGear, faUser } from '@fortawesome/free-solid-svg-icons'
-import { Accordion } from './Accordion'
+import { AccordionItem } from './Accordion'
 
 const BODY_TEXT =
   'Accordion content lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.'
 
-const meta: Meta<typeof Accordion> = {
-  title: 'Components/Accordion',
-  component: Accordion,
+const meta: Meta<typeof AccordionItem> = {
+  title: 'Components/AccordionItem',
+  component: AccordionItem,
   parameters: { layout: 'padded' },
   tags: ['autodocs'],
   args: {
@@ -53,7 +53,7 @@ export const DisabledExpanded: Story = {
 export const CustomContent: Story = {
   args: { icon: faGear, defaultExpanded: true },
   render: (args) => (
-    <Accordion {...args}>
+    <AccordionItem {...args}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
         <p style={{ margin: 0 }}>Any React content can go here.</p>
         <ul style={{ margin: 0, paddingLeft: '16px' }}>
@@ -62,25 +62,6 @@ export const CustomContent: Story = {
           <li>List item three</li>
         </ul>
       </div>
-    </Accordion>
-  ),
-}
-
-export const AccordionGroup: Story = {
-  render: () => (
-    <div style={{ maxWidth: '480px' }}>
-      <Accordion title="Account settings" subtitle="Manage your profile" icon={faUser}>
-        {BODY_TEXT}
-      </Accordion>
-      <Accordion title="Notifications" subtitle="Email and push preferences" icon={faGear}>
-        {BODY_TEXT}
-      </Accordion>
-      <Accordion title="Appearance" subtitle="Theme and display options">
-        {BODY_TEXT}
-      </Accordion>
-      <Accordion title="Disabled section" subtitle="Cannot be toggled" disabled>
-        {BODY_TEXT}
-      </Accordion>
-    </div>
+    </AccordionItem>
   ),
 }

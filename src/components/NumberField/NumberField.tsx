@@ -2,6 +2,7 @@ import React, { useId, useRef, useState } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../Icon/Icon'
 import styles from './NumberField.module.css'
 
 export interface NumberFieldProps {
@@ -96,13 +97,7 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
         )}
 
         <div className={wrapperClass}>
-          {leadingIcon && (
-            <FontAwesomeIcon
-              icon={leadingIcon}
-              style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
-              aria-hidden
-            />
-          )}
+          {leadingIcon && <Icon icon={leadingIcon} color={iconColor} />}
 
           <input
             ref={(el) => {
@@ -127,11 +122,10 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
           />
 
           {error ? (
-            <FontAwesomeIcon
+            <Icon
               icon={faTriangleExclamation}
               className={styles.errorIcon}
-              style={{ color: 'var(--icon-color-static-state-error)', width: 16, height: 16, flexShrink: 0 }}
-              aria-hidden
+              color="var(--icon-color-static-state-error)"
             />
           ) : (
             <div className={styles.stepper}>

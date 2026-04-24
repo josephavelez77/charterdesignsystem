@@ -1,0 +1,11 @@
+.accordionGroup {
+  width: 100%;
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  overflow: hidden;
+}
+
+/* suppress the last item's bottom border so it doesn't double up with the group border */
+.accordionGroup > :last-child {
+  border-bottom: none;
+}

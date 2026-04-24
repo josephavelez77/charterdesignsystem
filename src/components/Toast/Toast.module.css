@@ -1,0 +1,93 @@
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-small);
+  padding: var(--container-padding-static-small);
+  border-radius: var(--border-radius-static-primary);
+  min-width: 200px;
+  box-shadow:
+    0 4px 6px -1px var(--container-shadow-themeable-shadow-10),
+    0 2px 4px -1px var(--container-shadow-themeable-shadow-6);
+  animation: toastSlideIn 280ms cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
+
+.dismissing {
+  animation: toastSlideOut 220ms ease-in forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateY(calc(100% + 24px));
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(calc(100% + 24px));
+    opacity: 0;
+  }
+}
+
+/* ── Urgency variants ─────────────────────────────────────────────────────── */
+
+.error {
+  background-color: var(--container-color-static-state-error);
+}
+
+.warning {
+  background-color: var(--container-color-static-state-warning);
+}
+
+.success {
+  background-color: var(--container-color-static-state-success);
+}
+
+.information {
+  background-color: var(--container-color-static-state-information);
+}
+
+.none {
+  background-color: var(--container-color-themeable-tertiary);
+}
+
+/* ── Message ──────────────────────────────────────────────────────────────── */
+
+.message {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.messageColored {
+  color: var(--text-color-static-light);
+}
+
+.messageNone {
+  color: var(--text-color-themeable-primary);
+}
+
+/* ── Action button — override neutral tertiary color on colored backgrounds ── */
+
+.actionColored {
+  color: var(--text-color-static-light) !important;
+}
+
+.actionColored:hover:not(:disabled) {
+  background-color: var(--container-color-static-hover-lighten) !important;
+}

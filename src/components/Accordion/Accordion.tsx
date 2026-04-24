@@ -4,7 +4,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Icon } from '../Icon/Icon'
 import styles from './Accordion.module.css'
 
-export interface AccordionProps {
+export interface AccordionItemProps {
   title: string
   subtitle?: string
   /** Optional leading icon in the header */
@@ -19,7 +19,7 @@ export interface AccordionProps {
   className?: string
 }
 
-export const Accordion = ({
+export const AccordionItem = ({
   title,
   subtitle,
   icon,
@@ -29,7 +29,7 @@ export const Accordion = ({
   onToggle,
   disabled = false,
   className,
-}: AccordionProps) => {
+}: AccordionItemProps) => {
   const id = useId()
   const panelId = `${id}-panel`
   const headerId = `${id}-header`
@@ -88,4 +88,4 @@ export const Accordion = ({
   )
 }
 
-Accordion.displayName = 'Accordion'
+AccordionItem.displayName = 'AccordionItem'

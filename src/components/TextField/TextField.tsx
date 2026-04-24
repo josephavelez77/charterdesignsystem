@@ -1,7 +1,7 @@
 import React, { useId, useRef, useState } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faCircleXmark, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../Icon/Icon'
 import { IconButton } from '../IconButton/IconButton'
 import styles from './TextField.module.css'
 
@@ -57,13 +57,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 
     const trailingSlot = (() => {
       if (error) {
-        return (
-          <FontAwesomeIcon
-            icon={faTriangleExclamation}
-            style={{ color: 'var(--icon-color-static-state-error)', width: 16, height: 16, flexShrink: 0 }}
-            aria-hidden
-          />
-        )
+        return <Icon icon={faTriangleExclamation} color="var(--icon-color-static-state-error)" />
       }
       if (isFocused) {
         return (
@@ -78,13 +72,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         )
       }
       if (trailingIcon) {
-        return (
-          <FontAwesomeIcon
-            icon={trailingIcon}
-            style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
-            aria-hidden
-          />
-        )
+        return <Icon icon={trailingIcon} color={iconColor} />
       }
       return null
     })()
@@ -98,13 +86,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         )}
 
         <div className={wrapperClass}>
-          {leadingIcon && (
-            <FontAwesomeIcon
-              icon={leadingIcon}
-              style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
-              aria-hidden
-            />
-          )}
+          {leadingIcon && <Icon icon={leadingIcon} color={iconColor} />}
           <input
             ref={(el) => {
               (inputRef as React.MutableRefObject<HTMLInputElement | null>).current = el

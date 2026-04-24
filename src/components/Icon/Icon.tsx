@@ -8,6 +8,7 @@ export interface IconProps {
   /** Font Awesome icon definition, e.g. faHouse from @fortawesome/free-solid-svg-icons */
   icon: IconDefinition
   size?: IconSize
+  color?: string
   className?: string
   /** Provide when the icon conveys meaning on its own (no surrounding text) */
   'aria-label'?: string
@@ -16,6 +17,7 @@ export interface IconProps {
 export const Icon = ({
   icon,
   size = 'medium',
+  color,
   className,
   'aria-label': ariaLabel,
 }: IconProps) => {
@@ -24,6 +26,7 @@ export const Icon = ({
   return (
     <span
       className={classNames}
+      style={color ? { color } : undefined}
       aria-label={ariaLabel}
       aria-hidden={ariaLabel ? undefined : true}
       role={ariaLabel ? 'img' : undefined}

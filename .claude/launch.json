@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "storybook",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "/Users/josephvelez/Projects/basedesignsystem/node_modules/.bin/storybook",
+      "runtimeArgs": ["dev", "-p", "6006"],
       "port": 6006
     }
   ]
