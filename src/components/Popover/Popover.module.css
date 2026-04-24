@@ -1,0 +1,102 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* ── Panel ───────────────────────────────────────────────────────────────── */
+
+.popover {
+  position: absolute;
+  z-index: 1000;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--container-gap-static-small, 12px);
+  min-width: 200px;
+  max-width: 640px;
+  width: 218px;
+
+  padding: var(--container-padding-static-small, 12px);
+  border-radius: var(--border-radius-static-primary, 8px);
+  border: 1px solid var(--border-color-themeable-primary, #404040);
+  background-color: var(--container-color-themeable-tertiary, #0a0a0a);
+  box-shadow:
+    0px 4px 6px -1px var(--container-shadow-themeable-shadow-10, rgba(255, 255, 255, 0.1)),
+    0px 2px 4px -1px var(--container-shadow-themeable-shadow-6, rgba(255, 255, 255, 0.06));
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 150ms ease,
+    visibility 150ms ease;
+}
+
+.popover.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ── Placement ───────────────────────────────────────────────────────────── */
+
+.bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* ── Header row ──────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: var(--container-gap-static-xs, 8px);
+}
+
+.label {
+  flex: 1 0 0;
+  min-width: 1px;
+  font-family: var(--text-family-static-body, 'Inter', sans-serif);
+  font-size: var(--text-size-static-body2, 14px);
+  font-weight: var(--text-weight-static-medium, 500);
+  line-height: var(--text-line-static-body2, 12.32px);
+  letter-spacing: var(--text-letter-static-primary, 0px);
+  color: var(--text-color-themeable-primary, #fafafa);
+}
+
+
+/* ── Content ─────────────────────────────────────────────────────────────── */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--text-family-static-body, 'Inter', sans-serif);
+  font-size: var(--text-size-static-caption, 12px);
+  font-weight: var(--text-weight-static-regular, 400);
+  line-height: var(--text-line-static-caption, 15.96px);
+  letter-spacing: var(--text-letter-static-primary, 0px);
+  color: var(--text-color-themeable-primary, #fafafa);
+}

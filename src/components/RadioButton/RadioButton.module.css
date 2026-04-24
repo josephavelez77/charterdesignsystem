@@ -1,0 +1,45 @@
+/* ── Hit area (hover circle) ─────────────────────────────────────────────── */
+
+.hitArea {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--container-padding-static-small);
+  border-radius: var(--border-radius-static-circle);
+  flex-shrink: 0;
+  position: relative;
+  transition: background-color 120ms ease;
+}
+
+/* Unselected hover */
+.hitArea:not(.disabled):hover {
+  background-color: var(--container-color-themeable-hover);
+}
+
+/* Selected hover */
+.hitArea.checked:not(.disabled):hover {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+}
+
+/* Disabled cursor handled by parent label */
+.hitArea.disabled {
+  pointer-events: none;
+}
+
+/* ── Native input (visually hidden) ──────────────────────────────────────── */
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Focus ring on the FA icon sibling */
+.input:focus-visible ~ svg {
+  outline: 2px solid var(--border-color-static-brand-primary);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-static-circle);
+}

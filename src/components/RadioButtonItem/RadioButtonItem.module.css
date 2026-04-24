@@ -1,0 +1,41 @@
+/* ── Wrapper (label) ─────────────────────────────────────────────────────── */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wrapper.disabled {
+  cursor: not-allowed;
+}
+
+/* ── Label ───────────────────────────────────────────────────────────────── */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+}
+
+.disabled .label {
+  color: var(--text-color-themeable-disabled);
+}
+
+/* ── Required asterisk ───────────────────────────────────────────────────── */
+
+.asterisk {
+  color: var(--text-color-static-state-error);
+  font-size: 9px;
+  line-height: 1;
+  align-self: flex-start;
+  margin-top: 2px;
+}

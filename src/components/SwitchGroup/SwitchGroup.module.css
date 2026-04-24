@@ -1,0 +1,38 @@
+/* ── Fieldset reset ───────────────────────────────────────────────────────── */
+
+.group {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+/* ── Legend / group label ─────────────────────────────────────────────────── */
+
+.legend {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-tertiary);
+  padding: 0;
+  margin-bottom: var(--container-gap-static-xxs);
+}
+
+/* ── Items container ──────────────────────────────────────────────────────── */
+
+.items {
+  display: flex;
+}
+
+.vertical {
+  flex-direction: column;
+  gap: var(--container-gap-static-xxs);
+}
+
+.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--container-gap-static-xs);
+}

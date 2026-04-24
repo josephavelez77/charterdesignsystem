@@ -1,0 +1,44 @@
+/* ── Wrapper (label element) ─────────────────────────────────────────────── */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs); /* 8px — matches Figma itemSpacing */
+  padding-top: 4px;
+  padding-bottom: 4px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.wrapper.disabled {
+  cursor: not-allowed;
+}
+
+/* ── Label text ──────────────────────────────────────────────────────────── */
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--text-family-static-body);   /* Inter */
+  font-size: var(--text-size-static-body2);      /* 14px */
+  font-weight: var(--text-weight-static-medium); /* 500 */
+  line-height: var(--text-line-static-body2);    /* 12.32px */
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);    /* #fafafa dark / #171717 light */
+  white-space: nowrap;
+}
+
+.wrapper.disabled .label {
+  color: var(--text-color-themeable-disabled);
+}
+
+/* ── Required asterisk ───────────────────────────────────────────────────── */
+
+.asterisk {
+  color: var(--text-color-static-state-error); /* #fb2c36 */
+  font-size: 9px;
+  line-height: 1;
+  align-self: flex-start;
+  margin-top: 2px;
+}

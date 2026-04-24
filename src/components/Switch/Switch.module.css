@@ -1,0 +1,99 @@
+/* ── Track (the pill-shaped background) ────────────────────────────────── */
+
+.track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 48px;
+  height: 24px;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: var(--border-radius-static-circle);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  background-color: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+/* Checked: filled brand track */
+.track.checked {
+  background-color: var(--container-color-static-brand-primary);
+  border-color: var(--container-color-static-brand-primary);
+}
+
+/* Disabled */
+.track.disabled {
+  cursor: not-allowed;
+  border-color: var(--border-color-themeable-disabled);
+  background-color: transparent;
+}
+
+.track.disabled.checked {
+  background-color: transparent;
+  border-color: var(--border-color-themeable-disabled);
+}
+
+/* ── Hover state ─────────────────────────────────────────────────────────── */
+
+.track:not(.disabled):hover .knob::after {
+  opacity: 1;
+}
+
+/* ── Native input (visually hidden) ─────────────────────────────────────── */
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Focus ring on the knob when the hidden input has keyboard focus */
+.input:focus-visible ~ .knob {
+  outline: 2px solid var(--border-color-static-brand-primary);
+  outline-offset: 3px;
+  border-radius: var(--border-radius-static-circle);
+}
+
+/* ── Knob ────────────────────────────────────────────────────────────────── */
+
+.knob {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--border-radius-static-circle);
+  background-color: var(--container-color-themeable-primary-inverse); /* #e5e5e5 in dark */
+  flex-shrink: 0;
+  /* Slide from left (off) to right (on) */
+  transform: translateX(0);
+  transition: transform 150ms ease, background-color 150ms ease;
+}
+
+/* Hover darkening overlay on knob */
+.knob::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--border-radius-static-circle);
+  background-color: var(--container-color-static-hover-darken); /* rgba(0,0,0,0.1) */
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+/* Checked: knob shifts right, stays white for contrast on brand track */
+.track.checked .knob {
+  transform: translateX(24px); /* 48 - 4*2 - 16 = 24px travel */
+  background-color: #ffffff;
+}
+
+/* Disabled: knob is neutral dark */
+.track.disabled .knob {
+  background-color: var(--border-color-themeable-secondary); /* #525252 */
+}
+
+.track.disabled.checked .knob {
+  background-color: var(--border-color-themeable-secondary); /* #525252 */
+}
