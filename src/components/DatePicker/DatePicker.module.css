@@ -1,0 +1,171 @@
+/* ── Picker card ──────────────────────────────────────────────────────────── */
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  width: 225px;
+  border-radius: 8px;
+  background-color: var(--container-color-themeable-tertiary);
+  box-shadow: var(--shadow-static-overlay);
+  overflow: hidden;
+  user-select: none;
+  box-shadow:
+    0px 4px 6px -1px var(--container-shadow-themeable-shadow-10, rgba(255, 255, 255, 0.1)),
+    0px 2px 4px -1px var(--container-shadow-themeable-shadow-6, rgba(255, 255, 255, 0.06));
+}
+
+/* ── Selected date header ─────────────────────────────────────────────────── */
+
+.selectedDate {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 var(--container-padding-static-small);
+  border-bottom: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+}
+
+.selectedDateText {
+  font-family: var(--text-family-static-headline);
+  font-size: var(--text-size-static-headline2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-headline2);
+  color: var(--text-color-themeable-primary);
+}
+
+/* ── Calendar controls ────────────────────────────────────────────────────── */
+
+.calendarControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 37px;
+  padding: 0 4px 0 var(--container-padding-static-small);
+  border-bottom: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+}
+
+.monthSelector {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-color-static-brand-primary);
+}
+
+.monthLabel {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-medium);
+  line-height: var(--text-line-static-body2);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.navButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-static-primary);
+  color: var(--icon-color-static-brand-primary);
+  cursor: pointer;
+  transition: background-color 120ms ease;
+}
+
+.navButton:hover {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+}
+
+.navButton:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ── Calendar grid ────────────────────────────────────────────────────────── */
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  padding: 0 4px 4px;
+}
+
+.dayOfWeekRow {
+  display: flex;
+  margin-bottom: 2px;
+}
+
+.dayOfWeek {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 24px;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-medium);
+  line-height: var(--text-line-static-caption);
+  color: var(--text-color-themeable-tertiary);
+  flex-shrink: 0;
+}
+
+.weekRow {
+  display: flex;
+}
+
+.dayCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  color: var(--text-color-themeable-primary);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.dayCell:hover:not(.dayCellSelected) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+  color: var(--text-color-static-brand-primary);
+}
+
+.dayCell:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.dayCellOutside {
+  color: var(--text-color-themeable-tertiary);
+}
+
+.dayCellSelected {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--container-gap-static-xs);
+  padding: 4px;
+  border-top: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+}

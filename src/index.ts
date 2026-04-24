@@ -17,6 +17,9 @@ export type { StatusChipProps, StatusType, StatusLevel } from './components/Stat
 export { MultiSelectField } from './components/MultiSelectField'
 export type { MultiSelectFieldProps } from './components/MultiSelectField'
 
+export { DateField } from './components/DateField'
+export type { DateFieldProps } from './components/DateField'
+
 export { Icon } from './components/Icon/Icon'
 export type { IconProps, IconSize } from './components/Icon/Icon'
 
@@ -97,3 +100,6 @@ export type { TooltipProps } from './components/Tooltip'
 
 export { Popover } from './components/Popover'
 export type { PopoverProps, PopoverPlacement } from './components/Popover'
+
+export { DatePicker } from './components/DatePicker'
+export type { DatePickerProps } from './components/DatePicker'
