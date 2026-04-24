@@ -2,6 +2,21 @@
 export { Button } from './components/Button'
 export type { ButtonProps, ButtonVariant, ButtonEmphasis } from './components/Button'
 
+export { Chip } from './components/Chip'
+export type { ChipProps } from './components/Chip'
+
+export { AttributeChip } from './components/AttributeChip'
+export type { AttributeChipProps } from './components/AttributeChip'
+
+export { PriorityChip } from './components/PriorityChip'
+export type { PriorityChipProps, PriorityLevel } from './components/PriorityChip'
+
+export { StatusChip } from './components/StatusChip'
+export type { StatusChipProps, StatusType, StatusLevel } from './components/StatusChip'
+
+export { MultiSelectField } from './components/MultiSelectField'
+export type { MultiSelectFieldProps } from './components/MultiSelectField'
+
 export { Icon } from './components/Icon/Icon'
 export type { IconProps, IconSize } from './components/Icon/Icon'
 

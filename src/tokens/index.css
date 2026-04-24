@@ -11,6 +11,9 @@
  */
 
 :root {
+  /* ── StepLabel ── */
+  --stepLabel: Step 1;
+
   /* ── Border ── */
   --border-color-themeable-primary: #404040;
   --border-color-themeable-secondary: #525252;
@@ -22,13 +25,29 @@
   --border-color-static-state-warning: #FF6900;
   --border-color-static-state-success: #00C950;
   --border-color-static-state-information: #2B7FFF;
+  --border-color-static-priority-urgent: #FB2C36;
+  --border-color-static-priority-high: #FF6900;
+  --border-color-static-priority-medium: #F0B100;
+  --border-color-static-priority-low: #00C950;
+  --border-color-static-status-positive1: #00C950;
+  --border-color-static-status-positive2: #7CCF00;
+  --border-color-static-status-positive3: #00BC7D;
+  --border-color-static-status-caution1: #FF6900;
+  --border-color-static-status-caution2: #FE9A00;
+  --border-color-static-status-caution3: #F0B100;
+  --border-color-static-status-negative1: #FB2C36;
+  --border-color-static-status-negative2: #FF2056;
+  --border-color-static-status-negative3: #F6339A;
+  --border-color-static-status-neutral1: #2B7FFF;
+  --border-color-static-status-neutral2: #615FFF;
+  --border-color-static-status-neutral3: #00A6F4;
   --border-radius-static-none: 0;
   --border-radius-static-small: 4px;
   --border-radius-static-primary: 8px;
   --border-radius-static-circle: 9999px;
-  --border-width-static-none: 0;
   --border-width-static-primary: 1px;
   --border-width-static-large: 2px;
+  --border-width-static-none: 0;
 
   /* ── Container ── */
   --container-color-themeable-primary: #262626;
@@ -94,6 +113,12 @@
   --container-height-static-xl: 32px;
   --container-height-static-2xl: 48px;
   --container-height-static-3xl: 64px;
+  --container-shadow-themeable-shadow-1: rgba(255, 248, 248, 0.01);
+  --container-shadow-themeable-shadow-4: rgba(255, 248, 248, 0.04);
+  --container-shadow-themeable-shadow-5: rgba(255, 255, 255, 0.05);
+  --container-shadow-themeable-shadow-6: rgba(255, 255, 255, 0.06);
+  --container-shadow-themeable-shadow-10: rgba(255, 255, 255, 0.1);
+  --container-shadow-themeable-shadow-25: rgba(255, 255, 255, 0.25);
   --container-width-static-xxs: 4px;
   --container-width-static-xs: 8px;
   --container-width-static-small: 12px;
@@ -103,12 +128,6 @@
   --container-width-static-2xl: 48px;
   --container-width-static-3xl: 64px;
   --container-width-static-max-content: 640px;
-  --container-shadow-themeable-shadow-1: rgba(255, 248, 248, 0.01);
-  --container-shadow-themeable-shadow-4: rgba(255, 248, 248, 0.04);
-  --container-shadow-themeable-shadow-5: rgba(255, 255, 255, 0.05);
-  --container-shadow-themeable-shadow-6: rgba(255, 255, 255, 0.06);
-  --container-shadow-themeable-shadow-10: rgba(255, 255, 255, 0.1);
-  --container-shadow-themeable-shadow-25: rgba(255, 255, 255, 0.25);
 
   /* ── Icon ── */
   --icon-color-themeable-primary: #FAFAFA;
@@ -157,15 +176,15 @@
   --text-family-static-body: Inter;
   --text-family-static-mono: JetBrains Mono;
   --text-letter-static-primary: 0;
-  --text-line-static-caption: 15.96px;
-  --text-line-static-body2: 12.32px;
-  --text-line-static-body1: 24px;
-  --text-line-static-headline3: 28.08px;
-  --text-line-static-headline2: 28px;
-  --text-line-static-headline1: 31.92px;
-  --text-line-static-display3: 36px;
-  --text-line-static-display2: 39.96px;
   --text-line-static-display1: 48px;
+  --text-line-static-display2: 39.96px;
+  --text-line-static-display3: 36px;
+  --text-line-static-headline1: 31.92px;
+  --text-line-static-headline2: 28px;
+  --text-line-static-headline3: 28.08px;
+  --text-line-static-body1: 24px;
+  --text-line-static-body2: 12.32px;
+  --text-line-static-caption: 15.96px;
   --text-size-static-caption: 12px;
   --text-size-static-body2: 14px;
   --text-size-static-body1: 16px;

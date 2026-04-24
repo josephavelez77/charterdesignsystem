@@ -1,0 +1,195 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-xs);
+  width: 100%;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-secondary);
+  letter-spacing: var(--text-letter-static-primary);
+}
+
+.required {
+  color: var(--text-color-static-state-error);
+}
+
+/* ── Trigger wrapper ──────────────────────────────────────────────────────── */
+
+.triggerWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Trigger ──────────────────────────────────────────────────────────────── */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: var(--container-height-static-2xl);
+  padding: var(--container-padding-static-xxs) var(--container-padding-static-xxs) var(--container-padding-static-xxs) var(--container-padding-static-small);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+  user-select: none;
+}
+
+.trigger:hover:not(.triggerDisabled) {
+  border-color: var(--border-color-themeable-secondary);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  border-color: var(--border-color-static-brand-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.triggerOpen {
+  border-color: var(--border-color-static-brand-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.triggerError {
+  border-color: var(--border-color-static-state-error);
+}
+
+.triggerError.triggerOpen {
+  border-color: var(--border-color-static-state-error);
+  box-shadow: 0 0 0 2px var(--border-color-static-state-error);
+}
+
+.triggerDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Trigger inner content ────────────────────────────────────────────────── */
+
+.triggerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.placeholder {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-tertiary);
+  white-space: nowrap;
+}
+
+/* ── Chip area ────────────────────────────────────────────────────────────── */
+
+.chipArea {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Hidden container for chip width measurement */
+.measureContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: var(--container-gap-static-xs);
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ── Overflow chip ────────────────────────────────────────────────────────── */
+
+.overflowChip {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: var(--container-padding-static-xxs) var(--container-padding-static-xs);
+  border-radius: var(--border-radius-static-circle);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+}
+
+/* ── Chevron ──────────────────────────────────────────────────────────────── */
+
+.chevron {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--icon-color-static-brand-primary);
+  transition: transform 200ms ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.triggerDisabled .chevron {
+  color: var(--icon-color-themeable-disabled);
+}
+
+/* ── Dropdown menu ────────────────────────────────────────────────────────── */
+
+.menuWrapper {
+  position: absolute;
+  top: calc(100% + var(--container-gap-static-xs));
+  left: 0;
+  right: 0;
+  z-index: 10;
+  box-shadow: 0 4px 6px -1px var(--container-shadow-themeable-shadow-10),
+              0 2px 4px -1px var(--container-shadow-themeable-shadow-6);
+  border-radius: var(--border-radius-static-primary);
+}
+
+/* ── Disabled ─────────────────────────────────────────────────────────────── */
+
+.disabled .label {
+  color: var(--text-color-themeable-disabled);
+}
+
+/* ── Helper text ──────────────────────────────────────────────────────────── */
+
+.errorText,
+.hintText {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+}
+
+.errorText {
+  color: var(--text-color-static-state-error);
+}
+
+.hintText {
+  color: var(--text-color-themeable-tertiary);
+}

@@ -1,0 +1,66 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  padding: var(--container-padding-static-xxs) var(--container-padding-static-xs);
+  border-radius: var(--border-radius-static-circle);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  background-color: transparent;
+  transition: background-color 120ms ease;
+}
+
+/* ── Hover ────────────────────────────────────────────────────────────────── */
+
+.chip:not(.disabled):hover {
+  background-color: var(--container-color-themeable-hover);
+}
+
+/* ── Disabled ─────────────────────────────────────────────────────────────── */
+
+.disabled {
+  border-color: var(--border-color-themeable-disabled);
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+}
+
+.disabled .label {
+  color: var(--text-color-themeable-disabled);
+}
+
+/* ── Dismiss button ───────────────────────────────────────────────────────── */
+
+.dismiss {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--icon-color-themeable-primary);
+  line-height: 0;
+  outline: none;
+}
+
+.dismiss:focus-visible {
+  outline: 2px solid var(--border-color-static-brand-primary);
+  border-radius: 2px;
+}
+
+.dismiss:disabled {
+  cursor: not-allowed;
+  color: var(--icon-color-themeable-disabled);
+}

@@ -1,0 +1,46 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--container-padding-static-xxs) var(--container-padding-static-xs);
+  border-radius: var(--border-radius-static-circle);
+  border: var(--border-width-static-primary) solid transparent;
+  background-color: transparent;
+}
+
+/* ── Positive ─────────────────────────────────────────────────────────────── */
+
+.chip[data-status='positive'][data-level='1'] { border-color: var(--border-color-static-status-positive1); }
+.chip[data-status='positive'][data-level='2'] { border-color: var(--border-color-static-status-positive2); }
+.chip[data-status='positive'][data-level='3'] { border-color: var(--border-color-static-status-positive3); }
+
+/* ── Caution ──────────────────────────────────────────────────────────────── */
+
+.chip[data-status='caution'][data-level='1'] { border-color: var(--border-color-static-status-caution1); }
+.chip[data-status='caution'][data-level='2'] { border-color: var(--border-color-static-status-caution2); }
+.chip[data-status='caution'][data-level='3'] { border-color: var(--border-color-static-status-caution3); }
+
+/* ── Negative ─────────────────────────────────────────────────────────────── */
+
+.chip[data-status='negative'][data-level='1'] { border-color: var(--border-color-static-status-negative1); }
+.chip[data-status='negative'][data-level='2'] { border-color: var(--border-color-static-status-negative2); }
+.chip[data-status='negative'][data-level='3'] { border-color: var(--border-color-static-status-negative3); }
+
+/* ── Neutral ──────────────────────────────────────────────────────────────── */
+
+.chip[data-status='neutral'][data-level='1'] { border-color: var(--border-color-static-status-neutral1); }
+.chip[data-status='neutral'][data-level='2'] { border-color: var(--border-color-static-status-neutral2); }
+.chip[data-status='neutral'][data-level='3'] { border-color: var(--border-color-static-status-neutral3); }
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+}

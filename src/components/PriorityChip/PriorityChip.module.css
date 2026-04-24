@@ -1,0 +1,45 @@
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  padding: var(--container-padding-static-xxs) var(--container-padding-static-xs);
+  border-radius: var(--border-radius-static-circle);
+  border: var(--border-width-static-primary) solid transparent;
+  background-color: transparent;
+}
+
+/* ── Priority variants ────────────────────────────────────────────────────── */
+
+.chip[data-priority='urgent'] {
+  border-color: var(--border-color-static-priority-urgent);
+  color: var(--border-color-static-priority-urgent);
+}
+
+.chip[data-priority='high'] {
+  border-color: var(--border-color-static-priority-high);
+  color: var(--border-color-static-priority-high);
+}
+
+.chip[data-priority='medium'] {
+  border-color: var(--border-color-static-priority-medium);
+  color: var(--border-color-static-priority-medium);
+}
+
+.chip[data-priority='low'] {
+  border-color: var(--border-color-static-priority-low);
+  color: var(--border-color-static-priority-low);
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+}
