@@ -14,7 +14,7 @@ const withBoundedScrim = (Story: StoryFn) => (
 )
 
 const meta: Meta<typeof Drawer> = {
-  title: 'Components/Drawer',
+  title: 'Overlay/Drawer',
   component: Drawer,
   parameters: { layout: 'fullscreen' },
   tags: ['autodocs'],

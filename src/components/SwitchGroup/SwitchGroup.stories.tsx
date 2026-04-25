@@ -3,7 +3,7 @@ import { SwitchGroup } from './SwitchGroup'
 import { SwitchItem } from '../SwitchItem'
 
 const meta: Meta<typeof SwitchGroup> = {
-  title: 'Components/SwitchGroup',
+  title: 'Inputs/SwitchGroup',
   component: SwitchGroup,
   tags: ['autodocs'],
 }

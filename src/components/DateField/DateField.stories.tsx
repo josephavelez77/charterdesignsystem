@@ -5,7 +5,7 @@ import { DateField } from './DateField'
 import { DatePicker } from '../DatePicker/DatePicker'
 
 const meta: Meta<typeof DateField> = {
-  title: 'Components/DateField',
+  title: 'Inputs/DateField',
   component: DateField,
   parameters: { layout: 'padded' },
   tags: ['autodocs'],

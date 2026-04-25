@@ -5,7 +5,7 @@ import { UserIdentificationTag } from './UserIdentificationTag'
 const SAMPLE_IMAGE = 'https://i.pravatar.cc/64'
 
 const meta: Meta<typeof UserIdentificationTag> = {
-  title: 'Components/UserIdentificationTag',
+  title: 'Data Display/UserIdentificationTag',
   component: UserIdentificationTag,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

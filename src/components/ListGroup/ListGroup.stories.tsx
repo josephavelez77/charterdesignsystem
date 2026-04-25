@@ -5,7 +5,7 @@ import { ListGroup } from './ListGroup'
 import { ListItem } from '../ListItem/ListItem'
 
 const meta: Meta<typeof ListGroup> = {
-  title: 'Components/ListGroup',
+  title: 'Data Display/ListGroup',
   component: ListGroup,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

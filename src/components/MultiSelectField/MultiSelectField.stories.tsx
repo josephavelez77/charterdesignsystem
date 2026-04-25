@@ -13,7 +13,7 @@ const OPTIONS = [
 ]
 
 const meta: Meta<typeof MultiSelectField> = {
-  title: 'Components/MultiSelectField',
+  title: 'Inputs/MultiSelectField',
   component: MultiSelectField,
   parameters: { layout: 'padded' },
   tags: ['autodocs'],

@@ -4,7 +4,7 @@ import { faHouse, faCog, faUser } from '@fortawesome/free-solid-svg-icons'
 import { ListItem } from './ListItem'
 
 const meta: Meta<typeof ListItem> = {
-  title: 'Components/ListItem',
+  title: 'Data Display/ListItem',
   component: ListItem,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

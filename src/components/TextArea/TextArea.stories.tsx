@@ -4,7 +4,7 @@ import { faHouse, faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons'
 import { TextArea } from './TextArea'
 
 const meta = {
-  title: 'Components/TextArea',
+  title: 'Inputs/TextArea',
   component: TextArea,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

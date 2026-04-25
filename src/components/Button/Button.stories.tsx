@@ -45,7 +45,7 @@ type ButtonStoryArgs = ButtonProps & {
 // ── Meta ─────────────────────────────────────────────────────────────────────
 
 const meta: Meta<ButtonStoryArgs> = {
-  title: 'Components/Button',
+  title: 'Buttons/Button',
   component: Button,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

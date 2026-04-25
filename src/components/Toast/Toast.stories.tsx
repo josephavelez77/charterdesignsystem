@@ -6,7 +6,7 @@ import { Button } from '../Button/Button'
 const MESSAGE = 'Toast content lorem ipsum dolor sit amet consectetur adipiscing elit.'
 
 const meta = {
-  title: 'Components/Toast',
+  title: 'Feedback/Toast',
   component: Toast,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

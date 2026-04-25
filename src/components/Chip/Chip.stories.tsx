@@ -4,7 +4,7 @@ import { faHouse, faTag, faStar, faCircle } from '@fortawesome/free-solid-svg-ic
 import { Chip } from './Chip'
 
 const meta: Meta<typeof Chip> = {
-  title: 'Components/Chip',
+  title: 'Chips/Chip',
   component: Chip,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

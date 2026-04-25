@@ -4,7 +4,7 @@ import { CheckboxGroup } from './CheckboxGroup'
 import { Checkbox } from '../Checkbox/Checkbox'
 
 const meta: Meta<typeof CheckboxGroup> = {
-  title: 'Components/CheckboxGroup',
+  title: 'Inputs/CheckboxGroup',
   component: CheckboxGroup,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

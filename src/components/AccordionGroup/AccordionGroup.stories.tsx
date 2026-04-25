@@ -8,7 +8,7 @@ const BODY_TEXT =
   'Accordion content lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.'
 
 const meta: Meta<typeof AccordionGroup> = {
-  title: 'Components/AccordionGroup',
+  title: 'Data Display/AccordionGroup',
   component: AccordionGroup,
   parameters: { layout: 'padded' },
   tags: ['autodocs'],

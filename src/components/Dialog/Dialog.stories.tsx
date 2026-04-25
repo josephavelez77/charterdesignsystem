@@ -14,7 +14,7 @@ const SAMPLE_CONTENT =
   'This action cannot be undone. Please confirm you want to continue, or cancel to go back.'
 
 const meta: Meta<typeof Dialog> = {
-  title: 'Components/Dialog',
+  title: 'Overlay/Dialog',
   component: Dialog,
   parameters: { layout: 'fullscreen' },
   tags: ['autodocs'],

@@ -4,7 +4,7 @@ import { Badge } from './Badge'
 import { IconButton } from '../IconButton/IconButton'
 
 const meta: Meta<typeof Badge> = {
-  title: 'Components/Badge',
+  title: 'Chips/Badge',
   component: Badge,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
