@@ -1,0 +1,110 @@
+/* ── Stepper container ────────────────────────────────────────────────────── */
+
+.stepper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--container-color-themeable-secondary);
+  border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+}
+
+/* ── Steps row ────────────────────────────────────────────────────────────── */
+
+.stepsRow {
+  display: flex;
+  align-items: center;
+  padding: var(--container-padding-static-primary);
+  gap: var(--container-gap-static-xs);
+}
+
+.stepItem {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  flex-shrink: 0;
+}
+
+/* ── Divider ──────────────────────────────────────────────────────────────── */
+
+.divider {
+  flex: 1 0 0;
+  min-width: 16px;
+  height: 1px;
+  background-color: var(--border-color-themeable-primary);
+}
+
+.dividerComplete {
+  background-color: var(--container-color-static-state-success);
+}
+
+/* ── Badge ────────────────────────────────────────────────────────────────── */
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--border-radius-static-circle);
+  flex-shrink: 0;
+}
+
+.badge_active {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+}
+
+.badge_upcoming {
+  background-color: var(--container-color-themeable-primary);
+  color: var(--text-color-themeable-primary);
+}
+
+.badge_complete {
+  background-color: var(--container-color-static-state-success);
+  color: var(--text-color-static-light);
+}
+
+.badgeNumber {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  text-align: center;
+}
+
+/* ── Step label ───────────────────────────────────────────────────────────── */
+
+.stepLabel {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
+  white-space: nowrap;
+}
+
+.label_active,
+.label_complete {
+  color: var(--text-color-themeable-primary);
+}
+
+.label_upcoming {
+  color: var(--text-color-themeable-tertiary);
+}
+
+/* ── Controls row ─────────────────────────────────────────────────────────── */
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--container-padding-static-primary) var(--container-padding-static-primary) var(--container-padding-static-primary) var(--container-padding-static-xs);
+  min-height: 69px;
+}
+
+.leftControls {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+}

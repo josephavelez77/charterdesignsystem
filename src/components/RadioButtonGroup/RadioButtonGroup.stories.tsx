@@ -4,7 +4,7 @@ import { RadioButtonGroup } from './RadioButtonGroup'
 import { RadioButtonItem } from '../RadioButtonItem'
 
 const meta: Meta<typeof RadioButtonGroup> = {
-  title: 'Components/RadioButtonGroup',
+  title: 'Inputs/RadioButtonGroup',
   component: RadioButtonGroup,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

@@ -4,7 +4,7 @@ import { faHouse, faChevronRight, faStar, faTrash } from '@fortawesome/free-soli
 import { MenuItem } from './MenuItem'
 
 const meta: Meta<typeof MenuItem> = {
-  title: 'Components/MenuItem',
+  title: 'Data Display/MenuItem',
   component: MenuItem,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

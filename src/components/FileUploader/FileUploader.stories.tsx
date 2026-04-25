@@ -4,7 +4,7 @@ import { FileUploader } from './FileUploader'
 import { FileUploaderListItem } from '../FileUploaderListItem/FileUploaderListItem'
 
 const meta: Meta<typeof FileUploader> = {
-  title: 'Components/FileUploader',
+  title: 'Inputs/FileUploader',
   component: FileUploader,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

@@ -1,0 +1,24 @@
+@keyframes spinner-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.spinner {
+  animation: spinner-spin 0.75s linear infinite;
+  transform-origin: center;
+  flex-shrink: 0;
+}
+
+/* ── Color variants ───────────────────────────────────────────────────────── */
+
+.brand {
+  color: var(--icon-color-static-brand-primary);
+}
+
+.light {
+  color: var(--icon-color-static-light);
+}
+
+.neutral {
+  color: var(--icon-color-themeable-primary);
+}

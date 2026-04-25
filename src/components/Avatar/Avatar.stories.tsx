@@ -5,7 +5,7 @@ import { Avatar } from './Avatar'
 const SAMPLE_IMAGE = 'https://i.pravatar.cc/64'
 
 const meta: Meta<typeof Avatar> = {
-  title: 'Components/Avatar',
+  title: 'Data Display/Avatar',
   component: Avatar,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

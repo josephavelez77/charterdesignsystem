@@ -8,7 +8,7 @@ const SAMPLE_CONTENT =
   'Card content lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.'
 
 const meta: Meta<typeof Card> = {
-  title: 'Components/Card',
+  title: 'Data Display/Card',
   component: Card,
   parameters: { layout: 'padded' },
   tags: ['autodocs'],

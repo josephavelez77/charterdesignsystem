@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { StatusChip } from './StatusChip'
 
 const meta: Meta<typeof StatusChip> = {
-  title: 'Components/StatusChip',
+  title: 'Chips/StatusChip',
   component: StatusChip,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

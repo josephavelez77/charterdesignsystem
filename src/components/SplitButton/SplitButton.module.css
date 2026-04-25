@@ -1,0 +1,187 @@
+/* ── Container ────────────────────────────────────────────────────────────── */
+
+.splitButton {
+  position: relative;
+  display: inline-flex;
+  gap: 1px;
+  align-items: center;
+}
+
+/* ── Base button ──────────────────────────────────────────────────────────── */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-medium);
+  line-height: var(--text-line-static-body2);
+  letter-spacing: var(--text-letter-static-primary);
+  border: var(--border-width-static-primary) solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  user-select: none;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease, opacity 120ms ease;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  transition: background-color 120ms ease;
+  pointer-events: none;
+}
+
+.btn:focus-visible {
+  box-shadow: inset var(--focus-ring);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn:disabled::after {
+  display: none;
+}
+
+/* ── Main action (left, label) ────────────────────────────────────────────── */
+
+.main {
+  padding: var(--container-padding-static-small);
+  border-radius: var(--border-radius-static-primary) 0 0 var(--border-radius-static-primary);
+}
+
+/* ── Chevron trigger (right, narrow) ──────────────────────────────────────── */
+
+.chevron {
+  padding: var(--container-padding-static-small);
+  width: 36px;
+  border-radius: 0 var(--border-radius-static-primary) var(--border-radius-static-primary) 0;
+}
+
+/* ── Dropdown ─────────────────────────────────────────────────────────────── */
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 200;
+}
+
+/* ── Variant: brandPrimary ────────────────────────────────────────────────── */
+
+.brandPrimary.primary {
+  background-color: var(--container-color-static-brand-primary);
+  border-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+}
+
+.brandPrimary.primary:hover:not(:disabled)::after {
+  background-color: var(--container-color-static-hover-darken);
+}
+
+.brandPrimary.secondary {
+  background: none;
+  border-color: var(--border-color-static-brand-primary);
+  color: var(--text-color-static-brand-primary);
+}
+
+.brandPrimary.secondary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+}
+
+.brandPrimary.tertiary {
+  background: none;
+  color: var(--text-color-static-brand-primary);
+}
+
+.brandPrimary.tertiary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+}
+
+/* ── Variant: brandSecondary ──────────────────────────────────────────────── */
+
+.brandSecondary.primary {
+  background-color: var(--container-color-static-brand-secondary);
+  border-color: var(--container-color-static-brand-secondary);
+  color: var(--text-color-static-dark);
+}
+
+.brandSecondary.primary:hover:not(:disabled)::after {
+  background-color: var(--container-color-static-hover-darken);
+}
+
+.brandSecondary.secondary {
+  background: none;
+  border-color: var(--border-color-static-brand-secondary);
+  color: var(--text-color-static-brand-secondary);
+}
+
+.brandSecondary.secondary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.brandSecondary.tertiary {
+  background: none;
+  color: var(--text-color-static-brand-secondary);
+}
+
+.brandSecondary.tertiary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover);
+}
+
+/* ── Variant: neutral ─────────────────────────────────────────────────────── */
+
+.neutral.primary {
+  background-color: var(--container-color-themeable-tertiary-inverse);
+  border-color: var(--container-color-themeable-primary);
+  color: var(--text-color-themeable-primary-inverse);
+}
+
+.neutral.primary:hover:not(:disabled)::after {
+  background-color: var(--container-color-static-hover-darken);
+}
+
+.neutral.secondary {
+  background: none;
+  border-color: var(--border-color-themeable-primary);
+  color: var(--text-color-themeable-primary);
+}
+
+.neutral.secondary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.neutral.tertiary {
+  background: none;
+  color: var(--text-color-themeable-primary);
+}
+
+.neutral.tertiary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover);
+}
+
+/* ── Disabled ─────────────────────────────────────────────────────────────── */
+
+.primary:disabled {
+  background-color: var(--container-color-themeable-disabled);
+  border-color: var(--container-color-themeable-disabled);
+  color: var(--text-color-themeable-disabled);
+}
+
+.secondary:disabled {
+  background: none;
+  border-color: var(--border-color-themeable-disabled);
+  color: var(--text-color-themeable-disabled);
+}
+
+.tertiary:disabled {
+  background: none;
+  color: var(--text-color-themeable-disabled);
+}

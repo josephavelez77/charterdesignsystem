@@ -5,7 +5,7 @@ import { Menu } from './Menu'
 import { MenuItem } from '../MenuItem/MenuItem'
 
 const meta: Meta<typeof Menu> = {
-  title: 'Components/Menu',
+  title: 'Data Display/Menu',
   component: Menu,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

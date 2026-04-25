@@ -4,7 +4,7 @@ import { faHashtag } from '@fortawesome/free-solid-svg-icons'
 import { NumberField } from './NumberField'
 
 const meta = {
-  title: 'Components/NumberField',
+  title: 'Inputs/NumberField',
   component: NumberField,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

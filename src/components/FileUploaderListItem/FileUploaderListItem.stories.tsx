@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { FileUploaderListItem } from './FileUploaderListItem'
 
 const meta: Meta<typeof FileUploaderListItem> = {
-  title: 'Components/FileUploaderListItem',
+  title: 'Inputs/FileUploaderListItem',
   component: FileUploaderListItem,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

@@ -4,7 +4,7 @@ import { faHouse, faEnvelope, faMagnifyingGlass, faUser } from '@fortawesome/fre
 import { TextField } from './TextField'
 
 const meta = {
-  title: 'Components/TextField',
+  title: 'Inputs/TextField',
   component: TextField,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

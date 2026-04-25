@@ -12,7 +12,7 @@ const OPTIONS = [
 ]
 
 const meta = {
-  title: 'Components/SelectField',
+  title: 'Inputs/SelectField',
   component: SelectField,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],

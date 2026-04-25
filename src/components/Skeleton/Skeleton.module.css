@@ -1,0 +1,35 @@
+@keyframes skeleton-shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(100%); }
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--container-color-themeable-secondary);
+  flex-shrink: 0;
+}
+
+.bar {
+  border-radius: var(--border-radius-static-circle);
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+/* ── Shimmer sweep ────────────────────────────────────────────────────────── */
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--container-color-themeable-tertiary) 50%,
+    transparent 100%
+  );
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}

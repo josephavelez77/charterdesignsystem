@@ -5,7 +5,7 @@ import { IconButton } from '../IconButton/IconButton'
 import { Button } from '../Button/Button'
 
 const meta: Meta<typeof Popover> = {
-  title: 'Components/Popover',
+  title: 'Overlay/Popover',
   component: Popover,
   parameters: { layout: 'centered' },
   tags: ['autodocs'],
