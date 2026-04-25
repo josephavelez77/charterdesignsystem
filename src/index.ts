@@ -8,6 +8,9 @@ export type { ButtonGroupProps, ButtonGroupItem } from './components/ButtonGroup
 export { SplitButton } from './components/SplitButton'
 export type { SplitButtonProps, SplitButtonItem } from './components/SplitButton'
 
+export { NavDrawer } from './components/NavDrawer'
+export type { NavDrawerProps, NavItemConfig, NavChildItem } from './components/NavDrawer'
+
 export { Chip } from './components/Chip'
 export type { ChipProps } from './components/Chip'
 

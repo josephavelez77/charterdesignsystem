@@ -1,0 +1,226 @@
+/* ── Drawer ────────────────────────────────────────────────────────────────── */
+
+.drawer {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 100%;
+  background-color: var(--container-color-themeable-secondary);
+  border-right: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  transition: width 200ms ease;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.drawer.collapsed {
+  width: 56px;
+}
+
+/* ── Logo section ─────────────────────────────────────────────────────────── */
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  min-height: 56px;
+  flex-shrink: 0;
+}
+
+.logoMark {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--text-color-themeable-primary);
+  flex-shrink: 0;
+}
+
+.logoName {
+  flex: 1;
+  font-family: var(--text-family-static-headline);
+  font-size: var(--text-size-static-headline3);
+  font-weight: var(--text-weight-static-semibold);
+  line-height: var(--text-line-static-headline3);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--border-radius-static-primary);
+  background: none;
+  color: var(--icon-color-themeable-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background-color 120ms ease;
+}
+
+.toggleBtn:hover {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.toggleBtn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.collapsed .toggleBtn {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Nav list ─────────────────────────────────────────────────────────────── */
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── Nav item (shared) ────────────────────────────────────────────────────── */
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 8px;
+  border: none;
+  border-radius: var(--border-radius-static-primary);
+  background: none;
+  color: var(--text-color-themeable-primary);
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  outline: none;
+  transition: background-color 120ms ease;
+  min-height: 40px;
+}
+
+.navItem:hover {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.navItem:focus-visible {
+  box-shadow: inset var(--focus-ring);
+}
+
+.navItem.selected {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+}
+
+.navItem.selected .navIcon {
+  color: var(--icon-color-static-light);
+}
+
+.navItem.parentExpanded {
+  background-color: var(--container-color-themeable-hover);
+}
+
+/* ── Nav icon ─────────────────────────────────────────────────────────────── */
+
+.navIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--icon-color-themeable-primary);
+  flex-shrink: 0;
+}
+
+/* ── Nav label ────────────────────────────────────────────────────────────── */
+
+.navLabel {
+  flex: 1;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-medium);
+  line-height: var(--text-line-static-body2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Chevron ──────────────────────────────────────────────────────────────── */
+
+.chevron {
+  width: 12px;
+  height: 12px;
+  color: var(--icon-color-themeable-secondary);
+  flex-shrink: 0;
+}
+
+/* ── Children ─────────────────────────────────────────────────────────────── */
+
+.navGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+  border-left: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+}
+
+.childItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  border-radius: 0;
+  background: none;
+  color: var(--text-color-themeable-secondary);
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.childItem:last-child {
+  border-bottom: none;
+}
+
+.childItem:hover {
+  background-color: var(--container-color-themeable-hover);
+  color: var(--text-color-themeable-primary);
+}
+
+.childItem:focus-visible {
+  box-shadow: inset var(--focus-ring);
+}
+
+.childItem.childSelected {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+}
+
+.childLabel {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+}
+
+/* ── Collapsed: icon-only nav items ──────────────────────────────────────── */
+
+.collapsed .navItem {
+  justify-content: center;
+  padding: 10px;
+}
+
+.collapsed .navGroup {
+  align-items: center;
+}
