@@ -2,6 +2,7 @@ import React, { useId } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faCalendar } from '@fortawesome/free-solid-svg-icons'
 import { Icon } from '../Icon/Icon'
+import { IconButton } from '../IconButton'
 import styles from './DateField.module.css'
 
 const defaultFormat = (date: Date) =>
@@ -76,8 +77,8 @@ export const DateField = ({
             {displayText ?? placeholder}
           </span>
         </div>
-        <span className={styles.calendarIcon}>
-          <Icon icon={faCalendar} size="medium" />
+        <span>
+          <IconButton icon={faCalendar} variant="brandPrimary" aria-label="Calendar" aria-hidden="true" tabIndex={-1} />
         </span>
       </button>
 

@@ -3,12 +3,12 @@
 .picker {
   display: flex;
   flex-direction: column;
-  width: 225px;
+  width: 224px;
   border-radius: 8px;
   background-color: var(--container-color-themeable-tertiary);
-  box-shadow: var(--shadow-static-overlay);
   overflow: hidden;
   user-select: none;
+  border: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
   box-shadow:
     0px 4px 6px -1px var(--container-shadow-themeable-shadow-10, rgba(255, 255, 255, 0.1)),
     0px 2px 4px -1px var(--container-shadow-themeable-shadow-6, rgba(255, 255, 255, 0.06));
@@ -95,12 +95,10 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  padding: 0 4px 4px;
 }
 
 .dayOfWeekRow {
   display: flex;
-  margin-bottom: 2px;
 }
 
 .dayOfWeek {
@@ -108,11 +106,12 @@
   align-items: center;
   justify-content: center;
   width: 30px;
-  height: 24px;
+  height: 32px;
+  border: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
   font-family: var(--text-family-static-body);
-  font-size: var(--text-size-static-caption);
-  font-weight: var(--text-weight-static-medium);
-  line-height: var(--text-line-static-caption);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
   color: var(--text-color-themeable-tertiary);
   flex-shrink: 0;
 }
@@ -125,16 +124,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   background: none;
-  border: none;
-  border-radius: 50%;
+  border: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
   font-family: var(--text-family-static-body);
-  font-size: var(--text-size-static-caption);
+  font-size: var(--text-size-static-body1);
   font-weight: var(--text-weight-static-regular);
-  line-height: var(--text-line-static-caption);
+  line-height: var(--text-line-static-body1);
   color: var(--text-color-themeable-primary);
   cursor: pointer;
   transition: background-color 120ms ease, color 120ms ease;

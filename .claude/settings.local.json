@@ -1,25 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git clone *)",
-      "Bash(git -C \"C:\\\\Users\\\\josep\\\\Documents\\\\Projects\\\\basedesignsystem\" status)",
-      "Bash(npm run *)",
-      "Bash(npx storybook *)",
-      "Bash(node_modules/.bin/storybook.cmd dev *)",
-      "Bash(node_modules/.bin/storybook dev *)",
-      "Bash(node node_modules/storybook/bin/index.cjs dev -p 6006)",
-      "Bash(npm install *)",
-      "mcp__ab02ce63-cdd2-45d6-ad3a-dcde5c72db3c__get_design_context",
-      "mcp__Claude_Preview__preview_start",
-      "mcp__Claude_in_Chrome__tabs_context_mcp",
-      "Bash(git rm *)",
-      "Bash(git add *)",
-      "Bash(git commit -m ' *)",
-      "Bash(git push *)",
-      "mcp__ab02ce63-cdd2-45d6-ad3a-dcde5c72db3c__get_screenshot",
-      "mcp__ab02ce63-cdd2-45d6-ad3a-dcde5c72db3c__search_design_system",
-      "mcp__ab02ce63-cdd2-45d6-ad3a-dcde5c72db3c__get_variable_defs",
-      "Bash(npx tsc *)"
+      "mcp__figma__get_screenshot",
+      "mcp__claude_ai_Figma__get_metadata",
+      "Bash(sudo chown:*)",
+      "Bash(npm install:*)",
+      "Bash(git pull *)",
+      "Bash(git stash *)"
     ]
   }
 }
