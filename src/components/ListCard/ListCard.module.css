@@ -1,0 +1,40 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--container-color-themeable-tertiary);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 20px 24px 16px;
+}
+
+.value {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-color-themeable-primary);
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-color-themeable-secondary);
+}
+
+.listWrapper {
+  flex: 1;
+  border-top: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+}
+
+.paginationRow {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px;
+  border-top: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+}
