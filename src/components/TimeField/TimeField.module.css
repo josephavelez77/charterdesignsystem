@@ -1,0 +1,134 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-xs);
+  width: 100%;
+}
+
+/* ── Label ────────────────────────────────────────────────────────────────── */
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-secondary);
+  letter-spacing: var(--text-letter-static-primary);
+}
+
+.required {
+  color: var(--text-color-static-state-error);
+}
+
+/* ── Trigger ──────────────────────────────────────────────────────────────── */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: var(--container-height-static-2xl);
+  padding: 0 var(--container-padding-static-xxs) 0 var(--container-padding-static-small);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  background-color: transparent;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.trigger:hover:not(:disabled) {
+  border-color: var(--border-color-themeable-secondary);
+}
+
+.trigger:focus-visible {
+  outline: none;
+  border-color: var(--border-color-static-brand-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.triggerError {
+  border-color: var(--border-color-static-state-error);
+}
+
+.triggerError:focus-visible {
+  border-color: var(--border-color-static-state-error);
+  box-shadow: 0 0 0 2px var(--border-color-static-state-error);
+}
+
+.triggerDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Trigger content ──────────────────────────────────────────────────────── */
+
+.triggerContent {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.triggerText {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placeholder {
+  color: var(--text-color-themeable-tertiary);
+}
+
+.value {
+  color: var(--text-color-themeable-primary);
+}
+
+/* ── Calendar icon ────────────────────────────────────────────────────────── */
+
+.calendarIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: var(--icon-color-static-brand-primary);
+}
+
+.trigger:disabled .calendarIcon {
+  color: var(--icon-color-themeable-disabled);
+}
+
+/* ── Disabled label ───────────────────────────────────────────────────────── */
+
+.disabled .label {
+  color: var(--text-color-themeable-disabled);
+}
+
+/* ── Helper text ──────────────────────────────────────────────────────────── */
+
+.errorText,
+.hintText {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+}
+
+.errorText {
+  color: var(--text-color-static-state-error);
+}
+
+.hintText {
+  color: var(--text-color-themeable-tertiary);
+}
