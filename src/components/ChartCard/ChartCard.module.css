@@ -18,15 +18,20 @@
 }
 
 .value {
-  font-size: 32px;
-  font-weight: 700;
-  line-height: 1.1;
+  font-family: var(--text-family-static-display);
+  font-size: var(--text-size-static-display1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-display1);
+  letter-spacing: var(--text-letter-static-primary);
   color: var(--text-color-themeable-primary);
 }
 
 .description {
-  font-size: 14px;
-  font-weight: 400;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body1);
+  letter-spacing: var(--text-letter-static-primary);
   color: var(--text-color-themeable-secondary);
 }
 
