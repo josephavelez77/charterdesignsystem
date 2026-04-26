@@ -44,7 +44,6 @@ const COLUMNS: TableColumn<SampleRow>[] = [
     sortable: true,
     accessor: (row) => ({
       name: row.name,
-      subtitle: row.email,
       initials: row.name.split(' ').map((n) => n[0]).join('').toUpperCase(),
     }),
   },
