@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Button } from '../Button/Button'
 import styles from './TimePicker.module.css'
 
-const ITEM_HEIGHT = 36
-const VISIBLE = 5
+const ITEM_HEIGHT = 32
+const VISIBLE = 7
+const PADDING = Math.floor(VISIBLE / 2) * ITEM_HEIGHT // 96px — centers first/last item
 
 const HOURS_12 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 const HOURS_24 = Array.from({ length: 24 }, (_, i) => i)
@@ -24,7 +25,7 @@ function to24Hour(hour12: number, period: 'AM' | 'PM'): number {
 function formatDisplay(hours24: number, minutes: number, format: '12h' | '24h'): string {
   if (format === '12h') {
     const { hour, period } = to12Hour(hours24)
-    return `${hour}:${String(minutes).padStart(2, '0')} ${period}`
+    return `${hour}:${String(minutes).padStart(2, '0')} ${period.toLowerCase()}`
   }
   return `${String(hours24).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
 }
@@ -40,30 +41,56 @@ interface ScrollColumnProps {
 
 const ScrollColumn = ({ items, value, onSelect, pad = true }: ScrollColumnProps) => {
   const ref = useRef<HTMLDivElement>(null)
+  const mounted = useRef(false)
 
   useEffect(() => {
-    if (!ref.current) return
+    const el = ref.current
+    if (!el) return
     const idx = items.indexOf(value)
     if (idx < 0) return
-    const top = idx * ITEM_HEIGHT - Math.floor(VISIBLE / 2) * ITEM_HEIGHT
-    ref.current.scrollTop = Math.max(0, top)
+    const top = idx * ITEM_HEIGHT
+    if (mounted.current) {
+      el.scrollTo({ top, behavior: 'smooth' })
+    } else {
+      el.scrollTop = top
+      mounted.current = true
+    }
   }, [value, items])
 
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const handleScrollEnd = () => {
+      const idx = Math.round(el.scrollTop / ITEM_HEIGHT)
+      const clamped = Math.max(0, Math.min(idx, items.length - 1))
+      if (items[clamped] !== value) onSelect(items[clamped])
+    }
+
+    el.addEventListener('scrollend', handleScrollEnd)
+    return () => el.removeEventListener('scrollend', handleScrollEnd)
+  }, [items, value, onSelect])
+
   return (
-    <div ref={ref} className={styles.scrollColumn}>
-      {items.map((item) => (
-        <button
-          key={item}
-          type="button"
-          className={[
-            styles.scrollItem,
-            item === value ? styles.scrollItemSelected : '',
-          ].filter(Boolean).join(' ')}
-          onClick={() => onSelect(item)}
-        >
-          {pad ? String(item).padStart(2, '0') : item}
-        </button>
-      ))}
+    <div className={styles.columnWrapper}>
+      <div ref={ref} className={styles.scrollColumn}>
+        <div className={styles.scrollSpacer} aria-hidden="true" />
+        {items.map((item) => (
+          <button
+            key={item}
+            type="button"
+            className={[
+              styles.scrollItem,
+              item === value ? styles.scrollItemSelected : '',
+            ].filter(Boolean).join(' ')}
+            onClick={() => onSelect(item)}
+          >
+            {pad ? String(item).padStart(2, '0') : item}
+          </button>
+        ))}
+        <div className={styles.scrollSpacer} aria-hidden="true" />
+      </div>
+      <div className={styles.gradientOverlay} aria-hidden="true" />
     </div>
   )
 }
@@ -99,14 +126,9 @@ export const TimePicker = ({
   const [pendingHours, setPendingHours] = useState(initial.hours)
   const [pendingMinutes, setPendingMinutes] = useState(initial.minutes)
 
-  // 12h display hour and period, derived + kept in sync
   const init12 = to12Hour(initial.hours)
   const [displayHour, setDisplayHour] = useState(init12.hour)
   const [period, setPeriod] = useState<'AM' | 'PM'>(init12.period)
-
-  const handleHour24Change = (h: number) => {
-    setPendingHours(h)
-  }
 
   const handleHour12Change = (h: number) => {
     setDisplayHour(h)
@@ -144,36 +166,33 @@ export const TimePicker = ({
           <ScrollColumn
             items={HOURS_24}
             value={pendingHours}
-            onSelect={handleHour24Change}
+            onSelect={setPendingHours}
           />
         )}
-
-        <span className={styles.colon}>:</span>
-
         <ScrollColumn
           items={MINUTES}
           value={pendingMinutes}
           onSelect={setPendingMinutes}
         />
-
-        {format === '12h' && (
-          <div className={styles.periodSelector}>
-            {(['AM', 'PM'] as const).map((p) => (
-              <button
-                key={p}
-                type="button"
-                className={[
-                  styles.periodBtn,
-                  period === p ? styles.periodBtnSelected : '',
-                ].filter(Boolean).join(' ')}
-                onClick={() => handlePeriodChange(p)}
-              >
-                {p}
-              </button>
-            ))}
-          </div>
-        )}
       </div>
+
+      {format === '12h' && (
+        <div className={styles.periodSelector}>
+          {(['AM', 'PM'] as const).map((p) => (
+            <button
+              key={p}
+              type="button"
+              className={[
+                styles.periodBtn,
+                period === p ? styles.periodBtnSelected : '',
+              ].filter(Boolean).join(' ')}
+              onClick={() => handlePeriodChange(p)}
+            >
+              {p}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Actions */}
       <div className={styles.actions}>

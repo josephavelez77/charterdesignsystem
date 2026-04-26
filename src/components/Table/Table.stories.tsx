@@ -7,7 +7,7 @@ import type { TableColumn } from './Table'
 const meta: Meta<typeof Table> = {
   title: 'Data Display/Table',
   component: Table,
-  parameters: { layout: 'padded' },
+  parameters: { layout: 'fullscreen' },
   tags: ['autodocs'],
 }
 
@@ -79,16 +79,37 @@ export const Default: Story = {
     const [sortKey, setSortKey] = useState<string | undefined>()
     const [sortDir, setSortDir] = useState<'asc' | 'desc'>('asc')
 
+    const PRIORITY_ORDER: Record<string, number> = { urgent: 4, high: 3, medium: 2, low: 1 }
+
+    const q = search.toLowerCase()
     const filtered = SAMPLE_DATA.filter(
       (r) =>
-        r.name.toLowerCase().includes(search.toLowerCase()) ||
-        r.email.toLowerCase().includes(search.toLowerCase()),
+        r.name.toLowerCase().includes(q) ||
+        r.email.toLowerCase().includes(q) ||
+        r.priority.toLowerCase().includes(q) ||
+        r.status.label.toLowerCase().includes(q),
     )
+
+    const sorted = sortKey
+      ? [...filtered].sort((a, b) => {
+          let cmp = 0
+          if (sortKey === 'name') {
+            cmp = a.name.localeCompare(b.name)
+          } else if (sortKey === 'email') {
+            cmp = a.email.localeCompare(b.email)
+          } else if (sortKey === 'priority') {
+            cmp = (PRIORITY_ORDER[a.priority] ?? 0) - (PRIORITY_ORDER[b.priority] ?? 0)
+          } else if (sortKey === 'status') {
+            cmp = a.status.label.localeCompare(b.status.label)
+          }
+          return sortDir === 'asc' ? cmp : -cmp
+        })
+      : filtered
 
     return (
       <Table
         columns={COLUMNS}
-        data={filtered}
+        data={sorted}
         getRowId={(r) => r.id}
         searchValue={search}
         onSearchChange={setSearch}
@@ -100,7 +121,7 @@ export const Default: Story = {
         onSortChange={(key, dir) => { setSortKey(key); setSortDir(dir) }}
         page={page}
         pageSize={pageSize}
-        totalItems={filtered.length}
+        totalItems={sorted.length}
         onPageChange={setPage}
         onPageSizeChange={setPageSize}
       />
