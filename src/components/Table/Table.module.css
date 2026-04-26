@@ -238,6 +238,8 @@
 /* ── Pagination ─────────────────────────────────────────────────────────────── */
 
 .paginationRow {
-  padding: 8px 16px;
+  padding: 0 16px;
   border-top: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  display: flex;
+  justify-content: flex-start;
 }

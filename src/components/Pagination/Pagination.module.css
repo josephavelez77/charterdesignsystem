@@ -4,10 +4,7 @@
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  padding: 8px 12px;
-  background-color: var(--container-color-themeable-secondary);
-  border: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
-  border-radius: var(--border-radius-static-primary);
+  padding: 8px 0;
 }
 
 /* ── Items per page ───────────────────────────────────────────────────────── */
