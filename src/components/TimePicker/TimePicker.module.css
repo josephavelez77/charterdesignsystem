@@ -1,0 +1,167 @@
+/* ── Picker card ──────────────────────────────────────────────────────────── */
+
+.picker {
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  border-radius: var(--border-radius-static-primary);
+  background-color: var(--container-color-themeable-tertiary);
+  overflow: hidden;
+  user-select: none;
+  border: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+  box-shadow:
+    0px 4px 6px -1px var(--container-shadow-themeable-shadow-10, rgba(255, 255, 255, 0.1)),
+    0px 2px 4px -1px var(--container-shadow-themeable-shadow-6, rgba(255, 255, 255, 0.06));
+}
+
+/* ── Selected time header ─────────────────────────────────────────────────── */
+
+.selectedTime {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 var(--container-padding-static-small);
+  border-bottom: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+}
+
+.selectedTimeText {
+  font-family: var(--text-family-static-headline);
+  font-size: var(--text-size-static-headline2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-headline2);
+  color: var(--text-color-themeable-primary);
+}
+
+/* ── Columns area ─────────────────────────────────────────────────────────── */
+
+.columnsArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border-bottom: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+  overflow: hidden;
+}
+
+/* ── Scroll column ────────────────────────────────────────────────────────── */
+
+.scrollColumn {
+  width: 60px;
+  height: 180px; /* 5 * 36px */
+  overflow-y: auto;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.scrollColumn::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Scroll item ──────────────────────────────────────────────────────────── */
+
+.scrollItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 36px;
+  border: none;
+  border-bottom: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+  background: none;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-regular);
+  color: var(--text-color-themeable-primary);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.scrollItem:last-child {
+  border-bottom: none;
+}
+
+.scrollItem:hover:not(.scrollItemSelected) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+  color: var(--text-color-static-brand-primary);
+}
+
+.scrollItem:focus-visible {
+  outline: none;
+  box-shadow: inset var(--focus-ring);
+}
+
+.scrollItemSelected {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+  font-weight: var(--text-weight-static-medium);
+}
+
+/* ── Colon separator ──────────────────────────────────────────────────────── */
+
+.colon {
+  flex-shrink: 0;
+  width: 16px;
+  text-align: center;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body1);
+  font-weight: var(--text-weight-static-medium);
+  color: var(--text-color-themeable-secondary);
+  pointer-events: none;
+}
+
+/* ── AM/PM selector ───────────────────────────────────────────────────────── */
+
+.periodSelector {
+  display: flex;
+  flex-direction: column;
+  width: 44px;
+  height: 180px;
+  border-left: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+  flex-shrink: 0;
+}
+
+.periodBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-bottom: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
+  background: none;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  color: var(--text-color-themeable-primary);
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.periodBtn:last-child {
+  border-bottom: none;
+}
+
+.periodBtn:hover:not(.periodBtnSelected) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+  color: var(--text-color-static-brand-primary);
+}
+
+.periodBtn:focus-visible {
+  outline: none;
+  box-shadow: inset var(--focus-ring);
+}
+
+.periodBtnSelected {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-light);
+  font-weight: var(--text-weight-static-medium);
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--container-gap-static-xs);
+  padding: 4px;
+}
