@@ -66,7 +66,7 @@ export const Pagination = ({
       {/* Navigation */}
       <div className={styles.navSection}>
         <Button
-          variant="neutral"
+          variant="brandPrimary"
           emphasis="tertiary"
           disabled={page <= 1}
           onClick={() => onPageChange(page - 1)}
@@ -94,7 +94,7 @@ export const Pagination = ({
         </div>
 
         <Button
-          variant="neutral"
+          variant="brandPrimary"
           emphasis="tertiary"
           disabled={page >= totalPages}
           onClick={() => onPageChange(page + 1)}
@@ -130,7 +130,7 @@ export const SimplePagination = ({
   return (
     <div className={[styles.simplePagination, className ?? ''].filter(Boolean).join(' ')}>
       <Button
-        variant="neutral"
+        variant="brandPrimary"
         emphasis="tertiary"
         disabled={page <= 1}
         onClick={() => onPageChange(page - 1)}
@@ -147,7 +147,7 @@ export const SimplePagination = ({
       </span>
 
       <Button
-        variant="neutral"
+        variant="brandPrimary"
         emphasis="tertiary"
         disabled={page >= totalPages}
         onClick={() => onPageChange(page + 1)}
