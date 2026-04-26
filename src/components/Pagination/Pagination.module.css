@@ -1,0 +1,196 @@
+/* ── Complex Pagination ───────────────────────────────────────────────────── */
+
+.pagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 12px;
+  background-color: var(--container-color-themeable-secondary);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  border-radius: var(--border-radius-static-primary);
+}
+
+/* ── Items per page ───────────────────────────────────────────────────────── */
+
+.pageSizeSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.label {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  color: var(--text-color-themeable-secondary);
+  white-space: nowrap;
+}
+
+.selectWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.pageSizeSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 4px 24px 4px 8px;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-medium);
+  color: var(--text-color-themeable-primary);
+  background-color: var(--container-color-themeable-primary);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23808080' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  cursor: pointer;
+  outline: none;
+  min-width: 60px;
+  transition: border-color 120ms ease;
+}
+
+.pageSizeSelect:hover {
+  border-color: var(--border-color-themeable-brand-primary);
+}
+
+.pageSizeSelect:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+/* ── Divider ──────────────────────────────────────────────────────────────── */
+
+.divider {
+  display: block;
+  width: var(--border-width-static-primary);
+  height: 20px;
+  background-color: var(--border-color-themeable-secondary);
+  flex-shrink: 0;
+}
+
+/* ── Item range ───────────────────────────────────────────────────────────── */
+
+.rangeText {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  color: var(--text-color-themeable-secondary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Navigation section ───────────────────────────────────────────────────── */
+
+.navSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Back / Next buttons ──────────────────────────────────────────────────── */
+
+.navBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: var(--border-radius-static-primary);
+  background: none;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-medium);
+  color: var(--text-color-static-brand-primary);
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  transition: background-color 120ms ease, opacity 120ms ease;
+}
+
+.navBtn:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover-brand-primary);
+}
+
+.navBtn:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+.navBtn:disabled {
+  color: var(--text-color-themeable-disabled);
+  cursor: not-allowed;
+}
+
+.navIcon {
+  width: 10px;
+  height: 10px;
+}
+
+/* ── Page input ───────────────────────────────────────────────────────────── */
+
+.pageInputSection {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pageInput {
+  width: 44px;
+  padding: 4px 6px;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-medium);
+  color: var(--text-color-themeable-primary);
+  background-color: var(--container-color-themeable-primary);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  text-align: center;
+  outline: none;
+  transition: border-color 120ms ease;
+  /* hide number spinner arrows */
+  -moz-appearance: textfield;
+}
+
+.pageInput::-webkit-inner-spin-button,
+.pageInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pageInput:hover {
+  border-color: var(--border-color-themeable-brand-primary);
+}
+
+.pageInput:focus {
+  border-color: var(--border-color-static-brand-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.ofText {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  color: var(--text-color-themeable-secondary);
+  white-space: nowrap;
+}
+
+/* ── Simple Pagination ────────────────────────────────────────────────────── */
+
+.simplePagination {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.simplePageCount {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  color: var(--text-color-themeable-secondary);
+  white-space: nowrap;
+  min-width: 60px;
+  text-align: center;
+}

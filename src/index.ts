@@ -11,6 +11,9 @@ export type { SplitButtonProps, SplitButtonItem } from './components/SplitButton
 export { NavDrawer } from './components/NavDrawer'
 export type { NavDrawerProps, NavItemConfig, NavChildItem } from './components/NavDrawer'
 
+export { Pagination, SimplePagination } from './components/Pagination'
+export type { PaginationProps, SimplePaginationProps } from './components/Pagination'
+
 export { Chip } from './components/Chip'
 export type { ChipProps } from './components/Chip'
 
