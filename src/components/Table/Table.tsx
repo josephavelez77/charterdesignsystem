@@ -362,7 +362,9 @@ export function Table<T extends Record<string, unknown>>({
             </div>
           )}
           {onFilterClick && (
-            <IconButton icon={faFilter} aria-label="Filter" onClick={onFilterClick} />
+            <div className={styles.filterWrapper}>
+              <IconButton icon={faFilter} aria-label="Filter" onClick={onFilterClick} />
+            </div>
           )}
         </div>
       )}
