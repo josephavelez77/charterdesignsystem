@@ -35,6 +35,9 @@ export type { DateFieldProps } from './components/DateField'
 export { TimeField } from './components/TimeField'
 export type { TimeFieldProps } from './components/TimeField'
 
+export { Divider } from './components/Divider'
+export type { DividerProps } from './components/Divider'
+
 export { Icon } from './components/Icon/Icon'
 export type { IconProps, IconSize } from './components/Icon/Icon'
 
