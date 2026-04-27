@@ -58,7 +58,7 @@ export const Alert = ({
         <IconButton
           icon={faXmark}
           iconSize="small"
-          variant="neutral"
+          variant="brandPrimary"
           onClick={handleDismiss}
           aria-label="Dismiss alert"
         />
