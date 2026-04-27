@@ -183,13 +183,6 @@
 .userName {
   font-family: var(--text-family-static-body);
   font-size: var(--text-size-static-body1);
-<<<<<<< Updated upstream
-  line-height: var(--text-line-static-body1);
-  font-weight: var(--text-weight-static-regular);
-  color: var(--text-color-themeable-primary);
-}
-
-=======
   font-weight: var(--text-weight-static-regular);
   line-height: var(--text-line-static-body1);
   letter-spacing: var(--text-letter-static-primary);
