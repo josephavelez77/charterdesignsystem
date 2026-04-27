@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   render: () => (
-    <div style={{ maxWidth: '480px' }}>
+    <div>
       <AccordionGroup>
         <AccordionItem title="Account settings" subtitle="Manage your profile" icon={faUser}>
           {BODY_TEXT}
@@ -37,7 +37,7 @@ export const Default: Story = {
 
 export const WithDisabledItem: Story = {
   render: () => (
-    <div style={{ maxWidth: '480px' }}>
+    <div>
       <AccordionGroup>
         <AccordionItem title="Account settings" subtitle="Manage your profile" icon={faUser}>
           {BODY_TEXT}
@@ -55,7 +55,7 @@ export const WithDisabledItem: Story = {
 
 export const Exclusive: Story = {
   render: () => (
-    <div style={{ maxWidth: '480px' }}>
+    <div>
       <AccordionGroup exclusive>
         <AccordionItem title="Account settings" subtitle="Manage your profile" icon={faUser}>
           {BODY_TEXT}
@@ -73,7 +73,7 @@ export const Exclusive: Story = {
 
 export const WithExpandedItem: Story = {
   render: () => (
-    <div style={{ maxWidth: '480px' }}>
+    <div>
       <AccordionGroup>
         <AccordionItem title="Account settings" subtitle="Manage your profile" icon={faUser} defaultExpanded>
           {BODY_TEXT}

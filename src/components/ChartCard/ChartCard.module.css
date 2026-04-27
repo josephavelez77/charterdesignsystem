@@ -3,8 +3,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  padding: 20px 24px;
+  gap: var(--container-gap-static-large);
+  padding: var(--container-padding-static-primary);
   background-color: var(--container-color-themeable-tertiary);
   border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
   border-radius: var(--border-radius-static-primary);
@@ -13,7 +13,6 @@
 .info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   min-width: 0;
 }
 

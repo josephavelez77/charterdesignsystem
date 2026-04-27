@@ -2,6 +2,7 @@ import React, { useId, useState } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { Icon } from '../Icon/Icon'
+import { useAccordionGroup } from '../AccordionGroup/AccordionGroupContext'
 import styles from './Accordion.module.css'
 
 export interface AccordionItemProps {
@@ -30,18 +31,30 @@ export const AccordionItem = ({
   disabled = false,
   className,
 }: AccordionItemProps) => {
-  const id = useId()
-  const panelId = `${id}-panel`
-  const headerId = `${id}-header`
+  const baseId = useId()
+  const panelId = `${baseId}-panel`
+  const headerId = `${baseId}-header`
+
+  const groupCtx = useAccordionGroup()
+  const isControlledByGroup = groupCtx?.exclusive === true
 
   const isControlled = controlledExpanded !== undefined
   const [internalExpanded, setInternalExpanded] = useState(defaultExpanded)
-  const isExpanded = isControlled ? controlledExpanded : internalExpanded
+
+  const isExpanded = isControlledByGroup
+    ? groupCtx!.openId === baseId
+    : isControlled
+      ? controlledExpanded
+      : internalExpanded
 
   const handleToggle = () => {
-    const next = !isExpanded
-    if (!isControlled) setInternalExpanded(next)
-    onToggle?.(next)
+    if (isControlledByGroup) {
+      groupCtx!.onItemToggle(baseId, groupCtx!.openId !== baseId)
+    } else {
+      const next = !isExpanded
+      if (!isControlled) setInternalExpanded(next)
+      onToggle?.(next)
+    }
   }
 
   const containerClasses = [styles.accordion, className].filter(Boolean).join(' ')
@@ -79,7 +92,7 @@ export const AccordionItem = ({
         </span>
       </button>
 
-      <div id={panelId} role="region" aria-labelledby={headerId} className={bodyClasses}>
+      <div id={panelId} role="region" aria-labelledby={headerId} className={bodyClasses} aria-hidden={!isExpanded}>
         <div className={styles.bodyInner}>
           <div className={styles.bodyContent}>{children}</div>
         </div>

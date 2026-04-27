@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: 48px;
+  height: var(--container-height-static-2xl);
   padding: var(--container-padding-static-xs) var(--container-padding-static-none)
     var(--container-padding-static-xs) var(--container-padding-static-small);
   border: none;
@@ -101,7 +101,7 @@
   width: var(--container-width-static-xl);
   height: var(--container-height-static-xl);
   flex-shrink: 0;
-  color: var(--icon-color-static-brand-primary);
+  color: var(--icon-color-themeable-primary);
   transition: transform 200ms ease, color 120ms ease;
 }
 

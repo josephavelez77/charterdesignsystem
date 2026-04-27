@@ -3,7 +3,7 @@
   "configurations": [
     {
       "name": "storybook",
-      "runtimeExecutable": "/Users/josephvelez/Projects/basedesignsystem/node_modules/.bin/storybook",
+      "runtimeExecutable": "/Users/josephvelez/Documents/Projects/basedesignsystem/node_modules/.bin/storybook",
       "runtimeArgs": ["dev", "--port", "$PORT"],
       "port": 6006,
       "autoPort": true

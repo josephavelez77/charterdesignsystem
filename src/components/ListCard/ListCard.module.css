@@ -10,7 +10,6 @@
 .header {
   display: flex;
   flex-direction: column;
-  gap: 4px;
   padding: 20px 24px 16px;
 }
 
