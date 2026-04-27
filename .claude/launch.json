@@ -4,8 +4,9 @@
     {
       "name": "storybook",
       "runtimeExecutable": "/Users/josephvelez/Projects/basedesignsystem/node_modules/.bin/storybook",
-      "runtimeArgs": ["dev", "-p", "6006"],
-      "port": 6006
+      "runtimeArgs": ["dev", "--port", "$PORT"],
+      "port": 6006,
+      "autoPort": true
     }
   ]
 }

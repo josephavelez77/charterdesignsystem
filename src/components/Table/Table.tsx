@@ -135,7 +135,7 @@ function OverflowCell<T>({
     <div ref={containerRef} className={styles.overflowContainer}>
       <IconButton
         icon={faEllipsis}
-        variant='brandPrimary'
+        variant="brandPrimary"
         aria-label="Row actions"
         onClick={() => (isOpen ? onClose() : onOpen(rowId))}
       />
@@ -329,7 +329,7 @@ export function Table<T extends Record<string, unknown>>({
         return (
           <IconButton
             icon={faChevronRight}
-            variant='brandPrimary'
+            variant="brandPrimary"
             aria-label="Navigate"
             onClick={() => col.onClick(row)}
           />

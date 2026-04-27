@@ -24,9 +24,9 @@
 
 .title {
   font-family: var(--text-family-static-headline);
-  font-size: var(--text-size-static-headline2);
+  font-size: var(--text-size-static-headline1);
   font-weight: var(--text-weight-static-regular);
-  line-height: var(--text-line-static-headline2);
+  line-height: var(--text-line-static-headline1);
   color: var(--text-color-themeable-primary);
   white-space: nowrap;
   overflow: hidden;

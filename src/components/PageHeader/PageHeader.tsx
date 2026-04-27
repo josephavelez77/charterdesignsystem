@@ -68,7 +68,7 @@ export const PageHeader = ({
             <div ref={overflowRef} className={styles.overflow}>
               <IconButton
                 icon={faEllipsisVertical}
-                variant="neutral"
+                variant="brandPrimary"
                 aria-label="More actions"
                 aria-expanded={overflowOpen}
                 aria-haspopup="menu"
