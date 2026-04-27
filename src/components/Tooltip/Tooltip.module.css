@@ -5,9 +5,6 @@
 
 .tooltip {
   position: absolute;
-  bottom: calc(100% + 6px);
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 1000;
 
   display: flex;
@@ -28,6 +25,15 @@
     opacity 120ms ease,
     visibility 120ms ease;
 }
+
+/* placement: top (default) */
+.top {
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* placement: right — position is set via inline style (portal, fixed) */
 
 .tooltip.visible {
   opacity: 1;

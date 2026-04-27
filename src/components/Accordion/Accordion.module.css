@@ -25,7 +25,7 @@
 }
 
 .header:hover:not(:disabled) {
-  background-color: var(--container-color-themeable-hover);
+  background-color: var(--container-color-themeable-hover-brand-primary);
 }
 
 .header:focus-visible {

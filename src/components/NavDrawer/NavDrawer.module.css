@@ -47,33 +47,10 @@
   overflow: hidden;
 }
 
-.toggleBtn {
-  display: inline-flex;
-  align-items: center;
+.collapsed .logoSection {
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: none;
-  border-radius: var(--border-radius-static-primary);
-  background: none;
-  color: var(--icon-color-themeable-primary);
-  cursor: pointer;
-  flex-shrink: 0;
-  transition: background-color 120ms ease;
-}
-
-.toggleBtn:hover {
-  background-color: var(--container-color-themeable-hover);
-}
-
-.toggleBtn:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
-.collapsed .toggleBtn {
-  margin-left: auto;
-  margin-right: auto;
+  min-height: 44px;
+  padding: 8px 12px;
 }
 
 /* ── Nav list ─────────────────────────────────────────────────────────────── */
@@ -212,6 +189,24 @@
   font-size: var(--text-size-static-body2);
   font-weight: var(--text-weight-static-regular);
   line-height: var(--text-line-static-body2);
+}
+
+/* ── Flyout (portal, rendered outside drawer) ────────────────────────────── */
+
+.flyout {
+  position: fixed;
+  z-index: 500;
+  min-width: 160px;
+}
+
+.flyoutLabel {
+  display: block;
+  padding: 8px 12px 4px;
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-medium);
+  color: var(--text-color-themeable-secondary);
+  white-space: nowrap;
 }
 
 /* ── Collapsed: icon-only nav items ──────────────────────────────────────── */
