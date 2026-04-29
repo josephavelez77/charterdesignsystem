@@ -18,11 +18,23 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-regular-svg-icons',
+        '@fortawesome/free-solid-svg-icons',
+        '@fortawesome/react-fontawesome',
+      ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+          '@fortawesome/fontawesome-svg-core': 'FontAwesomeSvgCore',
+          '@fortawesome/free-regular-svg-icons': 'FontAwesomeFreeRegularSvgIcons',
+          '@fortawesome/free-solid-svg-icons': 'FontAwesomeFreeSolidSvgIcons',
+          '@fortawesome/react-fontawesome': 'ReactFontawesome',
         },
         assetFileNames: (assetInfo) => {
           if (assetInfo.name?.endsWith('.css')) return 'tokens/index.css'
