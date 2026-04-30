@@ -82,6 +82,33 @@ export const WithCustomContent: Story = {
   ),
 }
 
+// ── Sizes ─────────────────────────────────────────────────────────────────────
+
+export const SizeXS: Story = {
+  decorators: [withBoundedScrim],
+  args: { size: 'xs' },
+}
+
+export const SizeSM: Story = {
+  decorators: [withBoundedScrim],
+  args: { size: 'sm' },
+}
+
+export const SizeMD: Story = {
+  decorators: [withBoundedScrim],
+  args: { size: 'md' },
+}
+
+export const SizeLG: Story = {
+  decorators: [withBoundedScrim],
+  args: { size: 'lg' },
+}
+
+export const SizeXL: Story = {
+  decorators: [withBoundedScrim],
+  args: { size: 'xl' },
+}
+
 // ── Interactive (open/close state) ────────────────────────────────────────────
 
 export const Interactive: Story = {

@@ -3,10 +3,11 @@
   "configurations": [
     {
       "name": "storybook",
-      "runtimeExecutable": "/Users/josephvelez/Documents/Projects/basedesignsystem/node_modules/.bin/storybook",
-      "runtimeArgs": ["dev", "--port", "$PORT"],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
       "port": 6006,
-      "autoPort": true
+      "autoPort": true,
+      "cwd": "/Users/josephvelez/Documents/Projects/basedesignsystem/.claude/worktrees/tender-aryabhata-2b716f"
     }
   ]
 }

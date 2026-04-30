@@ -10,6 +10,8 @@ export interface DialogAction {
   disabled?: boolean;
 }
 
+export type DialogSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
 export interface DialogProps {
   open: boolean;
   onClose?: () => void;
@@ -20,6 +22,7 @@ export interface DialogProps {
   children?: React.ReactNode;
   primaryAction?: DialogAction;
   secondaryAction?: DialogAction;
+  size?: DialogSize;
   className?: string;
 }
 
@@ -33,6 +36,7 @@ export const Dialog = ({
   children,
   primaryAction,
   secondaryAction,
+  size = 'sm',
   className,
 }: DialogProps) => {
   const titleId = useId();
@@ -45,7 +49,7 @@ export const Dialog = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={[styles.dialog, className].filter(Boolean).join(" ")}
+        className={[styles.dialog, styles[size], className].filter(Boolean).join(" ")}
         onClick={(e) => e.stopPropagation()}
       >
         <div className={styles.header}>

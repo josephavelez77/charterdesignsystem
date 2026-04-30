@@ -54,6 +54,18 @@ export const WithSelectedItem: Story = {
   ),
 }
 
+// ── Scrollable (many items) ───────────────────────────────────────────────────
+
+export const Scrollable: Story = {
+  render: () => (
+    <Menu>
+      {Array.from({ length: 14 }, (_, i) => (
+        <MenuItem key={i} label={`Menu item ${i + 1}`} />
+      ))}
+    </Menu>
+  ),
+}
+
 // ── Interactive (single-select) ────────────────────────────────────────────────
 
 const ITEMS = [

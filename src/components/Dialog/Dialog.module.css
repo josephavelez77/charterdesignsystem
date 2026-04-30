@@ -18,10 +18,18 @@
   background-color: var(--container-color-themeable-tertiary);
   border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
   border-radius: var(--border-radius-static-primary);
-  width: 480px;
-  max-width: calc(100vw - 32px);
+  width: auto;
+  max-width: min(var(--dialog-max-width, 600px), calc(100vw - 32px));
   overflow: hidden;
 }
+
+/* ── Sizes ────────────────────────────────────────────────────────────────── */
+
+.xs { --dialog-max-width: 444px; }
+.sm { --dialog-max-width: 600px; }
+.md { --dialog-max-width: 900px; }
+.lg { --dialog-max-width: 1200px; }
+.xl { --dialog-max-width: 1600px; }
 
 /* ── Header ───────────────────────────────────────────────────────────────── */
 
