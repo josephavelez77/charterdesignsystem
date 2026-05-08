@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Button.module.css'
 
-export type ButtonVariant = 'brandPrimary' | 'brandSecondary' | 'neutral'
+export type ButtonVariant = 'brandPrimary' | 'brandSecondary' | 'neutral' | 'statusError'
 export type ButtonEmphasis = 'primary' | 'secondary' | 'tertiary'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

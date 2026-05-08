@@ -131,6 +131,37 @@
   background-color: var(--container-color-themeable-hover);
 }
 
+/* ── Variant: statusError ─────────────────────────────────────────────────── */
+
+.statusError.primary {
+  background-color: var(--container-color-static-state-error);
+  border-color: var(--container-color-static-state-error);
+  color: var(--text-color-static-light);
+}
+
+.statusError.primary:hover:not(:disabled)::after {
+  background-color: var(--container-color-static-hover-darken);
+}
+
+.statusError.secondary {
+  background: none;
+  border-color: var(--border-color-static-state-error);
+  color: var(--text-color-static-state-error);
+}
+
+.statusError.secondary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover-status-error);
+}
+
+.statusError.tertiary {
+  background: none;
+  color: var(--text-color-static-state-error);
+}
+
+.statusError.tertiary:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover-status-error);
+}
+
 /* ── Disabled — must come after all variant rules to win on equal specificity ── */
 
 .button:disabled {

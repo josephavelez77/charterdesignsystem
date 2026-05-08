@@ -64,7 +64,7 @@ const meta: Meta<ButtonStoryArgs> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['brandPrimary', 'brandSecondary', 'neutral'],
+      options: ['brandPrimary', 'brandSecondary', 'neutral', 'statusError'],
     },
     emphasis: {
       control: 'select',
@@ -116,11 +116,15 @@ export const Neutral: Story = {
   args: { variant: 'neutral', emphasis: 'primary', children: 'Button label' },
 }
 
+export const StatusError: Story = {
+  args: { variant: 'statusError', emphasis: 'primary', children: 'Button label' },
+}
+
 export const AllVariants: Story = {
   args: { children: 'Button label' },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      {(['brandPrimary', 'brandSecondary', 'neutral'] as const).map((variant) => (
+      {(['brandPrimary', 'brandSecondary', 'neutral', 'statusError'] as const).map((variant) => (
         <div key={variant} style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           {(['primary', 'secondary', 'tertiary'] as const).map((emphasis) => (
             <Button key={emphasis} variant={variant} emphasis={emphasis}>

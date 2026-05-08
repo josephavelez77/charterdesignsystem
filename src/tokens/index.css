@@ -11,9 +11,6 @@
  */
 
 :root {
-  /* ── StepLabel ── */
-  --stepLabel: Step 1;
-
   /* ── Border ── */
   --border-color-themeable-primary: #404040;
   --border-color-themeable-secondary: #525252;
@@ -61,6 +58,7 @@
   --container-color-static-brand-secondary: #ECA400;
   --container-color-themeable-hover-brand-primary: #001D2B;
   --container-color-themeable-hover-brand-secondary: #402800;
+  --container-color-themeable-hover-status-error: #460809;
   --container-color-themeable-hover: rgba(255, 255, 255, 0.1);
   --container-color-static-hover-darken: rgba(0, 0, 0, 0.1);
   --container-color-static-hover-lighten: rgba(255, 255, 255, 0.1);
@@ -219,6 +217,7 @@
   --container-color-themeable-tertiary-inverse: #0A0A0A;
   --container-color-themeable-hover-brand-primary: #E6F8FF;
   --container-color-themeable-hover-brand-secondary: #FFF8E6;
+  --container-color-themeable-hover-status-error: #FEF2F2;
   --container-color-themeable-hover: rgba(0, 0, 0, 0.1);
   --container-color-themeable-gradient-stop1: rgba(255, 255, 255, 0.9);
   --container-color-themeable-gradient-stop2: rgba(255, 255, 255, 0.6);
