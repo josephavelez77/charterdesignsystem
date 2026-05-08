@@ -8,13 +8,15 @@ export interface MenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElem
   leadingIcon?: IconDefinition
   trailingIcon?: IconDefinition
   selected?: boolean
+  variant?: 'default' | 'danger'
 }
 
 export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
-  ({ label, leadingIcon, trailingIcon, selected = false, disabled, className, ...props }, ref) => {
+  ({ label, leadingIcon, trailingIcon, selected = false, variant = 'default', disabled, className, ...props }, ref) => {
     const classNames = [
       styles.menuItem,
       selected ? styles.selected : '',
+      variant === 'danger' ? styles.danger : '',
       className ?? '',
     ].filter(Boolean).join(' ')
 
@@ -22,7 +24,9 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
       ? 'var(--icon-color-themeable-disabled)'
       : selected
         ? 'var(--icon-color-static-light)'
-        : 'var(--icon-color-themeable-primary)'
+        : variant === 'danger'
+          ? 'var(--icon-color-static-state-error)'
+          : 'var(--icon-color-themeable-primary)'
 
     return (
       <button

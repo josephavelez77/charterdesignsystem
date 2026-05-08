@@ -73,3 +73,13 @@
 .menuItem:disabled .label {
   color: var(--text-color-themeable-disabled);
 }
+
+/* ── Danger variant ───────────────────────────────────────────────────────── */
+
+.danger .label {
+  color: var(--text-color-static-state-error);
+}
+
+.danger:not(:disabled):hover {
+  background-color: var(--container-color-static-state-error-subtle);
+}
