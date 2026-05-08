@@ -20,7 +20,6 @@
   ],
   "scripts": {
     "build": "vite build && node -e \"require('fs').copyFileSync('src/tokens/index.css', 'dist/tokens/variables.css')\"",
-    "prepare": "vite build && node -e \"require('fs').copyFileSync('src/tokens/index.css', 'dist/tokens/variables.css')\"",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit",
