@@ -1,0 +1,3 @@
+export { Avatar } from './Avatar';
+export type { AvatarProps, AvatarType, AvatarSize } from './Avatar';
+//# sourceMappingURL=index.d.ts.map

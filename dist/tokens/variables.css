@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Poppins:wght@400;500;600&display=swap');
+
+/**
+ * Base Design System — Design Tokens
+ * ⚠️  Auto-generated — do not edit by hand.
+ *    Run `npm run tokens` to regenerate.
+ *
+ * Source:
+ *   src/tokens/dark.tokens.json   (default / dark theme)
+ *   src/tokens/light.tokens.json  (light theme overrides)
+ */
+
+:root {
+  /* ── Border ── */
+  --border-color-themeable-primary: #404040;
+  --border-color-themeable-secondary: #525252;
+  --border-color-themeable-tertiary: #A1A1A1;
+  --border-color-themeable-disabled: #737373;
+  --border-color-static-brand-primary: #006992;
+  --border-color-static-brand-secondary: #ECA400;
+  --border-color-static-state-error: #FB2C36;
+  --border-color-static-state-warning: #FF6900;
+  --border-color-static-state-success: #00C950;
+  --border-color-static-state-information: #2B7FFF;
+  --border-color-static-priority-urgent: #FB2C36;
+  --border-color-static-priority-high: #FF6900;
+  --border-color-static-priority-medium: #F0B100;
+  --border-color-static-priority-low: #00C950;
+  --border-color-static-status-positive1: #00C950;
+  --border-color-static-status-positive2: #7CCF00;
+  --border-color-static-status-positive3: #00BC7D;
+  --border-color-static-status-caution1: #FF6900;
+  --border-color-static-status-caution2: #FE9A00;
+  --border-color-static-status-caution3: #F0B100;
+  --border-color-static-status-negative1: #FB2C36;
+  --border-color-static-status-negative2: #FF2056;
+  --border-color-static-status-negative3: #F6339A;
+  --border-color-static-status-neutral1: #2B7FFF;
+  --border-color-static-status-neutral2: #615FFF;
+  --border-color-static-status-neutral3: #00A6F4;
+  --border-radius-static-none: 0;
+  --border-radius-static-small: 4px;
+  --border-radius-static-primary: 8px;
+  --border-radius-static-circle: 9999px;
+  --border-width-static-primary: 1px;
+  --border-width-static-large: 2px;
+  --border-width-static-none: 0;
+
+  /* ── Container ── */
+  --container-color-themeable-primary: #262626;
+  --container-color-themeable-secondary: #171717;
+  --container-color-themeable-tertiary: #0A0A0A;
+  --container-color-themeable-disabled: #525252;
+  --container-color-themeable-primary-inverse: #E5E5E5;
+  --container-color-themeable-secondary-inverse: #F5F5F5;
+  --container-color-themeable-tertiary-inverse: #FAFAFA;
+  --container-color-static-brand-primary: #006992;
+  --container-color-static-brand-secondary: #ECA400;
+  --container-color-themeable-hover-brand-primary: #001D2B;
+  --container-color-themeable-hover-brand-secondary: #402800;
+  --container-color-themeable-hover-status-error: #460809;
+  --container-color-themeable-hover: rgba(255, 255, 255, 0.1);
+  --container-color-static-hover-darken: rgba(0, 0, 0, 0.1);
+  --container-color-static-hover-lighten: rgba(255, 255, 255, 0.1);
+  --container-color-static-state-error: #FB2C36;
+  --container-color-static-state-warning: #FF6900;
+  --container-color-static-state-success: #00C950;
+  --container-color-static-state-information: #2B7FFF;
+  --container-color-static-priority-urgent: #FB2C36;
+  --container-color-static-priority-high: #FF6900;
+  --container-color-static-priority-medium: #F0B100;
+  --container-color-static-priority-low: #00C950;
+  --container-color-static-status-positive1: #00C950;
+  --container-color-static-status-positive2: #7CCF00;
+  --container-color-static-status-positive3: #00BC7D;
+  --container-color-static-status-caution1: #FF6900;
+  --container-color-static-status-caution2: #FE9A00;
+  --container-color-static-status-caution3: #F0B100;
+  --container-color-static-status-negative1: #FB2C36;
+  --container-color-static-status-negative2: #FF2056;
+  --container-color-static-status-negative3: #F6339A;
+  --container-color-static-status-neutral1: #2B7FFF;
+  --container-color-static-status-neutral2: #615FFF;
+  --container-color-static-status-neutral3: #00A6F4;
+  --container-color-themeable-gradient-stop1: rgba(0, 0, 0, 0.9);
+  --container-color-themeable-gradient-stop2: rgba(0, 0, 0, 0.6);
+  --container-color-themeable-gradient-stop3: rgba(0, 0, 0, 0);
+  --container-gap-static-none: 0;
+  --container-gap-static-xxs: 4px;
+  --container-gap-static-xs: 8px;
+  --container-gap-static-small: 12px;
+  --container-gap-static-primary: 16px;
+  --container-gap-static-large: 24px;
+  --container-gap-static-xl: 32px;
+  --container-gap-static-2xl: 48px;
+  --container-gap-static-3xl: 64px;
+  --container-padding-static-none: 0;
+  --container-padding-static-xxs: 4px;
+  --container-padding-static-xs: 8px;
+  --container-padding-static-small: 12px;
+  --container-padding-static-primary: 16px;
+  --container-padding-static-large: 24px;
+  --container-padding-static-xl: 32px;
+  --container-padding-static-2xl: 48px;
+  --container-padding-static-3xl: 64px;
+  --container-height-static-xxs: 4px;
+  --container-height-static-xs: 8px;
+  --container-height-static-small: 12px;
+  --container-height-static-primary: 16px;
+  --container-height-static-large: 24px;
+  --container-height-static-xl: 32px;
+  --container-height-static-2xl: 48px;
+  --container-height-static-3xl: 64px;
+  --container-shadow-themeable-shadow-1: rgba(255, 248, 248, 0.01);
+  --container-shadow-themeable-shadow-4: rgba(255, 248, 248, 0.04);
+  --container-shadow-themeable-shadow-5: rgba(255, 255, 255, 0.05);
+  --container-shadow-themeable-shadow-6: rgba(255, 255, 255, 0.06);
+  --container-shadow-themeable-shadow-10: rgba(255, 255, 255, 0.1);
+  --container-shadow-themeable-shadow-25: rgba(255, 255, 255, 0.25);
+  --container-width-static-xxs: 4px;
+  --container-width-static-xs: 8px;
+  --container-width-static-small: 12px;
+  --container-width-static-primary: 16px;
+  --container-width-static-large: 24px;
+  --container-width-static-xl: 32px;
+  --container-width-static-2xl: 48px;
+  --container-width-static-3xl: 64px;
+  --container-width-static-max-content: 640px;
+
+  /* ── Icon ── */
+  --icon-color-themeable-primary: #FAFAFA;
+  --icon-color-themeable-secondary: #E5E5E5;
+  --icon-color-themeable-tertiary: #D4D4D4;
+  --icon-color-themeable-primary-inverse: #171717;
+  --icon-color-themeable-secondary-inverse: #262626;
+  --icon-color-themeable-tertiary-inverse: #404040;
+  --icon-color-themeable-disabled: #737373;
+  --icon-color-static-light: #FAFAFA;
+  --icon-color-static-dark: #0A0A0A;
+  --icon-color-static-brand-primary: #006992;
+  --icon-color-static-brand-secondary: #ECA400;
+  --icon-color-static-state-error: #FB2C36;
+  --icon-color-static-state-warning: #FF6900;
+  --icon-color-static-state-success: #00C950;
+  --icon-color-static-state-information: #2B7FFF;
+  --icon-width-static-xs: 8px;
+  --icon-width-static-small: 12px;
+  --icon-width-static-medium: 16px;
+  --icon-width-static-large: 24px;
+  --icon-width-static-xl: 32px;
+  --icon-height-static-xs: 8px;
+  --icon-height-static-small: 12px;
+  --icon-height-static-medium: 16px;
+  --icon-height-static-large: 24px;
+  --icon-height-static-xl: 32px;
+
+  /* ── Text ── */
+  --text-color-themeable-primary: #FAFAFA;
+  --text-color-themeable-secondary: #E5E5E5;
+  --text-color-themeable-tertiary: #D4D4D4;
+  --text-color-themeable-disabled: #737373;
+  --text-color-themeable-primary-inverse: #171717;
+  --text-color-themeable-secondary-inverse: #262626;
+  --text-color-themeable-tertiary-inverse: #404040;
+  --text-color-static-light: #FAFAFA;
+  --text-color-static-dark: #0A0A0A;
+  --text-color-static-brand-primary: #006992;
+  --text-color-static-brand-secondary: #ECA400;
+  --text-color-static-state-error: #FB2C36;
+  --text-color-static-state-warning: #FF6900;
+  --text-color-static-state-success: #00C950;
+  --text-color-static-state-information: #2B7FFF;
+  --text-family-static-headline: Poppins;
+  --text-family-static-body: Inter;
+  --text-family-static-mono: JetBrains Mono;
+  --text-letter-static-primary: 0;
+  --text-line-static-display1: 48px;
+  --text-line-static-display2: 39.96px;
+  --text-line-static-display3: 36px;
+  --text-line-static-headline1: 31.92px;
+  --text-line-static-headline2: 28px;
+  --text-line-static-headline3: 28.08px;
+  --text-line-static-body1: 24px;
+  --text-line-static-body2: 12.32px;
+  --text-line-static-caption: 15.96px;
+  --text-size-static-caption: 12px;
+  --text-size-static-body2: 14px;
+  --text-size-static-body1: 16px;
+  --text-size-static-headline3: 18px;
+  --text-size-static-headline2: 20px;
+  --text-size-static-headline1: 24px;
+  --text-size-static-display3: 30px;
+  --text-size-static-display2: 36px;
+  --text-size-static-display1: 48px;
+  --text-weight-static-regular: 400;
+  --text-weight-static-medium: 500;
+  --text-weight-static-semibold: 600;
+
+  /* ── Focus (composite, not in Figma variables) ── */
+  --focus-ring: 0 0 0 2px var(--border-color-static-brand-primary);
+  --focus-ring-offset: 0 0 0 4px var(--border-color-static-brand-primary);
+}
+
+[data-theme='light'] {
+  /* ── Border ── */
+  --border-color-themeable-primary: #D4D4D4;
+  --border-color-themeable-secondary: #A1A1A1;
+  --border-color-themeable-tertiary: #525252;
+
+  /* ── Container ── */
+  --container-color-themeable-primary: #E5E5E5;
+  --container-color-themeable-secondary: #F5F5F5;
+  --container-color-themeable-tertiary: #FAFAFA;
+  --container-color-themeable-disabled: #D4D4D4;
+  --container-color-themeable-primary-inverse: #262626;
+  --container-color-themeable-secondary-inverse: #171717;
+  --container-color-themeable-tertiary-inverse: #0A0A0A;
+  --container-color-themeable-hover-brand-primary: #E6F8FF;
+  --container-color-themeable-hover-brand-secondary: #FFF8E6;
+  --container-color-themeable-hover-status-error: #FEF2F2;
+  --container-color-themeable-hover: rgba(0, 0, 0, 0.1);
+  --container-color-themeable-gradient-stop1: rgba(255, 255, 255, 0.9);
+  --container-color-themeable-gradient-stop2: rgba(255, 255, 255, 0.6);
+  --container-color-themeable-gradient-stop3: rgba(255, 255, 255, 0);
+  --container-shadow-themeable-shadow-1: rgba(0, 0, 0, 0.01);
+  --container-shadow-themeable-shadow-4: rgba(0, 0, 0, 0.04);
+  --container-shadow-themeable-shadow-5: rgba(0, 0, 0, 0.05);
+  --container-shadow-themeable-shadow-6: rgba(0, 0, 0, 0.06);
+  --container-shadow-themeable-shadow-10: rgba(0, 0, 0, 0.1);
+  --container-shadow-themeable-shadow-25: rgba(0, 0, 0, 0.25);
+
+  /* ── Icon ── */
+  --icon-color-themeable-primary: #171717;
+  --icon-color-themeable-secondary: #262626;
+  --icon-color-themeable-tertiary: #404040;
+  --icon-color-themeable-primary-inverse: #FAFAFA;
+  --icon-color-themeable-secondary-inverse: #E5E5E5;
+  --icon-color-themeable-tertiary-inverse: #D4D4D4;
+  --icon-color-themeable-disabled: #A1A1A1;
+
+  /* ── Text ── */
+  --text-color-themeable-primary: #171717;
+  --text-color-themeable-secondary: #262626;
+  --text-color-themeable-tertiary: #404040;
+  --text-color-themeable-disabled: #A1A1A1;
+  --text-color-themeable-primary-inverse: #FAFAFA;
+  --text-color-themeable-secondary-inverse: #E5E5E5;
+  --text-color-themeable-tertiary-inverse: #D4D4D4;
+}

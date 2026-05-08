@@ -1,0 +1,1 @@
+{"version":3,"file":"GlobalToolbar.d.ts","sourceRoot":"","sources":["../../../src/components/GlobalToolbar/GlobalToolbar.tsx"],"names":[],"mappings":"AAOA,MAAM,WAAW,kBAAkB;IACjC,uBAAuB;IACvB,SAAS,CAAC,EAAE,MAAM,CAAA;IAClB,+BAA+B;IAC/B,cAAc,CAAC,EAAE,MAAM,CAAA;IACvB,SAAS,CAAC,EAAE,MAAM,CAAA;CACnB;AAED,eAAO,MAAM,aAAa;gDAIvB,kBAAkB;;CAsCpB,CAAA"}
