@@ -1,4 +1,4 @@
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/react-vite'
 import '../src/tokens/index.css'
 import './preview.css'
 
@@ -26,7 +26,7 @@ const preview: Preview = {
     },
   ],
   parameters: {
-    backgrounds: { disable: true },
+    backgrounds: { disabled: true },
     docs: {
       canvas: {
         style: { backgroundColor: 'var(--container-color-themeable-primary)' },

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faUser, faGear, faShield } from '@fortawesome/free-solid-svg-icons'
 import { Avatar } from './Avatar'
 

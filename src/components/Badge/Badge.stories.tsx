@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faMessage } from '@fortawesome/free-solid-svg-icons'
 import { Badge } from './Badge'
 import { IconButton } from '../IconButton/IconButton'

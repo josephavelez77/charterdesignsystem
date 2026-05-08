@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faHouse, faEnvelope, faUser } from '@fortawesome/free-solid-svg-icons'
 import { TextArea } from './TextArea'
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faHouse, faUser, faCog, faTrash, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { Menu } from './Menu'
 import { MenuItem } from '../MenuItem/MenuItem'

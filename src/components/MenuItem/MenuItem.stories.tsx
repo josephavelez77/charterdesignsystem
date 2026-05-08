@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faHouse, faChevronRight, faStar, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { MenuItem } from './MenuItem'
 

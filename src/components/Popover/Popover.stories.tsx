@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faGear, faCircleInfo, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import { Popover } from './Popover'
 import { IconButton } from '../IconButton/IconButton'

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { FileUploader } from './FileUploader'
 import { FileUploaderListItem } from '../FileUploaderListItem/FileUploaderListItem'
 

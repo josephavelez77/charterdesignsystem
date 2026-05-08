@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { SelectField } from './SelectField'
 

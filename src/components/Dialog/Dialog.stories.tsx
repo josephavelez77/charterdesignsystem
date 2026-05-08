@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { Meta, StoryObj, StoryFn } from '@storybook/react'
+import type { Meta, StoryObj, StoryFn } from '@storybook/react-vite'
 import { Button } from '../Button/Button'
 import { Dialog } from './Dialog'
 

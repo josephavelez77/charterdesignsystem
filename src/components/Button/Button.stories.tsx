@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import {
   faHouse,

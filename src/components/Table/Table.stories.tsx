@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faEdit, faTrash, faEye } from '@fortawesome/free-solid-svg-icons'
 import { Table } from './Table'
 import type { TableColumn } from './Table'

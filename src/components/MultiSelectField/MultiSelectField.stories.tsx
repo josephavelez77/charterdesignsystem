@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faTag } from '@fortawesome/free-solid-svg-icons'
 import { MultiSelectField } from './MultiSelectField'
 

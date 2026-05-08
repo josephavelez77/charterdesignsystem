@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { Card } from './Card'
 
 const SAMPLE_IMAGE = 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80'

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 import { faHouse, faUser, faCog, faTrash, faBell } from '@fortawesome/free-solid-svg-icons'
 import { ListGroup } from './ListGroup'
 import { ListItem } from '../ListItem/ListItem'
