@@ -2,6 +2,9 @@
 export { Button } from './components/Button'
 export type { ButtonProps, ButtonVariant, ButtonEmphasis } from './components/Button'
 
+export { IconButton } from './components/IconButton'
+export type { IconButtonProps, IconButtonVariant } from './components/IconButton'
+
 export { ButtonGroup } from './components/ButtonGroup'
 export type { ButtonGroupProps, ButtonGroupItem } from './components/ButtonGroup'
 

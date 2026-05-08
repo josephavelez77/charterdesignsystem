@@ -92,6 +92,18 @@
   -moz-appearance: textfield;
 }
 
+/* ── Suffix ───────────────────────────────────────────────────────────────── */
+
+.suffix {
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  color: var(--text-color-themeable-primary);
+  white-space: nowrap;
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
 /* ── Stepper ──────────────────────────────────────────────────────────────── */
 
 .stepper {
@@ -160,4 +172,8 @@
 
 .hintText {
   color: var(--text-color-themeable-tertiary);
+}
+
+.required {
+  color: var(--text-color-static-state-error);
 }

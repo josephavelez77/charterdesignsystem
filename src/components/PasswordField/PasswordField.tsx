@@ -8,10 +8,11 @@ export interface PasswordFieldProps extends Omit<React.InputHTMLAttributes<HTMLI
   label?: string
   error?: string
   hint?: string
+  required?: boolean
 }
 
 export const PasswordField = React.forwardRef<HTMLInputElement, PasswordFieldProps>(
-  ({ label, error, hint, className, disabled, onFocus, onBlur, ...props }, ref) => {
+  ({ label, error, hint, required, className, disabled, onFocus, onBlur, ...props }, ref) => {
     const generatedId = useId()
     const id = props['aria-label'] ? undefined : generatedId
     const errorId = error ? `${generatedId}-error` : undefined
@@ -42,6 +43,7 @@ export const PasswordField = React.forwardRef<HTMLInputElement, PasswordFieldPro
         {label && (
           <label htmlFor={id} className={styles.label}>
             {label}
+            {required && <span className={styles.required} aria-hidden> *</span>}
           </label>
         )}
 

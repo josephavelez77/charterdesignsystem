@@ -10,6 +10,8 @@ export interface NumberFieldProps {
   error?: string
   hint?: string
   leadingIcon?: IconDefinition
+  suffix?: string
+  required?: boolean
   value?: number
   defaultValue?: number
   min?: number
@@ -28,6 +30,8 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
       error,
       hint,
       leadingIcon,
+      suffix,
+      required,
       value,
       defaultValue,
       min,
@@ -93,6 +97,7 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
         {label && (
           <label htmlFor={generatedId} className={styles.label}>
             {label}
+            {required && <span className={styles.required} aria-hidden> *</span>}
           </label>
         )}
 
@@ -120,6 +125,10 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
           />
+
+          {suffix && currentValue !== undefined && (
+            <span className={styles.suffix}>{suffix}</span>
+          )}
 
           {error ? (
             <Icon

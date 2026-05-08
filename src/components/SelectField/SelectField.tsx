@@ -9,6 +9,7 @@ import styles from './SelectField.module.css'
 export interface SelectOption {
   value: string
   label: string
+  icon?: IconDefinition
   disabled?: boolean
 }
 
@@ -21,6 +22,7 @@ export interface SelectFieldProps {
   value?: string
   placeholder?: string
   disabled?: boolean
+  required?: boolean
   className?: string
   onChange?: (value: string) => void
 }
@@ -34,6 +36,7 @@ export const SelectField = ({
   value,
   placeholder = 'Select an option',
   disabled = false,
+  required,
   className,
   onChange,
 }: SelectFieldProps) => {
@@ -91,6 +94,7 @@ export const SelectField = ({
       {label && (
         <label htmlFor={generatedId} className={styles.label}>
           {label}
+          {required && <span className={styles.required} aria-hidden> *</span>}
         </label>
       )}
 
@@ -106,7 +110,9 @@ export const SelectField = ({
           onClick={handleToggle}
         >
           <div className={styles.triggerContent}>
-            {leadingIcon && <Icon icon={leadingIcon} color={iconColor} />}
+            {(selectedOption?.icon ?? leadingIcon) && (
+              <Icon icon={(selectedOption?.icon ?? leadingIcon)!} color={iconColor} />
+            )}
             <span className={[styles.triggerText, selectedOption ? styles.value : styles.placeholder].join(' ')}>
               {selectedOption ? selectedOption.label : placeholder}
             </span>
@@ -124,6 +130,7 @@ export const SelectField = ({
                 <MenuItem
                   key={option.value}
                   label={option.label}
+                  leadingIcon={option.icon}
                   selected={option.value === currentValue}
                   disabled={option.disabled}
                   role="option"

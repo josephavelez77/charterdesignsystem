@@ -104,3 +104,7 @@
 .hintText {
   color: var(--text-color-themeable-tertiary);
 }
+
+.required {
+  color: var(--text-color-static-state-error);
+}

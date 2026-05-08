@@ -82,6 +82,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         {label && (
           <label htmlFor={id} className={styles.label}>
             {label}
+            {props.required && <span className={styles.required} aria-hidden> *</span>}
           </label>
         )}
 

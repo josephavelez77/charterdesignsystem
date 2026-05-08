@@ -1,13 +1,17 @@
 import React, { useId } from "react";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "../Button/Button";
+import { Button, type ButtonVariant } from "../Button/Button";
 import { IconButton } from "../IconButton/IconButton";
+import { Icon } from "../Icon/Icon";
 import styles from "./Dialog.module.css";
 
 export interface DialogAction {
   label: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
+  variant?: ButtonVariant;
+  leadingIcon?: IconDefinition;
 }
 
 export type DialogSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -78,8 +82,9 @@ export const Dialog = ({
           <div className={styles.actions}>
             {secondaryAction && (
               <Button
-                variant="brandPrimary"
+                variant={secondaryAction.variant ?? "brandPrimary"}
                 emphasis="tertiary"
+                leadingIcon={secondaryAction.leadingIcon && <Icon icon={secondaryAction.leadingIcon} />}
                 onClick={secondaryAction.onClick}
                 disabled={secondaryAction.disabled}
               >
@@ -88,8 +93,9 @@ export const Dialog = ({
             )}
             {primaryAction && (
               <Button
-                variant="brandPrimary"
+                variant={primaryAction.variant ?? "brandPrimary"}
                 emphasis="primary"
+                leadingIcon={primaryAction.leadingIcon && <Icon icon={primaryAction.leadingIcon} />}
                 onClick={primaryAction.onClick}
                 disabled={primaryAction.disabled}
               >
