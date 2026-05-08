@@ -12,14 +12,15 @@
       "require": "./dist/index.cjs",
       "types": "./dist/index.d.ts"
     },
-    "./tokens": "./dist/tokens/index.css"
+    "./tokens": "./dist/tokens/variables.css",
+    "./styles": "./dist/tokens/index.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
-    "prepare": "vite build",
+    "build": "vite build && node -e \"require('fs').copyFileSync('src/tokens/index.css', 'dist/tokens/variables.css')\"",
+    "prepare": "vite build && node -e \"require('fs').copyFileSync('src/tokens/index.css', 'dist/tokens/variables.css')\"",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit",
