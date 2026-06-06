@@ -3454,7 +3454,7 @@
     "family": {
       "text-family-static-headline": {
         "$type": "string",
-        "$value": "Poppins",
+        "$value": "DM Serif Display",
         "$extensions": {
           "com.figma.variableId": "VariableID:5:1419",
           "com.figma.scopes": [
@@ -3471,7 +3471,7 @@
       },
       "text-family-static-body": {
         "$type": "string",
-        "$value": "Inter",
+        "$value": "DM Sans",
         "$extensions": {
           "com.figma.variableId": "VariableID:5:1420",
           "com.figma.scopes": [

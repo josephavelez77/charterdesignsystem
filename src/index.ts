@@ -1,4 +1,23 @@
 // Tokens — consumers should also import '@base/design-system/tokens' (the CSS) once at app root
+
+export { Alert } from './components/Alert'
+export type { AlertProps, AlertSeverity } from './components/Alert'
+
+export { Avatar } from './components/Avatar'
+export type { AvatarProps, AvatarType, AvatarSize } from './components/Avatar'
+
+export { Badge } from './components/Badge'
+export type { BadgeProps, BadgeVariant } from './components/Badge'
+
+export { Checkbox } from './components/Checkbox'
+export type { CheckboxProps } from './components/Checkbox'
+
+export { DataGrid } from './components/DataGrid'
+export type { DataGridProps, DataGridColumn, DataGridUserValue, DataGridOverflowItem, DataGridSelectOption } from './components/DataGrid'
+
+export { UserIdentificationTag } from './components/UserIdentificationTag'
+export type { UserIdentificationTagProps } from './components/UserIdentificationTag'
+
 export { Button } from './components/Button'
 export type { ButtonProps, ButtonVariant, ButtonEmphasis } from './components/Button'
 

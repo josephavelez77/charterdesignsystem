@@ -22,7 +22,7 @@ type InteractiveProps = {
 };
 export type ListItemProps = {
     title: string;
-    subtitle?: string;
+    subtitle?: React.ReactNode;
     className?: string;
 } & LeadingSlot & InteractiveProps;
 export declare const ListItem: React.ForwardRefExoticComponent<ListItemProps & React.RefAttributes<HTMLElement>>;

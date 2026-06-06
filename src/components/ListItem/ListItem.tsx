@@ -17,7 +17,7 @@ type InteractiveProps =
 
 export type ListItemProps = {
   title: string
-  subtitle?: string
+  subtitle?: React.ReactNode
   className?: string
 } & LeadingSlot &
   InteractiveProps

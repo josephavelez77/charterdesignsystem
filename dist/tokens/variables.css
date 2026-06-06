@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 /**
  * Base Design System — Design Tokens
@@ -170,8 +170,8 @@
   --text-color-static-state-warning: #FF6900;
   --text-color-static-state-success: #00C950;
   --text-color-static-state-information: #2B7FFF;
-  --text-family-static-headline: Poppins;
-  --text-family-static-body: Inter;
+  --text-family-static-headline: DM Serif Display;
+  --text-family-static-body: DM Sans;
   --text-family-static-mono: JetBrains Mono;
   --text-letter-static-primary: 0;
   --text-line-static-display1: 48px;
