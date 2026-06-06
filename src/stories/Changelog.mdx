@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Changelog" />
+
+<div style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px', fontFamily: 'var(--text-family-static-body)' }}>
+
+<h1 style={{ fontSize: 'var(--text-size-static-display3)', fontFamily: 'var(--text-family-static-headline)', color: 'var(--text-color-themeable-primary)', marginBottom: 8 }}>Changelog</h1>
+<p style={{ color: 'var(--text-color-themeable-secondary)', fontSize: 'var(--text-size-static-body2)', marginBottom: 48 }}>
+  All notable changes to the Base Design System.
+</p>
+
+---
+
+## 0.1.4 <span style={{ fontSize: 'var(--text-size-static-caption)', color: 'var(--text-color-themeable-tertiary)', fontWeight: 400, marginLeft: 8 }}>2026-06-06</span>
+
+#### Added
+- `llms.txt` — full component API reference for AI coding agents
+- `CLAUDE.md` — Claude-specific project conventions and styling guide
+
+---
+
+## 0.1.3 — 0.1.2 <span style={{ fontSize: 'var(--text-size-static-caption)', color: 'var(--text-color-themeable-tertiary)', fontWeight: 400, marginLeft: 8 }}>2026-06-06</span>
+
+#### Fixed
+- Added `./dist/index` and `./dist/index.js` to the package exports map for Figma Make CDN compatibility
+
+---
+
+## 0.1.1 <span style={{ fontSize: 'var(--text-size-static-caption)', color: 'var(--text-color-themeable-tertiary)', fontWeight: 400, marginLeft: 8 }}>2026-06-06</span>
+
+#### Added
+- GitHub Actions CI/CD — pushing a version tag auto-publishes to the Figma npm registry
+- Full `README.md` with install, setup, theming, component table, and token docs
+- `sideEffects` field so bundlers preserve the token CSS
+
+#### Fixed
+- **6 missing barrel exports** — `Alert`, `Avatar`, `Badge`, `Checkbox`, `DataGrid`, `UserIdentificationTag`
+- FontAwesome peer dependency range corrected from `>=6` → `>=7`
+- JetBrains Mono added to Google Fonts import
+- Font family names corrected in token JSON (Poppins → DM Serif Display, Inter → DM Sans)
+- `ListItem` subtitle widened to `React.ReactNode`
+
+#### Changed
+- Version bumped from `0.0.1` to `0.1.0`
+
+---
+
+## 0.0.1 <span style={{ fontSize: 'var(--text-size-static-caption)', color: 'var(--text-color-themeable-tertiary)', fontWeight: 400, marginLeft: 8 }}>2026-05-01</span>
+
+#### Added
+- Initial release with 60+ components
+- CSS custom property design token system with dark/light theming
+- Full TypeScript support with exported prop types
+- Storybook with theme switcher, a11y addon, and docs
+- Vite library build outputting ESM and CJS formats
+
+</div>

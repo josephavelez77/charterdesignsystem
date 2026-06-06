@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="Welcome" />
+
+<div style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px', fontFamily: 'var(--text-family-static-body)' }}>
+
+<div style={{ marginBottom: 48 }}>
+  <h1 style={{ fontSize: 'var(--text-size-static-display2)', fontFamily: 'var(--text-family-static-headline)', color: 'var(--text-color-themeable-primary)', marginBottom: 12, lineHeight: 1.1 }}>Base Design System</h1>
+  <p style={{ fontSize: 'var(--text-size-static-body1)', color: 'var(--text-color-themeable-secondary)', lineHeight: 1.6, marginBottom: 24 }}>
+    An open-source React component library for enterprise software tools — built with design tokens, dark/light theming, and full TypeScript support.
+  </p>
+  <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+    <a href="https://www.npmjs.com/package/@josephavelez77/design-system" target="_blank" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 16px', background: 'var(--container-color-static-brand-primary)', color: '#fff', borderRadius: 'var(--border-radius-static-primary)', textDecoration: 'none', fontSize: 'var(--text-size-static-body2)', fontWeight: 'var(--text-weight-static-semibold)' }}>npm package</a>
+    <a href="https://github.com/josephavelez77/basedesignsystem" target="_blank" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 16px', background: 'var(--container-color-themeable-primary)', color: 'var(--text-color-themeable-primary)', border: '1px solid var(--border-color-themeable-primary)', borderRadius: 'var(--border-radius-static-primary)', textDecoration: 'none', fontSize: 'var(--text-size-static-body2)', fontWeight: 'var(--text-weight-static-semibold)' }}>GitHub</a>
+  </div>
+</div>
+
+---
+
+## Installation
+
+```bash
+npm install @josephavelez77/design-system
+```
+
+Install peer dependencies if you haven't already:
+
+```bash
+npm install react react-dom \
+  @fortawesome/fontawesome-svg-core \
+  @fortawesome/free-solid-svg-icons \
+  @fortawesome/free-regular-svg-icons \
+  @fortawesome/react-fontawesome
+```
+
+---
+
+## Setup
+
+**1. Import the token CSS once at your app root** — this loads all CSS variables and the fonts (DM Sans, DM Serif Display, JetBrains Mono):
+
+```tsx
+// main.tsx or _app.tsx
+import '@josephavelez77/design-system/styles'
+```
+
+**2. Set a theme** — the library defaults to dark mode. Add `data-theme="light"` to your root element for light mode:
+
+```html
+<html data-theme="light">
+```
+
+Or toggle programmatically:
+
+```ts
+document.documentElement.setAttribute('data-theme', 'light')  // light
+document.documentElement.removeAttribute('data-theme')         // dark
+```
+
+**3. Import and use components:**
+
+```tsx
+import { Button, Alert, TextField } from '@josephavelez77/design-system'
+
+export function App() {
+  return (
+    <>
+      <Alert severity="success">Changes saved!</Alert>
+      <Button variant="brandPrimary" emphasis="primary">
+        Get started
+      </Button>
+    </>
+  )
+}
+```
+
+---
+
+## Design tokens
+
+All design decisions are expressed as CSS custom properties. Use them directly in your own styles to stay consistent with the system:
+
+```css
+.my-card {
+  background: var(--container-color-themeable-primary);
+  color: var(--text-color-themeable-primary);
+  border: 1px solid var(--border-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  padding: var(--container-padding-static-primary);
+  gap: var(--container-gap-static-primary);
+}
+```
+
+Token categories: `border`, `container`, `text`, `icon`, `focus-ring`. Tokens labeled `themeable` respond to the active theme; tokens labeled `static` are the same in both themes.
+
+---
+
+## What's in the library
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12, marginTop: 24 }}>
+  {[
+    { category: 'Actions', items: ['Button', 'IconButton', 'ButtonGroup', 'SplitButton'] },
+    { category: 'Forms', items: ['TextField', 'TextArea', 'SelectField', 'MultiSelectField', 'NumberField', 'PasswordField', 'Checkbox', 'Switch', 'RadioButton', 'DatePicker', 'TimePicker', 'FileUploader'] },
+    { category: 'Feedback', items: ['Alert', 'Toast', 'Badge', 'ProgressBar', 'Spinner', 'Skeleton'] },
+    { category: 'Overlays', items: ['Dialog', 'Drawer', 'Tooltip', 'Popover', 'Menu'] },
+    { category: 'Navigation', items: ['NavDrawer', 'Breadcrumb', 'TabGroup', 'Pagination', 'Stepper', 'GlobalToolbar', 'PageHeader'] },
+    { category: 'Display', items: ['Avatar', 'Chip', 'StatusChip', 'PriorityChip', 'AttributeChip', 'Icon', 'Divider', 'Logo'] },
+    { category: 'Data', items: ['Table', 'DataGrid', 'KpiCard', 'ListCard', 'Card', 'ChartCard', 'Accordion'] },
+  ].map(({ category, items }) => (
+    <div key={category} style={{ background: 'var(--container-color-themeable-secondary)', borderRadius: 'var(--border-radius-static-primary)', padding: 16, border: '1px solid var(--border-color-themeable-primary)' }}>
+      <p style={{ fontSize: 'var(--text-size-static-body2)', fontWeight: 'var(--text-weight-static-semibold)', color: 'var(--text-color-static-brand-primary)', marginBottom: 8, marginTop: 0 }}>{category}</p>
+      {items.map(item => (
+        <p key={item} style={{ fontSize: 'var(--text-size-static-caption)', color: 'var(--text-color-themeable-secondary)', margin: '2px 0' }}>{item}</p>
+      ))}
+    </div>
+  ))}
+</div>
+
+</div>
