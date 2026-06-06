@@ -1,0 +1,523 @@
+# Base Design System
+
+> An open-source React component library for enterprise software tools. Built with CSS custom property design tokens, dark/light theming, TypeScript, and FontAwesome icons.
+
+## Package
+
+- npm: `@josephavelez77/design-system`
+- GitHub: `github:josephavelez77/basedesignsystem`
+- Version: 0.1.3
+
+## Install
+
+```bash
+npm install @josephavelez77/design-system
+# peer deps
+npm install react react-dom \
+  @fortawesome/fontawesome-svg-core \
+  @fortawesome/free-solid-svg-icons \
+  @fortawesome/free-regular-svg-icons \
+  @fortawesome/react-fontawesome
+```
+
+## Setup
+
+Import the token CSS once at your app root — this loads all CSS variables and the three fonts (DM Sans, DM Serif Display, JetBrains Mono):
+
+```tsx
+import '@josephavelez77/design-system/styles'
+```
+
+Default theme is dark. Apply `data-theme="light"` to `<html>` for light mode:
+
+```html
+<html data-theme="light">
+```
+
+## Usage pattern
+
+```tsx
+import { Button, Alert, TextField } from '@josephavelez77/design-system'
+```
+
+All components and their prop types are exported from the root barrel. Never import from deep paths like `/dist/components/Button`.
+
+## Design tokens
+
+All tokens are CSS custom properties. Use them directly in custom styles:
+
+```css
+.custom {
+  background: var(--container-color-themeable-primary);
+  color: var(--text-color-themeable-primary);
+  border-radius: var(--border-radius-static-primary);
+  padding: var(--container-padding-static-primary);
+  gap: var(--container-gap-static-primary);
+}
+```
+
+Token naming convention: `--{category}-{property}-{themeable|static}-{name}`
+- `themeable` = changes between dark/light themes
+- `static` = same in both themes
+
+### Key token categories
+- `--border-color-*`, `--border-radius-*`, `--border-width-*`
+- `--container-color-*`, `--container-padding-*`, `--container-gap-*`, `--container-shadow-*`
+- `--text-color-*`, `--text-size-*`, `--text-weight-*`, `--text-family-*`
+- `--icon-color-*`, `--icon-width-*`, `--icon-height-*`
+- `--focus-ring`, `--focus-ring-offset`
+
+## Components
+
+### Actions
+
+**Button**
+```tsx
+<Button
+  variant?: 'brandPrimary' | 'brandSecondary' | 'neutral' | 'statusError'  // default: brandPrimary
+  emphasis?: 'primary' | 'secondary' | 'tertiary'  // default: primary
+  leadingIcon?: React.ReactNode
+  trailingIcon?: React.ReactNode
+  fullWidth?: boolean
+  loading?: boolean
+  disabled?: boolean
+>
+  Label
+</Button>
+```
+
+**IconButton**
+```tsx
+<IconButton
+  icon: IconDefinition          // required — FontAwesome icon
+  aria-label: string            // required for a11y
+  variant?: 'neutral' | 'brandPrimary' | 'brandSecondary' | 'ghost'
+  iconSize?: 'xs' | 'small' | 'medium' | 'large' | 'xl'
+  disabled?: boolean
+/>
+```
+
+**ButtonGroup**
+```tsx
+<ButtonGroup items: ButtonGroupItem[] />
+// ButtonGroupItem: { label, onClick, disabled?, leadingIcon?, trailingIcon?, variant?, emphasis? }
+```
+
+**SplitButton**
+```tsx
+<SplitButton
+  label: string
+  onClick: () => void
+  items: SplitButtonItem[]      // dropdown actions
+  variant?: ButtonVariant
+/>
+```
+
+### Feedback & Status
+
+**Alert**
+```tsx
+<Alert
+  severity?: 'error' | 'warning' | 'success' | 'info'  // default: info
+  dismissible?: boolean
+  onDismiss?: () => void
+>
+  Message text
+</Alert>
+```
+
+**Toast**
+```tsx
+<Toast
+  urgency?: 'error' | 'warning' | 'success' | 'information' | 'none'
+  action?: string               // label for optional action button
+  onAction?: () => void
+  duration?: number             // ms before auto-dismiss; 0 = permanent
+  onDismiss?: () => void
+>
+  Message
+</Toast>
+```
+
+**Badge**
+```tsx
+<Badge
+  variant?: 'numeric' | 'dot'
+  value?: number
+  max?: number                  // shows max+ when exceeded
+/>
+```
+
+**StatusChip**
+```tsx
+<StatusChip
+  label: string
+  statusType: 'positive' | 'caution' | 'negative' | 'neutral'
+  level: 1 | 2 | 3
+/>
+```
+
+**PriorityChip**
+```tsx
+<PriorityChip
+  priority: 'urgent' | 'high' | 'medium' | 'low'
+  label?: string
+/>
+```
+
+**ProgressBar**
+```tsx
+<ProgressBar value: number max?: number />
+```
+
+**Spinner**
+```tsx
+<Spinner size?: 'small' | 'medium' | 'large' color?: 'brand' | 'neutral' />
+```
+
+**Skeleton**
+```tsx
+<Skeleton shape?: 'line' | 'circle' | 'rect' width?: string height?: string />
+```
+
+### Overlays
+
+**Dialog**
+```tsx
+<Dialog
+  open: boolean
+  onClose?: () => void
+  title: string
+  subtitle?: string
+  dismissible?: boolean         // default: true
+  content?: string
+  primaryAction?: DialogAction  // { label, onClick, disabled?, variant?, leadingIcon? }
+  secondaryAction?: DialogAction
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+>
+  {/* optional custom body content */}
+</Dialog>
+```
+
+**Drawer**
+```tsx
+<Drawer
+  open: boolean
+  onClose?: () => void
+  title: string
+  subtitle?: string
+  dismissible?: boolean
+  primaryAction?: DrawerAction  // { label, onClick, disabled? }
+  secondaryAction?: DrawerAction
+>
+  {/* content */}
+</Drawer>
+```
+
+**Tooltip**
+```tsx
+<Tooltip content: string placement?: 'top' | 'right'>
+  <ChildElement />
+</Tooltip>
+```
+
+**Popover**
+```tsx
+<Popover
+  trigger: React.ReactElement
+  placement?: 'top' | 'bottom' | 'left' | 'right'
+>
+  {/* content */}
+</Popover>
+```
+
+**Menu / MenuItem**
+```tsx
+<Menu>
+  <MenuItem
+    label: string
+    icon?: IconDefinition
+    onClick?: () => void
+    disabled?: boolean
+    variant?: 'default' | 'danger'
+  />
+</Menu>
+```
+
+### Forms
+
+**TextField**
+```tsx
+<TextField
+  label?: string
+  error?: string
+  hint?: string
+  leadingIcon?: IconDefinition
+  trailingIcon?: IconDefinition
+  disabled?: boolean
+  // + all standard <input> props
+/>
+```
+
+**TextArea**
+```tsx
+<TextArea label?: string error?: string hint?: string disabled?: boolean />
+```
+
+**NumberField**
+```tsx
+<NumberField label?: string error?: string hint?: string min?: number max?: number step?: number />
+```
+
+**PasswordField**
+```tsx
+<PasswordField label?: string error?: string hint?: string />
+```
+
+**SelectField**
+```tsx
+<SelectField
+  label?: string
+  error?: string
+  hint?: string
+  options: SelectOption[]       // { value, label, disabled? }
+/>
+```
+
+**MultiSelectField**
+```tsx
+<MultiSelectField
+  label?: string
+  options: { value, label }[]
+  value?: string[]
+  onChange?: (values: string[]) => void
+/>
+```
+
+**DateField / TimeField**
+```tsx
+<DateField label?: string error?: string hint?: string />
+<TimeField label?: string error?: string hint?: string />
+```
+
+**DatePicker / TimePicker**
+```tsx
+<DatePicker label?: string value?: string onChange?: (date: string) => void />
+<TimePicker label?: string value?: TimeValue onChange?: (value: TimeValue) => void />
+```
+
+**Checkbox / CheckboxGroup**
+```tsx
+<Checkbox label?: string checked?: boolean onChange?: () => void disabled?: boolean />
+<CheckboxGroup
+  items: { label, value, checked? }[]
+  orientation?: 'horizontal' | 'vertical'
+  onChange?: (values: string[]) => void
+/>
+```
+
+**Switch / SwitchGroup**
+```tsx
+<Switch checked?: boolean onChange?: () => void disabled?: boolean />
+<SwitchGroup items orientation?: 'horizontal' | 'vertical' />
+```
+
+**RadioButton / RadioButtonGroup**
+```tsx
+<RadioButtonGroup
+  items: { label, value }[]
+  value?: string
+  orientation?: 'horizontal' | 'vertical'
+  onChange?: (value: string) => void
+/>
+```
+
+**FileUploader**
+```tsx
+<FileUploader
+  accept?: string
+  multiple?: boolean
+  onUpload?: (files: File[]) => void
+/>
+```
+
+### Navigation
+
+**NavDrawer**
+```tsx
+<NavDrawer
+  items: NavItemConfig[]        // { label, icon?, selected?, onClick?, children?: NavChildItem[] }
+  collapsed?: boolean
+  onCollapseToggle?: () => void
+/>
+```
+
+**Breadcrumb**
+```tsx
+<Breadcrumb items: BreadcrumbItem[] />  // { label, href?, onClick? }
+```
+
+**TabGroup**
+```tsx
+<TabGroup
+  tabs: { label, disabled? }[]
+  activeIndex?: number
+  onChange?: (index: number) => void
+/>
+```
+
+**Pagination / SimplePagination**
+```tsx
+<Pagination
+  totalItems: number
+  pageSize: number
+  currentPage: number
+  onChange: (page: number) => void
+/>
+```
+
+**Stepper**
+```tsx
+<Stepper
+  steps: StepItem[]             // { label, description? }
+  activeStep: number
+/>
+```
+
+**GlobalToolbar**
+```tsx
+<GlobalToolbar
+  leading?: React.ReactNode
+  trailing?: React.ReactNode
+/>
+```
+
+**PageHeader**
+```tsx
+<PageHeader
+  title: string
+  subtitle?: string
+  actions?: PageAction[]        // { label, onClick, variant?, leadingIcon? }
+  breadcrumb?: BreadcrumbItem[]
+/>
+```
+
+### Display
+
+**Avatar**
+```tsx
+<Avatar
+  type?: 'initials' | 'icon' | 'image'  // default: initials
+  size?: 'small' | 'default' | 'large'
+  initials?: string             // for type="initials"
+  icon?: IconDefinition         // for type="icon"
+  src?: string                  // for type="image"
+  alt?: string
+/>
+```
+
+**Chip**
+```tsx
+<Chip
+  label: string
+  icon?: IconDefinition
+  selected?: boolean
+  defaultSelected?: boolean
+  onChange?: (selected: boolean) => void
+/>
+```
+
+**AttributeChip**
+```tsx
+<AttributeChip label: string value: string />
+```
+
+**Icon**
+```tsx
+<Icon
+  icon: IconDefinition          // FontAwesome icon, e.g. faHouse
+  size?: 'xs' | 'small' | 'medium' | 'large' | 'xl'
+  color?: string
+  aria-label?: string           // required if icon conveys meaning with no surrounding text
+/>
+```
+
+**Divider**
+```tsx
+<Divider orientation?: 'horizontal' | 'vertical' />
+```
+
+**Logo**
+```tsx
+<Logo orientation?: 'horizontal' | 'stacked' size?: 'small' | 'medium' | 'large' />
+```
+
+**UserIdentificationTag**
+```tsx
+<UserIdentificationTag
+  name: string
+  subtitle?: string
+  initials?: string
+  avatarSrc?: string
+/>
+```
+
+### Data
+
+**Table**
+```tsx
+<Table
+  columns: TableColumn[]
+  data: Record<string, TableUserValue | TableStatusValue | string | number>[]
+  overflowItems?: TableOverflowItem[]
+/>
+```
+
+**DataGrid**
+```tsx
+<DataGrid
+  columns: DataGridColumn[]
+  data: Record<string, any>[]
+  overflowItems?: DataGridOverflowItem[]
+/>
+```
+
+**KpiCard**
+```tsx
+<KpiCard label: string value: string | number trend?: 'up' | 'down' | 'flat' />
+```
+
+**ListCard / ListGroup / ListItem**
+```tsx
+<ListGroup label?: string>
+  <ListItem
+    title: string
+    subtitle?: React.ReactNode
+    leading?: React.ReactNode
+    trailing?: React.ReactNode
+    onClick?: () => void
+  />
+</ListGroup>
+```
+
+**Card**
+```tsx
+<Card className?: string>{/* any content */}</Card>
+```
+
+**ChartCard**
+```tsx
+<ChartCard
+  title: string
+  data: BarChartDataPoint[]     // { label, value }
+/>
+```
+
+**AccordionGroup / AccordionItem**
+```tsx
+<AccordionGroup>
+  <AccordionItem title: string defaultOpen?: boolean>
+    {/* content */}
+  </AccordionItem>
+</AccordionGroup>
+```
