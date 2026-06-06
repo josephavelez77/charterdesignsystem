@@ -1,6 +1,6 @@
 {
   "name": "@josephavelez77/design-system",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Base Design System – open-source React component library for enterprise software tools",
   "type": "module",
   "main": "dist/index.cjs",
