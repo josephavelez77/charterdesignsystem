@@ -17,7 +17,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
+
+      - name: Configure Figma registry auth
+        run: |
+          echo "@josephavelez77:registry=https://registry.figma.com/npm/70be2b81-b1f4-47dc-8d6a-f18bdf96072d/registry/" >> ~/.npmrc
+          echo "//registry.figma.com/npm/70be2b81-b1f4-47dc-8d6a-f18bdf96072d/registry/:_authToken=${{ secrets.FIGMA_NPM_TOKEN }}" >> ~/.npmrc
 
       - name: Install dependencies
         run: npm ci
@@ -26,6 +31,4 @@ jobs:
         run: npm run build
 
       - name: Publish
-        run: npm publish --access public --registry https://registry.figma.com/npm/70be2b81-b1f4-47dc-8d6a-f18bdf96072d/registry/
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.FIGMA_NPM_TOKEN }}
+        run: npm publish --access public
