@@ -15,7 +15,7 @@ npm run typecheck    # tsc --noEmit
 
 ```bash
 npm version patch    # or minor / major — bumps version, commits, tags
-git push --follow-tags  # triggers CI → auto-publishes to Figma's npm registry
+git push --follow-tags  # triggers CI → auto-publishes to npm
 ```
 
 ## Repo structure

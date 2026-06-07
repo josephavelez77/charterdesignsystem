@@ -6,7 +6,47 @@
 
 - npm: `@josephavelez77/base-design-system`
 - GitHub: `github:josephavelez77/basedesignsystem`
-- Version: 0.1.3
+- Version: 0.2.1
+
+## Critical rules — read before writing any code
+
+1. **Always import the styles at your app entry point** — without this, nothing will be styled:
+   ```tsx
+   import '@josephavelez77/base-design-system/styles'
+   ```
+
+2. **Never use raw HTML elements** — always use the DS component equivalents:
+   | Instead of | Use |
+   |---|---|
+   | `<button>` | `<Button>` |
+   | `<input type="text">` | `<TextField>` |
+   | `<input type="checkbox">` | `<Checkbox>` |
+   | `<input type="radio">` | `<RadioButton>` / `<RadioButtonGroup>` |
+   | `<select>` | `<SelectField>` |
+   | `<textarea>` | `<TextArea>` |
+   | `<table>` | `<Table>` or `<DataGrid>` |
+   | `<input type="password">` | `<PasswordField>` |
+   | `<input type="number">` | `<NumberField>` |
+   | `<hr>` | `<Divider>` |
+   | `<dialog>` / modal | `<Dialog>` |
+
+3. **Never hardcode colors, spacing, or font sizes** — always use CSS token variables:
+   ```css
+   /* ✅ correct */
+   color: var(--text-color-themeable-primary);
+   padding: var(--container-padding-static-primary);
+
+   /* ❌ wrong */
+   color: #fff;
+   padding: 16px;
+   ```
+
+4. **All imports come from the root barrel**:
+   ```tsx
+   import { Button, TextField, Table } from '@josephavelez77/base-design-system'
+   ```
+
+---
 
 ## Install
 
@@ -20,27 +60,168 @@ npm install react react-dom \
   @fortawesome/react-fontawesome
 ```
 
-## Setup
-
-Import the token CSS once at your app root — this loads all CSS variables and the three fonts (DM Sans, DM Serif Display, JetBrains Mono):
+## App entry point setup
 
 ```tsx
+// main.tsx or index.tsx — do this ONCE at the root
 import '@josephavelez77/base-design-system/styles'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
 ```
 
-Default theme is dark. Apply `data-theme="light"` to `<html>` for light mode:
-
+Default theme is dark. For light mode, add `data-theme="light"` to `<html>`:
 ```html
 <html data-theme="light">
 ```
 
-## Usage pattern
+---
+
+## Full page composition example
+
+This is how a real page should be built using DS components. Use this as a template:
 
 ```tsx
-import { Button, Alert, TextField } from '@josephavelez77/base-design-system'
+import '@josephavelez77/base-design-system/styles'
+import {
+  PageHeader,
+  Card,
+  TextField,
+  SelectField,
+  Button,
+  Table,
+  StatusChip,
+  Alert,
+  Spinner,
+} from '@josephavelez77/base-design-system'
+import { faPlus, faDownload } from '@fortawesome/free-solid-svg-icons'
+import styles from './MyPage.module.css'
+
+export function MyPage() {
+  return (
+    <div className={styles.page}>
+      <PageHeader
+        title="Users"
+        subtitle="Manage your organization's users"
+        actions={[
+          { label: 'Export', onClick: handleExport, leadingIcon: faDownload, variant: 'neutral' },
+          { label: 'Add User', onClick: handleAdd, leadingIcon: faPlus },
+        ]}
+      />
+
+      <Alert severity="info">You have 3 pending invitations.</Alert>
+
+      <Card>
+        <div className={styles.filters}>
+          <TextField label="Search" placeholder="Search users..." />
+          <SelectField
+            label="Status"
+            options={[
+              { value: 'all', label: 'All' },
+              { value: 'active', label: 'Active' },
+              { value: 'inactive', label: 'Inactive' },
+            ]}
+          />
+          <Button variant="neutral" emphasis="secondary">Clear</Button>
+        </div>
+
+        <Table
+          columns={[
+            { key: 'name', label: 'Name' },
+            { key: 'email', label: 'Email' },
+            { key: 'status', label: 'Status' },
+          ]}
+          data={users}
+        />
+      </Card>
+    </div>
+  )
+}
 ```
 
-All components and their prop types are exported from the root barrel. Never import from deep paths like `/dist/components/Button`.
+```css
+/* MyPage.module.css — use tokens for all values */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--container-gap-static-large);
+  padding: var(--container-padding-static-xl);
+  background: var(--container-color-themeable-secondary);
+  min-height: 100vh;
+}
+
+.filters {
+  display: flex;
+  gap: var(--container-gap-static-primary);
+  align-items: flex-end;
+  margin-bottom: var(--container-gap-static-primary);
+}
+```
+
+---
+
+## Common layout patterns
+
+### Sidebar + content layout
+```tsx
+<div style={{ display: 'flex', height: '100vh' }}>
+  <NavDrawer items={navItems} />
+  <main style={{
+    flex: 1,
+    padding: 'var(--container-padding-static-xl)',
+    background: 'var(--container-color-themeable-secondary)',
+    overflow: 'auto'
+  }}>
+    {/* page content */}
+  </main>
+</div>
+```
+
+### Form layout
+```tsx
+<Card>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--container-gap-static-primary)' }}>
+    <TextField label="Full name" />
+    <TextField label="Email" type="email" />
+    <SelectField label="Role" options={roleOptions} />
+    <CheckboxGroup items={permissionItems} orientation="vertical" />
+    <div style={{ display: 'flex', gap: 'var(--container-gap-static-xs)', justifyContent: 'flex-end' }}>
+      <Button variant="neutral" emphasis="secondary">Cancel</Button>
+      <Button variant="brandPrimary">Save</Button>
+    </div>
+  </div>
+</Card>
+```
+
+### Status display
+```tsx
+// Use StatusChip for row/item status — never colored text or badges
+<StatusChip label="Active" statusType="positive" level={1} />
+<StatusChip label="Failed" statusType="negative" level={1} />
+<StatusChip label="Pending" statusType="neutral" level={2} />
+
+// Use PriorityChip for priority fields
+<PriorityChip priority="high" label="High" />
+```
+
+### Loading / empty states
+```tsx
+// Loading
+<div style={{ display: 'flex', justifyContent: 'center', padding: 'var(--container-padding-static-2xl)' }}>
+  <Spinner size="large" />
+</div>
+
+// Skeleton while content loads
+<Skeleton shape="rect" height="200px" />
+```
+
+---
 
 ## Design tokens
 
