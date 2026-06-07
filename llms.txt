@@ -248,6 +248,45 @@ Token naming convention: `--{category}-{property}-{themeable|static}-{name}`
 - `--icon-color-*`, `--icon-width-*`, `--icon-height-*`
 - `--focus-ring`, `--focus-ring-offset`
 
+---
+
+## This is NOT Tailwind or shadcn/ui — critical token mapping
+
+This library does NOT use Tailwind CSS or shadcn/ui. Do not use Tailwind utility classes (`flex`, `gap-3`, `text-sm`, `bg-background`, etc.) or shadcn CSS variables. They will not work.
+
+### CSS variable name mapping (shadcn → this library)
+
+| shadcn / wrong | This library / correct |
+|---|---|
+| `var(--background)` | `var(--container-color-themeable-secondary)` |
+| `var(--foreground)` | `var(--text-color-themeable-primary)` |
+| `var(--card)` | `var(--container-color-themeable-primary)` |
+| `var(--muted)` | `var(--container-color-themeable-tertiary)` |
+| `var(--muted-foreground)` | `var(--text-color-themeable-secondary)` |
+| `var(--border)` | `var(--border-color-themeable-primary)` |
+| `var(--primary)` | `var(--container-color-static-brand-primary)` |
+| `var(--destructive)` | `var(--container-color-static-state-error)` |
+| `var(--radius)` or `var(--radius-lg)` | `var(--border-radius-static-primary)` |
+| `var(--radius-sm)` | `var(--border-radius-static-small)` |
+| `var(--text-sm)` | `var(--text-size-static-body2)` |
+| `var(--text-xs)` | `var(--text-size-static-caption)` |
+
+### Layout — use inline styles or CSS modules, NOT Tailwind classes
+
+```tsx
+// ❌ Wrong — Tailwind classes won't work
+<div className="flex gap-4 p-6 bg-background rounded-lg">
+
+// ✅ Correct — inline styles with tokens
+<div style={{
+  display: 'flex',
+  gap: 'var(--container-gap-static-primary)',
+  padding: 'var(--container-padding-static-large)',
+  background: 'var(--container-color-themeable-primary)',
+  borderRadius: 'var(--border-radius-static-primary)',
+}}>
+```
+
 ## Components
 
 ### Actions
@@ -499,18 +538,34 @@ Token naming convention: `--{category}-{property}-{themeable|static}-{name}`
 
 **Switch / SwitchGroup**
 ```tsx
-<Switch checked?: boolean onChange?: () => void disabled?: boolean />
-<SwitchGroup items orientation?: 'horizontal' | 'vertical' />
+// Switch extends React.InputHTMLAttributes<HTMLInputElement>
+// onChange receives a real React.ChangeEvent — use e.target.checked
+<Switch
+  checked?: boolean
+  defaultChecked?: boolean
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  disabled?: boolean
+/>
+
+// Example:
+const [on, setOn] = useState(false)
+<Switch checked={on} onChange={(e) => setOn(e.target.checked)} />
 ```
 
 **RadioButton / RadioButtonGroup**
 ```tsx
+// RadioButtonGroup wraps RadioButtonItem children — NOT an items prop
+// name is REQUIRED for native radio group behavior
 <RadioButtonGroup
-  items: { label, value }[]
-  value?: string
+  name="my-group"                          // required
+  value={selected}
+  onChange={(value) => setSelected(value)} // receives the string value directly
   orientation?: 'horizontal' | 'vertical'
-  onChange?: (value: string) => void
-/>
+>
+  <RadioButtonItem value="csv"  label="CSV" />
+  <RadioButtonItem value="xlsx" label="XLSX" />
+  <RadioButtonItem value="pdf"  label="PDF" />
+</RadioButtonGroup>
 ```
 
 **FileUploader**
@@ -647,11 +702,35 @@ Token naming convention: `--{category}-{property}-{themeable|static}-{name}`
 
 **Table**
 ```tsx
+// Full example — copy this pattern exactly
 <Table
-  columns: TableColumn[]
-  data: Record<string, TableUserValue | TableStatusValue | string | number>[]
-  overflowItems?: TableOverflowItem[]
+  columns={[
+    { key: 'name',   header: 'Name',   type: 'text',   accessor: (row) => row.name },
+    { key: 'email',  header: 'Email',  type: 'text',   accessor: 'email' },  // keyof T shorthand
+    { key: 'status', header: 'Status', type: 'status', accessor: (row) => ({
+        label: row.status,
+        statusType: 'positive',   // 'positive' | 'caution' | 'negative' | 'neutral'
+        level: 1,                 // 1 | 2 | 3
+      })
+    },
+    { key: 'role',     header: 'Role',    type: 'priority', accessor: (row) => row.priority },
+    { key: 'actions',  header: '',        type: 'overflow',
+      items: (row) => [{ label: 'Edit', onClick: () => handleEdit(row) }]
+    },
+  ]}
+  data={rows}
+  getRowId={(row) => row.id}       // required — unique string ID per row
+  page={page}                       // required
+  pageSize={pageSize}               // required
+  totalItems={total}                // required
+  onPageChange={setPage}            // required
+  onPageSizeChange={setPageSize}    // required
 />
+
+// TableColumn types: 'text' | 'user' | 'status' | 'priority' | 'checkbox' | 'overflow' | 'nav'
+// 'user' accessor returns: { name, subtitle?, initials?, avatarSrc? }
+// 'status' accessor returns: { label, statusType, level }
+// 'overflow' uses items:(row) => { label, onClick, icon?, disabled? }[]
 ```
 
 **DataGrid**
@@ -665,10 +744,25 @@ Token naming convention: `--{category}-{property}-{themeable|static}-{name}`
 
 **KpiCard**
 ```tsx
-<KpiCard label: string value: string | number trend?: 'up' | 'down' | 'flat' />
+// Note: prop is "description" not "label"
+<KpiCard
+  value: string          // e.g. "1,240" or "94%"
+  description: string    // e.g. "Estimated Rows" or "Uptime"
+  trailingIcon?: IconDefinition
+/>
 ```
 
-**ListCard / ListGroup / ListItem**
+**ListCard**
+```tsx
+// Combines a summary header with a scrollable list
+<ListCard
+  value: string          // large display number/text
+  description: string    // label below the value
+  items: { title: string, subtitle?: string }[]
+/>
+```
+
+**ListGroup / ListItem**
 ```tsx
 <ListGroup label?: string>
   <ListItem
