@@ -4,14 +4,14 @@
 
 ## Package
 
-- npm: `@josephavelez77/design-system`
+- npm: `@josephavelez77/base-design-system`
 - GitHub: `github:josephavelez77/basedesignsystem`
 - Version: 0.1.3
 
 ## Install
 
 ```bash
-npm install @josephavelez77/design-system
+npm install @josephavelez77/base-design-system
 # peer deps
 npm install react react-dom \
   @fortawesome/fontawesome-svg-core \
@@ -25,7 +25,7 @@ npm install react react-dom \
 Import the token CSS once at your app root — this loads all CSS variables and the three fonts (DM Sans, DM Serif Display, JetBrains Mono):
 
 ```tsx
-import '@josephavelez77/design-system/styles'
+import '@josephavelez77/base-design-system/styles'
 ```
 
 Default theme is dark. Apply `data-theme="light"` to `<html>` for light mode:
@@ -37,7 +37,7 @@ Default theme is dark. Apply `data-theme="light"` to `<html>` for light mode:
 ## Usage pattern
 
 ```tsx
-import { Button, Alert, TextField } from '@josephavelez77/design-system'
+import { Button, Alert, TextField } from '@josephavelez77/base-design-system'
 ```
 
 All components and their prop types are exported from the root barrel. Never import from deep paths like `/dist/components/Button`.

@@ -1,6 +1,6 @@
 # Base Design System — Claude Guide
 
-This is the source repo for `@josephavelez77/design-system`, a React component library for enterprise software tools.
+This is the source repo for `@josephavelez77/base-design-system`, a React component library for enterprise software tools.
 
 ## Commands
 
@@ -93,7 +93,7 @@ All icons come from FontAwesome. Import from the free solid or regular packs:
 
 ```tsx
 import { faHouse, faUser, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { Icon } from '@josephavelez77/design-system'
+import { Icon } from '@josephavelez77/base-design-system'
 
 <Icon icon={faHouse} size="medium" />
 ```
@@ -113,7 +113,7 @@ document.documentElement.removeAttribute('data-theme') // back to dark
 
 ## What NOT to do
 
-- Don't import from deep paths: `@josephavelez77/design-system/dist/components/Button` ❌
+- Don't import from deep paths: `@josephavelez77/base-design-system/dist/components/Button` ❌
 - Don't hardcode colors or spacing values ❌
 - Don't add new dependencies without checking if a token or existing component covers it ❌
 - Don't edit `src/tokens/index.css` by hand — run `npm run tokens` to regenerate it ❌

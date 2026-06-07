@@ -7,7 +7,7 @@ An open-source React component library for enterprise software tools, built with
 ## Installation
 
 ```bash
-npm install @josephavelez77/design-system
+npm install @josephavelez77/base-design-system
 ```
 
 ### Peer dependencies
@@ -31,7 +31,7 @@ npm install react react-dom \
 Add this **once** at your app root (e.g. `main.tsx` or `_app.tsx`):
 
 ```ts
-import '@josephavelez77/design-system/styles'
+import '@josephavelez77/base-design-system/styles'
 ```
 
 This imports all CSS custom properties (colors, spacing, typography, etc.) and loads the three fonts used by the system: **DM Sans**, **DM Serif Display**, and **JetBrains Mono**.
@@ -54,7 +54,7 @@ document.documentElement.removeAttribute('data-theme') // back to dark
 ### 3. Use components
 
 ```tsx
-import { Button, Alert, Badge, DataGrid } from '@josephavelez77/design-system'
+import { Button, Alert, Badge, DataGrid } from '@josephavelez77/base-design-system'
 
 export function App() {
   return (
@@ -145,7 +145,7 @@ Token categories: `border`, `container`, `icon`, `text`, `focus-ring`.
 To import just the raw CSS variables without the Google Fonts `@import`:
 
 ```ts
-import '@josephavelez77/design-system/tokens'
+import '@josephavelez77/base-design-system/tokens'
 ```
 
 ---
@@ -155,7 +155,7 @@ import '@josephavelez77/design-system/tokens'
 All components ship full type definitions. Every component exports its props type:
 
 ```ts
-import type { ButtonProps, AlertProps, DataGridColumn } from '@josephavelez77/design-system'
+import type { ButtonProps, AlertProps, DataGridColumn } from '@josephavelez77/base-design-system'
 ```
 
 ---
