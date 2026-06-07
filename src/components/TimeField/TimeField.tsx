@@ -2,7 +2,6 @@ import React, { useId } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { Icon } from '../Icon/Icon'
-import { IconButton } from '../IconButton'
 import type { TimeValue } from '../TimePicker/TimePicker'
 import styles from './TimeField.module.css'
 
@@ -86,8 +85,8 @@ export const TimeField = ({
             {displayText ?? placeholder}
           </span>
         </div>
-        <span>
-          <IconButton icon={faClock} variant="brandPrimary" aria-label="Select time" aria-hidden="true" tabIndex={-1} />
+        <span aria-hidden="true">
+          <Icon icon={faClock} color="var(--icon-color-static-brand-primary)" />
         </span>
       </button>
 
