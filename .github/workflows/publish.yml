@@ -1,4 +1,4 @@
-name: Publish to Figma Registry
+name: Publish to npm
 
 on:
   push:
@@ -18,11 +18,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '24'
-
-      - name: Configure Figma registry auth
-        run: |
-          echo "@josephavelez77:registry=https://registry.figma.com/npm/70be2b81-b1f4-47dc-8d6a-f18bdf96072d/registry/" >> ~/.npmrc
-          echo "//registry.figma.com/npm/70be2b81-b1f4-47dc-8d6a-f18bdf96072d/registry/:_authToken=${{ secrets.FIGMA_NPM_TOKEN }}" >> ~/.npmrc
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm ci
@@ -32,3 +28,5 @@ jobs:
 
       - name: Publish
         run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
