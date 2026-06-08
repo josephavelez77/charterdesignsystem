@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import type { ButtonVariant, ButtonEmphasis } from '../Button/Button'
+import { Icon } from '../Icon/Icon'
 import { Menu } from '../Menu/Menu'
 import { MenuItem } from '../MenuItem/MenuItem'
 import styles from './SplitButton.module.css'
@@ -75,11 +75,7 @@ export const SplitButton = ({
         aria-expanded={open}
         className={[itemClass, styles.chevron].join(' ')}
       >
-        <FontAwesomeIcon
-          icon={faChevronDown}
-          style={{ width: 12, height: 12 }}
-          aria-hidden
-        />
+        <Icon icon={faChevronDown} size="small" aria-label="" />
       </button>
       {open && (
         <div className={styles.dropdown}>

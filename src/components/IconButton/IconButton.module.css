@@ -65,3 +65,18 @@
 .neutral:disabled {
   color: var(--icon-color-themeable-disabled);
 }
+
+/* ── Variant: ghost ───────────────────────────────────────────────────────── */
+
+.ghost {
+  color: var(--icon-color-themeable-secondary);
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--container-color-themeable-hover);
+  color: var(--icon-color-themeable-primary);
+}
+
+.ghost:disabled {
+  color: var(--icon-color-themeable-disabled);
+}
