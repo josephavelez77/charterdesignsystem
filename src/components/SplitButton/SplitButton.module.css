@@ -60,8 +60,7 @@
 /* ── Chevron trigger (right, narrow) ──────────────────────────────────────── */
 
 .chevron {
-  padding: var(--container-padding-static-small);
-  width: 36px;
+  padding: var(--container-padding-static-small) var(--container-padding-static-xs);
   border-radius: 0 var(--border-radius-static-primary) var(--border-radius-static-primary) 0;
 }
 
@@ -69,7 +68,7 @@
 
 .dropdown {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + var(--container-gap-static-xxs));
   right: 0;
   z-index: 200;
 }

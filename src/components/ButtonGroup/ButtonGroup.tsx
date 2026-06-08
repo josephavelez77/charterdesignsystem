@@ -1,11 +1,15 @@
 import React from 'react'
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import type { ButtonVariant, ButtonEmphasis } from '../Button/Button'
+import { Icon } from '../Icon/Icon'
 import styles from './ButtonGroup.module.css'
 
 export interface ButtonGroupItem {
   label: string
   onClick?: () => void
   disabled?: boolean
+  leadingIcon?: IconDefinition
+  trailingIcon?: IconDefinition
 }
 
 export interface ButtonGroupProps {
@@ -38,7 +42,9 @@ export const ButtonGroup = ({
             styles[emphasis],
           ].join(' ')}
         >
+          {item.leadingIcon && <Icon icon={item.leadingIcon} size="small" />}
           {item.label}
+          {item.trailingIcon && <Icon icon={item.trailingIcon} size="small" />}
         </button>
       ))}
     </div>

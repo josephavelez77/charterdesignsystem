@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { Icon } from '../Icon/Icon'
 import { IconButton } from '../IconButton'
 import { Menu } from '../Menu'
 import { MenuItem } from '../MenuItem'
@@ -54,7 +54,7 @@ function FlyoutMenu({
     <div
       ref={flyoutRef}
       className={styles.flyout}
-      style={{ top: rect.top, left: rect.right + 4 }}
+      style={{ top: rect.top, left: rect.right + 4 /* --container-gap-static-xxs */ }}
     >
       <Menu>
         {items.map((child, i) => (
@@ -99,15 +99,15 @@ const NavItem = ({ item, collapsed, flyoutOpen, onOpenFlyout, onCloseFlyout }: N
         aria-expanded={collapsed ? flyoutOpen : expanded}
       >
         {item.icon && (
-          <FontAwesomeIcon icon={item.icon} className={styles.navIcon} aria-hidden />
+          <Icon icon={item.icon} size="medium" className={styles.navIcon} />
         )}
         {!collapsed && (
           <>
             <span className={styles.navLabel}>{item.label}</span>
-            <FontAwesomeIcon
+            <Icon
               icon={expanded ? faChevronUp : faChevronDown}
+              size="small"
               className={styles.chevron}
-              aria-hidden
             />
           </>
         )}
@@ -151,7 +151,7 @@ const NavItem = ({ item, collapsed, flyoutOpen, onOpenFlyout, onCloseFlyout }: N
       onClick={item.onClick}
     >
       {item.icon && (
-        <FontAwesomeIcon icon={item.icon} className={styles.navIcon} aria-hidden />
+        <Icon icon={item.icon} size="medium" className={styles.navIcon} />
       )}
       {!collapsed && <span className={styles.navLabel}>{item.label}</span>}
     </button>

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../Icon/Icon'
 import {
   faArrowDown,
   faArrowUp,
@@ -226,7 +226,7 @@ function DateCell<T>({
         onClick={() => (isOpen ? onClose() : onOpen(cellId))}
       >
         <span>{value ? fmt(value) : <span className={styles.cellPlaceholder}>Select date</span>}</span>
-        <FontAwesomeIcon icon={faCalendar} className={styles.dateIcon} aria-hidden />
+        <Icon icon={faCalendar} size="small" className={styles.dateIcon} />
       </button>
       {isOpen && (
         <div className={styles.datepickerPopover}>
@@ -338,10 +338,10 @@ export function DataGrid<T extends Record<string, unknown>>({
         <span className={styles.thContent}>
           <span className={styles.thLabel}>{col.header ?? ''}</span>
           {col.sortable && (
-            <FontAwesomeIcon
+            <Icon
               icon={sortIcon}
+              size="xs"
               className={[styles.sortIcon, isSorted ? styles.sortIconActive : ''].filter(Boolean).join(' ')}
-              aria-hidden
             />
           )}
         </span>
@@ -494,7 +494,7 @@ export function DataGrid<T extends Record<string, unknown>>({
         <div className={styles.actionBar}>
           {onSearchChange && (
             <div className={styles.searchWrapper}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.searchIcon} aria-hidden />
+              <Icon icon={faMagnifyingGlass} size="small" className={styles.searchIcon} />
               <input
                 type="search"
                 className={styles.searchInput}
@@ -534,7 +534,7 @@ export function DataGrid<T extends Record<string, unknown>>({
               <tr>
                 <td colSpan={columns.length} className={styles.emptyCell}>
                   <div className={styles.emptyState}>
-                    <FontAwesomeIcon icon={faInbox} className={styles.emptyIcon} aria-hidden />
+                    <Icon icon={faInbox} size="xl" className={styles.emptyIcon} />
                     <span className={styles.emptyTitle}>{emptyTitle}</span>
                     <span className={styles.emptySubtitle}>{emptySubtitle}</span>
                   </div>

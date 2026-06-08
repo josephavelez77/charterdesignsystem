@@ -1,5 +1,4 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faTriangleExclamation,
   faCircleExclamation,
@@ -7,6 +6,7 @@ import {
   faCircleCheck,
 } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
+import { Icon } from '../Icon/Icon'
 import styles from './PriorityChip.module.css'
 
 export type PriorityLevel = 'urgent' | 'high' | 'medium' | 'low'
@@ -39,11 +39,8 @@ export const PriorityChip = React.forwardRef<HTMLDivElement, PriorityChipProps>(
         className={[styles.chip, className ?? ''].filter(Boolean).join(' ')}
         data-priority={priority}
       >
-        <FontAwesomeIcon
-          icon={PRIORITY_ICONS[priority]}
-          style={{ width: 12, height: 12, flexShrink: 0 }}
-          aria-hidden
-        />
+        {/* Color is inherited from data-priority CSS selectors — no color prop needed */}
+        <Icon icon={PRIORITY_ICONS[priority]} size="small" />
         <span className={styles.label}>{label ?? DEFAULT_LABELS[priority]}</span>
       </div>
     )

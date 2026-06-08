@@ -1,7 +1,8 @@
 import { default as React } from 'react';
+export type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';
 export interface TooltipProps {
     content: string;
-    placement?: 'top' | 'right';
+    placement?: TooltipPlacement;
     children: React.ReactElement;
 }
 export declare const Tooltip: {

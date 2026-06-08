@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../Icon/Icon'
 import styles from './Chip.module.css'
 
 export interface ChipProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onChange'> {
@@ -46,13 +46,7 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
         onClick={handleClick}
         {...props}
       >
-        {icon && (
-          <FontAwesomeIcon
-            icon={icon}
-            style={{ color: iconColor, width: 8, height: 8, flexShrink: 0 }}
-            aria-hidden
-          />
-        )}
+        {icon && <Icon icon={icon} size="xs" color={iconColor} />}
         <span className={styles.label}>{label}</span>
       </button>
     )

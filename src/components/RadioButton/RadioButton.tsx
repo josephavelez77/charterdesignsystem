@@ -1,7 +1,6 @@
 import React from 'react'
-import { faCircle } from '@fortawesome/free-regular-svg-icons'
-import { faCircleDot } from '@fortawesome/free-regular-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle, faCircleDot } from '@fortawesome/free-regular-svg-icons'
+import { Icon } from '../Icon/Icon'
 import styles from './RadioButton.module.css'
 
 export interface RadioButtonProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -39,11 +38,7 @@ export const RadioButton = React.forwardRef<HTMLInputElement, RadioButtonProps>(
           onChange={onChange}
           {...props}
         />
-        <FontAwesomeIcon
-          icon={checked ? faCircleDot : faCircle}
-          style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
-          aria-hidden
-        />
+        <Icon icon={checked ? faCircleDot : faCircle} size="medium" color={iconColor} />
       </span>
     )
   },

@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useId, useRef, useState } from 'react'
 import { faUpload } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../Icon/Icon'
 import styles from './FileUploader.module.css'
 
 export interface FileUploaderProps {
   label?: string
-  helperText?: string
+  hint?: string
   /** Optional accepted file type / size requirements shown inside the drop zone. */
   requirements?: string
   /** FileUploaderListItem children rendered below the drop zone. */
@@ -18,7 +18,7 @@ export interface FileUploaderProps {
 
 export const FileUploader = ({
   label,
-  helperText,
+  hint,
   requirements,
   children,
   onFilesSelected,
@@ -26,6 +26,7 @@ export const FileUploader = ({
   multiple,
   className,
 }: FileUploaderProps) => {
+  const inputId = useId()
   const inputRef = useRef<HTMLInputElement>(null)
   const [isDragActive, setIsDragActive] = useState(false)
 
@@ -60,7 +61,11 @@ export const FileUploader = ({
 
   return (
     <div className={[styles.wrapper, className ?? ''].filter(Boolean).join(' ')}>
-      {label && <span className={styles.label}>{label}</span>}
+      {label && (
+        <label htmlFor={inputId} className={styles.label}>
+          {label}
+        </label>
+      )}
 
       <div
         className={containerClass}
@@ -69,7 +74,7 @@ export const FileUploader = ({
         onDrop={handleDrop}
       >
         <div className={styles.dropZone}>
-          <FontAwesomeIcon icon={faUpload} className={styles.uploadIcon} aria-hidden />
+          <Icon icon={faUpload} size="large" className={styles.uploadIcon} />
           <p className={styles.dropText}>
             <button
               type="button"
@@ -88,10 +93,11 @@ export const FileUploader = ({
         {children && <div className={styles.fileList}>{children}</div>}
       </div>
 
-      {helperText && <span className={styles.helperText}>{helperText}</span>}
+      {hint && <span className={styles.hintText}>{hint}</span>}
 
       <input
         ref={inputRef}
+        id={inputId}
         type="file"
         className={styles.hiddenInput}
         accept={accept}

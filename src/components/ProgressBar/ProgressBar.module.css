@@ -2,7 +2,7 @@
 
 .track {
   width: 100%;
-  height: 8px;
+  height: var(--container-height-static-xs);
   background-color: var(--container-color-themeable-secondary);
   border-radius: var(--border-radius-static-circle);
   overflow: hidden;

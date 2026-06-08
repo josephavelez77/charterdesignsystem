@@ -22,7 +22,7 @@
   font-size: var(--text-size-static-body2);
   line-height: var(--text-line-static-body2);
   color: var(--text-color-themeable-tertiary);
-  margin: 0 4px;
+  margin: 0 var(--container-gap-static-xxs);
   user-select: none;
 }
 
@@ -47,7 +47,7 @@
 .link:focus-visible {
   outline: none;
   box-shadow: var(--focus-ring);
-  border-radius: 2px;
+  border-radius: var(--border-radius-static-small);
 }
 
 .current {

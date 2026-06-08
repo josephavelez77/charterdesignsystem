@@ -1,7 +1,7 @@
 import React from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { Icon } from '../Icon/Icon'
 import styles from './AttributeChip.module.css'
 
 export interface AttributeChipProps {
@@ -23,13 +23,7 @@ export const AttributeChip = React.forwardRef<HTMLDivElement, AttributeChipProps
         ref={ref}
         className={[styles.chip, disabled ? styles.disabled : '', className ?? ''].filter(Boolean).join(' ')}
       >
-        {icon && (
-          <FontAwesomeIcon
-            icon={icon}
-            style={{ color: iconColor, width: 8, height: 8, flexShrink: 0 }}
-            aria-hidden
-          />
-        )}
+        {icon && <Icon icon={icon} size="xs" color={iconColor} />}
         <span className={styles.label}>{label}</span>
         <button
           type="button"
@@ -38,11 +32,7 @@ export const AttributeChip = React.forwardRef<HTMLDivElement, AttributeChipProps
           disabled={disabled}
           aria-label={`Remove ${label}`}
         >
-          <FontAwesomeIcon
-            icon={faXmark}
-            style={{ width: 8, height: 8 }}
-            aria-hidden
-          />
+          <Icon icon={faXmark} size="xs" />
         </button>
       </div>
     )

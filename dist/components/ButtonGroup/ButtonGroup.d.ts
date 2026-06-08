@@ -1,8 +1,11 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { ButtonVariant, ButtonEmphasis } from '../Button/Button';
 export interface ButtonGroupItem {
     label: string;
     onClick?: () => void;
     disabled?: boolean;
+    leadingIcon?: IconDefinition;
+    trailingIcon?: IconDefinition;
 }
 export interface ButtonGroupProps {
     items: ButtonGroupItem[];

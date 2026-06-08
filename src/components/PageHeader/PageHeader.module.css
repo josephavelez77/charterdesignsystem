@@ -50,7 +50,7 @@
 
 .overflowMenu {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + var(--container-gap-static-xxs));
   right: 0;
   z-index: 200;
   min-width: 160px;

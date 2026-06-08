@@ -137,7 +137,7 @@ export { RadioButtonGroup } from './components/RadioButtonGroup'
 export type { RadioButtonGroupProps, RadioButtonGroupOrientation } from './components/RadioButtonGroup'
 
 export { Tooltip } from './components/Tooltip'
-export type { TooltipProps } from './components/Tooltip'
+export type { TooltipProps, TooltipPlacement } from './components/Tooltip'
 
 export { Popover } from './components/Popover'
 export type { PopoverProps, PopoverPlacement } from './components/Popover'
@@ -171,6 +171,9 @@ export type { TabGroupProps, TabItem } from './components/TabGroup'
 
 export { Stepper } from './components/Stepper'
 export type { StepperProps, StepItem } from './components/Stepper'
+
+export { Card } from './components/Card'
+export type { CardProps, CardAction } from './components/Card'
 
 export { KpiCard } from './components/KpiCard'
 export type { KpiCardProps } from './components/KpiCard'

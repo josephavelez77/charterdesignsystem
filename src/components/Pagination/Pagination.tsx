@@ -1,7 +1,7 @@
 import React from 'react'
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '../Button/Button'
+import { Icon } from '../Icon/Icon'
 import { SelectField } from '../SelectField/SelectField'
 import { NumberField } from '../NumberField/NumberField'
 import styles from './Pagination.module.css'
@@ -71,9 +71,7 @@ export const Pagination = ({
           disabled={page <= 1}
           onClick={() => onPageChange(page - 1)}
           aria-label="Previous page"
-          leadingIcon={
-            <FontAwesomeIcon icon={faChevronLeft} style={{ width: 10, height: 10 }} aria-hidden />
-          }
+          leadingIcon={<Icon icon={faChevronLeft} size="xs" />}
         >
           Back
         </Button>
@@ -99,9 +97,7 @@ export const Pagination = ({
           disabled={page >= totalPages}
           onClick={() => onPageChange(page + 1)}
           aria-label="Next page"
-          trailingIcon={
-            <FontAwesomeIcon icon={faChevronRight} style={{ width: 10, height: 10 }} aria-hidden />
-          }
+          trailingIcon={<Icon icon={faChevronRight} size="xs" />}
         >
           Next
         </Button>
@@ -135,9 +131,7 @@ export const SimplePagination = ({
         disabled={page <= 1}
         onClick={() => onPageChange(page - 1)}
         aria-label="Previous page"
-        leadingIcon={
-          <FontAwesomeIcon icon={faChevronLeft} style={{ width: 10, height: 10 }} aria-hidden />
-        }
+        leadingIcon={<Icon icon={faChevronLeft} size="xs" />}
       >
         Back
       </Button>
@@ -152,9 +146,7 @@ export const SimplePagination = ({
         disabled={page >= totalPages}
         onClick={() => onPageChange(page + 1)}
         aria-label="Next page"
-        trailingIcon={
-          <FontAwesomeIcon icon={faChevronRight} style={{ width: 10, height: 10 }} aria-hidden />
-        }
+        trailingIcon={<Icon icon={faChevronRight} size="xs" />}
       >
         Next
       </Button>

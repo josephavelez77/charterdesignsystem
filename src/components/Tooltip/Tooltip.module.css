@@ -10,11 +10,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 640px;
-  padding: var(--container-padding-static-xs, 8px);
-  border-radius: var(--border-radius-static-primary, 8px);
-  border: 1px solid var(--border-color-themeable-primary, #404040);
-  background-color: var(--container-color-themeable-tertiary, #0a0a0a);
+  max-width: var(--container-width-static-max-content);
+  padding: var(--container-padding-static-xs);
+  border-radius: var(--border-radius-static-primary);
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  background-color: var(--container-color-themeable-tertiary);
 
   pointer-events: none;
   white-space: nowrap;
@@ -26,25 +26,28 @@
     visibility 120ms ease;
 }
 
-/* placement: top (default) */
+/* ── Placements ───────────────────────────────────────────────────────────── */
+
 .top {
-  bottom: calc(100% + 6px);
+  bottom: calc(100% + var(--container-gap-static-xxs));
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* placement: right — position is set via inline style (portal, fixed) */
+/* bottom, left, right — position set via inline style (portal, fixed) */
 
 .tooltip.visible {
   opacity: 1;
   visibility: visible;
 }
 
+/* ── Text ─────────────────────────────────────────────────────────────────── */
+
 .text {
-  font-family: var(--text-family-static-body, 'Inter', sans-serif);
-  font-size: var(--text-size-static-caption, 12px);
-  font-weight: var(--text-weight-static-regular, 400);
-  line-height: var(--text-line-static-caption, 15.96px);
-  letter-spacing: var(--text-letter-static-primary, 0px);
-  color: var(--text-color-themeable-primary, #fafafa);
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-caption);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-caption);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
 }

@@ -57,7 +57,7 @@
 
 .dismiss:focus-visible {
   outline: 2px solid var(--border-color-static-brand-primary);
-  border-radius: 2px;
+  border-radius: var(--border-radius-static-small);
 }
 
 .dismiss:disabled {

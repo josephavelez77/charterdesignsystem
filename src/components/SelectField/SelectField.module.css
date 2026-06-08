@@ -31,7 +31,7 @@
   justify-content: space-between;
   width: 100%;
   height: var(--container-height-static-2xl);
-  padding: 0 var(--container-padding-static-xxs) 0 var(--container-padding-static-small);
+  padding: 0 var(--container-padding-static-small) 0 var(--container-padding-static-small);
   border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
   border-radius: var(--border-radius-static-primary);
   background-color: transparent;

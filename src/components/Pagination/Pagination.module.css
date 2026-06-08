@@ -3,8 +3,8 @@
 .pagination {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 8px 0;
+  gap: var(--container-gap-static-primary);
+  padding: var(--container-padding-static-xs) 0;
 }
 
 /* ── Items per page ───────────────────────────────────────────────────────── */
@@ -12,7 +12,7 @@
 .pageSizeSection {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--container-gap-static-xs);
   flex-shrink: 0;
 }
 
@@ -55,7 +55,7 @@
 .navSection {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--container-gap-static-xs);
   flex-shrink: 0;
 }
 
@@ -85,7 +85,7 @@
 .simplePagination {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--container-gap-static-small);
 }
 
 .simplePageCount {

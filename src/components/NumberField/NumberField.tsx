@@ -1,7 +1,6 @@
 import React, { useId, useRef, useState } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { faChevronDown, faChevronUp, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Icon } from '../Icon/Icon'
 import styles from './NumberField.module.css'
 
@@ -146,7 +145,7 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
                 aria-label="Increment"
                 tabIndex={-1}
               >
-                <FontAwesomeIcon icon={faChevronUp} style={{ width: 10, height: 10 }} aria-hidden />
+                <Icon icon={faChevronUp} size="xs" />
               </button>
               <div className={styles.stepperDivider} />
               <button
@@ -157,7 +156,7 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
                 aria-label="Decrement"
                 tabIndex={-1}
               >
-                <FontAwesomeIcon icon={faChevronDown} style={{ width: 10, height: 10 }} aria-hidden />
+                <Icon icon={faChevronDown} size="xs" />
               </button>
             </div>
           )}
