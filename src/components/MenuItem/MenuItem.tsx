@@ -1,6 +1,6 @@
 import React from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../Icon/Icon'
 import styles from './MenuItem.module.css'
 
 export interface MenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -39,19 +39,11 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
         {...props}
       >
         {leadingIcon && (
-          <FontAwesomeIcon
-            icon={leadingIcon}
-            style={{ color: iconColor, width: 14, height: 14, flexShrink: 0 }}
-            aria-hidden
-          />
+          <Icon icon={leadingIcon} size="small" color={iconColor} />
         )}
         <span className={styles.label}>{label}</span>
         {trailingIcon && (
-          <FontAwesomeIcon
-            icon={trailingIcon}
-            style={{ color: iconColor, width: 14, height: 14, flexShrink: 0, marginLeft: 'auto' }}
-            aria-hidden
-          />
+          <Icon icon={trailingIcon} size="small" color={iconColor} className={styles.trailingIcon} />
         )}
       </button>
     )

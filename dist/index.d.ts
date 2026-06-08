@@ -89,7 +89,7 @@ export type { RadioButtonItemProps } from './components/RadioButtonItem';
 export { RadioButtonGroup } from './components/RadioButtonGroup';
 export type { RadioButtonGroupProps, RadioButtonGroupOrientation } from './components/RadioButtonGroup';
 export { Tooltip } from './components/Tooltip';
-export type { TooltipProps } from './components/Tooltip';
+export type { TooltipProps, TooltipPlacement } from './components/Tooltip';
 export { Popover } from './components/Popover';
 export type { PopoverProps, PopoverPlacement } from './components/Popover';
 export { DatePicker } from './components/DatePicker';

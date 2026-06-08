@@ -81,5 +81,11 @@
 }
 
 .danger:not(:disabled):hover {
-  background-color: var(--container-color-static-state-error-subtle);
+  background-color: var(--container-color-themeable-hover-status-error);
+}
+
+/* ── Trailing icon — pushed to far right ─────────────────────────────────── */
+
+.trailingIcon {
+  margin-left: auto;
 }
