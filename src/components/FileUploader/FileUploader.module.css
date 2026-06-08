@@ -101,9 +101,9 @@
   padding: var(--container-padding-static-xxs) var(--container-padding-static-small) var(--container-padding-static-small);
 }
 
-/* ── Helper text ──────────────────────────────────────────────────────────── */
+/* ── Hint text ────────────────────────────────────────────────────────────── */
 
-.helperText {
+.hintText {
   font-family: var(--text-family-static-body);
   font-size: var(--text-size-static-body2);
   font-weight: var(--text-weight-static-regular);

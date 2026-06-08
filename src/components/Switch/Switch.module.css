@@ -83,10 +83,10 @@
   transition: opacity 120ms ease;
 }
 
-/* Checked: knob shifts right, stays white for contrast on brand track */
+/* Checked: knob shifts right — light token ensures contrast on the brand track in both themes */
 .track.checked .knob {
   transform: translateX(24px); /* 48 - 4*2 - 16 = 24px travel */
-  background-color: #ffffff;
+  background-color: var(--icon-color-static-light);
 }
 
 /* Disabled: knob is neutral dark */

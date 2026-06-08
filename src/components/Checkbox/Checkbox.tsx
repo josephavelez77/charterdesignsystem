@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { faSquare } from '@fortawesome/free-regular-svg-icons'
 import { faSquareCheck, faSquareMinus } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Icon } from '../Icon/Icon'
 import styles from './Checkbox.module.css'
 
 export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
@@ -52,11 +52,7 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
             onChange={handleChange}
             {...props}
           />
-          <FontAwesomeIcon
-            icon={icon}
-            style={{ color: iconColor, width: 16, height: 16, flexShrink: 0 }}
-            aria-hidden
-          />
+          <Icon icon={icon} size="medium" color={iconColor} />
         </span>
 
         {label && (
