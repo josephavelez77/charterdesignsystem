@@ -131,7 +131,7 @@ export const WithDatePicker: Story = {
     }, [open])
 
     return (
-      <div ref={wrapperRef} style={{ position: 'relative', display: 'inline-block' }}>
+      <div ref={wrapperRef} style={{ position: 'relative', width: 360 }}>
         <DateField
           label="Appointment date"
           value={value}
