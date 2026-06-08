@@ -21,8 +21,8 @@
 .logoSection {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 12px;
+  gap: var(--container-gap-static-xs);
+  padding: var(--container-padding-static-primary) var(--container-padding-static-small);
   border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
   min-height: 56px;
   flex-shrink: 0;
@@ -59,7 +59,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: 8px;
+  padding: var(--container-padding-static-xs);
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -109,8 +109,6 @@
 /* ── Nav icon ─────────────────────────────────────────────────────────────── */
 
 .navIcon {
-  width: 16px;
-  height: 16px;
   color: var(--icon-color-themeable-primary);
   flex-shrink: 0;
 }
@@ -130,8 +128,6 @@
 /* ── Chevron ──────────────────────────────────────────────────────────────── */
 
 .chevron {
-  width: 12px;
-  height: 12px;
   color: var(--icon-color-themeable-secondary);
   flex-shrink: 0;
 }
@@ -146,7 +142,7 @@
 .children {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
+  margin-left: var(--container-gap-static-primary);
   border-left: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
 }
 
@@ -154,7 +150,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 8px 12px;
+  padding: var(--container-padding-static-xs) var(--container-padding-static-small);
   border: none;
   border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
   border-radius: 0;
@@ -201,7 +197,7 @@
 
 .flyoutLabel {
   display: block;
-  padding: 8px 12px 4px;
+  padding: var(--container-padding-static-xs) var(--container-padding-static-small) var(--container-padding-static-xxs);
   font-family: var(--text-family-static-body);
   font-size: var(--text-size-static-caption);
   font-weight: var(--text-weight-static-medium);
