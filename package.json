@@ -37,8 +37,14 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./tokens": "./dist/tokens/variables.css",
-    "./styles": "./dist/tokens/index.css"
+    "./tokens": {
+      "types": "./dist/tokens/variables.d.ts",
+      "default": "./dist/tokens/variables.css"
+    },
+    "./styles": {
+      "types": "./dist/tokens/index.d.ts",
+      "default": "./dist/tokens/index.css"
+    }
   },
   "files": [
     "dist"
@@ -47,7 +53,7 @@
     "dist/tokens/*.css"
   ],
   "scripts": {
-    "build": "vite build && node -e \"require('fs').copyFileSync('src/tokens/index.css', 'dist/tokens/variables.css')\"",
+    "build": "vite build && node -e \"const fs=require('fs'); fs.copyFileSync('src/tokens/index.css','dist/tokens/variables.css'); fs.writeFileSync('dist/tokens/index.d.ts',''); fs.writeFileSync('dist/tokens/variables.d.ts','');\"",
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit",
