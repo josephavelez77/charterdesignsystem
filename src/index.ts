@@ -172,6 +172,9 @@ export type { TabGroupProps, TabItem } from './components/TabGroup'
 export { Stepper } from './components/Stepper'
 export type { StepperProps, StepItem } from './components/Stepper'
 
+export { Card } from './components/Card'
+export type { CardProps, CardAction } from './components/Card'
+
 export { KpiCard } from './components/KpiCard'
 export type { KpiCardProps } from './components/KpiCard'
 
