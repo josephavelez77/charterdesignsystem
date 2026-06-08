@@ -26,15 +26,21 @@ npm install react react-dom \
 
 ## Setup
 
-### 1. Import the design tokens (CSS variables + fonts)
+### 1. Import the design tokens and styles
 
-Add this **once** at your app root (e.g. `main.tsx` or `_app.tsx`):
+Add both imports **once** at your app root (e.g. `main.tsx` or `_app.tsx`):
 
 ```ts
-import '@josephavelez77/base-design-system/styles'
+import '@josephavelez77/base-design-system/tokens'  // CSS custom properties + fonts
+import '@josephavelez77/base-design-system/styles'  // component styles
 ```
 
-This imports all CSS custom properties (colors, spacing, typography, etc.) and loads the three fonts used by the system: **DM Sans**, **DM Serif Display**, and **JetBrains Mono**.
+| Import | What it provides |
+|---|---|
+| `/tokens` | `:root` CSS variable declarations (colors, spacing, radii, typography) + Google Fonts |
+| `/styles` | Component CSS (layout, borders, states) — depends on the variables from `/tokens` |
+
+> ⚠️ **Both imports are required.** Components will render without visual styling if `/tokens` is omitted, because all component CSS uses `var(--...)` references that need those declarations.
 
 ### 2. Set a theme
 
@@ -54,13 +60,16 @@ document.documentElement.removeAttribute('data-theme') // back to dark
 ### 3. Use components
 
 ```tsx
-import { Button, Alert, Badge, DataGrid } from '@josephavelez77/base-design-system'
+import { Button, Alert } from '@josephavelez77/base-design-system'
 
 export function App() {
   return (
     <>
-      <Alert severity="success" title="Saved!" />
-      <Button variant="primary">Click me</Button>
+      {/* Alert uses children for the message, not a title prop */}
+      <Alert severity="success">Changes saved!</Alert>
+
+      {/* Button requires both variant and emphasis */}
+      <Button variant="brandPrimary" emphasis="primary">Get started</Button>
     </>
   )
 }
