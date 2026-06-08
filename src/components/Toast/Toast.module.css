@@ -17,7 +17,7 @@
 
 @keyframes toastSlideIn {
   from {
-    transform: translateY(calc(100% + 24px));
+    transform: translateY(calc(100% + var(--container-gap-static-large)));
     opacity: 0;
   }
   to {
@@ -32,7 +32,7 @@
     opacity: 1;
   }
   to {
-    transform: translateY(calc(100% + 24px));
+    transform: translateY(calc(100% + var(--container-gap-static-large)));
     opacity: 0;
   }
 }
@@ -69,9 +69,7 @@
   font-weight: var(--text-weight-static-regular);
   line-height: var(--text-line-static-body1);
   letter-spacing: var(--text-letter-static-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 
 .messageColored {
@@ -82,12 +80,4 @@
   color: var(--text-color-themeable-primary);
 }
 
-/* ── Action button — override neutral tertiary color on colored backgrounds ── */
-
-.actionColored {
-  color: var(--text-color-static-light) !important;
-}
-
-.actionColored:hover:not(:disabled) {
-  background-color: var(--container-color-static-hover-lighten) !important;
-}
+/* Action button color on colored backgrounds is handled via inline style in Toast.tsx */

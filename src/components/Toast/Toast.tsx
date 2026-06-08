@@ -85,7 +85,7 @@ export const Toast = ({
         <Button
           variant="neutral"
           emphasis="tertiary"
-          className={isColored ? styles.actionColored : undefined}
+          style={isColored ? { color: 'var(--text-color-static-light)' } : undefined}
           onClick={onAction}
         >
           {action}

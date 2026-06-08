@@ -32,9 +32,7 @@
   line-height: var(--text-line-static-body1);
   letter-spacing: var(--text-letter-static-primary);
   color: var(--text-color-themeable-primary);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 
 /* ── Severity variants ────────────────────────────────────────────────────── */
