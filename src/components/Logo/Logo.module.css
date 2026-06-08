@@ -38,8 +38,8 @@
 }
 
 .small .mark {
-  width: 24px;
-  height: 24px;
+  width: var(--container-width-static-large);
+  height: var(--container-height-static-large);
 }
 
 .small .wordmark {
@@ -50,7 +50,7 @@
 /* ── Mark ─────────────────────────────────────────────────────────────────── */
 
 .mark {
-  border-radius: 50%;
+  border-radius: var(--border-radius-static-circle);
   background-color: var(--text-color-themeable-primary);
   flex-shrink: 0;
 }

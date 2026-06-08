@@ -3,8 +3,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 20px 24px;
+  gap: var(--container-gap-static-small);
+  padding: 20px var(--container-padding-static-large);
   background-color: var(--container-color-themeable-tertiary);
   border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
   border-radius: var(--border-radius-static-primary);
@@ -35,8 +35,8 @@
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
+  width: var(--icon-width-static-xl);
+  height: var(--icon-height-static-xl);
   flex-shrink: 0;
   color: var(--icon-color-themeable-secondary);
 }
