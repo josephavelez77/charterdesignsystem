@@ -1,4 +1,5 @@
-// Tokens — consumers should also import '@base/design-system/tokens' (the CSS) once at app root
+// Design tokens — CSS custom properties + fonts bundled into the component output
+import './tokens/index.css'
 
 export { Alert } from './components/Alert'
 export type { AlertProps, AlertSeverity } from './components/Alert'
