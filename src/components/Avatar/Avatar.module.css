@@ -26,7 +26,7 @@
 .initials,
 .icon {
   background-color: var(--container-color-static-brand-primary);
-  color: var(--icon-color-static-light);
+  color: var(--icon-color-static-primary-light);
 }
 
 /* ── Initials text ────────────────────────────────────────────────────────── */
@@ -35,7 +35,7 @@
   font-family: var(--text-family-static-body);
   font-weight: var(--text-weight-static-regular);
   letter-spacing: var(--text-letter-static-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
   white-space: nowrap;
   line-height: 1;
 }

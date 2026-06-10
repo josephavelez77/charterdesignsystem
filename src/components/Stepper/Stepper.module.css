@@ -34,7 +34,7 @@
 }
 
 .dividerComplete {
-  background-color: var(--container-color-static-state-success);
+  background-color: var(--container-color-themeable-state-success);
 }
 
 /* ── Badge ────────────────────────────────────────────────────────────────── */
@@ -51,7 +51,7 @@
 
 .badge_active {
   background-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .badge_upcoming {
@@ -60,8 +60,8 @@
 }
 
 .badge_complete {
-  background-color: var(--container-color-static-state-success);
-  color: var(--text-color-static-light);
+  background-color: var(--container-color-themeable-state-success);
+  color: var(--text-color-static-primary-light);
 }
 
 .badgeNumber {

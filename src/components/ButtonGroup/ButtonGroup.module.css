@@ -63,7 +63,7 @@
 .brandPrimary.primary {
   background-color: var(--container-color-static-brand-primary);
   border-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .brandPrimary.primary:hover:not(:disabled)::after {
@@ -94,7 +94,7 @@
 .brandSecondary.primary {
   background-color: var(--container-color-static-brand-secondary);
   border-color: var(--container-color-static-brand-secondary);
-  color: var(--text-color-static-dark);
+  color: var(--text-color-static-primary-dark);
 }
 
 .brandSecondary.primary:hover:not(:disabled)::after {

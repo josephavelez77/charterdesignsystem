@@ -74,7 +74,7 @@
 }
 
 .selected .label {
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .chip:disabled .label {

@@ -95,11 +95,11 @@
 
 .navItem.selected {
   background-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .navItem.selected .navIcon {
-  color: var(--icon-color-static-light);
+  color: var(--icon-color-static-primary-light);
 }
 
 .navItem.parentExpanded {
@@ -177,7 +177,7 @@
 
 .childItem.childSelected {
   background-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .childLabel {

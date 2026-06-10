@@ -16,7 +16,7 @@
 }
 
 .light {
-  color: var(--icon-color-static-light);
+  color: var(--icon-color-static-primary-light);
 }
 
 .neutral {

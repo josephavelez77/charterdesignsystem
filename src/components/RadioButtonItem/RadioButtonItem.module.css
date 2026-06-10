@@ -33,7 +33,7 @@
 /* ── Required asterisk ───────────────────────────────────────────────────── */
 
 .asterisk {
-  color: var(--text-color-static-state-error);
+  color: var(--text-color-themeable-state-error);
   font-size: 9px;
   line-height: 1;
   align-self: flex-start;

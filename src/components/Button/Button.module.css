@@ -43,7 +43,7 @@
 .brandPrimary.primary {
   background-color: var(--container-color-static-brand-primary);
   border-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .brandPrimary.primary:hover:not(:disabled)::after {
@@ -74,7 +74,7 @@
 .brandSecondary.primary {
   background-color: var(--container-color-static-brand-secondary);
   border-color: var(--container-color-static-brand-secondary);
-  color: var(--text-color-static-dark);
+  color: var(--text-color-static-primary-dark);
 }
 
 .brandSecondary.primary:hover:not(:disabled)::after {
@@ -134,9 +134,9 @@
 /* ── Variant: statusError ─────────────────────────────────────────────────── */
 
 .statusError.primary {
-  background-color: var(--container-color-static-state-error);
-  border-color: var(--container-color-static-state-error);
-  color: var(--text-color-static-light);
+  background-color: var(--container-color-themeable-state-error);
+  border-color: var(--container-color-themeable-state-error);
+  color: var(--text-color-static-primary-light);
 }
 
 .statusError.primary:hover:not(:disabled)::after {
@@ -145,8 +145,8 @@
 
 .statusError.secondary {
   background: none;
-  border-color: var(--border-color-static-state-error);
-  color: var(--text-color-static-state-error);
+  border-color: var(--border-color-themeable-state-error);
+  color: var(--text-color-themeable-state-error);
 }
 
 .statusError.secondary:hover:not(:disabled) {
@@ -155,7 +155,7 @@
 
 .statusError.tertiary {
   background: none;
-  color: var(--text-color-static-state-error);
+  color: var(--text-color-themeable-state-error);
 }
 
 .statusError.tertiary:hover:not(:disabled) {

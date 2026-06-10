@@ -104,7 +104,7 @@
 
 .scrollItemSelected {
   background-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
   font-weight: var(--text-weight-static-medium);
 }
 
@@ -164,7 +164,7 @@
 
 .periodBtnSelected {
   background-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
   font-weight: var(--text-weight-static-medium);
 }
 

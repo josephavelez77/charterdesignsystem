@@ -40,19 +40,19 @@
 /* ── Urgency variants ─────────────────────────────────────────────────────── */
 
 .error {
-  background-color: var(--container-color-static-state-error);
+  background-color: var(--container-color-themeable-state-error);
 }
 
 .warning {
-  background-color: var(--container-color-static-state-warning);
+  background-color: var(--container-color-themeable-state-warning);
 }
 
 .success {
-  background-color: var(--container-color-static-state-success);
+  background-color: var(--container-color-themeable-state-success);
 }
 
 .information {
-  background-color: var(--container-color-static-state-information);
+  background-color: var(--container-color-themeable-state-information);
 }
 
 .none {
@@ -73,7 +73,7 @@
 }
 
 .messageColored {
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .messageNone {

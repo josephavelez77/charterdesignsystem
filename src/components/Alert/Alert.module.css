@@ -38,34 +38,34 @@
 /* ── Severity variants ────────────────────────────────────────────────────── */
 
 .error {
-  border-color: var(--border-color-static-state-error);
+  border-color: var(--border-color-themeable-state-error);
 }
 
 .error .leadingIcon {
-  color: var(--icon-color-static-state-error);
+  color: var(--icon-color-themeable-state-error);
 }
 
 .warning {
-  border-color: var(--border-color-static-state-warning);
+  border-color: var(--border-color-themeable-state-warning);
 }
 
 .warning .leadingIcon {
-  color: var(--icon-color-static-state-warning);
+  color: var(--icon-color-themeable-state-warning);
 }
 
 .success {
-  border-color: var(--border-color-static-state-success);
+  border-color: var(--border-color-themeable-state-success);
 }
 
 .success .leadingIcon {
-  color: var(--icon-color-static-state-success);
+  color: var(--icon-color-themeable-state-success);
 }
 
 .info {
-  border-color: var(--border-color-static-state-information);
+  border-color: var(--border-color-themeable-state-information);
 }
 
 .info .leadingIcon {
-  color: var(--icon-color-static-state-information);
+  color: var(--icon-color-themeable-state-information);
 }
 

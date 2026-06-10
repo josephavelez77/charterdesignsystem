@@ -39,7 +39,7 @@
 
 .active {
   background-color: var(--container-color-static-brand-primary);
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
   cursor: default;
 }
 

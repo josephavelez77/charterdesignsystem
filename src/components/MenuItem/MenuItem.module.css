@@ -67,7 +67,7 @@
 }
 
 .selected .label {
-  color: var(--text-color-static-light);
+  color: var(--text-color-static-primary-light);
 }
 
 .menuItem:disabled .label {
@@ -77,7 +77,7 @@
 /* ── Danger variant ───────────────────────────────────────────────────────── */
 
 .danger .label {
-  color: var(--text-color-static-state-error);
+  color: var(--text-color-themeable-state-error);
 }
 
 .danger:not(:disabled):hover {

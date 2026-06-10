@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&family=Poppins:wght@400;500;600&display=swap');
 
 /**
  * Base Design System — Design Tokens
@@ -16,12 +16,12 @@
   --border-color-themeable-secondary: #525252;
   --border-color-themeable-tertiary: #A1A1A1;
   --border-color-themeable-disabled: #737373;
-  --border-color-static-brand-primary: #006992;
-  --border-color-static-brand-secondary: #ECA400;
-  --border-color-static-state-error: #FB2C36;
-  --border-color-static-state-warning: #FF6900;
-  --border-color-static-state-success: #00C950;
-  --border-color-static-state-information: #2B7FFF;
+  --border-color-static-brand-primary: #007DAF;
+  --border-color-static-brand-secondary: #B15873;
+  --border-color-themeable-state-error: #FB2C36;
+  --border-color-themeable-state-warning: #FF6900;
+  --border-color-themeable-state-success: #00C950;
+  --border-color-themeable-state-information: #2B7FFF;
   --border-color-static-priority-urgent: #FB2C36;
   --border-color-static-priority-high: #FF6900;
   --border-color-static-priority-medium: #F0B100;
@@ -49,27 +49,27 @@
   /* ── Container ── */
   --container-color-themeable-primary: #262626;
   --container-color-themeable-secondary: #171717;
-  --container-color-themeable-tertiary: #0A0A0A;
+  --container-color-themeable-tertiary: #000000;
   --container-color-themeable-disabled: #525252;
   --container-color-themeable-primary-inverse: #E5E5E5;
   --container-color-themeable-secondary-inverse: #F5F5F5;
-  --container-color-themeable-tertiary-inverse: #FAFAFA;
-  --container-color-static-brand-primary: #006992;
-  --container-color-static-brand-secondary: #ECA400;
-  --container-color-themeable-hover-brand-primary: #001D2B;
-  --container-color-themeable-hover-brand-secondary: #402800;
+  --container-color-themeable-tertiary-inverse: #FFFFFF;
+  --container-color-static-brand-primary: #007DAF;
+  --container-color-static-brand-secondary: #B15873;
+  --container-color-themeable-hover-brand-primary: #004F78;
+  --container-color-themeable-hover-brand-secondary: #463842;
   --container-color-themeable-hover-status-error: #460809;
   --container-color-themeable-hover: rgba(255, 255, 255, 0.1);
   --container-color-static-hover-darken: rgba(0, 0, 0, 0.1);
   --container-color-static-hover-lighten: rgba(255, 255, 255, 0.1);
-  --container-color-static-state-error: #FB2C36;
-  --container-color-static-state-warning: #FF6900;
-  --container-color-static-state-success: #00C950;
-  --container-color-static-state-information: #2B7FFF;
-  --container-color-static-priority-urgent: #FB2C36;
-  --container-color-static-priority-high: #FF6900;
-  --container-color-static-priority-medium: #F0B100;
-  --container-color-static-priority-low: #00C950;
+  --container-color-themeable-state-error: #FB2C36;
+  --container-color-themeable-state-warning: #FF6900;
+  --container-color-themeable-state-success: #00C950;
+  --container-color-themeable-state-information: #2B7FFF;
+  --container-color-themeable-priority-urgent: #FB2C36;
+  --container-color-themeable-priority-high: #FF6900;
+  --container-color-themeable-priority-medium: #F0B100;
+  --container-color-themeable-priority-low: #00C950;
   --container-color-static-status-positive1: #00C950;
   --container-color-static-status-positive2: #7CCF00;
   --container-color-static-status-positive3: #00BC7D;
@@ -128,21 +128,21 @@
   --container-width-static-max-content: 640px;
 
   /* ── Icon ── */
-  --icon-color-themeable-primary: #FAFAFA;
-  --icon-color-themeable-secondary: #E5E5E5;
+  --icon-color-themeable-primary: #FFFFFF;
+  --icon-color-themeable-secondary: #F5F5F5;
   --icon-color-themeable-tertiary: #D4D4D4;
-  --icon-color-themeable-primary-inverse: #171717;
-  --icon-color-themeable-secondary-inverse: #262626;
+  --icon-color-themeable-primary-inverse: #000000;
+  --icon-color-themeable-secondary-inverse: #171717;
   --icon-color-themeable-tertiary-inverse: #404040;
   --icon-color-themeable-disabled: #737373;
-  --icon-color-static-light: #FAFAFA;
-  --icon-color-static-dark: #0A0A0A;
-  --icon-color-static-brand-primary: #006992;
-  --icon-color-static-brand-secondary: #ECA400;
-  --icon-color-static-state-error: #FB2C36;
-  --icon-color-static-state-warning: #FF6900;
-  --icon-color-static-state-success: #00C950;
-  --icon-color-static-state-information: #2B7FFF;
+  --icon-color-static-primary-light: #FFFFFF;
+  --icon-color-static-primary-dark: #000000;
+  --icon-color-static-brand-primary: #007DAF;
+  --icon-color-static-brand-secondary: #B15873;
+  --icon-color-themeable-state-error: #FB2C36;
+  --icon-color-themeable-state-warning: #FF6900;
+  --icon-color-themeable-state-success: #00C950;
+  --icon-color-themeable-state-information: #2B7FFF;
   --icon-width-static-xs: 8px;
   --icon-width-static-small: 12px;
   --icon-width-static-medium: 16px;
@@ -155,21 +155,21 @@
   --icon-height-static-xl: 32px;
 
   /* ── Text ── */
-  --text-color-themeable-primary: #FAFAFA;
-  --text-color-themeable-secondary: #E5E5E5;
+  --text-color-themeable-primary: #FFFFFF;
+  --text-color-themeable-secondary: #F5F5F5;
   --text-color-themeable-tertiary: #D4D4D4;
   --text-color-themeable-disabled: #737373;
-  --text-color-themeable-primary-inverse: #171717;
-  --text-color-themeable-secondary-inverse: #262626;
+  --text-color-themeable-primary-inverse: #000000;
+  --text-color-themeable-secondary-inverse: #171717;
   --text-color-themeable-tertiary-inverse: #404040;
-  --text-color-static-light: #FAFAFA;
-  --text-color-static-dark: #0A0A0A;
-  --text-color-static-brand-primary: #006992;
-  --text-color-static-brand-secondary: #ECA400;
-  --text-color-static-state-error: #FB2C36;
-  --text-color-static-state-warning: #FF6900;
-  --text-color-static-state-success: #00C950;
-  --text-color-static-state-information: #2B7FFF;
+  --text-color-static-primary-light: #FFFFFF;
+  --text-color-static-primary-dark: #000000;
+  --text-color-static-brand-primary: #007DAF;
+  --text-color-static-brand-secondary: #B15873;
+  --text-color-themeable-state-error: #FB2C36;
+  --text-color-themeable-state-warning: #FF6900;
+  --text-color-themeable-state-success: #00C950;
+  --text-color-themeable-state-information: #2B7FFF;
   --text-family-static-headline: DM Serif Display;
   --text-family-static-body: DM Sans;
   --text-family-static-mono: JetBrains Mono;
@@ -206,19 +206,31 @@
   --border-color-themeable-primary: #D4D4D4;
   --border-color-themeable-secondary: #A1A1A1;
   --border-color-themeable-tertiary: #525252;
+  --border-color-themeable-state-error: #C10007;
+  --border-color-themeable-state-warning: #CA3500;
+  --border-color-themeable-state-success: #008236;
+  --border-color-themeable-state-information: #1447E6;
 
   /* ── Container ── */
   --container-color-themeable-primary: #E5E5E5;
   --container-color-themeable-secondary: #F5F5F5;
-  --container-color-themeable-tertiary: #FAFAFA;
+  --container-color-themeable-tertiary: #FFFFFF;
   --container-color-themeable-disabled: #D4D4D4;
   --container-color-themeable-primary-inverse: #262626;
   --container-color-themeable-secondary-inverse: #171717;
-  --container-color-themeable-tertiary-inverse: #0A0A0A;
-  --container-color-themeable-hover-brand-primary: #E6F8FF;
-  --container-color-themeable-hover-brand-secondary: #FFF8E6;
+  --container-color-themeable-tertiary-inverse: #000000;
+  --container-color-themeable-hover-brand-primary: #E2F6FB;
+  --container-color-themeable-hover-brand-secondary: #F5E7ED;
   --container-color-themeable-hover-status-error: #FEF2F2;
   --container-color-themeable-hover: rgba(0, 0, 0, 0.1);
+  --container-color-themeable-state-error: #C10007;
+  --container-color-themeable-state-warning: #CA3500;
+  --container-color-themeable-state-success: #008236;
+  --container-color-themeable-state-information: #1447E6;
+  --container-color-themeable-priority-urgent: #C10007;
+  --container-color-themeable-priority-high: #CA3500;
+  --container-color-themeable-priority-medium: #A65F00;
+  --container-color-themeable-priority-low: #008236;
   --container-color-themeable-gradient-stop1: rgba(255, 255, 255, 0.9);
   --container-color-themeable-gradient-stop2: rgba(255, 255, 255, 0.6);
   --container-color-themeable-gradient-stop3: rgba(255, 255, 255, 0);
@@ -230,20 +242,28 @@
   --container-shadow-themeable-shadow-25: rgba(0, 0, 0, 0.25);
 
   /* ── Icon ── */
-  --icon-color-themeable-primary: #171717;
-  --icon-color-themeable-secondary: #262626;
+  --icon-color-themeable-primary: #000000;
+  --icon-color-themeable-secondary: #171717;
   --icon-color-themeable-tertiary: #404040;
-  --icon-color-themeable-primary-inverse: #FAFAFA;
-  --icon-color-themeable-secondary-inverse: #E5E5E5;
+  --icon-color-themeable-primary-inverse: #FFFFFF;
+  --icon-color-themeable-secondary-inverse: #F5F5F5;
   --icon-color-themeable-tertiary-inverse: #D4D4D4;
   --icon-color-themeable-disabled: #A1A1A1;
+  --icon-color-themeable-state-error: #C10007;
+  --icon-color-themeable-state-warning: #CA3500;
+  --icon-color-themeable-state-success: #008236;
+  --icon-color-themeable-state-information: #1447E6;
 
   /* ── Text ── */
-  --text-color-themeable-primary: #171717;
-  --text-color-themeable-secondary: #262626;
+  --text-color-themeable-primary: #000000;
+  --text-color-themeable-secondary: #171717;
   --text-color-themeable-tertiary: #404040;
   --text-color-themeable-disabled: #A1A1A1;
-  --text-color-themeable-primary-inverse: #FAFAFA;
-  --text-color-themeable-secondary-inverse: #E5E5E5;
+  --text-color-themeable-primary-inverse: #FFFFFF;
+  --text-color-themeable-secondary-inverse: #F5F5F5;
   --text-color-themeable-tertiary-inverse: #D4D4D4;
+  --text-color-themeable-state-error: #C10007;
+  --text-color-themeable-state-warning: #CA3500;
+  --text-color-themeable-state-success: #008236;
+  --text-color-themeable-state-information: #1447E6;
 }

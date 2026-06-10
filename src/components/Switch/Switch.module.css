@@ -86,7 +86,7 @@
 /* Checked: knob shifts right — light token ensures contrast on the brand track in both themes */
 .track.checked .knob {
   transform: translateX(24px); /* 48 - 4*2 - 16 = 24px travel */
-  background-color: var(--icon-color-static-light);
+  background-color: var(--icon-color-static-primary-light);
 }
 
 /* Disabled: knob is neutral dark */

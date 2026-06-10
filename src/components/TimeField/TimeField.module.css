@@ -17,7 +17,7 @@
 }
 
 .required {
-  color: var(--text-color-static-state-error);
+  color: var(--text-color-themeable-state-error);
 }
 
 /* ── Trigger ──────────────────────────────────────────────────────────────── */
@@ -49,12 +49,12 @@
 }
 
 .triggerError {
-  border-color: var(--border-color-static-state-error);
+  border-color: var(--border-color-themeable-state-error);
 }
 
 .triggerError:focus-visible {
-  border-color: var(--border-color-static-state-error);
-  box-shadow: 0 0 0 2px var(--border-color-static-state-error);
+  border-color: var(--border-color-themeable-state-error);
+  box-shadow: 0 0 0 2px var(--border-color-themeable-state-error);
 }
 
 .triggerDisabled {
@@ -126,7 +126,7 @@
 }
 
 .errorText {
-  color: var(--text-color-static-state-error);
+  color: var(--text-color-themeable-state-error);
 }
 
 .hintText {
