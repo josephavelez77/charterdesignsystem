@@ -58,6 +58,20 @@
   border-radius: var(--border-radius-static-primary);
 }
 
+/* ── Outlined + neutral primary: single 1px divider, no gap ──────────────── */
+
+.buttonGroup:has(.secondary),
+.buttonGroup:has(.tertiary),
+.buttonGroup:has(.neutral.primary) {
+  gap: 0;
+}
+
+.item.secondary:not(:first-child),
+.item.tertiary:not(:first-child),
+.item.neutral.primary:not(:first-child) {
+  border-left: none;
+}
+
 /* ── Variant: brandPrimary ────────────────────────────────────────────────── */
 
 .brandPrimary.primary {
@@ -77,7 +91,7 @@
 }
 
 .brandPrimary.secondary:hover:not(:disabled) {
-  background-color: var(--container-color-static-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 .brandPrimary.tertiary {
@@ -86,7 +100,7 @@
 }
 
 .brandPrimary.tertiary:hover:not(:disabled) {
-  background-color: var(--container-color-static-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 /* ── Variant: brandSecondary ──────────────────────────────────────────────── */
@@ -94,7 +108,7 @@
 .brandSecondary.primary {
   background-color: var(--container-color-static-brand-secondary);
   border-color: var(--container-color-static-brand-secondary);
-  color: var(--text-color-static-primary-dark);
+  color: var(--text-color-static-primary-light);
 }
 
 .brandSecondary.primary:hover:not(:disabled)::after {

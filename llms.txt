@@ -15,6 +15,14 @@
    import '@josephavelez77/base-design-system/styles'
    ```
 
+2. **Load the Google Fonts yourself** — the package does NOT bundle fonts. Add this to your HTML `<head>` or the fonts will fall back to the browser default serif:
+   ```html
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+   ```
+   Font tokens: `--text-family-static-body` = DM Sans, `--text-family-static-headline` = DM Serif Display, `--text-family-static-mono` = JetBrains Mono.
+
 2. **Never use raw HTML elements** — always use the DS component equivalents:
    | Instead of | Use |
    |---|---|
@@ -65,7 +73,7 @@ npm install react react-dom \
 ```tsx
 // main.tsx or index.tsx — do this ONCE at the root
 // BOTH imports are required — omitting /tokens leaves all var(--...) unresolved
-import '@josephavelez77/base-design-system/tokens'  // CSS custom properties + fonts
+import '@josephavelez77/base-design-system/tokens'  // CSS custom properties (fonts NOT included — load separately)
 import '@josephavelez77/base-design-system/styles'  // component styles
 import React from 'react'
 import ReactDOM from 'react-dom/client'

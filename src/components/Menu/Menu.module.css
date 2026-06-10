@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--container-gap-static-xxs);
-  padding: var(--container-padding-static-xxs);
+  padding: var(--container-padding-static-xs) 0;
   background-color: var(--container-color-themeable-secondary);
   border-radius: var(--border-radius-static-primary);
-  min-width: 160px;
+  min-width: 200px;
   max-height: calc(
-    10 * (var(--text-line-static-body2) + 2 * var(--container-padding-static-xs)) +
+    10 * (var(--text-line-static-body1) + 2 * var(--container-padding-static-small)) +
     9 * var(--container-gap-static-xxs)
   );
   overflow-y: auto;

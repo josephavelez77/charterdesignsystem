@@ -31,18 +31,39 @@ npm install react react-dom \
 Add both imports **once** at your app root (e.g. `main.tsx` or `_app.tsx`):
 
 ```ts
-import '@josephavelez77/base-design-system/tokens'  // CSS custom properties + fonts
+import '@josephavelez77/base-design-system/tokens'  // CSS custom properties
 import '@josephavelez77/base-design-system/styles'  // component styles
 ```
 
 | Import | What it provides |
 |---|---|
-| `/tokens` | `:root` CSS variable declarations (colors, spacing, radii, typography) + Google Fonts |
+| `/tokens` | `:root` CSS variable declarations (colors, spacing, radii, typography) |
 | `/styles` | Component CSS (layout, borders, states) — depends on the variables from `/tokens` |
 
 > ⚠️ **Both imports are required.** Components will render without visual styling if `/tokens` is omitted, because all component CSS uses `var(--...)` references that need those declarations.
 
-### 2. Set a theme
+### 2. Load the fonts
+
+The package does **not** bundle or load fonts. You must load them yourself. Add this to your HTML `<head>`:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+```
+
+Without this, components will fall back to the browser's default serif font.
+
+| Token | Font |
+|---|---|
+| `--text-family-static-body` | DM Sans |
+| `--text-family-static-headline` | DM Serif Display |
+| `--text-family-static-mono` | JetBrains Mono |
+
+### 3. Set a theme
 
 The library ships dark mode as the default (`:root`). To opt into light mode, apply `data-theme="light"` to your root element:
 
@@ -57,7 +78,7 @@ document.documentElement.setAttribute('data-theme', 'light')
 document.documentElement.removeAttribute('data-theme') // back to dark
 ```
 
-### 3. Use components
+### 4. Use components
 
 ```tsx
 import { Button, Alert } from '@josephavelez77/base-design-system'

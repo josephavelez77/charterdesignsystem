@@ -111,6 +111,18 @@ document.documentElement.setAttribute('data-theme', 'light')
 document.documentElement.removeAttribute('data-theme') // back to dark
 ```
 
+## Fonts
+
+The library uses three Google Fonts, referenced via CSS custom properties:
+
+| Token | Font |
+|---|---|
+| `--text-family-static-body` | DM Sans |
+| `--text-family-static-headline` | DM Serif Display |
+| `--text-family-static-mono` | JetBrains Mono |
+
+**The package does not load fonts.** Storybook loads them via `.storybook/preview-head.html`. Consumers of the npm package must add the Google Fonts `<link>` tags to their own HTML `<head>` — without this, everything falls back to the browser's default serif font.
+
 ## What NOT to do
 
 - Don't import from deep paths: `@josephavelez77/base-design-system/dist/components/Button` ❌
@@ -118,3 +130,4 @@ document.documentElement.removeAttribute('data-theme') // back to dark
 - Don't add new dependencies without checking if a token or existing component covers it ❌
 - Don't edit `src/tokens/index.css` by hand — run `npm run tokens` to regenerate it ❌
 - Don't add stories to `src/index.ts` — `*.stories.tsx` files are excluded from the build ❌
+- Don't expect fonts to load automatically in consuming apps — they must be loaded separately ❌

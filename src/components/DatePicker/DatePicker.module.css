@@ -82,7 +82,7 @@
 }
 
 .navButton:hover {
-  background-color: var(--container-color-static-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 .navButton:focus-visible {
@@ -139,7 +139,7 @@
 }
 
 .dayCell:hover:not(.dayCellSelected) {
-  background-color: var(--container-color-static-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
   color: var(--text-color-static-brand-primary);
 }
 

@@ -28,7 +28,7 @@
 }
 
 .wrapper.checked:not(.disabled):hover .hitArea {
-  background-color: var(--container-color-static-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 /* ── Native input (visually hidden) ──────────────────────────────────────── */

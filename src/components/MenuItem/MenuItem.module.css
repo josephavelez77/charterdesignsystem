@@ -6,10 +6,10 @@
   align-items: center;
   gap: var(--container-gap-static-xs);
   width: 100%;
-  min-height: calc(var(--text-line-static-body2) + 2 * var(--container-padding-static-xs));
-  padding: var(--container-padding-static-xs) var(--container-padding-static-small);
+  min-height: calc(var(--text-line-static-body1) + 2 * var(--container-padding-static-small));
+  padding: var(--container-padding-static-small) var(--container-padding-static-primary);
   border: none;
-  border-radius: var(--border-radius-static-small);
+  border-radius: 0;
   background-color: transparent;
   cursor: pointer;
   outline: none;
@@ -57,9 +57,9 @@
 
 .label {
   font-family: var(--text-family-static-body);
-  font-size: var(--text-size-static-body2);
+  font-size: var(--text-size-static-body1);
   font-weight: var(--text-weight-static-regular);
-  line-height: var(--text-line-static-body2);
+  line-height: var(--text-line-static-body1);
   letter-spacing: var(--text-letter-static-primary);
   color: var(--text-color-themeable-primary);
   white-space: nowrap;

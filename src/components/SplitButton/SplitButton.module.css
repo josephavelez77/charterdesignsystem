@@ -64,6 +64,20 @@
   border-radius: 0 var(--border-radius-static-primary) var(--border-radius-static-primary) 0;
 }
 
+/* ── Outlined variants: collapse gap and use single divider line ───────────── */
+
+.splitButton:has(.secondary),
+.splitButton:has(.tertiary),
+.splitButton:has(.neutral.primary) {
+  gap: 0;
+}
+
+.chevron.secondary,
+.chevron.tertiary,
+.chevron.neutral.primary {
+  border-left: none;
+}
+
 /* ── Dropdown ─────────────────────────────────────────────────────────────── */
 
 .dropdown {
@@ -92,7 +106,7 @@
 }
 
 .brandPrimary.secondary:hover:not(:disabled) {
-  background-color: var(--container-color-static-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 .brandPrimary.tertiary {
@@ -101,7 +115,7 @@
 }
 
 .brandPrimary.tertiary:hover:not(:disabled) {
-  background-color: var(--container-color-static-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 /* ── Variant: brandSecondary ──────────────────────────────────────────────── */
@@ -109,7 +123,7 @@
 .brandSecondary.primary {
   background-color: var(--container-color-static-brand-secondary);
   border-color: var(--container-color-static-brand-secondary);
-  color: var(--text-color-static-primary-dark);
+  color: var(--text-color-static-primary-light);
 }
 
 .brandSecondary.primary:hover:not(:disabled)::after {
