@@ -6,8 +6,7 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 6006,
-      "autoPort": true,
-      "cwd": "/Users/josephvelez/Documents/Projects/basedesignsystem/.claude/worktrees/tender-aryabhata-2b716f"
+      "autoPort": false
     }
   ]
 }
