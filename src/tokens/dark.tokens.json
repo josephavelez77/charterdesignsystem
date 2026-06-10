@@ -1028,17 +1028,17 @@
         }
       },
       "hover": {
-        "container-color-themeable-hover-brand-primary": {
+        "container-color-static-hover-brand-primary": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0,
-              0.30980393290519714,
-              0.47058823704719543
+              0.886274516582489,
+              0.9647058844566345,
+              0.9843137264251709
             ],
             "alpha": 1,
-            "hex": "#004F78"
+            "hex": "#E2F6FB"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:24:637",
@@ -1047,24 +1047,24 @@
               "SHAPE_FILL"
             ],
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:e46435a0fc5bdeca05c76f061574b9c7d1dd3774/-1:-1",
-              "targetVariableName": "backgrounds/background-color/brand primary/bg-brand-primary-950",
+              "targetVariableId": "VariableID:5f7fb4ae540ab8ad4524c88f92108f578eb9cf66/-1:-1",
+              "targetVariableName": "backgrounds/background-color/brand primary/bg-brand-primary-50",
               "targetVariableSetId": "VariableCollectionId:f26721e8e3426294eaa7c8b57c4e1497256b33b4/-1:-1",
               "targetVariableSetName": "Base DS Primitive Tokens"
             }
           }
         },
-        "container-color-themeable-hover-brand-secondary": {
+        "container-color-static-hover-brand-secondary": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.27450981736183167,
-              0.21960784494876862,
-              0.25882354378700256
+              0.9607843160629272,
+              0.9058823585510254,
+              0.929411768913269
             ],
             "alpha": 1,
-            "hex": "#463842"
+            "hex": "#F5E7ED"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:178:25612",
@@ -1073,24 +1073,24 @@
               "SHAPE_FILL"
             ],
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:ea67c653cc620a0270758e56718072b2ec843e2d/-1:-1",
-              "targetVariableName": "backgrounds/background-color/bramd secondary/bg-brand-secondary-950",
+              "targetVariableId": "VariableID:f988684568aadd25ce403c85814389e02905afa3/-1:-1",
+              "targetVariableName": "backgrounds/background-color/bramd secondary/bg-brand-secondary-50",
               "targetVariableSetId": "VariableCollectionId:f26721e8e3426294eaa7c8b57c4e1497256b33b4/-1:-1",
               "targetVariableSetName": "Base DS Primitive Tokens"
             }
           }
         },
-        "container-color-themeable-hover-status-error": {
+        "container-color-static-hover-status-error": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
             "components": [
-              0.2753966748714447,
-              0.03159315511584282,
-              0.034497614949941635
+              0.996841311454773,
+              0.9495853781700134,
+              0.9495856165885925
             ],
             "alpha": 1,
-            "hex": "#460809"
+            "hex": "#FEF2F2"
           },
           "$extensions": {
             "com.figma.variableId": "VariableID:648:17791",
@@ -1099,8 +1099,8 @@
               "SHAPE_FILL"
             ],
             "com.figma.aliasData": {
-              "targetVariableId": "VariableID:bc5b815f963566675c177e271c720daff3d89a09/-1:-1",
-              "targetVariableName": "borders/border-color/red/border-red-950",
+              "targetVariableId": "VariableID:0a48c08817bce0acfa52a88ee4a04e6b63c229a0/-1:-1",
+              "targetVariableName": "borders/border-color/red/border-red-50",
               "targetVariableSetId": "VariableCollectionId:f26721e8e3426294eaa7c8b57c4e1497256b33b4/-1:-1",
               "targetVariableSetName": "Base DS Primitive Tokens"
             }

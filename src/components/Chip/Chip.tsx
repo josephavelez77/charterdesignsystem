@@ -33,7 +33,7 @@ export const Chip = React.forwardRef<HTMLButtonElement, ChipProps>(
     const iconColor = disabled
       ? 'var(--icon-color-themeable-disabled)'
       : currentSelected
-        ? 'var(--icon-color-static-light)'
+        ? 'var(--icon-color-static-primary-light)'
         : 'var(--icon-color-themeable-primary)'
 
     return (

@@ -137,11 +137,11 @@
 }
 
 .row:hover {
-  background-color: var(--container-color-themeable-secondary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 .rowSelected {
-  background-color: var(--container-color-themeable-hover-brand-primary);
+  background-color: var(--container-color-themeable-hover);
 }
 
 /* ── Cells ──────────────────────────────────────────────────────────────────── */

@@ -56,9 +56,9 @@
   --container-color-themeable-tertiary-inverse: #FFFFFF;
   --container-color-static-brand-primary: #007DAF;
   --container-color-static-brand-secondary: #B15873;
-  --container-color-themeable-hover-brand-primary: #004F78;
-  --container-color-themeable-hover-brand-secondary: #463842;
-  --container-color-themeable-hover-status-error: #460809;
+  --container-color-static-hover-brand-primary: #E2F6FB;
+  --container-color-static-hover-brand-secondary: #F5E7ED;
+  --container-color-static-hover-status-error: #FEF2F2;
   --container-color-themeable-hover: rgba(255, 255, 255, 0.1);
   --container-color-static-hover-darken: rgba(0, 0, 0, 0.1);
   --container-color-static-hover-lighten: rgba(255, 255, 255, 0.1);
@@ -219,9 +219,6 @@
   --container-color-themeable-primary-inverse: #262626;
   --container-color-themeable-secondary-inverse: #171717;
   --container-color-themeable-tertiary-inverse: #000000;
-  --container-color-themeable-hover-brand-primary: #E2F6FB;
-  --container-color-themeable-hover-brand-secondary: #F5E7ED;
-  --container-color-themeable-hover-status-error: #FEF2F2;
   --container-color-themeable-hover: rgba(0, 0, 0, 0.1);
   --container-color-themeable-state-error: #C10007;
   --container-color-themeable-state-warning: #CA3500;

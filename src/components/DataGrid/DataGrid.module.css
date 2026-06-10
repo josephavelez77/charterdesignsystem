@@ -141,7 +141,7 @@
 }
 
 .rowSelected {
-  background-color: var(--container-color-themeable-hover-brand-primary);
+  background-color: var(--container-color-static-hover-brand-primary);
 }
 
 /* ── Cells ────────────────────────────────────────────────────────────────── */

@@ -133,7 +133,7 @@ export const NumberField = React.forwardRef<HTMLInputElement, NumberFieldProps>(
             <Icon
               icon={faTriangleExclamation}
               className={styles.errorIcon}
-              color="var(--icon-color-static-state-error)"
+              color="var(--icon-color-themeable-state-error)"
             />
           ) : (
             <div className={styles.stepper}>

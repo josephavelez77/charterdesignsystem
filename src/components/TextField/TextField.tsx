@@ -57,7 +57,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
 
     const trailingSlot = (() => {
       if (error) {
-        return <Icon icon={faTriangleExclamation} color="var(--icon-color-static-state-error)" />
+        return <Icon icon={faTriangleExclamation} color="var(--icon-color-themeable-state-error)" />
       }
       if (isFocused) {
         return (

@@ -1028,7 +1028,7 @@
         }
       },
       "hover": {
-        "container-color-themeable-hover-brand-primary": {
+        "container-color-static-hover-brand-primary": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
@@ -1054,7 +1054,7 @@
             }
           }
         },
-        "container-color-themeable-hover-brand-secondary": {
+        "container-color-static-hover-brand-secondary": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",
@@ -1080,7 +1080,7 @@
             }
           }
         },
-        "container-color-themeable-hover-status-error": {
+        "container-color-static-hover-status-error": {
           "$type": "color",
           "$value": {
             "colorSpace": "srgb",

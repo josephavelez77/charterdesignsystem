@@ -57,7 +57,7 @@
 }
 
 .brandPrimary.secondary:hover:not(:disabled) {
-  background-color: var(--container-color-themeable-hover-brand-primary);
+  background-color: var(--container-color-static-hover-brand-primary);
 }
 
 .brandPrimary.tertiary {
@@ -66,7 +66,7 @@
 }
 
 .brandPrimary.tertiary:hover:not(:disabled) {
-  background-color: var(--container-color-themeable-hover-brand-primary);
+  background-color: var(--container-color-static-hover-brand-primary);
 }
 
 /* ── Variant: brandSecondary ──────────────────────────────────────────────── */
@@ -150,7 +150,7 @@
 }
 
 .statusError.secondary:hover:not(:disabled) {
-  background-color: var(--container-color-themeable-hover-status-error);
+  background-color: var(--container-color-static-hover-status-error);
 }
 
 .statusError.tertiary {
@@ -159,7 +159,7 @@
 }
 
 .statusError.tertiary:hover:not(:disabled) {
-  background-color: var(--container-color-themeable-hover-status-error);
+  background-color: var(--container-color-static-hover-status-error);
 }
 
 /* ── Disabled — must come after all variant rules to win on equal specificity ── */

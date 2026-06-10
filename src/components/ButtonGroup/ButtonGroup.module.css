@@ -77,7 +77,7 @@
 }
 
 .brandPrimary.secondary:hover:not(:disabled) {
-  background-color: var(--container-color-themeable-hover-brand-primary);
+  background-color: var(--container-color-static-hover-brand-primary);
 }
 
 .brandPrimary.tertiary {
@@ -86,7 +86,7 @@
 }
 
 .brandPrimary.tertiary:hover:not(:disabled) {
-  background-color: var(--container-color-themeable-hover-brand-primary);
+  background-color: var(--container-color-static-hover-brand-primary);
 }
 
 /* ── Variant: brandSecondary ──────────────────────────────────────────────── */

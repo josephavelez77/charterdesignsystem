@@ -72,7 +72,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
             <Icon
               icon={faTriangleExclamation}
               className={styles.errorIcon}
-              color="var(--icon-color-static-state-error)"
+              color="var(--icon-color-themeable-state-error)"
             />
           )}
         </div>

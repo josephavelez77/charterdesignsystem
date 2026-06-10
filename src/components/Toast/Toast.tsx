@@ -76,7 +76,7 @@ export const Toast = ({
   return (
     <div className={toastClass} role="status" aria-live="polite">
       {icon && (
-        <Icon icon={icon} size="medium" color="var(--text-color-static-light)" />
+        <Icon icon={icon} size="medium" color="var(--text-color-static-primary-light)" />
       )}
 
       <span className={messageClass}>{children}</span>
@@ -85,7 +85,7 @@ export const Toast = ({
         <Button
           variant="neutral"
           emphasis="tertiary"
-          style={isColored ? { color: 'var(--text-color-static-light)' } : undefined}
+          style={isColored ? { color: 'var(--text-color-static-primary-light)' } : undefined}
           onClick={onAction}
         >
           {action}

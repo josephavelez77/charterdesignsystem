@@ -23,9 +23,9 @@ export const MenuItem = React.forwardRef<HTMLButtonElement, MenuItemProps>(
     const iconColor = disabled
       ? 'var(--icon-color-themeable-disabled)'
       : selected
-        ? 'var(--icon-color-static-light)'
+        ? 'var(--icon-color-static-primary-light)'
         : variant === 'danger'
-          ? 'var(--icon-color-static-state-error)'
+          ? 'var(--icon-color-themeable-state-error)'
           : 'var(--icon-color-themeable-primary)'
 
     return (

@@ -25,7 +25,7 @@
 
 .initials,
 .icon {
-  background-color: var(--container-color-static-brand-primary);
+  background-color: var(--container-color-static-brand-secondary);
   color: var(--icon-color-static-primary-light);
 }
 

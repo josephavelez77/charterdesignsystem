@@ -14,7 +14,7 @@
 }
 
 .value {
-  font-family: var(--text-family-static-display);
+  font-family: var(--text-family-static-headline);
   font-size: var(--text-size-static-display1);
   font-weight: var(--text-weight-static-regular);
   line-height: var(--text-line-static-display1);
