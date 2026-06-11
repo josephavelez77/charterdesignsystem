@@ -79,7 +79,7 @@ export const Stepper = ({
             {cancelLabel}
           </Button>
           {!isFirst && (
-            <Button variant="brandSecondary" emphasis="secondary" onClick={onBack}>
+            <Button variant="neutral" emphasis="secondary" onClick={onBack}>
               {backLabel}
             </Button>
           )}

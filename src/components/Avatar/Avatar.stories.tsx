@@ -13,10 +13,12 @@ const meta: Meta<typeof Avatar> = {
     type: 'initials',
     size: 'default',
     initials: 'AB',
+    color: 'brandSecondary',
   },
   argTypes: {
     type: { control: 'select', options: ['initials', 'icon', 'image'] },
     size: { control: 'select', options: ['default', 'small'] },
+    color: { control: 'select', options: ['brandPrimary', 'brandSecondary'] },
   },
 }
 
@@ -33,6 +35,10 @@ export const InitialsSmall: Story = {
   args: { type: 'initials', size: 'small', initials: 'AB' },
 }
 
+export const InitialsBrandPrimary: Story = {
+  args: { type: 'initials', size: 'default', initials: 'AB', color: 'brandPrimary' },
+}
+
 // ── Icon ──────────────────────────────────────────────────────────────────────
 
 export const IconDefault: Story = {
@@ -41,6 +47,10 @@ export const IconDefault: Story = {
 
 export const IconSmall: Story = {
   args: { type: 'icon', size: 'small', icon: faUser },
+}
+
+export const IconBrandPrimary: Story = {
+  args: { type: 'icon', size: 'default', icon: faUser, color: 'brandPrimary' },
 }
 
 // ── Image ─────────────────────────────────────────────────────────────────────
@@ -59,17 +69,19 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
       <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-        <Avatar type="initials" size="default" initials="JV" />
-        <Avatar type="icon" size="default" icon={faUser} />
-        <Avatar type="icon" size="default" icon={faGear} />
-        <Avatar type="icon" size="default" icon={faShield} />
+        <Avatar type="initials" size="default" initials="JV" color="brandSecondary" />
+        <Avatar type="initials" size="default" initials="JV" color="brandPrimary" />
+        <Avatar type="icon" size="default" icon={faUser} color="brandSecondary" />
+        <Avatar type="icon" size="default" icon={faGear} color="brandPrimary" />
+        <Avatar type="icon" size="default" icon={faShield} color="brandSecondary" />
         <Avatar type="image" size="default" src={SAMPLE_IMAGE} alt="User" />
       </div>
       <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-        <Avatar type="initials" size="small" initials="JV" />
-        <Avatar type="icon" size="small" icon={faUser} />
-        <Avatar type="icon" size="small" icon={faGear} />
-        <Avatar type="icon" size="small" icon={faShield} />
+        <Avatar type="initials" size="small" initials="JV" color="brandSecondary" />
+        <Avatar type="initials" size="small" initials="JV" color="brandPrimary" />
+        <Avatar type="icon" size="small" icon={faUser} color="brandSecondary" />
+        <Avatar type="icon" size="small" icon={faGear} color="brandPrimary" />
+        <Avatar type="icon" size="small" icon={faShield} color="brandSecondary" />
         <Avatar type="image" size="small" src={SAMPLE_IMAGE} alt="User" />
       </div>
     </div>

@@ -3637,7 +3637,7 @@
       },
       "text-line-static-body2": {
         "$type": "number",
-        "$value": 12.319999694824219,
+        "$value": 20,
         "$extensions": {
           "com.figma.variableId": "VariableID:5:1427",
           "com.figma.scopes": [

@@ -1,6 +1,6 @@
 import React, { useId } from 'react'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
-import { faClock } from '@fortawesome/free-regular-svg-icons'
+import { faClock } from '@fortawesome/free-solid-svg-icons'
 import { Icon } from '../Icon/Icon'
 import type { TimeValue } from '../TimePicker/TimePicker'
 import styles from './TimeField.module.css'

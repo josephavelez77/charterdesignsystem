@@ -6,12 +6,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   gap: var(--container-gap-static-xs);
   font-family: var(--text-family-static-body);
   font-size: var(--text-size-static-body2);
   font-weight: var(--text-weight-static-medium);
   line-height: var(--text-line-static-body2);
   letter-spacing: var(--text-letter-static-primary);
+  min-height: calc(var(--text-line-static-body2) + 2 * var(--container-padding-static-small) + 2 * var(--border-width-static-primary));
   padding: var(--container-padding-static-small);
   border: var(--border-width-static-primary) solid transparent;
   border-radius: var(--border-radius-static-primary);

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 import { TimeField } from './TimeField'
+import { TimePicker } from '../TimePicker/TimePicker'
+import type { TimeValue } from '../TimePicker/TimePicker'
 
 const meta: Meta<typeof TimeField> = {
   title: 'Inputs/TimeField',
@@ -39,4 +41,33 @@ export const Required: Story = {
 
 export const Disabled: Story = {
   args: { label: 'Time', value: { hours: 9, minutes: 0 }, disabled: true },
+}
+
+// ── Interactive ───────────────────────────────────────────────────────────────
+
+export const Interactive: Story = {
+  render: () => {
+    const [value, setValue] = useState<TimeValue | null>(null)
+    const [open, setOpen] = useState(false)
+
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
+        <TimeField
+          label="Appointment time"
+          value={value}
+          onOpen={() => setOpen(true)}
+        />
+        {open && (
+          <TimePicker
+            value={value}
+            onConfirm={(t) => { setValue(t); setOpen(false) }}
+            onCancel={() => setOpen(false)}
+          />
+        )}
+        <p style={{ fontFamily: 'monospace', fontSize: 12, margin: 0, color: 'var(--text-color-themeable-tertiary)' }}>
+          {value ? `Selected: ${value.hours}:${String(value.minutes).padStart(2, '0')}` : '(none)'}
+        </p>
+      </div>
+    )
+  },
 }

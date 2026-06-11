@@ -38,56 +38,64 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 37px;
-  padding: 0 4px 0 var(--container-padding-static-small);
+  padding: 0 4px 0 0;
   border-bottom: solid var(--border-width-static-primary) var(--border-color-themeable-primary);
 }
 
-.monthSelector {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: var(--text-color-static-brand-primary);
+.monthChevron {
+  transition: transform 200ms ease;
 }
 
-.monthLabel {
-  font-family: var(--text-family-static-body);
-  font-size: var(--text-size-static-body2);
-  font-weight: var(--text-weight-static-medium);
-  line-height: var(--text-line-static-body2);
+.monthChevronOpen {
+  transform: rotate(180deg);
 }
 
 .navigation {
   display: flex;
   align-items: center;
-  gap: 0;
 }
 
-.navButton {
-  display: inline-flex;
+/* ── Year picker ──────────────────────────────────────────────────────────── */
+
+.yearPicker {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--container-gap-static-xs);
+  padding: var(--container-padding-static-small);
+  max-height: 192px;
+  overflow-y: auto;
+}
+
+.yearCell {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  padding: var(--container-padding-static-xs) 0;
   background: none;
-  border: none;
+  border: var(--border-width-static-primary) solid transparent;
   border-radius: var(--border-radius-static-primary);
-  color: var(--icon-color-static-brand-primary);
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-regular);
+  line-height: var(--text-line-static-body2);
+  color: var(--text-color-themeable-primary);
   cursor: pointer;
-  transition: background-color 120ms ease;
+  transition: background-color 120ms ease, color 120ms ease;
 }
 
-.navButton:hover {
+.yearCell:hover:not(.yearCellSelected) {
   background-color: var(--container-color-themeable-hover);
+  color: var(--text-color-static-brand-primary);
 }
 
-.navButton:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
+.yearCellCurrent {
+  color: var(--text-color-static-brand-primary);
+  font-weight: var(--text-weight-static-medium);
+}
+
+.yearCellSelected {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-primary-light);
 }
 
 /* ── Calendar grid ────────────────────────────────────────────────────────── */

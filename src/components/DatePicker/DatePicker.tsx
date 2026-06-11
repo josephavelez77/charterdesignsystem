@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { faChevronLeft, faChevronRight, faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Button } from '../Button/Button'
+import { IconButton } from '../IconButton/IconButton'
+import { Icon } from '../Icon/Icon'
 import styles from './DatePicker.module.css'
 
 const DAYS_OF_WEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
@@ -10,6 +11,9 @@ const MONTHS = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ]
+
+const THIS_YEAR = new Date().getFullYear()
+const YEARS = Array.from({ length: 31 }, (_, i) => THIS_YEAR - 20 + i) // −20 → +10
 
 interface CalendarCell {
   date: Date
@@ -68,6 +72,7 @@ export const DatePicker = ({
   const [viewYear, setViewYear] = useState(initial.getFullYear())
   const [viewMonth, setViewMonth] = useState(initial.getMonth())
   const [pendingDate, setPendingDate] = useState<Date>(initial)
+  const [yearPickerOpen, setYearPickerOpen] = useState(false)
 
   const cells = buildCalendarGrid(viewYear, viewMonth)
 
@@ -83,11 +88,15 @@ export const DatePicker = ({
 
   const handleDayClick = (cell: CalendarCell) => {
     setPendingDate(cell.date)
-    // If clicking outside-month day, jump to that month
     if (!cell.isCurrentMonth) {
       setViewYear(cell.date.getFullYear())
       setViewMonth(cell.date.getMonth())
     }
+  }
+
+  const handleYearSelect = (year: number) => {
+    setViewYear(year)
+    setYearPickerOpen(false)
   }
 
   const rows = Array.from({ length: 6 }, (_, i) => cells.slice(i * 7, i * 7 + 7))
@@ -104,64 +113,91 @@ export const DatePicker = ({
 
       {/* Calendar controls */}
       <div className={styles.calendarControls}>
-        <button type="button" className={styles.monthSelector}>
-          <span className={styles.monthLabel}>{MONTHS[viewMonth]}, {viewYear}</span>
-          <FontAwesomeIcon icon={faChevronDown} style={{ width: 8, height: 8 }} aria-hidden />
-        </button>
-        <div className={styles.navigation}>
-          <button
-            type="button"
-            className={styles.navButton}
-            onClick={prevMonth}
-            aria-label="Previous month"
-          >
-            <FontAwesomeIcon icon={faChevronLeft} style={{ width: 8, height: 8 }} aria-hidden />
-          </button>
-          <button
-            type="button"
-            className={styles.navButton}
-            onClick={nextMonth}
-            aria-label="Next month"
-          >
-            <FontAwesomeIcon icon={faChevronRight} style={{ width: 8, height: 8 }} aria-hidden />
-          </button>
-        </div>
+        <Button
+          variant="brandPrimary"
+          emphasis="tertiary"
+          trailingIcon={
+            <Icon
+              icon={faChevronDown}
+              size="xs"
+              className={[styles.monthChevron, yearPickerOpen ? styles.monthChevronOpen : ''].filter(Boolean).join(' ')}
+            />
+          }
+          onClick={() => setYearPickerOpen(v => !v)}
+        >
+          {MONTHS[viewMonth]}, {viewYear}
+        </Button>
+        {!yearPickerOpen && (
+          <div className={styles.navigation}>
+            <IconButton
+              icon={faChevronLeft}
+              aria-label="Previous month"
+              variant="brandPrimary"
+              iconSize="xs"
+              onClick={prevMonth}
+            />
+            <IconButton
+              icon={faChevronRight}
+              aria-label="Next month"
+              variant="brandPrimary"
+              iconSize="xs"
+              onClick={nextMonth}
+            />
+          </div>
+        )}
       </div>
 
-      {/* Calendar grid */}
-      <div className={styles.calendar}>
-        {/* Day of week header */}
-        <div className={styles.dayOfWeekRow}>
-          {DAYS_OF_WEEK.map((d) => (
-            <span key={d} className={styles.dayOfWeek}>{d}</span>
+      {/* Year picker */}
+      {yearPickerOpen ? (
+        <div className={styles.yearPicker}>
+          {YEARS.map(year => (
+            <button
+              key={year}
+              type="button"
+              className={[
+                styles.yearCell,
+                year === viewYear ? styles.yearCellSelected : '',
+                year === THIS_YEAR ? styles.yearCellCurrent : '',
+              ].filter(Boolean).join(' ')}
+              onClick={() => handleYearSelect(year)}
+            >
+              {year}
+            </button>
           ))}
         </div>
-
-        {/* Week rows */}
-        {rows.map((week, rowIdx) => (
-          <div key={rowIdx} className={styles.weekRow}>
-            {week.map((cell, colIdx) => {
-              const isSelected = isSameDay(cell.date, pendingDate)
-              return (
-                <button
-                  key={colIdx}
-                  type="button"
-                  className={[
-                    styles.dayCell,
-                    !cell.isCurrentMonth ? styles.dayCellOutside : '',
-                    isSelected ? styles.dayCellSelected : '',
-                  ].filter(Boolean).join(' ')}
-                  onClick={() => handleDayClick(cell)}
-                  aria-label={cell.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                  aria-pressed={isSelected}
-                >
-                  {cell.date.getDate()}
-                </button>
-              )
-            })}
+      ) : (
+        /* Calendar grid */
+        <div className={styles.calendar}>
+          <div className={styles.dayOfWeekRow}>
+            {DAYS_OF_WEEK.map((d) => (
+              <span key={d} className={styles.dayOfWeek}>{d}</span>
+            ))}
           </div>
-        ))}
-      </div>
+          {rows.map((week, rowIdx) => (
+            <div key={rowIdx} className={styles.weekRow}>
+              {week.map((cell, colIdx) => {
+                const isSelected = isSameDay(cell.date, pendingDate)
+                return (
+                  <button
+                    key={colIdx}
+                    type="button"
+                    className={[
+                      styles.dayCell,
+                      !cell.isCurrentMonth ? styles.dayCellOutside : '',
+                      isSelected ? styles.dayCellSelected : '',
+                    ].filter(Boolean).join(' ')}
+                    onClick={() => handleDayClick(cell)}
+                    aria-label={cell.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                    aria-pressed={isSelected}
+                  >
+                    {cell.date.getDate()}
+                  </button>
+                )
+              })}
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Actions */}
       <div className={styles.actions}>

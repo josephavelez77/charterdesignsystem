@@ -61,7 +61,7 @@
 
 .badge_complete {
   background-color: var(--container-color-themeable-state-success);
-  color: var(--text-color-static-primary-light);
+  color: var(--text-color-themeable-primary-inverse);
 }
 
 .badgeNumber {

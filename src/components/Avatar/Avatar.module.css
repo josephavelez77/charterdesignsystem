@@ -25,8 +25,17 @@
 
 .initials,
 .icon {
-  background-color: var(--container-color-static-brand-secondary);
   color: var(--icon-color-static-primary-light);
+}
+
+/* ── Colors ───────────────────────────────────────────────────────────────── */
+
+.brandPrimary {
+  background-color: var(--container-color-static-brand-primary);
+}
+
+.brandSecondary {
+  background-color: var(--container-color-static-brand-secondary);
 }
 
 /* ── Initials text ────────────────────────────────────────────────────────── */

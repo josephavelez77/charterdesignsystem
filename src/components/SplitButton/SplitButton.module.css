@@ -4,7 +4,7 @@
   position: relative;
   display: inline-flex;
   gap: 1px;
-  align-items: center;
+  align-items: stretch;
 }
 
 /* ── Base button ──────────────────────────────────────────────────────────── */

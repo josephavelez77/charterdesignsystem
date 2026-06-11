@@ -6,10 +6,13 @@ import styles from './Avatar.module.css'
 
 export type AvatarType = 'initials' | 'icon' | 'image'
 export type AvatarSize = 'default' | 'small'
+export type AvatarColor = 'brandPrimary' | 'brandSecondary'
 
 export interface AvatarProps {
   type?: AvatarType
   size?: AvatarSize
+  /** Background color for initials and icon types */
+  color?: AvatarColor
   /** For type="initials" — 1 or 2 characters */
   initials?: string
   /** For type="icon" — defaults to faUser */
@@ -23,13 +26,20 @@ export interface AvatarProps {
 export const Avatar = ({
   type = 'initials',
   size = 'default',
+  color = 'brandSecondary',
   initials = 'AB',
   icon = faUser,
   src,
   alt = '',
   className,
 }: AvatarProps) => {
-  const classNames = [styles.avatar, styles[type], styles[size], className]
+  const classNames = [
+    styles.avatar,
+    styles[type],
+    styles[size],
+    type !== 'image' ? styles[color] : '',
+    className,
+  ]
     .filter(Boolean)
     .join(' ')
 
