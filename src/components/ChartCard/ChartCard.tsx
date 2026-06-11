@@ -2,14 +2,20 @@ import React from 'react'
 import styles from './ChartCard.module.css'
 
 export interface BarChartDataPoint {
+  /** Category label for this bar (used for tooltip / accessibility purposes). */
   label: string
+  /** Numeric height of this bar — relative to the tallest bar in the dataset. */
   value: number
 }
 
 export interface ChartCardProps {
+  /** Primary metric string displayed prominently above the chart (e.g. `"1,234"`). */
   value: string
+  /** Short description of the metric shown below `value`. */
   description: string
+  /** Dataset rendered as a mini bar chart on the right side of the card. */
   data: BarChartDataPoint[]
+  /** Additional CSS class applied to the root element for layout overrides. */
   className?: string
 }
 

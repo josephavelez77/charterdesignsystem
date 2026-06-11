@@ -4,9 +4,9 @@ import type { SwitchProps } from '../Switch'
 import styles from './SwitchItem.module.css'
 
 export interface SwitchItemProps extends SwitchProps {
-  /** Label text displayed beside the switch */
+  /** Text label displayed to the right of the switch. */
   label?: string
-  /** Shows a red asterisk after the label */
+  /** When true, shows a red asterisk after the label. */
   required?: boolean
 }
 

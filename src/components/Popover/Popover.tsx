@@ -6,13 +6,13 @@ import styles from './Popover.module.css'
 export type PopoverPlacement = 'top' | 'bottom' | 'left' | 'right'
 
 export interface PopoverProps {
-  /** Popover header label */
+  /** Text displayed in the popover's header bar; also used as `aria-label` for the dialog. */
   label: string
-  /** Popover body content */
+  /** Content rendered in the popover body. */
   content: React.ReactNode
-  /** Element that triggers the popover on click */
+  /** The trigger element — the popover opens/closes when this element is clicked. */
   children: React.ReactElement
-  /** Preferred placement relative to the trigger */
+  /** Preferred side the popover appears relative to the trigger. Defaults to `bottom`. */
   placement?: PopoverPlacement
 }
 

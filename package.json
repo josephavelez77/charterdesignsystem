@@ -60,7 +60,8 @@
     "dev": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "typecheck": "tsc --noEmit",
-    "tokens": "node scripts/generate-tokens.mjs"
+    "tokens": "node scripts/generate-tokens.mjs",
+    "llms": "node scripts/generate-llms.mjs"
   },
   "peerDependencies": {
     "@fortawesome/fontawesome-svg-core": ">=7",

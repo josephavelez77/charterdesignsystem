@@ -5,10 +5,15 @@ import { Icon } from '../Icon/Icon'
 import styles from './AttributeChip.module.css'
 
 export interface AttributeChipProps {
+  /** Text displayed inside the chip. */
   label: string
+  /** Optional leading icon — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. */
   icon?: IconDefinition
+  /** When true, the dismiss button is disabled and the chip appears muted. */
   disabled?: boolean
+  /** Called when the user clicks the ✕ dismiss button inside the chip. */
   onDismiss?: () => void
+  /** Additional CSS class applied to the root element for layout overrides. */
   className?: string
 }
 

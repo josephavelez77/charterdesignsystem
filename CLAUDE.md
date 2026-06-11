@@ -9,6 +9,7 @@ npm run dev          # start Storybook on :6006
 npm run build        # build the package to /dist
 npm run tokens       # regenerate CSS tokens from JSON sources
 npm run typecheck    # tsc --noEmit
+npm run llms         # regenerate llms-full.txt from JSDoc in component source
 ```
 
 ## Releasing

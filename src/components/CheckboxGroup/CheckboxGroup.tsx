@@ -4,9 +4,13 @@ import styles from './CheckboxGroup.module.css'
 export type CheckboxGroupOrientation = 'vertical' | 'horizontal'
 
 export interface CheckboxGroupProps {
+  /** Content rendered inside the component — should be `Checkbox` or `CheckboxItem` elements. */
   children: React.ReactNode
+  /** Layout direction of the checkboxes: `vertical` (stacked) or `horizontal` (inline). */
   orientation?: CheckboxGroupOrientation
+  /** Optional group legend text rendered above the checkboxes inside a `<fieldset>`. */
   label?: string
+  /** Additional CSS class applied to the root element for layout overrides. */
   className?: string
 }
 

@@ -7,17 +7,22 @@ import type { AvatarProps } from '../Avatar/Avatar'
 import styles from './ListItem.module.css'
 
 type LeadingSlot =
-  | { leadingIcon: IconDefinition; leadingAvatar?: never }
-  | { leadingAvatar: AvatarProps; leadingIcon?: never }
+  /** Mutually exclusive leading slot: provide either an icon or an avatar, not both. */
+  | { /** Leading icon — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. */ leadingIcon: IconDefinition; leadingAvatar?: never }
+  | { /** Leading avatar displayed before the text content. */ leadingAvatar: AvatarProps; leadingIcon?: never }
   | { leadingIcon?: never; leadingAvatar?: never }
 
 type InteractiveProps =
-  | { interactive: true; onClick?: React.MouseEventHandler<HTMLButtonElement>; disabled?: boolean }
+  /** When `interactive` is true the item renders as a `<button>` and shows a trailing chevron. */
+  | { /** When true, renders the item as a clickable button with a trailing chevron. */ interactive: true; /** Called when the interactive item is clicked. */ onClick?: React.MouseEventHandler<HTMLButtonElement>; /** When true, the item is non-interactive and appears muted. */ disabled?: boolean }
   | { interactive?: false; onClick?: never; disabled?: never }
 
 export type ListItemProps = {
+  /** Primary text displayed in the list item. */
   title: string
+  /** Optional secondary text or node displayed below the title. */
   subtitle?: React.ReactNode
+  /** Additional CSS class applied to the root element for layout overrides. */
   className?: string
 } & LeadingSlot &
   InteractiveProps

@@ -1,0 +1,1751 @@
+# @josephavelez77/base-design-system — Full Component Reference
+
+> Version: 0.3.4
+> Package: `npm install @josephavelez77/base-design-system`
+> Repository: https://github.com/josephavelez77/basedesignsystem
+
+## Key facts for AI agents
+
+- **Dark mode is the default.** Light mode is opt-in via `data-theme="light"` on `<html>`. Components need no theme logic.
+- **All icons come from Font Awesome.** Import `IconDefinition` objects from `@fortawesome/free-solid-svg-icons`. Never use emoji or plain strings.
+- **Fonts are NOT bundled.** Consuming apps must load DM Sans, DM Serif Display, and JetBrains Mono from Google Fonts. See the README for the `<link>` tag.
+- **CSS Modules, no inline styles.** Do not pass `style` props with hardcoded colors or spacing — use `className` for layout overrides only.
+- **All imports are from the top-level package** — never from sub-paths like `/dist/components/Button`.
+
+```tsx
+import {
+  Button, IconButton, SplitButton, ButtonGroup,
+  TextField, SelectField, Checkbox, Switch,
+  Dialog, Drawer, Toast, Alert,
+  // … etc
+} from '@josephavelez77/base-design-system'
+```
+
+---
+
+# Primitives
+
+## Icon
+
+Renders a single Font Awesome icon at one of five sizes. Always pass `aria-label` when the icon conveys meaning without surrounding text.
+
+**Import:** `import { Icon } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `IconDefinition` | — | Font Awesome icon definition — e.g. `faHouse` from `@fortawesome/free-solid-svg-icons`. |
+| `size` | `IconSize` | 'medium' | Visual size: `xs` (10 px) → `xl` (24 px). Defaults to `medium`. |
+| `color` | `string` | — | Overrides the CSS `color` of the icon; accepts any valid CSS color value or token variable. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `aria-label` | `string` | — | Provide when the icon conveys meaning on its own (no surrounding text) — sets `role="img"` and removes `aria-hidden`. |
+
+### Usage
+
+```tsx
+import { faHouse } from '@fortawesome/free-solid-svg-icons'
+
+<Icon icon={faHouse} size="medium" />
+<Icon icon={faHouse} size="medium" aria-label="Home" />
+```
+
+---
+## Button
+
+Standard clickable button. Supports four color variants, three fill emphases, leading/trailing icons, a loading spinner state, and full-width layout.
+
+**Import:** `import { Button } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `ButtonVariant` | 'brandPrimary' | Color scheme: `brandPrimary` (blue), `brandSecondary` (amber), `neutral` (gray), or `statusError` (red). |
+| `emphasis` | `ButtonEmphasis` | 'primary' | Fill style: `primary` (filled), `secondary` (outlined), `tertiary` (ghost/text-only). |
+| `leadingIcon` | `React.ReactNode` | — | Node rendered to the left of the button label — typically an `<Icon>` element. |
+| `trailingIcon` | `React.ReactNode` | — | Node rendered to the right of the button label — typically an `<Icon>` element. |
+| `fullWidth` | `boolean` | false | When true, the button stretches to fill its container's full width. |
+| `loading` | `boolean` | false | When true, replaces button content with a spinner and keeps the button width stable; also disables click. |
+| `children` | `React.ReactNode` | — | Content rendered inside the component. |
+
+### Usage
+
+```tsx
+<Button variant="brandPrimary" emphasis="primary" onClick={save}>
+  Save Changes
+</Button>
+
+<Button variant="neutral" emphasis="secondary" loading>
+  Saving…
+</Button>
+
+<Button variant="statusError" emphasis="tertiary" leadingIcon={<Icon icon={faTrash} size="small" />}>
+  Delete
+</Button>
+```
+
+---
+## IconButton
+
+Square icon-only button. `aria-label` is required — there is no visible text.
+
+**Import:** `import { IconButton } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `IconDefinition` | — | The icon to render — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `variant` | `IconButtonVariant` | 'neutral' | Color scheme: `brandPrimary` (blue), `brandSecondary` (amber), `neutral` (gray), or `ghost` (transparent). |
+| `iconSize` | `IconSize` | 'medium' | Size of the rendered icon. Defaults to `medium`. |
+| `aria-label` | `string` | — | Required for accessibility — describes the button's action since there is no visible text label. |
+
+### Usage
+
+```tsx
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
+
+<IconButton icon={faXmark} aria-label="Close" variant="neutral" />
+<IconButton icon={faTrash} aria-label="Delete item" variant="brandPrimary" iconSize="small" />
+```
+
+---
+## SplitButton
+
+Two-part button: a primary action on the left and a chevron that opens a dropdown of secondary actions. Shares the same variant/emphasis API as Button.
+
+**Import:** `import { SplitButton } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Text label for this dropdown menu item. |
+| `onClick` | `() => void` | — | Called when the user selects this item from the dropdown. |
+| `disabled` | `boolean` | false | When true, this menu item is non-interactive. |
+| `label` | `string` | — | Text label for the primary (left) button. |
+| `onClick` | `() => void` | — | Called when the user clicks the primary (left) button. |
+| `items` | `SplitButtonItem[]` | — | Additional actions rendered in the chevron dropdown menu. |
+| `variant` | `ButtonVariant` | 'brandPrimary' | Color scheme: `brandPrimary` (blue), `brandSecondary` (amber), `neutral` (gray), or `statusError` (red). |
+| `emphasis` | `ButtonEmphasis` | 'primary' | Fill style: `primary` (filled), `secondary` (outlined), `tertiary` (ghost). |
+| `disabled` | `boolean` | false | When true, both the primary button and the chevron are disabled. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<SplitButton
+  label="Export"
+  variant="brandPrimary"
+  emphasis="primary"
+  onClick={handleExport}
+  items={[
+    { label: 'Export as CSV', onClick: exportCsv },
+    { label: 'Export as PDF', onClick: exportPdf },
+  ]}
+/>
+```
+
+---
+## ButtonGroup
+
+Horizontal group of Button elements that share a unified border radius and collapse gaps on outlined variants to show a single divider line.
+
+**Import:** `import { ButtonGroup } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible text label for this button. |
+| `onClick` | `() => void` | — | Called when the user clicks this button. |
+| `disabled` | `boolean` | — | When true, this button is non-interactive and appears muted. |
+| `leadingIcon` | `IconDefinition` | — | Optional icon displayed to the left of the label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `trailingIcon` | `IconDefinition` | — | Optional icon displayed to the right of the label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `items` | `ButtonGroupItem[]` | — | Array of button definitions rendered as a connected segmented control. |
+| `variant` | `ButtonVariant` | 'brandPrimary' | Color scheme applied to every button: `brandPrimary` (blue), `brandSecondary` (amber), `neutral` (gray), or `statusError` (red). |
+| `emphasis` | `ButtonEmphasis` | 'primary' | Fill style applied to every button: `primary` (filled), `secondary` (outlined), `tertiary` (ghost). |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<ButtonGroup variant="neutral" emphasis="secondary">
+  <Button>Day</Button>
+  <Button>Week</Button>
+  <Button>Month</Button>
+</ButtonGroup>
+```
+
+---
+# Display
+
+## Avatar
+
+Circular avatar in three types: initials (2-char text), icon, or image. Background color is controlled via the `color` prop for initials and icon types.
+
+**Import:** `import { Avatar } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `type` | `AvatarType` | 'initials' | Rendering mode: `initials` shows text, `icon` shows a FontAwesome icon, `image` shows a photo. |
+| `size` | `AvatarSize` | 'default' | `default` is the standard size; `small` is a compact variant used in lists. |
+| `color` | `AvatarColor` | 'brandSecondary' | Background color for initials and icon types — `brandPrimary` (blue) or `brandSecondary` (amber). |
+| `initials` | `string` | 'AB' | 1- or 2-character string displayed when `type="initials"`. |
+| `icon` | `IconDefinition` | — | Icon shown when `type="icon"` — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`; defaults to `faUser`. |
+| `src` | `string` | — | Image URL used when `type="image"`. |
+| `alt` | `string` | '' | Alt text for the image when `type="image"`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Avatar type="initials" initials="JV" color="brandPrimary" />
+<Avatar type="icon" icon={faUser} color="brandSecondary" />
+<Avatar type="image" src="https://…/avatar.jpg" alt="Jane Doe" />
+```
+
+---
+## Badge
+
+Small numeric counter or dot indicator overlaid on another element (typically an icon). Use `max` to cap the displayed number.
+
+**Import:** `import { Badge } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `BadgeVariant` | — | `numeric` shows a count; `dot` shows a small colored indicator with no text. |
+| `value` | `number` | 0 | The numeric count to display when `variant="numeric"`. |
+| `max` | `number` | — | When set and `value` exceeds this number, the badge shows `{max}+` instead of the raw count. |
+
+### Usage
+
+```tsx
+<div style={{ position: 'relative', display: 'inline-block' }}>
+  <Icon icon={faBell} size="medium" aria-label="Notifications" />
+  <Badge value={12} max={9} />
+</div>
+```
+
+---
+## Chip
+
+Toggleable filter/tag chip. Supports controlled and uncontrolled selected states. Fires `onChange` with the new boolean selected state.
+
+**Import:** `import { Chip } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible text inside the chip. |
+| `icon` | `IconDefinition` | — | Optional leading icon — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `selected` | `boolean` | — | Controlled selected state; when provided the component is controlled. |
+| `defaultSelected` | `boolean` | false | Initial selected state for uncontrolled usage — ignored when `selected` is provided. |
+| `onChange` | `(selected: boolean) => void` | — | Called when the chip is toggled; receives the new selected state as a boolean. |
+
+### Usage
+
+```tsx
+<Chip label="Active" defaultSelected />
+<Chip label="Archived" icon={faArchive} onChange={handleChange} />
+```
+
+---
+## AttributeChip
+
+Read-only tag with an optional leading icon and a dismiss (✕) button. Use to show removable metadata on a record.
+
+**Import:** `import { AttributeChip } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Text displayed inside the chip. |
+| `icon` | `IconDefinition` | — | Optional leading icon — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `disabled` | `boolean` | — | When true, the dismiss button is disabled and the chip appears muted. |
+| `onDismiss` | `() => void` | — | Called when the user clicks the ✕ dismiss button inside the chip. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<AttributeChip label="High Priority" icon={faFlag} onDismiss={() => removeTag('High Priority')} />
+```
+
+---
+## StatusChip
+
+Non-interactive status badge. Combine `statusType` (semantic category) with `level` (intensity 1–3) for full control over color.
+
+**Import:** `import { StatusChip } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Text displayed inside the chip. |
+| `statusType` | `StatusType` | — | Semantic category: `positive` (green), `caution` (amber), `negative` (red), or `neutral` (gray). |
+| `level` | `StatusLevel` | — | Visual intensity level within the type: `1` (lightest) to `3` (most saturated). |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<StatusChip label="Active"   statusType="positive" level={2} />
+<StatusChip label="Overdue"  statusType="negative" level={3} />
+<StatusChip label="Pending"  statusType="caution"  level={1} />
+<StatusChip label="Archived" statusType="neutral"  level={1} />
+```
+
+---
+## PriorityChip
+
+Non-interactive chip that shows a priority level with an auto-selected icon and color. Pass `label` to override the default capitalized priority text.
+
+**Import:** `import { PriorityChip } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `priority` | `PriorityLevel` | — | Priority tier: `urgent` > `high` > `medium` > `low`; controls the icon and color. |
+| `label` | `string` | — | Custom label text; defaults to the capitalized priority name (e.g. `"Urgent"`). |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<PriorityChip priority="urgent" />
+<PriorityChip priority="high" />
+<PriorityChip priority="medium" label="Med" />
+<PriorityChip priority="low" />
+```
+
+---
+## UserIdentificationTag
+
+Compact row combining an Avatar and a name/role text block. Used in tables, lists, and comment threads to identify a user.
+
+**Import:** `import { UserIdentificationTag } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | — | Full display name shown below the avatar. |
+| `userId` | `string` | — | User identifier string (e.g. email or system ID) shown beneath the name. |
+| `avatarType` | `AvatarType` | 'initials' | Avatar rendering mode: `initials`, `icon`, or `image`. Defaults to `initials`. |
+| `avatarSrc` | `string` | — | Image URL used when `avatarType="image"`. |
+| `avatarInitials` | `string` | — | 1–2 character string used when `avatarType="initials"`. |
+| `avatarIcon` | `IconDefinition` | — | Icon used when `avatarType="icon"` — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<UserIdentificationTag
+  name="Jane Doe"
+  role="Product Designer"
+  avatarSrc="https://…/avatar.jpg"
+/>
+```
+
+---
+## Logo
+
+Application logo mark. Renders the brand SVG at the configured size.
+
+**Import:** `import { Logo } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `LogoOrientation` | 'horizontal' | `horizontal` places the mark and wordmark side by side; `vertical` stacks them. |
+| `size` | `LogoSize` | 'large' | `large` is the standard size; `small` is a compact variant for toolbars. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Logo size="default" />
+```
+
+---
+# Feedback
+
+## Alert
+
+Inline status banner for error, warning, success, or info messages. Add `dismissible` to let users close it.
+
+**Import:** `import { Alert } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `severity` | `AlertSeverity` | 'info' | Visual severity: `error` (red), `warning` (amber), `success` (green), or `info` (blue). Defaults to `info`. |
+| `children` | `React.ReactNode` | — | Content rendered inside the component. |
+| `dismissible` | `boolean` | false | When true, renders an ✕ button that removes the alert from the DOM on click. |
+| `onDismiss` | `() => void` | — | Called after the user clicks the dismiss button, once the alert has been hidden. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Alert severity="error" dismissible onDismiss={handleDismiss}>
+  File upload failed — check the file format and try again.
+</Alert>
+```
+
+---
+## Toast
+
+Transient notification that auto-dismisses after `duration` ms. Pass `action` to render an action button (e.g. "Undo"). Manage a stack externally and pass `onDismiss` to remove from state.
+
+> **Note:** The Toast does not position itself — wrap it in a fixed/absolute container (bottom-right corner is conventional).
+
+**Import:** `import { Toast } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `urgency` | `ToastUrgency` | 'none' | Semantic severity: `error` (red), `warning` (amber), `success` (green), `information` (blue), or `none` (neutral). Controls icon and background. |
+| `children` | `React.ReactNode` | — | Content rendered inside the component. |
+| `action` | `string` | — | Label for the optional action button, e.g. `"Undo"` — renders the button when provided. |
+| `onAction` | `() => void` | — | Called when the user clicks the action button. |
+| `duration` | `number` | 5000 | Duration in ms before the toast auto-dismisses. Pass `0` to keep it visible until the user acts. Defaults to `5000`. |
+| `onDismiss` | `() => void` | — | Called after the exit animation completes; use this to remove the toast from state. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Toast urgency="success" duration={4000} onDismiss={() => removeToast(id)}>
+  Record saved successfully.
+</Toast>
+
+<Toast urgency="error" action="Retry" onAction={retryUpload} onDismiss={() => removeToast(id)}>
+  Upload failed.
+</Toast>
+```
+
+---
+## Spinner
+
+Animated loading indicator. Use inline for button loading states or centered in a panel while content loads.
+
+**Import:** `import { Spinner } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `size` | `SpinnerSize` | — | Visual size: `small` (16 px), `medium` (24 px), or `large` (32 px). |
+| `color` | `SpinnerColor` | 'brand' | Color scheme: `brand` (blue), `light` (white, for dark backgrounds), or `neutral` (gray). |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Spinner size="medium" />
+```
+
+---
+## Skeleton
+
+Placeholder shimmer block shown while content is loading. Set explicit `width` and `height` to match the element it replaces.
+
+**Import:** `import { Skeleton } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `width` | `number \| string` | '100%' | Width of the skeleton — a number is treated as px; a string is passed through as-is (e.g. `'60%'`). |
+| `height` | `number` | 24 | Height in px. For `shape="circle"` this also controls the width to keep a square aspect ratio. |
+| `shape` | `SkeletonShape` | 'bar' | `bar` renders a rounded rectangle; `circle` renders a circular disc. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Skeleton width={200} height={20} />
+<Skeleton width="100%" height={14} style={{ marginTop: 8 }} />
+```
+
+---
+## ProgressBar
+
+Horizontal progress indicator. `value` is 0–100. Optionally show a percentage label.
+
+**Import:** `import { ProgressBar } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | — | Completion percentage from 0–100. Omit or pass `undefined` to enable indeterminate (looping animation) mode. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<ProgressBar value={65} showLabel />
+```
+
+---
+## Tooltip
+
+Hover/focus tooltip that wraps any element. The tooltip text is plain string only — no JSX.
+
+**Import:** `import { Tooltip } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `content` | `string` | — | Text shown inside the tooltip bubble. |
+| `placement` | `TooltipPlacement` | 'top' | Preferred side the tooltip appears relative to the trigger. Defaults to `top`. |
+| `children` | `React.ReactElement` | — | The trigger element — the tooltip is shown on hover/focus of this element. |
+
+### Usage
+
+```tsx
+<Tooltip content="Opens the settings panel" placement="top">
+  <IconButton icon={faGear} aria-label="Settings" />
+</Tooltip>
+```
+
+---
+# Overlays
+
+## Dialog
+
+Modal dialog with title, optional subtitle, body area, and up to two footer action buttons. Renders into a portal with a scrim overlay.
+
+**Import:** `import { Dialog } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | "Dismiss dialog" | Visible text for this action button. |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | — | Called when the user clicks this action button. |
+| `disabled` | `boolean` | — | When true, the action button is non-interactive. |
+| `variant` | `ButtonVariant` | "brandPrimary" | Color scheme for this action button — defaults to `brandPrimary`. |
+| `leadingIcon` | `IconDefinition` | — | Optional leading icon — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `open` | `boolean` | — | When true, the dialog is visible; when false, it is removed from the DOM. |
+| `onClose` | `() => void` | — | Called when the user clicks the scrim or the dismiss ✕ button. |
+| `title` | `string` | — | Heading text shown at the top of the dialog. |
+| `subtitle` | `string` | — | Optional secondary text shown below the title. |
+| `dismissible` | `boolean` | true | When true (default), renders an ✕ button in the header to close the dialog. |
+| `content` | `string` | — | Fallback body text rendered when no `children` are provided. |
+| `children` | `React.ReactNode` | — | Custom content rendered in the dialog body — takes precedence over `content`. |
+| `primaryAction` | `DialogAction` | — | Primary call-to-action button shown in the dialog footer. |
+| `secondaryAction` | `DialogAction` | — | Secondary action button shown alongside the primary action. |
+| `size` | `DialogSize` | 'sm' | Width preset: `xs` ≈ 320 px up to `xl` ≈ full-width. Defaults to `sm`. |
+| `className` | `string` | — | Additional CSS class applied to the dialog panel for layout overrides. |
+
+### Usage
+
+```tsx
+<Dialog
+  open={isOpen}
+  title="Delete record"
+  subtitle="This action cannot be undone."
+  size="sm"
+  onClose={() => setOpen(false)}
+  primaryAction={{ label: 'Delete', variant: 'statusError', onClick: handleDelete }}
+  secondaryAction={{ label: 'Cancel', onClick: () => setOpen(false) }}
+/>
+```
+
+---
+## Drawer
+
+Side-panel overlay that slides in from the right. Same structure as Dialog but anchored to the viewport edge.
+
+**Import:** `import { Drawer } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | "Dismiss drawer" | Visible text for this action button. |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | — | Called when the user clicks this action button. |
+| `disabled` | `boolean` | — | When true, the action button is non-interactive. |
+| `open` | `boolean` | — | When true, slides the drawer into view; when false, slides it out with an exit animation. |
+| `onClose` | `() => void` | — | Called when the user clicks the scrim or the dismiss ✕ button. |
+| `title` | `string` | — | Heading text shown in the drawer header. |
+| `subtitle` | `string` | — | Optional secondary text displayed below the title. |
+| `dismissible` | `boolean` | true | When true (default), renders an ✕ button in the header to close the drawer. |
+| `content` | `string` | — | Fallback body text rendered when no `children` are provided. |
+| `children` | `React.ReactNode` | — | Custom content rendered in the drawer body — takes precedence over `content`. |
+| `primaryAction` | `DrawerAction` | — | Primary call-to-action button shown in the drawer footer. |
+| `secondaryAction` | `DrawerAction` | — | Secondary action button shown alongside the primary action in the footer. |
+| `className` | `string` | — | Additional CSS class applied to the drawer panel for layout overrides. |
+
+### Usage
+
+```tsx
+<Drawer
+  open={isOpen}
+  title="Edit record"
+  onClose={() => setOpen(false)}
+  primaryAction={{ label: 'Save', onClick: handleSave }}
+  secondaryAction={{ label: 'Cancel', onClick: () => setOpen(false) }}
+>
+  <TextField label="Name" />
+</Drawer>
+```
+
+---
+## Popover
+
+Anchored floating panel with a header label and freeform content. Toggles open/closed when the trigger element is clicked; closes on outside click or Escape.
+
+**Import:** `import { Popover } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | "Dismiss" | Text displayed in the popover's header bar; also used as `aria-label` for the dialog. |
+| `content` | `React.ReactNode` | — | Content rendered in the popover body. |
+| `children` | `React.ReactElement` | — | The trigger element — the popover opens/closes when this element is clicked. |
+| `placement` | `PopoverPlacement` | 'bottom' | Preferred side the popover appears relative to the trigger. Defaults to `bottom`. |
+
+### Usage
+
+```tsx
+<Popover label="Filter options" placement="bottom" content={<FilterForm />}>
+  <Button variant="neutral" emphasis="secondary">Filters</Button>
+</Popover>
+```
+
+---
+## Menu / MenuItem
+
+Compound dropdown menu. `Menu` is the container (scrollable list); `MenuItem` is each row. Typically anchored below a Button or SplitButton with absolute positioning.
+
+> **Note:** Menu does not manage its own open state or positioning — wrap it in a relative container and toggle visibility yourself.
+
+**Import:** `import { Menu, MenuItem } from '@josephavelez77/base-design-system'`
+
+### Menu props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | — | Content rendered inside the component — should be `MenuItem` elements. |
+
+### MenuItem props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible text displayed in the menu item. |
+| `leadingIcon` | `IconDefinition` | — | Optional icon to the left of the label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `trailingIcon` | `IconDefinition` | — | Optional icon to the right of the label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `selected` | `boolean` | false | When true, applies the selected/active highlight style to the item. |
+| `variant` | `'default' \| 'danger'` | 'default' | `default` uses standard text color; `danger` uses the error/destructive color. |
+
+### Usage
+
+```tsx
+<div style={{ position: 'relative' }}>
+  <Button onClick={() => setOpen(v => !v)}>Actions</Button>
+  {open && (
+    <Menu style={{ position: 'absolute', top: '100%', right: 0 }}>
+      <MenuItem label="Edit" leadingIcon={faPen} onClick={handleEdit} />
+      <MenuItem label="Duplicate" leadingIcon={faCopy} onClick={handleDuplicate} />
+      <MenuItem label="Delete" leadingIcon={faTrash} variant="danger" onClick={handleDelete} />
+    </Menu>
+  )}
+</div>
+```
+
+---
+# Form Fields
+
+## TextField
+
+Single-line text input with label, hint text, error message, and optional leading/trailing icons. Fully extends native `<input>` props.
+
+**Import:** `import { TextField } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | "Clear" | Visible label text displayed above the input. |
+| `error` | `string` | — | Validation error message shown below the field; also applies error styling. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `leadingIcon` | `IconDefinition` | — | Optional icon shown on the left inside the input — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `trailingIcon` | `IconDefinition` | — | Optional icon shown on the right inside the input when the field is not focused and not in error; when focused a clear button replaces it. Accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+
+### Usage
+
+```tsx
+<TextField
+  label="Email"
+  placeholder="you@company.com"
+  hint="We'll send a confirmation link."
+  leadingIcon={faEnvelope}
+  error={errors.email}
+  value={email}
+  onChange={e => setEmail(e.target.value)}
+/>
+```
+
+---
+## TextArea
+
+Multi-line text input with label, hint, error, and optional leading icon. Extends native `<textarea>` props.
+
+**Import:** `import { TextArea } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible label text displayed above the textarea. |
+| `error` | `string` | — | Validation error message shown below the field; also applies error styling. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `leadingIcon` | `IconDefinition` | — | Optional icon displayed in the top-left of the textarea — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+
+### Usage
+
+```tsx
+<TextArea
+  label="Description"
+  rows={4}
+  hint="Max 500 characters."
+  error={errors.description}
+  value={description}
+  onChange={e => setDescription(e.target.value)}
+/>
+```
+
+---
+## PasswordField
+
+Password input with a built-in show/hide toggle button. Behaves identically to TextField otherwise.
+
+**Import:** `import { PasswordField } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible label text displayed above the input. |
+| `error` | `string` | — | Validation error message shown below the field; also applies error styling. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `required` | `boolean` | — | When true, shows a red asterisk after the label. |
+
+### Usage
+
+```tsx
+<PasswordField
+  label="Password"
+  value={password}
+  onChange={e => setPassword(e.target.value)}
+  error={errors.password}
+/>
+```
+
+---
+## NumberField
+
+Numeric text input with increment/decrement stepper buttons. Supports `min`, `max`, and `step` constraints.
+
+**Import:** `import { NumberField } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | "Decrement" | Visible label text displayed above the input. |
+| `error` | `string` | — | Validation error message shown below the field; also applies error styling. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `leadingIcon` | `IconDefinition` | — | Optional leading icon inside the input — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `suffix` | `string` | — | Static text appended after the number value inside the input (e.g. `"kg"`, `"%"`). Only visible when a value is set. |
+| `required` | `boolean` | — | When true, shows a red asterisk after the label. |
+| `value` | `number` | — | Controlled numeric value; when provided the component is controlled. |
+| `defaultValue` | `number` | — | Initial value for uncontrolled usage — ignored when `value` is provided. |
+| `min` | `number` | — | Minimum allowed value; the decrement button is disabled at this boundary. |
+| `max` | `number` | — | Maximum allowed value; the increment button is disabled at this boundary. |
+| `step` | `number` | 1 | Amount added or subtracted on each stepper click. Defaults to `1`. |
+| `placeholder` | `string` | — | Placeholder text shown when the input is empty. |
+| `disabled` | `boolean` | — | When true, the input and stepper buttons are non-interactive. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `onChange` | `(value: number \| undefined) => void` | — | Called with the new numeric value (or `undefined` when cleared) on each change. |
+
+### Usage
+
+```tsx
+<NumberField
+  label="Quantity"
+  min={1}
+  max={100}
+  step={1}
+  value={qty}
+  onChange={e => setQty(Number(e.target.value))}
+/>
+```
+
+---
+## SelectField
+
+Single-value dropdown built on a native `<select>`. Pass `options` as `{ value, label }` pairs.
+
+**Import:** `import { SelectField } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Internal value passed to `onChange` when this option is selected. |
+| `label` | `string` | — | Human-readable text displayed in the dropdown. |
+| `icon` | `IconDefinition` | — | Optional icon shown to the left of the option label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `disabled` | `boolean` | false | When true, this option is non-interactive in the dropdown. |
+| `label` | `string` | — | Visible label text displayed above the trigger. |
+| `error` | `string` | — | Validation error message shown below the field; also applies error styling. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `leadingIcon` | `IconDefinition` | — | Optional leading icon inside the trigger — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `options` | `SelectOption[]` | — | Array of selectable options rendered in the dropdown. |
+| `value` | `string` | — | Controlled selected value; when provided the component is controlled. |
+| `placeholder` | `string` | 'Select an option' | Text shown in the trigger when no option is selected. |
+| `disabled` | `boolean` | false | When true, the trigger is non-interactive and the dropdown cannot be opened. |
+| `required` | `boolean` | — | When true, shows a red asterisk after the label. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `onChange` | `(value: string) => void` | — | Called with the selected option's `value` string when the user picks an option. |
+
+### Usage
+
+```tsx
+<SelectField
+  label="Country"
+  options={[
+    { value: 'us', label: 'United States' },
+    { value: 'ca', label: 'Canada' },
+  ]}
+  value={country}
+  onChange={e => setCountry(e.target.value)}
+/>
+```
+
+---
+## MultiSelectField
+
+Multi-value dropdown that shows selected options as removable AttributeChip elements. `value` and `onChange` operate on string arrays.
+
+**Import:** `import { MultiSelectField } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible label text displayed above the trigger. |
+| `error` | `string` | — | Validation error message shown below the field; also applies error styling. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `leadingIcon` | `IconDefinition` | — | Optional leading icon inside the trigger — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `options` | `SelectOption[]` | — | Array of selectable options; each requires a `value` string and a `label` string. |
+| `value` | `string[]` | — | Controlled array of selected option values; when provided the component is controlled. |
+| `defaultValue` | `string[]` | [] | Initial selection for uncontrolled usage — ignored when `value` is provided. |
+| `placeholder` | `string` | 'Select options' | Text shown when no options are selected. |
+| `disabled` | `boolean` | false | When true, the trigger is non-interactive and all options are hidden. |
+| `required` | `boolean` | false | When true, shows a red asterisk after the label. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `onChange` | `(values: string[]) => void` | — | Called with the updated array of selected values whenever the selection changes. |
+
+### Usage
+
+```tsx
+<MultiSelectField
+  label="Tags"
+  options={[
+    { value: 'design', label: 'Design' },
+    { value: 'engineering', label: 'Engineering' },
+  ]}
+  value={selectedTags}
+  onChange={setSelectedTags}
+/>
+```
+
+---
+## DateField
+
+Date input that wraps a native `<input type="date">` with DS label, hint, and error styling.
+
+**Import:** `import { DateField } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible label text displayed above the trigger button. |
+| `error` | `string` | — | Validation error message displayed below the field; also applies error styling to the trigger. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `leadingIcon` | `IconDefinition` | — | Optional leading icon inside the trigger — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `value` | `Date \| null` | — | Currently selected date, or `null` to show the placeholder. |
+| `placeholder` | `string` | 'Select a date' | Text shown inside the trigger when no date is selected. |
+| `disabled` | `boolean` | false | When true, the trigger button is non-interactive and appears muted. |
+| `required` | `boolean` | false | When true, shows a red asterisk after the label. |
+| `formatDate` | `(date: Date) => string` | — | Custom function to format the selected `Date` for display in the trigger. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `onOpen` | `() => void` | — | Called when the user clicks the trigger button — use this to open a `DatePicker` popover. |
+
+### Usage
+
+```tsx
+<DateField
+  label="Start date"
+  value={startDate}
+  onChange={e => setStartDate(e.target.value)}
+  error={errors.startDate}
+/>
+```
+
+---
+## DatePicker
+
+Interactive calendar date picker with a month/year header and a year-jump overlay. Fires `onConfirm` with the selected Date when the user confirms.
+
+> **Note:** DatePicker renders inline — position it in a floating container (absolute/popover) when triggered from a field.
+
+**Import:** `import { DatePicker } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `Date \| null` | — | Pre-selected date shown when the picker opens; defaults to today when omitted. |
+| `cancelLabel` | `string` | 'Cancel' | Label for the cancel/dismiss button. Defaults to `"Cancel"`. |
+| `confirmLabel` | `string` | 'OK' | Label for the confirm/select button. Defaults to `"OK"`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `onConfirm` | `(date: Date) => void` | — | Called when the user confirms a date selection; receives the selected `Date`. |
+| `onCancel` | `() => void` | — | Called when the user clicks the cancel button without confirming. |
+
+### Usage
+
+```tsx
+<DatePicker
+  value={selectedDate}
+  onConfirm={date => { setSelectedDate(date); setOpen(false) }}
+  onCancel={() => setOpen(false)}
+/>
+```
+
+---
+## TimeField
+
+Time input field with a clock icon that opens a TimePicker overlay. Manages its own input state; pass `value` and `onChange` for controlled usage.
+
+**Import:** `import { TimeField } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible label text displayed above the trigger button. |
+| `error` | `string` | — | Validation error message shown below the field; also applies error styling to the trigger. |
+| `hint` | `string` | — | Helper text shown below the field when there is no error. |
+| `leadingIcon` | `IconDefinition` | — | Optional leading icon inside the trigger — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `value` | `TimeValue \| null` | — | Currently selected time value, or `null` to show the placeholder. |
+| `placeholder` | `string` | 'Select a time' | Text shown inside the trigger when no time is selected. |
+| `disabled` | `boolean` | false | When true, the trigger button is non-interactive and appears muted. |
+| `required` | `boolean` | false | When true, shows a red asterisk after the label. |
+| `format` | `'12h' \| '24h'` | '12h' | Clock format used for display: `12h` (with AM/PM) or `24h`. Defaults to `12h`. |
+| `formatTime` | `(time: TimeValue) => string` | — | Custom function to format the selected `TimeValue` for display in the trigger, overriding `format`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `onOpen` | `() => void` | — | Called when the user clicks the trigger button — use this to open a `TimePicker` popover. |
+
+### Usage
+
+```tsx
+<TimeField
+  label="Start time"
+  value={time}
+  onChange={setTime}
+/>
+```
+
+---
+## TimePicker
+
+Interactive time selector with hour, minute, and AM/PM columns. Typically opened by a TimeField; can also be used standalone.
+
+**Import:** `import { TimePicker } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `hours` | `number` | — | Hour in 24-hour format (0–23). |
+| `minutes` | `number` | — | Minutes (0–59). |
+| `value` | `TimeValue \| null` | — | Pre-selected time shown when the picker opens; defaults to 12:00 when omitted. |
+| `format` | `'12h' \| '24h'` | '12h' | Clock format: `12h` shows an AM/PM selector; `24h` shows hours 0–23. Defaults to `12h`. |
+| `cancelLabel` | `string` | 'Cancel' | Label for the cancel/dismiss button. Defaults to `"Cancel"`. |
+| `confirmLabel` | `string` | 'OK' | Label for the confirm/select button. Defaults to `"OK"`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `onConfirm` | `(time: TimeValue) => void` | — | Called when the user confirms a time selection; receives the selected `TimeValue`. |
+| `onCancel` | `() => void` | — | Called when the user clicks the cancel button without confirming. |
+
+### Usage
+
+```tsx
+<TimePicker
+  value={time}
+  onChange={setTime}
+  onClose={() => setPickerOpen(false)}
+/>
+```
+
+---
+## Checkbox
+
+Single checkbox with a visible label. Supports controlled, uncontrolled, and indeterminate states. Fully extends native `<input type="checkbox">` props.
+
+**Import:** `import { Checkbox } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Text label rendered beside the checkbox. |
+| `required` | `boolean` | — | When true, shows a red asterisk after the label and marks the input as required. |
+| `indeterminate` | `boolean` | false | When true, renders a minus-square icon to indicate a partially selected state; overrides the checked icon. |
+
+### Usage
+
+```tsx
+<Checkbox
+  label="I agree to the terms"
+  checked={agreed}
+  onChange={e => setAgreed(e.target.checked)}
+/>
+```
+
+---
+## CheckboxGroup
+
+Labeled group of Checkbox items rendered as a vertical list. Manages selection state internally when used uncontrolled.
+
+**Import:** `import { CheckboxGroup } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | — | Content rendered inside the component — should be `Checkbox` or `CheckboxItem` elements. |
+| `orientation` | `CheckboxGroupOrientation` | 'vertical' | Layout direction of the checkboxes: `vertical` (stacked) or `horizontal` (inline). |
+| `label` | `string` | — | Optional group legend text rendered above the checkboxes inside a `<fieldset>`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<CheckboxGroup
+  label="Notify me when:"
+  options={[
+    { value: 'comment', label: 'Someone comments' },
+    { value: 'assign', label: 'I am assigned' },
+  ]}
+  value={selections}
+  onChange={setSelections}
+/>
+```
+
+---
+## RadioButton / RadioButtonGroup / RadioButtonItem
+
+Radio button set. Use `RadioButtonGroup` to manage selection with a shared `name`; compose individual `RadioButtonItem` elements inside it.
+
+**Import:** `import { RadioButton, RadioButtonGroup, RadioButtonItem } from '@josephavelez77/base-design-system'`
+
+### RadioButton props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | false | Whether this radio option is currently selected. |
+| `name` | `string` | — | The `name` attribute shared across all radio buttons in the same group — required for native exclusivity. |
+
+### RadioButtonGroup props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | — | Content rendered inside the component — should be `RadioButtonItem` elements. |
+| `orientation` | `RadioButtonGroupOrientation` | 'vertical' | Layout direction: `vertical` (stacked) or `horizontal` (inline). |
+| `label` | `string` | — | Optional group legend text rendered above the options inside a `<fieldset>`. |
+| `name` | `string` | — | Shared name for all radio inputs — required for native radio group behavior. |
+| `value` | `string` | — | Controlled selected value; when provided the component is controlled. |
+| `defaultValue` | `string` | — | Initial selected value for uncontrolled usage — ignored when `value` is provided. |
+| `onChange` | `(value: string) => void` | — | Called with the value of the newly selected option when selection changes. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### RadioButtonItem props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Text label displayed to the right of the radio button. |
+| `required` | `boolean` | — | When true, shows a red asterisk after the label. |
+
+### Usage
+
+```tsx
+<RadioButtonGroup name="plan" value={plan} onChange={e => setPlan(e.target.value)} label="Billing plan">
+  <RadioButtonItem value="monthly" label="Monthly" />
+  <RadioButtonItem value="annual" label="Annual" hint="Save 20%" />
+</RadioButtonGroup>
+```
+
+---
+## Switch
+
+Toggle switch for binary on/off settings. Supports controlled and uncontrolled modes.
+
+**Import:** `import { Switch } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `checked` | `boolean` | — | Controlled on/off state; when provided the component is controlled. |
+| `defaultChecked` | `boolean` | — | Initial on/off state for uncontrolled usage — ignored when `checked` is provided. |
+| `onChange` | `React.ChangeEventHandler<HTMLInputElement>` | — | Called with the native change event whenever the switch is toggled. |
+| `className` | `string` | — | Additional CSS class applied to the track element for layout overrides. |
+
+### Usage
+
+```tsx
+<Switch checked={enabled} onChange={e => setEnabled(e.target.checked)} />
+```
+
+---
+## SwitchGroup / SwitchItem
+
+Labeled list of Switch rows. Each `SwitchItem` has its own label, hint, and disabled state.
+
+**Import:** `import { SwitchGroup, SwitchItem } from '@josephavelez77/base-design-system'`
+
+### SwitchGroup props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | — | Content rendered inside the component — should be `SwitchItem` elements. |
+| `orientation` | `SwitchGroupOrientation` | 'vertical' | Layout direction: `vertical` (stacked) or `horizontal` (inline). |
+| `label` | `string` | — | Optional group legend text rendered above the switches inside a `<fieldset>`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### SwitchItem props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Text label displayed to the right of the switch. |
+| `required` | `boolean` | — | When true, shows a red asterisk after the label. |
+
+### Usage
+
+```tsx
+<SwitchGroup label="Notifications">
+  <SwitchItem label="Email alerts" checked={email} onChange={e => setEmail(e.target.checked)} />
+  <SwitchItem label="Push alerts" checked={push} onChange={e => setPush(e.target.checked)} hint="Mobile only" />
+</SwitchGroup>
+```
+
+---
+## FileUploader / FileUploaderListItem
+
+Drag-and-drop file upload zone with a file list below. `FileUploaderListItem` renders each uploaded file with name, size, a progress bar, and a remove button.
+
+**Import:** `import { FileUploader, FileUploaderListItem } from '@josephavelez77/base-design-system'`
+
+### FileUploader props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible label text displayed above the drop zone. |
+| `hint` | `string` | — | Helper text shown below the drop zone. |
+| `requirements` | `string` | — | Optional accepted file type / size requirements shown inside the drop zone. |
+| `children` | `React.ReactNode` | — | `FileUploaderListItem` elements rendered inside the drop zone below the upload prompt. |
+| `onFilesSelected` | `(files: File[]) => void` | — | Called with the array of selected `File` objects when the user drops or picks files. |
+| `accept` | `string` | — | Value for the hidden file input's `accept` attribute, e.g. `"image/*"` or `".pdf,.docx"`. |
+| `multiple` | `boolean` | — | When true, allows the user to select multiple files at once. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### FileUploaderListItem props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `fileName` | `string` | — | The file's name including extension, used to derive the file type icon. |
+| `status` | `'uploading' \| 'uploaded'` | — | `uploading` shows a progress bar; `uploaded` shows the file size and a delete button. |
+| `progress` | `number` | 0 | 0–100. Used when status is 'uploading'. |
+| `fileSize` | `number` | — | File size in bytes. Displayed when status is 'uploaded'. |
+| `onDelete` | `() => void` | — | Called when the user clicks the delete/trash button (only visible when `status="uploaded"`). |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<FileUploader
+  onFilesAdded={files => uploadFiles(files)}
+  accept=".pdf,.docx"
+  requirements="PDF or DOCX, max 10 MB"
+>
+  {uploadedFiles.map(f => (
+    <FileUploaderListItem
+      key={f.id}
+      fileName={f.name}
+      fileSize={f.size}
+      progress={f.progress}
+      onRemove={() => removeFile(f.id)}
+    />
+  ))}
+</FileUploader>
+```
+
+---
+# Layout
+
+## Accordion / AccordionGroup
+
+Collapsible section with a labeled header. Use standalone for a single panel; wrap multiple `AccordionItem` elements in `AccordionGroup` for exclusive (one-open-at-a-time) behavior.
+
+> **Note:** The exported component is `AccordionItem`, not `Accordion`.
+
+**Import:** `import { Accordion, AccordionGroup } from '@josephavelez77/base-design-system'`
+
+### Accordion props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | — | Heading text shown in the clickable header row. |
+| `subtitle` | `string` | — | Optional secondary line of text displayed below the title in the header. |
+| `icon` | `IconDefinition` | — | Optional leading icon in the header — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `children` | `React.ReactNode` | — | Content rendered inside the collapsible body panel. |
+| `defaultExpanded` | `boolean` | false | Initial expanded state for uncontrolled usage — ignored when `expanded` is provided. |
+| `expanded` | `boolean` | — | Controlled expanded state — pair with `onToggle` to drive the component externally. |
+| `onToggle` | `(expanded: boolean) => void` | — | Called when the accordion is toggled; receives the new expanded state as a boolean. |
+| `disabled` | `boolean` | false | When true, the header button is disabled and the panel cannot be toggled. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### AccordionGroup props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | — | Content rendered inside the component — should be `AccordionItem` elements. |
+| `exclusive` | `boolean` | false | When true, only one item can be expanded at a time; opening one closes any currently open item. |
+
+### Usage
+
+```tsx
+// Standalone
+<AccordionItem title="Details" subtitle="Click to expand">
+  Panel content goes here.
+</AccordionItem>
+
+// Exclusive group
+<AccordionGroup exclusive>
+  <AccordionItem title="Section 1">Content A</AccordionItem>
+  <AccordionItem title="Section 2">Content B</AccordionItem>
+</AccordionGroup>
+```
+
+---
+## TabGroup
+
+Horizontal tab bar. Manages its own selected state when `activeIndex` and `onChange` are omitted.
+
+**Import:** `import { TabGroup } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible text for this tab. |
+| `disabled` | `boolean` | — | When true, this tab is non-interactive and appears muted. |
+| `tabs` | `TabItem[]` | — | Ordered list of tab definitions to render in the tab bar. |
+| `activeIndex` | `number` | 0 | 0-indexed index of the currently active tab. Defaults to `0`. |
+| `onChange` | `(index: number) => void` | — | Called with the index of the tab the user clicked. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<TabGroup
+  tabs={[{ label: 'Overview' }, { label: 'Activity' }, { label: 'Settings' }]}
+  activeIndex={activeTab}
+  onChange={setActiveTab}
+/>
+```
+
+---
+## Stepper
+
+Multi-step form progress indicator with step badges, connecting dividers, and Back/Next/Cancel/Done control buttons.
+
+**Import:** `import { Stepper } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Display label shown beneath the step badge. |
+| `steps` | `StepItem[]` | — | Ordered list of step definitions; each requires a `label`. |
+| `activeStep` | `number` | — | 0-indexed index of the currently active step; steps before it are shown as complete. |
+| `onNext` | `() => void` | — | Called when the user clicks the Next button (not on the last step). |
+| `onBack` | `() => void` | — | Called when the user clicks the Back button (not on the first step). |
+| `onCancel` | `() => void` | — | Called when the user clicks the Cancel button. |
+| `onDone` | `() => void` | — | Called when the user clicks the Done button (on the last step). |
+| `cancelLabel` | `string` | 'Cancel' | Label for the cancel button. Defaults to `"Cancel"`. |
+| `backLabel` | `string` | 'Back' | Label for the back button. Defaults to `"Back"`. |
+| `nextLabel` | `string` | 'Next' | Label for the next button (all steps except last). Defaults to `"Next"`. |
+| `doneLabel` | `string` | 'Done' | Label for the done button (last step). Defaults to `"Done"`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Stepper
+  steps={[{ label: 'Details' }, { label: 'Review' }, { label: 'Confirm' }]}
+  activeStep={step}
+  onNext={() => setStep(s => s + 1)}
+  onBack={() => setStep(s => s - 1)}
+  onCancel={handleCancel}
+  onDone={handleDone}
+/>
+```
+
+---
+## Breadcrumb
+
+Hierarchical navigation trail. The last item is treated as the current page and rendered without a link.
+
+**Import:** `import { Breadcrumb } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible text for this breadcrumb step. |
+| `href` | `string` | — | If provided, renders the item as an `<a>` tag navigating to this URL. |
+| `onClick` | `() => void` | — | If provided (and no `href`), renders the item as a `<button>` and calls this on click. |
+| `items` | `BreadcrumbItem[]` | — | Ordered list of breadcrumb steps; the last item is treated as the current page. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Breadcrumb
+  items={[
+    { label: 'Home', href: '/' },
+    { label: 'Projects', href: '/projects' },
+    { label: 'Apollo Redesign' },
+  ]}
+/>
+```
+
+---
+## Divider
+
+Thin horizontal or vertical rule used to separate sections of content.
+
+**Import:** `import { Divider } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `orientation` | `'horizontal' \| 'vertical'` | — | `horizontal` renders a full-width ruled line; `vertical` renders a 1 px tall rule for inline use. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Divider />
+<Divider orientation="vertical" />
+```
+
+---
+## Pagination
+
+Page navigation control with previous/next arrows and numbered page buttons. Fires `onPageChange` with the new 1-based page number.
+
+**Import:** `import { Pagination } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `totalItems` | `number` | — | Total number of items across all pages, used to compute the page count and item range text. |
+| `page` | `number` | — | 1-indexed current page number. |
+| `pageSize` | `number` | — | Number of rows per page; reflected in the rows-per-page selector. |
+| `onPageChange` | `(page: number) => void` | — | Called with the new page number when the user navigates. |
+| `onPageSizeChange` | `(pageSize: number) => void` | — | Called with the new page size when the user changes the rows-per-page selector. |
+| `pageSizeOptions` | `number[]` | — | Available page-size options for the rows-per-page selector. Defaults to `[10, 25, 50, 100, 250, 500]`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+| `page` | `number` | — | 1-indexed current page number. |
+| `totalPages` | `number` | — | Total number of pages, used to disable the Next button and display "X of Y". |
+| `onPageChange` | `(page: number) => void` | — | Called with the new page number when the user clicks Back or Next. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Pagination
+  totalPages={24}
+  currentPage={page}
+  onPageChange={setPage}
+/>
+```
+
+---
+# Navigation
+
+## GlobalToolbar
+
+Top application bar with logo, navigation area, and a user avatar. Renders app-level actions and branding.
+
+**Import:** `import { GlobalToolbar } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `avatarSrc` | `string` | — | URL of the current user's avatar photo; when omitted, falls back to initials. |
+| `avatarInitials` | `string` | 'AB' | 1–2 character initials displayed in the avatar when no `avatarSrc` is provided. Defaults to `"AB"`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<GlobalToolbar
+  avatarInitials="JV"
+  onAvatarClick={() => setProfileOpen(true)}
+>
+  <Button variant="neutral" emphasis="tertiary">Dashboard</Button>
+</GlobalToolbar>
+```
+
+---
+## NavDrawer
+
+Collapsible vertical sidebar for application navigation. Typically placed on the left of the page layout.
+
+**Import:** `import { NavDrawer } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | "Primary navigation" | Visible text for this child navigation link. |
+| `selected` | `boolean` | — | When true, applies the active/selected style to the child item. |
+| `onClick` | `() => void` | — | Called when the user clicks this child item. |
+| `label` | `string` | "Primary navigation" | Visible text for this top-level navigation item. |
+| `icon` | `IconDefinition` | — | Optional icon shown to the left of the label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `selected` | `boolean` | — | When true, applies the active/selected style to this item. |
+| `onClick` | `() => void` | — | Called when the user clicks a leaf-level item (no children). |
+| `children` | `NavChildItem[]` | — | Nested child items — render an expandable section (expanded drawer) or a flyout menu (collapsed drawer). |
+| `appName` | `string` | — | Application name displayed in the drawer header when expanded. |
+| `items` | `NavItemConfig[]` | — | Navigation item definitions rendered in the drawer's primary nav list. |
+| `defaultCollapsed` | `boolean` | false | Initial collapsed state for uncontrolled usage. When collapsed, labels are hidden and items show tooltips. |
+| `onCollapsedChange` | `(collapsed: boolean) => void` | — | Called with the new collapsed state whenever the user toggles the drawer open/closed. |
+| `className` | `string` | — | Additional CSS class applied to the root `<nav>` element for layout overrides. |
+
+### Usage
+
+```tsx
+<NavDrawer>
+  <NavItem label="Dashboard" icon={faHome} href="/" active />
+  <NavItem label="Projects"  icon={faFolder} href="/projects" />
+</NavDrawer>
+```
+
+---
+## PageHeader
+
+Page-level title block with a heading, optional subtitle, and a trailing actions slot.
+
+**Import:** `import { PageHeader } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | "More actions" | Visible text for this action button. |
+| `onClick` | `() => void` | — | Called when the user clicks this action button. |
+| `disabled` | `boolean` | — | When true, the action button is non-interactive. |
+| `title` | `string` | — | Main page title displayed prominently on the left. |
+| `breadcrumbs` | `BreadcrumbItem[]` | — | Optional breadcrumb trail rendered below the title. |
+| `primaryAction` | `PageAction` | — | Primary call-to-action button shown in the top-right action area. |
+| `secondaryAction` | `PageAction` | — | Secondary action button shown beside the primary action. |
+| `tertiaryActions` | `PageAction[]` | — | Additional actions surfaced via an overflow (⋮) menu button. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<PageHeader
+  title="All Projects"
+  subtitle="24 projects"
+  actions={<Button variant="brandPrimary">New Project</Button>}
+/>
+```
+
+---
+# Data Display
+
+## Card
+
+Generic surface container with consistent padding, border, and radius. Use as the base for custom card layouts.
+
+**Import:** `import { Card } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Visible text for the action button. |
+| `onClick` | `React.MouseEventHandler<HTMLButtonElement>` | — | Called when the user clicks the action button. |
+| `disabled` | `boolean` | — | When true, the action button is non-interactive. |
+| `title` | `string` | — | Heading text displayed at the top of the card. |
+| `subtitle` | `string` | — | Optional secondary text displayed below the title. |
+| `content` | `string` | — | Fallback text body rendered when no `children` are provided. |
+| `children` | `React.ReactNode` | — | Custom content rendered in the card body — takes precedence over `content`. |
+| `mediaSrc` | `string` | — | URL of an image rendered as a full-width banner above the card header. |
+| `mediaAlt` | `string` | '' | Alt text for the media image. |
+| `primaryAction` | `CardAction` | — | Primary call-to-action button shown in the card footer. |
+| `secondaryAction` | `CardAction` | — | Secondary action button shown alongside the primary action in the footer. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Card>
+  <p>Any content goes here.</p>
+</Card>
+```
+
+---
+## KpiCard
+
+Metric card displaying a headline number, label, and optional trend indicator.
+
+**Import:** `import { KpiCard } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Primary metric string displayed prominently on the left (e.g. `"1,234"` or `"$98K"`). |
+| `description` | `string` | — | Short description of the metric shown below `value`. |
+| `trailingIcon` | `IconDefinition` | — | Optional decorative icon displayed on the right side of the card — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<KpiCard label="Monthly Revenue" value="$42,800" trend="+12%" trendDirection="up" />
+```
+
+---
+## ChartCard
+
+Card wrapper for chart content with a title, optional subtitle, and a body slot for any charting library.
+
+**Import:** `import { ChartCard } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Category label for this bar (used for tooltip / accessibility purposes). |
+| `value` | `number` | — | Numeric height of this bar — relative to the tallest bar in the dataset. |
+| `value` | `string` | — | Primary metric string displayed prominently above the chart (e.g. `"1,234"`). |
+| `description` | `string` | — | Short description of the metric shown below `value`. |
+| `data` | `BarChartDataPoint[]` | — | Dataset rendered as a mini bar chart on the right side of the card. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<ChartCard title="Revenue over time" subtitle="Last 12 months">
+  <LineChart data={revenueData} />
+</ChartCard>
+```
+
+---
+## ListCard
+
+Card with a title and a scrollable list body. Use with ListItem or ListGroup children.
+
+**Import:** `import { ListCard } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Primary metric string displayed at the top of the card (e.g. `"42"`). |
+| `description` | `string` | — | Short description of the metric shown beside `value`. |
+| `items` | `ListCardItem[]` | — | Items to display in the paginated list; each requires `title` and an optional `subtitle`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<ListCard title="Recent activity">
+  <ListItem label="Invoice #1042 paid" meta="2 hours ago" />
+  <ListItem label="New comment on Project Apollo" meta="5 hours ago" />
+</ListCard>
+```
+
+---
+## ListGroup / ListItem
+
+Structured list. `ListGroup` adds a section heading above a group of `ListItem` rows.
+
+**Import:** `import { ListGroup, ListItem } from '@josephavelez77/base-design-system'`
+
+### ListGroup props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `React.ReactNode` | — | Content rendered inside the component — should be `ListItem` elements; dividers are added automatically between items. |
+
+### ListItem props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | — | Mutually exclusive leading slot: provide either an icon or an avatar, not both. */   \| { /** Leading icon — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. */ leadingIcon: IconDefinition; leadingAvatar?: never }   \| { /** Leading avatar displayed before the text content. */ leadingAvatar: AvatarProps; leadingIcon?: never }   \| { leadingIcon?: never; leadingAvatar?: never }  type InteractiveProps =   /** When `interactive` is true the item renders as a `<button>` and shows a trailing chevron. */   \| { /** When true, renders the item as a clickable button with a trailing chevron. */ interactive: true; /** Called when the interactive item is clicked. */ onClick?: React.MouseEventHandler<HTMLButtonElement>; /** When true, the item is non-interactive and appears muted. */ disabled?: boolean }   \| { interactive?: false; onClick?: never; disabled?: never }  export type ListItemProps = {   /** Primary text displayed in the list item. |
+| `subtitle` | `React.ReactNode` | — | Optional secondary text or node displayed below the title. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<ListGroup label="Today">
+  <ListItem label="Stand-up meeting" meta="9:00 AM" leadingIcon={faCalendar} />
+  <ListItem label="Design review" meta="2:00 PM" leadingIcon={faCalendar} />
+</ListGroup>
+```
+
+---
+## Table
+
+Styled HTML table wrapper with consistent header, row, and cell styling.
+
+**Import:** `import { Table } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | — | Full display name shown in the user cell. |
+| `subtitle` | `string` | — | Optional secondary text shown beneath the name. |
+| `initials` | `string` | — | 1–2 character initials used in the avatar when no `avatarSrc` is provided. |
+| `avatarSrc` | `string` | — | URL for the user's avatar photo; when provided the image is shown instead of initials. |
+| `label` | `string` | "Search table" | Text displayed inside the StatusChip. |
+| `statusType` | `StatusType` | — | Semantic category controlling the chip color. |
+| `level` | `StatusLevel` | — | Visual intensity level within the type. |
+| `label` | `string` | "Search table" | Text shown in the overflow menu item. |
+| `icon` | `IconDefinition` | — | Optional icon displayed to the left of the label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `onClick` | `() => void` | — | Called when the user selects this overflow item. |
+| `disabled` | `boolean` | — | When true, the menu item is non-interactive. |
+| `columns` | `TableColumn<T>[]` | — | Column schema array — each entry defines the type, header, accessor, and rendering for that column. |
+| `data` | `T[]` | — | Current page of row data to render. |
+| `getRowId` | `(row: T) => string` | — | Returns a stable unique string ID for a given row, used as the React key and selection key. |
+| `loading` | `boolean` | false | When true, renders skeleton placeholder rows instead of data. |
+| `loadingRowCount` | `number` | 8 | Number of skeleton rows shown while `loading` is true. Defaults to 8. |
+| `emptyTitle` | `string` | 'No Results Found' | Heading shown in the empty state when `data` is empty. |
+| `emptySubtitle` | `string` | 'Adjust your filters to check for any results.' | Subtext shown below `emptyTitle` in the empty state. |
+| `searchValue` | `string` | '' | Controlled value for the search input; renders the search bar when provided. |
+| `onSearchChange` | `(value: string) => void` | — | Called with the new search string whenever the user types in the search bar. |
+| `onFilterClick` | `() => void` | — | When provided, renders a filter icon button in the action bar and calls this when clicked. |
+| `selectedRows` | `Set<string>` | — | Set of row IDs that are currently selected — used for checkbox columns. |
+| `onSelectionChange` | `(selected: Set<string>) => void` | — | Called with the updated selection set whenever the user checks or unchecks a row. |
+| `sortKey` | `string` | — | Key of the column currently used for sorting — drives the sort indicator icon. |
+| `sortDirection` | `'asc' \| 'desc'` | — | Current sort direction — drives the sort indicator icon. |
+| `onSortChange` | `(key: string, direction: 'asc' \| 'desc') => void` | — | Called when a sortable column header is clicked; receives the column key and the new direction. |
+| `page` | `number` | — | 1-indexed current page number. |
+| `pageSize` | `number` | — | Number of rows per page. |
+| `totalItems` | `number` | — | Total number of items across all pages, used to compute page count and range text. |
+| `onPageChange` | `(page: number) => void` | — | Called with the new page number when the user navigates. |
+| `onPageSizeChange` | `(pageSize: number) => void` | — | Called with the new page size when the user changes the rows-per-page selector. |
+| `pageSizeOptions` | `number[]` | — | Available page-size options for the rows-per-page selector. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Table
+  columns={[{ key: 'name', header: 'Name' }, { key: 'status', header: 'Status' }]}
+  rows={records}
+/>
+```
+
+---
+## DataGrid
+
+Feature-rich data table with sortable columns, row selection, and pagination support.
+
+**Import:** `import { DataGrid } from '@josephavelez77/base-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `name` | `string` | — | Full display name shown in the user cell. |
+| `subtitle` | `string` | — | Optional secondary text shown beneath the name. |
+| `initials` | `string` | — | 1–2 character initials used in the avatar when no `avatarSrc` is provided. |
+| `avatarSrc` | `string` | — | URL for the user's avatar photo; when provided the image is shown instead of initials. |
+| `label` | `string` | "Search grid" | Text shown in the overflow menu item. |
+| `icon` | `IconDefinition` | — | Optional icon displayed to the left of the label — accepts an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `onClick` | `() => void` | — | Called when the user selects this overflow item. |
+| `disabled` | `boolean` | — | When true, the menu item is non-interactive. |
+| `value` | `string` | — | Internal value passed to `setter` when this option is selected. |
+| `label` | `string` | "Search grid" | Human-readable text displayed in the dropdown. |
+| `columns` | `DataGridColumn<T>[]` | — | Column schema array — each entry defines the type, header, accessor, and optional setter for that column. |
+| `data` | `T[]` | — | Current page of row data to render. |
+| `getRowId` | `(row: T) => string` | — | Returns a stable unique string ID for a given row, used as the React key and selection key. |
+| `onRowChange` | `(rowId: string, updated: T) => void` | — | Called when an editable cell changes; receives the row ID and the updated row object returned by the column's `setter`. |
+| `loading` | `boolean` | false | When true, renders skeleton placeholder rows instead of data. |
+| `loadingRowCount` | `number` | 8 | Number of skeleton rows to render while `loading` is true. Defaults to 8. |
+| `emptyTitle` | `string` | 'No Results Found' | Heading shown in the empty state when `data` is empty. |
+| `emptySubtitle` | `string` | 'Adjust your filters to check for any results.' | Subtext shown below `emptyTitle` in the empty state. |
+| `searchValue` | `string` | '' | Controlled value for the search input; renders the search bar when provided. |
+| `onSearchChange` | `(value: string) => void` | — | Called with the new search string whenever the user types in the search bar. |
+| `onFilterClick` | `() => void` | — | When provided, renders a filter icon button in the action bar and calls this when clicked. |
+| `selectedRows` | `Set<string>` | — | Set of row IDs that are currently selected — used for row-select columns. |
+| `onSelectionChange` | `(selected: Set<string>) => void` | — | Called with the updated selection set whenever the user checks or unchecks a row. |
+| `sortKey` | `string` | — | Key of the column currently used for sorting — drives the sort indicator icon. |
+| `sortDirection` | `'asc' \| 'desc'` | — | Current sort direction — drives the sort indicator icon. |
+| `onSortChange` | `(key: string, direction: 'asc' \| 'desc') => void` | — | Called when a sortable column header is clicked; receives the column key and the new direction. |
+| `page` | `number` | — | 1-indexed current page number. |
+| `pageSize` | `number` | — | Number of rows per page. |
+| `totalItems` | `number` | — | Total number of items across all pages, used to compute page count and range text. |
+| `onPageChange` | `(page: number) => void` | — | Called with the new page number when the user navigates. |
+| `onPageSizeChange` | `(pageSize: number) => void` | — | Called with the new page size when the user changes the rows-per-page selector. |
+| `pageSizeOptions` | `number[]` | — | Available page-size options for the rows-per-page selector. Defaults to `[10, 25, 50, 100, 250, 500]`. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<DataGrid
+  columns={columns}
+  rows={data}
+  onSort={handleSort}
+  selectedRows={selected}
+  onRowSelect={setSelected}
+/>
+```
+
+---

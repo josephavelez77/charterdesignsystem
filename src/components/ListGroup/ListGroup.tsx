@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './ListGroup.module.css'
 
 export interface ListGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+  /** Content rendered inside the component — should be `ListItem` elements; dividers are added automatically between items. */
   children: React.ReactNode
 }
 

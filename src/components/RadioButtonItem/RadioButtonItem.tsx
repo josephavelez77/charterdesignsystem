@@ -4,9 +4,9 @@ import type { RadioButtonProps } from '../RadioButton'
 import styles from './RadioButtonItem.module.css'
 
 export interface RadioButtonItemProps extends RadioButtonProps {
-  /** Label text displayed beside the radio button */
+  /** Text label displayed to the right of the radio button. */
   label?: string
-  /** Shows a red asterisk after the label */
+  /** When true, shows a red asterisk after the label. */
   required?: boolean
 }
 

@@ -4,7 +4,9 @@ import { Icon } from '../Icon/Icon'
 import styles from './RadioButton.module.css'
 
 export interface RadioButtonProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  /** Whether this radio option is currently selected. */
   checked?: boolean
+  /** The `name` attribute shared across all radio buttons in the same group — required for native exclusivity. */
   name?: string
 }
 
