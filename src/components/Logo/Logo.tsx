@@ -39,7 +39,7 @@ export const Logo = ({ variant = 'horizontal', className }: LogoProps) => {
   if (variant === 'icon') {
     return (
       <svg width="40" height="40" viewBox="0 0 118 118" fill="none" xmlns="http://www.w3.org/2000/svg" className={cls} role="img" aria-label="Charter">
-        <rect width="118" height="118" rx="16" fill="#F5F5F5" />
+        <rect width="118" height="118" rx="16" fill="var(--container-color-themeable-secondary-inverse)" />
         <path d={MARK_ROSE} fill={ROSE} />
         <path d={MARK_BLUE} fill={BLUE} />
       </svg>
@@ -49,22 +49,22 @@ export const Logo = ({ variant = 'horizontal', className }: LogoProps) => {
   if (variant === 'vertical') {
     return (
       <svg width="149" height="117" viewBox="0 0 297 233" fill="none" xmlns="http://www.w3.org/2000/svg" className={cls} role="img" aria-label="Charter Design System">
-        <rect x="89.5" width="118" height="118" rx="16" fill="#F5F5F5" />
+        <rect x="89.5" width="118" height="118" rx="16" fill="var(--container-color-themeable-secondary-inverse)" />
         <path d={MARK_ROSE_V} fill={ROSE} />
         <path d={MARK_BLUE_V} fill={BLUE} />
-        <path d={CHARTER_V} fill="white" />
-        <path d={TAGLINE_V} fill="white" />
+        <path d={CHARTER_V} fill="var(--text-color-themeable-primary)" />
+        <path d={TAGLINE_V} fill="var(--text-color-themeable-primary)" />
       </svg>
     )
   }
 
   return (
     <svg width="201" height="56" viewBox="0 0 423 118" fill="none" xmlns="http://www.w3.org/2000/svg" className={cls} role="img" aria-label="Charter Design System">
-      <rect width="118" height="118" rx="16" fill="#F5F5F5" />
+      <rect width="118" height="118" rx="16" fill="var(--container-color-themeable-secondary-inverse)" />
       <path d={MARK_ROSE} fill={ROSE} />
       <path d={MARK_BLUE} fill={BLUE} />
-      <path d={CHARTER_H} fill="white" />
-      <path d={TAGLINE_H} fill="white" />
+      <path d={CHARTER_H} fill="var(--text-color-themeable-primary)" />
+      <path d={TAGLINE_H} fill="var(--text-color-themeable-primary)" />
     </svg>
   )
 }
