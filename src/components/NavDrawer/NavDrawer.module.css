@@ -21,36 +21,16 @@
 .logoSection {
   display: flex;
   align-items: center;
-  gap: var(--container-gap-static-xs);
-  padding: var(--container-padding-static-primary) var(--container-padding-static-small);
+  height: 72px;
+  padding: 0 var(--container-padding-static-small);
   border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
-  min-height: 56px;
   flex-shrink: 0;
-}
-
-.logoMark {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background-color: var(--text-color-themeable-primary);
-  flex-shrink: 0;
-}
-
-.logoName {
-  flex: 1;
-  font-family: var(--text-family-static-headline);
-  font-size: var(--text-size-static-headline3);
-  font-weight: var(--text-weight-static-semibold);
-  line-height: var(--text-line-static-headline3);
-  color: var(--text-color-themeable-primary);
-  white-space: nowrap;
   overflow: hidden;
 }
 
 .collapsed .logoSection {
   justify-content: center;
-  min-height: 44px;
-  padding: 8px 12px;
+  padding: 0;
 }
 
 /* ── Nav list ─────────────────────────────────────────────────────────────── */
@@ -58,8 +38,6 @@
 .navList {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  padding: var(--container-padding-static-xs);
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
@@ -72,9 +50,9 @@
   align-items: center;
   gap: 10px;
   width: 100%;
-  padding: 10px 8px;
+  padding: 12px var(--container-padding-static-primary);
   border: none;
-  border-radius: var(--border-radius-static-primary);
+  border-radius: 0;
   background: none;
   color: var(--text-color-themeable-primary);
   cursor: pointer;
@@ -82,7 +60,8 @@
   white-space: nowrap;
   outline: none;
   transition: background-color 120ms ease;
-  min-height: 40px;
+  min-height: 48px;
+  box-sizing: border-box;
 }
 
 .navItem:hover {
@@ -142,17 +121,16 @@
 .children {
   display: flex;
   flex-direction: column;
-  margin-left: var(--container-gap-static-primary);
-  border-left: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
+  background-color: var(--container-color-themeable-primary);
 }
 
 .childItem {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: var(--container-padding-static-xs) var(--container-padding-static-small);
+  /* indent to align with nav item label (icon ~16px + gap 10px + padding 16px = 42px) */
+  padding: 10px var(--container-padding-static-primary) 10px 42px;
   border: none;
-  border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
   border-radius: 0;
   background: none;
   color: var(--text-color-themeable-secondary);
@@ -160,10 +138,8 @@
   text-align: left;
   outline: none;
   transition: background-color 120ms ease, color 120ms ease;
-}
-
-.childItem:last-child {
-  border-bottom: none;
+  box-sizing: border-box;
+  min-height: 40px;
 }
 
 .childItem:hover {
@@ -195,21 +171,11 @@
   min-width: 160px;
 }
 
-.flyoutLabel {
-  display: block;
-  padding: var(--container-padding-static-xs) var(--container-padding-static-small) var(--container-padding-static-xxs);
-  font-family: var(--text-family-static-body);
-  font-size: var(--text-size-static-caption);
-  font-weight: var(--text-weight-static-medium);
-  color: var(--text-color-themeable-secondary);
-  white-space: nowrap;
-}
-
 /* ── Collapsed: icon-only nav items ──────────────────────────────────────── */
 
 .collapsed .navItem {
   justify-content: center;
-  padding: 10px;
+  padding: 12px;
 }
 
 .collapsed .navGroup {

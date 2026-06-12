@@ -1,11 +1,13 @@
 import React from 'react'
-import { faMagnifyingGlass, faMessage, faBell, faGear } from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass, faMessage, faBell, faGear, faBars } from '@fortawesome/free-solid-svg-icons'
 import { TextField } from '../TextField/TextField'
 import { IconButton } from '../IconButton/IconButton'
 import { Avatar } from '../Avatar/Avatar'
 import styles from './GlobalToolbar.module.css'
 
 export interface GlobalToolbarProps {
+  /** Called when the user clicks the menu toggle button — wire to NavDrawer's `collapsed` state. */
+  onMenuToggle?: () => void
   /** URL of the current user's avatar photo; when omitted, falls back to initials. */
   avatarSrc?: string
   /** 1–2 character initials displayed in the avatar when no `avatarSrc` is provided. Defaults to `"AB"`. */
@@ -15,18 +17,27 @@ export interface GlobalToolbarProps {
 }
 
 export const GlobalToolbar = ({
+  onMenuToggle,
   avatarSrc,
   avatarInitials = 'AB',
   className,
 }: GlobalToolbarProps) => {
   return (
     <div className={[styles.toolbar, className ?? ''].filter(Boolean).join(' ')}>
-      <div className={styles.search}>
-        <TextField
-          aria-label="Search"
-          placeholder="Search"
-          leadingIcon={faMagnifyingGlass}
+      <div className={styles.left}>
+        <IconButton
+          icon={faBars}
+          variant="brandPrimary"
+          aria-label="Toggle navigation"
+          onClick={onMenuToggle}
         />
+        <div className={styles.search}>
+          <TextField
+            aria-label="Search"
+            placeholder="Search"
+            leadingIcon={faMagnifyingGlass}
+          />
+        </div>
       </div>
 
       <div className={styles.actions}>

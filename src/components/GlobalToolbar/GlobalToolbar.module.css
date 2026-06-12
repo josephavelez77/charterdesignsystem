@@ -12,6 +12,14 @@
   box-sizing: border-box;
 }
 
+/* ── Left side (toggle + search) ─────────────────────────────────────────── */
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: var(--container-gap-static-xs);
+}
+
 /* ── Search ───────────────────────────────────────────────────────────────── */
 
 .search {

@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { faChevronDown, faChevronUp, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { Icon } from '../Icon/Icon'
-import { IconButton } from '../IconButton'
+import { Logo } from '../Logo/Logo'
 import { Menu } from '../Menu'
 import { MenuItem } from '../MenuItem'
 import { Tooltip } from '../Tooltip/Tooltip'
@@ -62,7 +62,7 @@ function FlyoutMenu({
     <div
       ref={flyoutRef}
       className={styles.flyout}
-      style={{ top: rect.top, left: rect.right + 4 /* --container-gap-static-xxs */ }}
+      style={{ top: rect.top, left: rect.right + 4 }}
     >
       <Menu>
         {items.map((child, i) => (
@@ -175,9 +175,11 @@ export interface NavDrawerProps {
   appName: string
   /** Navigation item definitions rendered in the drawer's primary nav list. */
   items: NavItemConfig[]
-  /** Initial collapsed state for uncontrolled usage. When collapsed, labels are hidden and items show tooltips. */
+  /** Controlled collapsed state. When provided, the drawer is fully controlled — pair with `onCollapsedChange`. */
+  collapsed?: boolean
+  /** Initial collapsed state for uncontrolled usage. Ignored when `collapsed` is provided. */
   defaultCollapsed?: boolean
-  /** Called with the new collapsed state whenever the user toggles the drawer open/closed. */
+  /** Called with the new collapsed state whenever the collapse state changes. */
   onCollapsedChange?: (collapsed: boolean) => void
   /** Additional CSS class applied to the root `<nav>` element for layout overrides. */
   className?: string
@@ -186,34 +188,35 @@ export interface NavDrawerProps {
 export const NavDrawer = ({
   appName,
   items,
+  collapsed: collapsedProp,
   defaultCollapsed = false,
   onCollapsedChange,
   className,
 }: NavDrawerProps) => {
-  const [collapsed, setCollapsed] = useState(defaultCollapsed)
+  const isControlled = collapsedProp !== undefined
+  const [internalCollapsed, setInternalCollapsed] = useState(defaultCollapsed)
+  const isCollapsed = isControlled ? collapsedProp! : internalCollapsed
+
   const [openFlyoutLabel, setOpenFlyoutLabel] = useState<string | null>(null)
 
-  const toggle = () => {
-    const next = !collapsed
-    setCollapsed(next)
+  const handleCollapsedChange = (next: boolean) => {
+    if (!isControlled) setInternalCollapsed(next)
     setOpenFlyoutLabel(null)
     onCollapsedChange?.(next)
   }
 
+  // Sync internal state if controlled prop changes
+  useEffect(() => {
+    if (isControlled) setOpenFlyoutLabel(null)
+  }, [isControlled, collapsedProp])
+
   return (
     <nav
-      className={[styles.drawer, collapsed ? styles.collapsed : '', className ?? ''].filter(Boolean).join(' ')}
+      className={[styles.drawer, isCollapsed ? styles.collapsed : '', className ?? ''].filter(Boolean).join(' ')}
       aria-label="Primary navigation"
     >
       <div className={styles.logoSection}>
-        {!collapsed && <div className={styles.logoMark} aria-hidden />}
-        {!collapsed && <span className={styles.logoName}>{appName}</span>}
-        <IconButton
-          icon={collapsed ? faChevronRight : faChevronLeft}
-          variant="brandPrimary"
-          aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}
-          onClick={toggle}
-        />
+        <Logo variant={isCollapsed ? 'icon' : 'horizontal'} aria-label={appName} />
       </div>
 
       <div className={styles.navList} role="list">
@@ -221,7 +224,7 @@ export const NavDrawer = ({
           <NavItem
             key={i}
             item={item}
-            collapsed={collapsed}
+            collapsed={isCollapsed}
             flyoutOpen={openFlyoutLabel === item.label}
             onOpenFlyout={() => setOpenFlyoutLabel(item.label)}
             onCloseFlyout={() => setOpenFlyoutLabel(null)}
