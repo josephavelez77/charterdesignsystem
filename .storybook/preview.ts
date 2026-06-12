@@ -32,6 +32,11 @@ const preview: Preview = {
         style: { backgroundColor: 'var(--container-color-themeable-primary)' },
       },
     },
+    options: {
+      storySort: {
+        order: ['Foundations', '*'],
+      },
+    },
   },
 }
 
