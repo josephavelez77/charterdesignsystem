@@ -7,7 +7,7 @@ const meta: Meta<typeof Alert> = {
   parameters: { layout: 'padded' },
   tags: ['autodocs'],
   args: {
-    children: 'Alert content lorem ipsum dolor',
+    message: 'Alert content lorem ipsum dolor',
     severity: 'info',
     dismissible: false,
   },
@@ -47,9 +47,7 @@ export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '700px' }}>
       {(['error', 'warning', 'success', 'info'] as const).map((severity) => (
-        <Alert key={severity} severity={severity} dismissible>
-          Alert content lorem ipsum dolor
-        </Alert>
+        <Alert key={severity} severity={severity} message="Alert content lorem ipsum dolor" dismissible />
       ))}
     </div>
   ),

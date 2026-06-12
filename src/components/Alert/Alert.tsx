@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import {
   faTriangleExclamation,
   faCircleExclamation,
@@ -15,8 +15,8 @@ export type AlertSeverity = 'error' | 'warning' | 'success' | 'info'
 export interface AlertProps {
   /** Visual severity: `error` (red), `warning` (amber), `success` (green), or `info` (blue). Defaults to `info`. */
   severity?: AlertSeverity
-  /** Content rendered inside the component. */
-  children: React.ReactNode
+  /** Plain-text message displayed inside the alert. */
+  message: string
   /** When true, renders an ✕ button that removes the alert from the DOM on click. */
   dismissible?: boolean
   /** Called after the user clicks the dismiss button, once the alert has been hidden. */
@@ -34,7 +34,7 @@ const severityIcons = {
 
 export const Alert = ({
   severity = 'info',
-  children,
+  message,
   dismissible = false,
   onDismiss,
   className,
@@ -57,7 +57,7 @@ export const Alert = ({
         <span className={styles.leadingIcon}>
           <Icon icon={severityIcons[severity]} size="medium" />
         </span>
-        <p className={styles.message}>{children}</p>
+        <p className={styles.message}>{message}</p>
       </div>
       {dismissible && (
         <IconButton

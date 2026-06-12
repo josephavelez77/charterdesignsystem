@@ -15,8 +15,8 @@ export type ToastUrgency = 'error' | 'warning' | 'success' | 'information' | 'no
 export interface ToastProps {
   /** Semantic severity: `error` (red), `warning` (amber), `success` (green), `information` (blue), or `none` (neutral). Controls icon and background. */
   urgency?: ToastUrgency
-  /** Content rendered inside the component. */
-  children: React.ReactNode
+  /** Plain-text message displayed inside the toast. */
+  message: string
   /** Label for the optional action button, e.g. `"Undo"` — renders the button when provided. */
   action?: string
   /** Called when the user clicks the action button. */
@@ -40,7 +40,7 @@ const EXIT_DURATION = 220
 
 export const Toast = ({
   urgency = 'none',
-  children,
+  message,
   action,
   onAction,
   duration = 5000,
@@ -83,7 +83,7 @@ export const Toast = ({
         <Icon icon={icon} size="medium" color="var(--text-color-static-primary-light)" />
       )}
 
-      <span className={messageClass}>{children}</span>
+      <span className={messageClass}>{message}</span>
 
       {action && (
         <Button

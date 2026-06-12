@@ -30,37 +30,37 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Error: Story = {
-  args: { urgency: 'error', children: MESSAGE, duration: 0 },
+  args: { urgency: 'error', message: MESSAGE, duration: 0 },
 }
 
 export const Warning: Story = {
-  args: { urgency: 'warning', children: MESSAGE, duration: 0 },
+  args: { urgency: 'warning', message: MESSAGE, duration: 0 },
 }
 
 export const Success: Story = {
-  args: { urgency: 'success', children: MESSAGE, duration: 0 },
+  args: { urgency: 'success', message: MESSAGE, duration: 0 },
 }
 
 export const Information: Story = {
-  args: { urgency: 'information', children: MESSAGE, duration: 0 },
+  args: { urgency: 'information', message: MESSAGE, duration: 0 },
 }
 
 export const None: Story = {
-  args: { urgency: 'none', children: MESSAGE, duration: 0 },
+  args: { urgency: 'none', message: MESSAGE, duration: 0 },
 }
 
 export const WithAction: Story = {
-  args: { urgency: 'error', children: 'Item deleted.', action: 'Undo', duration: 0 },
+  args: { urgency: 'error', message: 'Item deleted.', action: 'Undo', duration: 0 },
 }
 
 export const AllVariants: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 480 }}>
-      <Toast urgency="error" action="Undo" duration={0}>{MESSAGE}</Toast>
-      <Toast urgency="warning" action="Undo" duration={0}>{MESSAGE}</Toast>
-      <Toast urgency="success" action="Undo" duration={0}>{MESSAGE}</Toast>
-      <Toast urgency="information" action="Undo" duration={0}>{MESSAGE}</Toast>
-      <Toast urgency="none" action="Undo" duration={0}>{MESSAGE}</Toast>
+      <Toast urgency="error" message={MESSAGE} action="Undo" duration={0} />
+      <Toast urgency="warning" message={MESSAGE} action="Undo" duration={0} />
+      <Toast urgency="success" message={MESSAGE} action="Undo" duration={0} />
+      <Toast urgency="information" message={MESSAGE} action="Undo" duration={0} />
+      <Toast urgency="none" message={MESSAGE} action="Undo" duration={0} />
     </div>
   ),
 }
@@ -99,12 +99,11 @@ const InteractiveToast = ({ urgency = 'success', duration = 5000 }: {
         }}>
           <Toast
             urgency={urgency}
+            message="File uploaded successfully."
             action="Undo"
             duration={duration}
             onDismiss={() => setVisible(false)}
-          >
-            File uploaded successfully.
-          </Toast>
+          />
         </div>
       )}
     </div>
