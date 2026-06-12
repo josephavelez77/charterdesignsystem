@@ -181,7 +181,7 @@ const TypeScaleRow = ({ step }: { step: TypeStep }) => {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '120px 1fr',
+        gridTemplateColumns: '260px 1fr',
         gap: 24,
         alignItems: 'start',
         padding: '20px 0',
@@ -239,7 +239,7 @@ const WeightRow = ({ token, label, value }: typeof WEIGHTS[0]) => {
       ref={ref}
       style={{
         display: 'grid',
-        gridTemplateColumns: '120px 80px 1fr',
+        gridTemplateColumns: '260px 60px 1fr',
         alignItems: 'center',
         gap: 24,
         padding: '16px 0',
