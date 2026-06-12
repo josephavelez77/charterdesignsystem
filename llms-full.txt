@@ -1,8 +1,8 @@
-# @josephavelez77/base-design-system — Full Component Reference
+# @josephavelez77/charter-design-system — Full Component Reference
 
-> Version: 0.3.4
-> Package: `npm install @josephavelez77/base-design-system`
-> Repository: https://github.com/josephavelez77/basedesignsystem
+> Version: 0.3.5
+> Package: `npm install @josephavelez77/charter-design-system`
+> Repository: https://github.com/josephavelez77/charterdesignsystem
 
 ## Key facts for AI agents
 
@@ -18,7 +18,7 @@ import {
   TextField, SelectField, Checkbox, Switch,
   Dialog, Drawer, Toast, Alert,
   // … etc
-} from '@josephavelez77/base-design-system'
+} from '@josephavelez77/charter-design-system'
 ```
 
 ---
@@ -29,7 +29,7 @@ import {
 
 Renders a single Font Awesome icon at one of five sizes. Always pass `aria-label` when the icon conveys meaning without surrounding text.
 
-**Import:** `import { Icon } from '@josephavelez77/base-design-system'`
+**Import:** `import { Icon } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -55,7 +55,7 @@ import { faHouse } from '@fortawesome/free-solid-svg-icons'
 
 Standard clickable button. Supports four color variants, three fill emphases, leading/trailing icons, a loading spinner state, and full-width layout.
 
-**Import:** `import { Button } from '@josephavelez77/base-design-system'`
+**Import:** `import { Button } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -90,7 +90,7 @@ Standard clickable button. Supports four color variants, three fill emphases, le
 
 Square icon-only button. `aria-label` is required — there is no visible text.
 
-**Import:** `import { IconButton } from '@josephavelez77/base-design-system'`
+**Import:** `import { IconButton } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -115,7 +115,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 Two-part button: a primary action on the left and a chevron that opens a dropdown of secondary actions. Shares the same variant/emphasis API as Button.
 
-**Import:** `import { SplitButton } from '@josephavelez77/base-design-system'`
+**Import:** `import { SplitButton } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -152,7 +152,7 @@ Two-part button: a primary action on the left and a chevron that opens a dropdow
 
 Horizontal group of Button elements that share a unified border radius and collapse gaps on outlined variants to show a single divider line.
 
-**Import:** `import { ButtonGroup } from '@josephavelez77/base-design-system'`
+**Import:** `import { ButtonGroup } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -185,7 +185,7 @@ Horizontal group of Button elements that share a unified border radius and colla
 
 Circular avatar in three types: initials (2-char text), icon, or image. Background color is controlled via the `color` prop for initials and icon types.
 
-**Import:** `import { Avatar } from '@josephavelez77/base-design-system'`
+**Import:** `import { Avatar } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -213,7 +213,7 @@ Circular avatar in three types: initials (2-char text), icon, or image. Backgrou
 
 Small numeric counter or dot indicator overlaid on another element (typically an icon). Use `max` to cap the displayed number.
 
-**Import:** `import { Badge } from '@josephavelez77/base-design-system'`
+**Import:** `import { Badge } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -237,7 +237,7 @@ Small numeric counter or dot indicator overlaid on another element (typically an
 
 Toggleable filter/tag chip. Supports controlled and uncontrolled selected states. Fires `onChange` with the new boolean selected state.
 
-**Import:** `import { Chip } from '@josephavelez77/base-design-system'`
+**Import:** `import { Chip } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -261,7 +261,7 @@ Toggleable filter/tag chip. Supports controlled and uncontrolled selected states
 
 Read-only tag with an optional leading icon and a dismiss (✕) button. Use to show removable metadata on a record.
 
-**Import:** `import { AttributeChip } from '@josephavelez77/base-design-system'`
+**Import:** `import { AttributeChip } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -284,7 +284,7 @@ Read-only tag with an optional leading icon and a dismiss (✕) button. Use to s
 
 Non-interactive status badge. Combine `statusType` (semantic category) with `level` (intensity 1–3) for full control over color.
 
-**Import:** `import { StatusChip } from '@josephavelez77/base-design-system'`
+**Import:** `import { StatusChip } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -309,7 +309,7 @@ Non-interactive status badge. Combine `statusType` (semantic category) with `lev
 
 Non-interactive chip that shows a priority level with an auto-selected icon and color. Pass `label` to override the default capitalized priority text.
 
-**Import:** `import { PriorityChip } from '@josephavelez77/base-design-system'`
+**Import:** `import { PriorityChip } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -333,7 +333,7 @@ Non-interactive chip that shows a priority level with an auto-selected icon and 
 
 Compact row combining an Avatar and a name/role text block. Used in tables, lists, and comment threads to identify a user.
 
-**Import:** `import { UserIdentificationTag } from '@josephavelez77/base-design-system'`
+**Import:** `import { UserIdentificationTag } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -362,7 +362,7 @@ Compact row combining an Avatar and a name/role text block. Used in tables, list
 
 Application logo mark. Renders the brand SVG at the configured size.
 
-**Import:** `import { Logo } from '@josephavelez77/base-design-system'`
+**Import:** `import { Logo } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -385,7 +385,7 @@ Application logo mark. Renders the brand SVG at the configured size.
 
 Inline status banner for error, warning, success, or info messages. Add `dismissible` to let users close it.
 
-**Import:** `import { Alert } from '@josephavelez77/base-design-system'`
+**Import:** `import { Alert } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -412,7 +412,7 @@ Transient notification that auto-dismisses after `duration` ms. Pass `action` to
 
 > **Note:** The Toast does not position itself — wrap it in a fixed/absolute container (bottom-right corner is conventional).
 
-**Import:** `import { Toast } from '@josephavelez77/base-design-system'`
+**Import:** `import { Toast } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -443,7 +443,7 @@ Transient notification that auto-dismisses after `duration` ms. Pass `action` to
 
 Animated loading indicator. Use inline for button loading states or centered in a panel while content loads.
 
-**Import:** `import { Spinner } from '@josephavelez77/base-design-system'`
+**Import:** `import { Spinner } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -464,7 +464,7 @@ Animated loading indicator. Use inline for button loading states or centered in 
 
 Placeholder shimmer block shown while content is loading. Set explicit `width` and `height` to match the element it replaces.
 
-**Import:** `import { Skeleton } from '@josephavelez77/base-design-system'`
+**Import:** `import { Skeleton } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -487,7 +487,7 @@ Placeholder shimmer block shown while content is loading. Set explicit `width` a
 
 Horizontal progress indicator. `value` is 0–100. Optionally show a percentage label.
 
-**Import:** `import { ProgressBar } from '@josephavelez77/base-design-system'`
+**Import:** `import { ProgressBar } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -507,7 +507,7 @@ Horizontal progress indicator. `value` is 0–100. Optionally show a percentage 
 
 Hover/focus tooltip that wraps any element. The tooltip text is plain string only — no JSX.
 
-**Import:** `import { Tooltip } from '@josephavelez77/base-design-system'`
+**Import:** `import { Tooltip } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -532,7 +532,7 @@ Hover/focus tooltip that wraps any element. The tooltip text is plain string onl
 
 Modal dialog with title, optional subtitle, body area, and up to two footer action buttons. Renders into a portal with a scrim overlay.
 
-**Import:** `import { Dialog } from '@josephavelez77/base-design-system'`
+**Import:** `import { Dialog } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -574,7 +574,7 @@ Modal dialog with title, optional subtitle, body area, and up to two footer acti
 
 Side-panel overlay that slides in from the right. Same structure as Dialog but anchored to the viewport edge.
 
-**Import:** `import { Drawer } from '@josephavelez77/base-design-system'`
+**Import:** `import { Drawer } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -613,7 +613,7 @@ Side-panel overlay that slides in from the right. Same structure as Dialog but a
 
 Anchored floating panel with a header label and freeform content. Toggles open/closed when the trigger element is clicked; closes on outside click or Escape.
 
-**Import:** `import { Popover } from '@josephavelez77/base-design-system'`
+**Import:** `import { Popover } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -639,7 +639,7 @@ Compound dropdown menu. `Menu` is the container (scrollable list); `MenuItem` is
 
 > **Note:** Menu does not manage its own open state or positioning — wrap it in a relative container and toggle visibility yourself.
 
-**Import:** `import { Menu, MenuItem } from '@josephavelez77/base-design-system'`
+**Import:** `import { Menu, MenuItem } from '@josephavelez77/charter-design-system'`
 
 ### Menu props
 
@@ -679,7 +679,7 @@ Compound dropdown menu. `Menu` is the container (scrollable list); `MenuItem` is
 
 Single-line text input with label, hint text, error message, and optional leading/trailing icons. Fully extends native `<input>` props.
 
-**Import:** `import { TextField } from '@josephavelez77/base-design-system'`
+**Import:** `import { TextField } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -710,7 +710,7 @@ Single-line text input with label, hint text, error message, and optional leadin
 
 Multi-line text input with label, hint, error, and optional leading icon. Extends native `<textarea>` props.
 
-**Import:** `import { TextArea } from '@josephavelez77/base-design-system'`
+**Import:** `import { TextArea } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -739,7 +739,7 @@ Multi-line text input with label, hint, error, and optional leading icon. Extend
 
 Password input with a built-in show/hide toggle button. Behaves identically to TextField otherwise.
 
-**Import:** `import { PasswordField } from '@josephavelez77/base-design-system'`
+**Import:** `import { PasswordField } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -766,7 +766,7 @@ Password input with a built-in show/hide toggle button. Behaves identically to T
 
 Numeric text input with increment/decrement stepper buttons. Supports `min`, `max`, and `step` constraints.
 
-**Import:** `import { NumberField } from '@josephavelez77/base-design-system'`
+**Import:** `import { NumberField } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -806,7 +806,7 @@ Numeric text input with increment/decrement stepper buttons. Supports `min`, `ma
 
 Single-value dropdown built on a native `<select>`. Pass `options` as `{ value, label }` pairs.
 
-**Import:** `import { SelectField } from '@josephavelez77/base-design-system'`
+**Import:** `import { SelectField } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -847,7 +847,7 @@ Single-value dropdown built on a native `<select>`. Pass `options` as `{ value, 
 
 Multi-value dropdown that shows selected options as removable AttributeChip elements. `value` and `onChange` operate on string arrays.
 
-**Import:** `import { MultiSelectField } from '@josephavelez77/base-design-system'`
+**Import:** `import { MultiSelectField } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -885,7 +885,7 @@ Multi-value dropdown that shows selected options as removable AttributeChip elem
 
 Date input that wraps a native `<input type="date">` with DS label, hint, and error styling.
 
-**Import:** `import { DateField } from '@josephavelez77/base-design-system'`
+**Import:** `import { DateField } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -921,7 +921,7 @@ Interactive calendar date picker with a month/year header and a year-jump overla
 
 > **Note:** DatePicker renders inline — position it in a floating container (absolute/popover) when triggered from a field.
 
-**Import:** `import { DatePicker } from '@josephavelez77/base-design-system'`
+**Import:** `import { DatePicker } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -949,7 +949,7 @@ Interactive calendar date picker with a month/year header and a year-jump overla
 
 Time input field with a clock icon that opens a TimePicker overlay. Manages its own input state; pass `value` and `onChange` for controlled usage.
 
-**Import:** `import { TimeField } from '@josephavelez77/base-design-system'`
+**Import:** `import { TimeField } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -983,7 +983,7 @@ Time input field with a clock icon that opens a TimePicker overlay. Manages its 
 
 Interactive time selector with hour, minute, and AM/PM columns. Typically opened by a TimeField; can also be used standalone.
 
-**Import:** `import { TimePicker } from '@josephavelez77/base-design-system'`
+**Import:** `import { TimePicker } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1014,7 +1014,7 @@ Interactive time selector with hour, minute, and AM/PM columns. Typically opened
 
 Single checkbox with a visible label. Supports controlled, uncontrolled, and indeterminate states. Fully extends native `<input type="checkbox">` props.
 
-**Import:** `import { Checkbox } from '@josephavelez77/base-design-system'`
+**Import:** `import { Checkbox } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1039,7 +1039,7 @@ Single checkbox with a visible label. Supports controlled, uncontrolled, and ind
 
 Labeled group of Checkbox items rendered as a vertical list. Manages selection state internally when used uncontrolled.
 
-**Import:** `import { CheckboxGroup } from '@josephavelez77/base-design-system'`
+**Import:** `import { CheckboxGroup } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1069,7 +1069,7 @@ Labeled group of Checkbox items rendered as a vertical list. Manages selection s
 
 Radio button set. Use `RadioButtonGroup` to manage selection with a shared `name`; compose individual `RadioButtonItem` elements inside it.
 
-**Import:** `import { RadioButton, RadioButtonGroup, RadioButtonItem } from '@josephavelez77/base-design-system'`
+**Import:** `import { RadioButton, RadioButtonGroup, RadioButtonItem } from '@josephavelez77/charter-design-system'`
 
 ### RadioButton props
 
@@ -1112,7 +1112,7 @@ Radio button set. Use `RadioButtonGroup` to manage selection with a shared `name
 
 Toggle switch for binary on/off settings. Supports controlled and uncontrolled modes.
 
-**Import:** `import { Switch } from '@josephavelez77/base-design-system'`
+**Import:** `import { Switch } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1134,7 +1134,7 @@ Toggle switch for binary on/off settings. Supports controlled and uncontrolled m
 
 Labeled list of Switch rows. Each `SwitchItem` has its own label, hint, and disabled state.
 
-**Import:** `import { SwitchGroup, SwitchItem } from '@josephavelez77/base-design-system'`
+**Import:** `import { SwitchGroup, SwitchItem } from '@josephavelez77/charter-design-system'`
 
 ### SwitchGroup props
 
@@ -1166,7 +1166,7 @@ Labeled list of Switch rows. Each `SwitchItem` has its own label, hint, and disa
 
 Drag-and-drop file upload zone with a file list below. `FileUploaderListItem` renders each uploaded file with name, size, a progress bar, and a remove button.
 
-**Import:** `import { FileUploader, FileUploaderListItem } from '@josephavelez77/base-design-system'`
+**Import:** `import { FileUploader, FileUploaderListItem } from '@josephavelez77/charter-design-system'`
 
 ### FileUploader props
 
@@ -1221,7 +1221,7 @@ Collapsible section with a labeled header. Use standalone for a single panel; wr
 
 > **Note:** The exported component is `AccordionItem`, not `Accordion`.
 
-**Import:** `import { Accordion, AccordionGroup } from '@josephavelez77/base-design-system'`
+**Import:** `import { Accordion, AccordionGroup } from '@josephavelez77/charter-design-system'`
 
 ### Accordion props
 
@@ -1264,7 +1264,7 @@ Collapsible section with a labeled header. Use standalone for a single panel; wr
 
 Horizontal tab bar. Manages its own selected state when `activeIndex` and `onChange` are omitted.
 
-**Import:** `import { TabGroup } from '@josephavelez77/base-design-system'`
+**Import:** `import { TabGroup } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1292,7 +1292,7 @@ Horizontal tab bar. Manages its own selected state when `activeIndex` and `onCha
 
 Multi-step form progress indicator with step badges, connecting dividers, and Back/Next/Cancel/Done control buttons.
 
-**Import:** `import { Stepper } from '@josephavelez77/base-design-system'`
+**Import:** `import { Stepper } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1329,7 +1329,7 @@ Multi-step form progress indicator with step badges, connecting dividers, and Ba
 
 Hierarchical navigation trail. The last item is treated as the current page and rendered without a link.
 
-**Import:** `import { Breadcrumb } from '@josephavelez77/base-design-system'`
+**Import:** `import { Breadcrumb } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1358,7 +1358,7 @@ Hierarchical navigation trail. The last item is treated as the current page and 
 
 Thin horizontal or vertical rule used to separate sections of content.
 
-**Import:** `import { Divider } from '@josephavelez77/base-design-system'`
+**Import:** `import { Divider } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1379,7 +1379,7 @@ Thin horizontal or vertical rule used to separate sections of content.
 
 Page navigation control with previous/next arrows and numbered page buttons. Fires `onPageChange` with the new 1-based page number.
 
-**Import:** `import { Pagination } from '@josephavelez77/base-design-system'`
+**Import:** `import { Pagination } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1414,7 +1414,7 @@ Page navigation control with previous/next arrows and numbered page buttons. Fir
 
 Top application bar with logo, navigation area, and a user avatar. Renders app-level actions and branding.
 
-**Import:** `import { GlobalToolbar } from '@josephavelez77/base-design-system'`
+**Import:** `import { GlobalToolbar } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1440,7 +1440,7 @@ Top application bar with logo, navigation area, and a user avatar. Renders app-l
 
 Collapsible vertical sidebar for application navigation. Typically placed on the left of the page layout.
 
-**Import:** `import { NavDrawer } from '@josephavelez77/base-design-system'`
+**Import:** `import { NavDrawer } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1474,7 +1474,7 @@ Collapsible vertical sidebar for application navigation. Typically placed on the
 
 Page-level title block with a heading, optional subtitle, and a trailing actions slot.
 
-**Import:** `import { PageHeader } from '@josephavelez77/base-design-system'`
+**Import:** `import { PageHeader } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1507,7 +1507,7 @@ Page-level title block with a heading, optional subtitle, and a trailing actions
 
 Generic surface container with consistent padding, border, and radius. Use as the base for custom card layouts.
 
-**Import:** `import { Card } from '@josephavelez77/base-design-system'`
+**Import:** `import { Card } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1539,7 +1539,7 @@ Generic surface container with consistent padding, border, and radius. Use as th
 
 Metric card displaying a headline number, label, and optional trend indicator.
 
-**Import:** `import { KpiCard } from '@josephavelez77/base-design-system'`
+**Import:** `import { KpiCard } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1563,7 +1563,7 @@ Metric card with two layout variants. `horizontal` places the KPI text on the le
 
 > **Note:** The design system does not bundle a chart library. The Storybook stories use `@mui/x-charts` as a reference implementation. Pass `colors` and `sx` to MUI X Charts to align with DS tokens — see example below.
 
-**Import:** `import { ChartCard } from '@josephavelez77/base-design-system'`
+**Import:** `import { ChartCard } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1612,7 +1612,7 @@ import { BarChart } from '@mui/x-charts/BarChart'
 
 Card with a title and a scrollable list body. Use with ListItem or ListGroup children.
 
-**Import:** `import { ListCard } from '@josephavelez77/base-design-system'`
+**Import:** `import { ListCard } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1637,7 +1637,7 @@ Card with a title and a scrollable list body. Use with ListItem or ListGroup chi
 
 Structured list. `ListGroup` adds a section heading above a group of `ListItem` rows.
 
-**Import:** `import { ListGroup, ListItem } from '@josephavelez77/base-design-system'`
+**Import:** `import { ListGroup, ListItem } from '@josephavelez77/charter-design-system'`
 
 ### ListGroup props
 
@@ -1667,7 +1667,7 @@ Structured list. `ListGroup` adds a section heading above a group of `ListItem` 
 
 Styled HTML table wrapper with consistent header, row, and cell styling.
 
-**Import:** `import { Table } from '@josephavelez77/base-design-system'`
+**Import:** `import { Table } from '@josephavelez77/charter-design-system'`
 
 ### Props
 
@@ -1721,7 +1721,7 @@ Styled HTML table wrapper with consistent header, row, and cell styling.
 
 Feature-rich data table with sortable columns, row selection, and pagination support.
 
-**Import:** `import { DataGrid } from '@josephavelez77/base-design-system'`
+**Import:** `import { DataGrid } from '@josephavelez77/charter-design-system'`
 
 ### Props
 

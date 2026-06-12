@@ -54,16 +54,16 @@ const navItems: NavItemConfig[] = [
 ]
 
 export const Default: Story = {
-  args: { appName: 'base', items: navItems },
+  args: { appName: 'Charter', items: navItems },
 }
 
 export const Collapsed: Story = {
-  args: { appName: 'base', items: navItems, defaultCollapsed: true },
+  args: { appName: 'Charter', items: navItems, defaultCollapsed: true },
 }
 
 export const WithSelectedChild: Story = {
   args: {
-    appName: 'base',
+    appName: 'Charter',
     items: [
       { label: 'Dashboard', icon: faHouse },
       {

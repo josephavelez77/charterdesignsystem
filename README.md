@@ -1,4 +1,4 @@
-# Base Design System
+# Charter Design System
 
 An open-source React component library for enterprise software tools, built with design tokens, dark/light theming, and full TypeScript support.
 
@@ -7,7 +7,7 @@ An open-source React component library for enterprise software tools, built with
 ## Installation
 
 ```bash
-npm install @josephavelez77/base-design-system
+npm install @josephavelez77/charter-design-system
 ```
 
 ### Peer dependencies
@@ -31,8 +31,8 @@ npm install react react-dom \
 Add both imports **once** at your app root (e.g. `main.tsx` or `_app.tsx`):
 
 ```ts
-import '@josephavelez77/base-design-system/tokens'  // CSS custom properties
-import '@josephavelez77/base-design-system/styles'  // component styles
+import '@josephavelez77/charter-design-system/tokens'  // CSS custom properties
+import '@josephavelez77/charter-design-system/styles'  // component styles
 ```
 
 | Import | What it provides |
@@ -81,7 +81,7 @@ document.documentElement.removeAttribute('data-theme') // back to dark
 ### 4. Use components
 
 ```tsx
-import { Button, Alert } from '@josephavelez77/base-design-system'
+import { Button, Alert } from '@josephavelez77/charter-design-system'
 
 export function App() {
   return (
@@ -175,7 +175,7 @@ Token categories: `border`, `container`, `icon`, `text`, `focus-ring`.
 To import just the raw CSS variables without the Google Fonts `@import`:
 
 ```ts
-import '@josephavelez77/base-design-system/tokens'
+import '@josephavelez77/charter-design-system/tokens'
 ```
 
 ---
@@ -185,7 +185,7 @@ import '@josephavelez77/base-design-system/tokens'
 All components ship full type definitions. Every component exports its props type:
 
 ```ts
-import type { ButtonProps, AlertProps, DataGridColumn } from '@josephavelez77/base-design-system'
+import type { ButtonProps, AlertProps, DataGridColumn } from '@josephavelez77/charter-design-system'
 ```
 
 ---

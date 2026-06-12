@@ -3414,11 +3414,11 @@ const wp = "_logo_1uqjg_3", Cp = "_horizontal_1uqjg_10", Ip = "_vertical_1uqjg_1
       Ke[n],
       a ?? ""
     ].filter(Boolean).join(" "),
-    "aria-label": "base",
+    "aria-label": "Charter",
     role: "img",
     children: [
       /* @__PURE__ */ e("div", { className: Ke.mark }),
-      /* @__PURE__ */ e("span", { className: Ke.wordmark, children: "base" })
+      /* @__PURE__ */ e("span", { className: Ke.wordmark, children: "Charter" })
     ]
   }
 );

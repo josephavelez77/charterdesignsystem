@@ -109,7 +109,7 @@ const lightEntries = [...themeable]
   .map((k) => [k, toCSSValue(lightFlat[k])])
 
 const header = `/**
- * Base Design System — Design Tokens
+ * Charter Design System — Design Tokens
  * ⚠️  Auto-generated — do not edit by hand.
  *    Run \`npm run tokens\` to regenerate.
  *

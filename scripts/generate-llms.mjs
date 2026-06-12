@@ -758,7 +758,7 @@ function buildSection(component) {
     lines.push(`> **Note:** ${component.notes}`)
   }
   lines.push('')
-  lines.push(`**Import:** \`import { ${component.exports.join(', ')} } from '@josephavelez77/base-design-system'\``)
+  lines.push(`**Import:** \`import { ${component.exports.join(', ')} } from '@josephavelez77/charter-design-system'\``)
   lines.push('')
 
   // Props tables — one per file
@@ -822,11 +822,11 @@ function readVersion() {
 }
 
 function buildHeader(version) {
-  return `# @josephavelez77/base-design-system — Full Component Reference
+  return `# @josephavelez77/charter-design-system — Full Component Reference
 
 > Version: ${version}
-> Package: \`npm install @josephavelez77/base-design-system\`
-> Repository: https://github.com/josephavelez77/basedesignsystem
+> Package: \`npm install @josephavelez77/charter-design-system\`
+> Repository: https://github.com/josephavelez77/charterdesignsystem
 
 ## Key facts for AI agents
 
@@ -842,7 +842,7 @@ import {
   TextField, SelectField, Checkbox, Switch,
   Dialog, Drawer, Toast, Alert,
   // … etc
-} from '@josephavelez77/base-design-system'
+} from '@josephavelez77/charter-design-system'
 \`\`\`
 
 ---

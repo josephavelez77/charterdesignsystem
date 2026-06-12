@@ -26,11 +26,11 @@ export const Logo = ({
         styles[size],
         className ?? '',
       ].filter(Boolean).join(' ')}
-      aria-label="base"
+      aria-label="Charter"
       role="img"
     >
       <div className={styles.mark} />
-      <span className={styles.wordmark}>base</span>
+      <span className={styles.wordmark}>Charter</span>
     </div>
   )
 }
