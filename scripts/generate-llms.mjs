@@ -616,10 +616,35 @@ const COMPONENTS = [
   {
     exports: ['ChartCard'],
     category: 'Data Display',
-    description: 'Card wrapper for chart content with a title, optional subtitle, and a body slot for any charting library.',
+    description: 'Metric card with two layout variants. `horizontal` places the KPI text on the left and the chart on the right. `vertical` stacks text above a full-width chart. Pass any chart library component as `children`.',
+    notes: 'The design system does not bundle a chart library. The Storybook stories use `@mui/x-charts` as a reference implementation. Pass `colors` and `sx` to MUI X Charts to align with DS tokens — see example below.',
     files: ['ChartCard/ChartCard.tsx'],
-    example: `<ChartCard title="Revenue over time" subtitle="Last 12 months">
-  <LineChart data={revenueData} />
+    example: `// Vertical layout with MUI X Charts
+import { BarChart } from '@mui/x-charts/BarChart'
+
+<ChartCard value="100" description="Bushels of apples" layout="vertical">
+  <BarChart
+    series={[
+      { data: [30, 25, 30, 20], label: '2020' },
+      { data: [65, 48, 40, 48], label: '2021' },
+      { data: [75, 82, 56, 79], label: '2022' },
+    ]}
+    xAxis={[{ data: ['Figma', 'Sketch', 'XD', 'PS'], scaleType: 'band' }]}
+    colors={['#007DAF', '#B15873', '#00C950']}
+    height={220}
+    grid={{ horizontal: true }}
+    sx={{
+      '& .MuiChartsAxis-tickLabel': { fill: 'var(--text-color-themeable-secondary)' },
+      '& .MuiChartsAxis-line':      { stroke: 'var(--border-color-themeable-primary)' },
+      '& .MuiChartsLegend-label':   { fill: 'var(--text-color-themeable-secondary)' },
+      '& .MuiChartsGrid-line':      { stroke: 'var(--border-color-themeable-primary)' },
+    }}
+  />
+</ChartCard>
+
+// Horizontal layout — compact sidebar chart
+<ChartCard value="48,200" description="Page views" layout="horizontal">
+  <BarChart series={[{ data: [42, 67, 55, 80, 73] }]} height={120} hideLegend />
 </ChartCard>`,
   },
   {

@@ -1559,7 +1559,9 @@ Metric card displaying a headline number, label, and optional trend indicator.
 ---
 ## ChartCard
 
-Card wrapper for chart content with a title, optional subtitle, and a body slot for any charting library.
+Metric card with two layout variants. `horizontal` places the KPI text on the left and the chart on the right. `vertical` stacks text above a full-width chart. Pass any chart library component as `children`.
+
+> **Note:** The design system does not bundle a chart library. The Storybook stories use `@mui/x-charts` as a reference implementation. Pass `colors` and `sx` to MUI X Charts to align with DS tokens — see example below.
 
 **Import:** `import { ChartCard } from '@josephavelez77/base-design-system'`
 
@@ -1567,18 +1569,41 @@ Card wrapper for chart content with a title, optional subtitle, and a body slot 
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `label` | `string` | — | Category label for this bar (used for tooltip / accessibility purposes). |
-| `value` | `number` | — | Numeric height of this bar — relative to the tallest bar in the dataset. |
-| `value` | `string` | — | Primary metric string displayed prominently above the chart (e.g. `"1,234"`). |
+| `value` | `string` | — | Primary metric string displayed prominently (e.g. `"1,234"` or `"48%"`). |
 | `description` | `string` | — | Short description of the metric shown below `value`. |
-| `data` | `BarChartDataPoint[]` | — | Dataset rendered as a mini bar chart on the right side of the card. |
+| `layout` | `ChartCardLayout` | 'horizontal' | Layout variant: - `horizontal` — metric text on the left, chart fills the right side (default). - `vertical` — metric text on top, chart fills the full width below. |
+| `children` | `React.ReactNode` | — | Chart content — pass any chart component (Recharts, Victory, etc.) or a custom SVG here. |
 | `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
 
 ### Usage
 
 ```tsx
-<ChartCard title="Revenue over time" subtitle="Last 12 months">
-  <LineChart data={revenueData} />
+// Vertical layout with MUI X Charts
+import { BarChart } from '@mui/x-charts/BarChart'
+
+<ChartCard value="100" description="Bushels of apples" layout="vertical">
+  <BarChart
+    series={[
+      { data: [30, 25, 30, 20], label: '2020' },
+      { data: [65, 48, 40, 48], label: '2021' },
+      { data: [75, 82, 56, 79], label: '2022' },
+    ]}
+    xAxis={[{ data: ['Figma', 'Sketch', 'XD', 'PS'], scaleType: 'band' }]}
+    colors={['#007DAF', '#B15873', '#00C950']}
+    height={220}
+    grid={{ horizontal: true }}
+    sx={{
+      '& .MuiChartsAxis-tickLabel': { fill: 'var(--text-color-themeable-secondary)' },
+      '& .MuiChartsAxis-line':      { stroke: 'var(--border-color-themeable-primary)' },
+      '& .MuiChartsLegend-label':   { fill: 'var(--text-color-themeable-secondary)' },
+      '& .MuiChartsGrid-line':      { stroke: 'var(--border-color-themeable-primary)' },
+    }}
+  />
+</ChartCard>
+
+// Horizontal layout — compact sidebar chart
+<ChartCard value="48,200" description="Page views" layout="horizontal">
+  <BarChart series={[{ data: [42, 67, 55, 80, 73] }]} height={120} hideLegend />
 </ChartCard>
 ```
 

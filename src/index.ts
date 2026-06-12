@@ -182,7 +182,7 @@ export { ListCard } from './components/ListCard'
 export type { ListCardProps, ListCardItem } from './components/ListCard'
 
 export { ChartCard } from './components/ChartCard'
-export type { ChartCardProps, BarChartDataPoint } from './components/ChartCard'
+export type { ChartCardProps, ChartCardLayout } from './components/ChartCard'
 
 export { Table } from './components/Table'
 export type {

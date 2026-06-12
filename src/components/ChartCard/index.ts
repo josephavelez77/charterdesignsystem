@@ -1,2 +1,2 @@
 export { ChartCard } from './ChartCard'
-export type { ChartCardProps, BarChartDataPoint } from './ChartCard'
+export type { ChartCardProps, ChartCardLayout } from './ChartCard'

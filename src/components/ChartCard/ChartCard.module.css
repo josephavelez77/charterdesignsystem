@@ -1,18 +1,56 @@
+/* ── Base card ────────────────────────────────────────────────────────────── */
+
 .card {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--container-gap-static-large);
   padding: var(--container-padding-static-primary);
   background-color: var(--container-color-themeable-tertiary);
   border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
   border-radius: var(--border-radius-static-primary);
+  overflow: hidden;
 }
+
+/* ── Horizontal: text left, chart right ───────────────────────────────────── */
+
+.horizontal {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--container-gap-static-large);
+}
+
+.horizontal .info {
+  flex-shrink: 0;
+}
+
+.horizontal .chartArea {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Vertical: text top, chart below ──────────────────────────────────────── */
+
+.vertical {
+  flex-direction: column;
+  gap: var(--container-gap-static-primary);
+}
+
+.vertical .info {
+  flex-shrink: 0;
+}
+
+.vertical .chartArea {
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ── Info block ───────────────────────────────────────────────────────────── */
 
 .info {
   display: flex;
   flex-direction: column;
+  gap: var(--container-gap-static-xxs);
   min-width: 0;
 }
 
@@ -34,16 +72,8 @@
   color: var(--text-color-themeable-secondary);
 }
 
+/* ── Chart area ───────────────────────────────────────────────────────────── */
+
 .chartArea {
-  display: flex;
-  align-items: flex-end;
-  flex-shrink: 0;
-}
-
-.chart {
-  display: block;
-}
-
-.bar {
-  fill: var(--container-color-static-brand-primary);
+  /* Children fill this slot — chart library components or any ReactNode */
 }
