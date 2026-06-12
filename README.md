@@ -111,7 +111,7 @@ export function App() {
 | `Button` | Primary action button with variants and emphasis levels |
 | `ButtonGroup` | Grouped set of related buttons |
 | `Card` | Generic content card container |
-| `ChartCard` | Card with an embedded bar chart |
+| `ChartCard` | Card with a `children` slot for any chart library (`horizontal` or `vertical` layout) |
 | `Checkbox` / `CheckboxGroup` | Checkbox input and grouped set |
 | `Chip` | Compact filter or selection chip |
 | `DataGrid` | Full-featured data table with sorting and overflow actions |

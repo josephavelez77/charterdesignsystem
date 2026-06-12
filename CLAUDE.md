@@ -124,6 +124,107 @@ The library uses three Google Fonts, referenced via CSS custom properties:
 
 **The package does not load fonts.** Storybook loads them via `.storybook/preview-head.html`. Consumers of the npm package must add the Google Fonts `<link>` tags to their own HTML `<head>` — without this, everything falls back to the browser's default serif font.
 
+## ChartCard + MUI X Charts
+
+`ChartCard` is a layout shell — it provides the card chrome, the stat value/description, and a `children` slot. It does **not** bundle a chart library. Drop any React chart component into the `children` slot.
+
+The Storybook stories use **MUI X Charts** (`@mui/x-charts`) as a reference integration. It is a `devDependency` only — consumers choose their own chart library.
+
+### Layout prop
+
+```tsx
+<ChartCard value="$102K" description="Monthly revenue" layout="vertical">
+  {/* your chart here */}
+</ChartCard>
+```
+
+- `layout="horizontal"` — value/description left, chart right (good for sparklines and small bar charts)
+- `layout="vertical"` — value/description top, chart full-width below (good for detailed charts)
+
+### Theming MUI X Charts to match DS tokens
+
+MUI X Charts renders axes as SVG and the legend as HTML. Override both separately:
+
+```tsx
+// Axis + grid lines — use sx on the chart component
+const chartSx = {
+  '& .MuiChartsAxis-tickLabel': {
+    fill: 'var(--text-color-themeable-secondary) !important',
+    fontFamily: 'var(--text-family-static-body) !important',
+    fontSize: '11px !important',
+  },
+  '& .MuiChartsAxis-line':  { stroke: 'var(--border-color-themeable-primary) !important' },
+  '& .MuiChartsAxis-tick':  { stroke: 'var(--border-color-themeable-primary) !important' },
+  '& .MuiChartsGrid-horizontalLine': {
+    stroke: 'var(--border-color-themeable-primary) !important',
+    strokeDasharray: '4 4',
+    opacity: 0.5,
+  },
+}
+
+// Legend — must use slotProps.legend.sx (not ancestor sx) to win emotion specificity
+const legendBottom = {
+  position: { vertical: 'bottom', horizontal: 'middle' },
+  direction: 'row',
+  sx: {
+    color: 'var(--text-color-themeable-secondary)',
+    fontFamily: 'var(--text-family-static-body)',
+    fontSize: '11px',
+    marginBlockStart: '4px',
+  },
+}
+
+<BarChart ... sx={chartSx} slotProps={{ legend: legendBottom }} />
+```
+
+### Reducing left whitespace
+
+MUI X Charts reserves space for a y-axis by default. For card-sized charts where grid lines + tooltip give enough context, hide the axis entirely:
+
+```tsx
+<BarChart
+  yAxis={[{ position: 'none' }]}
+  margin={{ top: 8, right: 8, bottom: 40, left: 8 }}
+  ...
+/>
+```
+
+### Responsive width
+
+MUI X Charts v9 needs an explicit pixel `width`. Use a ResizeObserver hook:
+
+```tsx
+const useAutoWidth = () => {
+  const ref = useRef<HTMLDivElement>(null)
+  const [width, setWidth] = useState(0)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const ro = new ResizeObserver(entries => {
+      const w = entries[0]?.contentRect.width
+      if (w) setWidth(Math.floor(w))
+    })
+    ro.observe(el)
+    setWidth(Math.floor(el.getBoundingClientRect().width))
+    return () => ro.disconnect()
+  }, [])
+  return { ref, width }
+}
+
+// Usage
+const { ref, width } = useAutoWidth()
+<div ref={ref} style={{ width: '100%' }}>
+  {width > 0 && <BarChart width={width} height={220} ... />}
+</div>
+```
+
+### DS chart color palette
+
+```ts
+const DS_CHART_COLORS = ['#007DAF', '#B15873', '#00C950', '#FF6900', '#2B7FFF']
+// brand-primary blue, brand-secondary rose, success green, warning orange, accent blue
+```
+
 ## What NOT to do
 
 - Don't import from deep paths: `@josephavelez77/base-design-system/dist/components/Button` ❌
