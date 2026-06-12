@@ -58,7 +58,7 @@ scripts/
 - **Always use CSS tokens** — never hardcode colors, spacing, font sizes, or radii
 - Use `var(--container-color-themeable-primary)` not `#262626`
 - Use `var(--container-padding-static-primary)` not `16px`
-- Theming is handled by `[data-theme='light']` overrides in `src/tokens/index.css` — components don't need any theme logic
+- Theming is handled by `[data-theme='light']` and `[data-theme='dark']` overrides in `src/tokens/index.css` — components don't need any theme logic
 - CSS Modules only — no inline styles, no Tailwind, no CSS-in-JS
 
 ### Key tokens to know
@@ -104,12 +104,15 @@ Always provide `aria-label` on `<IconButton>` — it's required by the prop type
 
 ## Theming
 
-The library defaults to dark mode (`:root`). Light mode is opt-in via `data-theme="light"` on the root element. Components don't need any theme-aware logic — CSS tokens handle it automatically.
+The library defaults to dark mode (`:root`). Light mode is opt-in via `data-theme="light"` on the root element. A dark region nested inside a light page can be explicitly scoped with `data-theme="dark"`. Components don't need any theme-aware logic — CSS tokens handle it automatically.
 
 ```tsx
 // Toggle theme
 document.documentElement.setAttribute('data-theme', 'light')
 document.documentElement.removeAttribute('data-theme') // back to dark
+
+// Scope a dark region inside a light page
+<aside data-theme="dark">…</aside>
 ```
 
 ## Fonts

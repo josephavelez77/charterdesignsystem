@@ -86,9 +86,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 )
 ```
 
-Default theme is dark. For light mode, add `data-theme="light"` to `<html>`:
+Default theme is dark. For light mode, add `data-theme="light"` to `<html>`. To scope a dark region inside a light page, use `data-theme="dark"` on any element:
 ```html
 <html data-theme="light">
+  <!-- dark panel nested inside light page -->
+  <aside data-theme="dark">…</aside>
+</html>
 ```
 
 ---

@@ -6,7 +6,7 @@
 
 ## Key facts for AI agents
 
-- **Dark mode is the default.** Light mode is opt-in via `data-theme="light"` on `<html>`. Components need no theme logic.
+- **Dark mode is the default.** Light mode is opt-in via `data-theme="light"` on `<html>`. To explicitly scope a dark region inside a light page, use `data-theme="dark"`. Components need no theme logic.
 - **All icons come from Font Awesome.** Import `IconDefinition` objects from `@fortawesome/free-solid-svg-icons`. Never use emoji or plain strings.
 - **Fonts are NOT bundled.** Consuming apps must load DM Sans, DM Serif Display, and JetBrains Mono from Google Fonts. See the README for the `<link>` tag.
 - **CSS Modules, no inline styles.** Do not pass `style` props with hardcoded colors or spacing — use `className` for layout overrides only.

@@ -8,7 +8,7 @@
  * Writes src/tokens/index.css
  *
  * Rules:
- *   - "themeable" tokens differ between modes → emitted in :root AND [data-theme='light']
+ *   - "themeable" tokens differ between modes → emitted in :root, [data-theme='dark'], AND [data-theme='light']
  *   - "static" tokens are identical in both modes → emitted in :root only
  *   - number values get "px" appended (0 stays "0")
  *   - color values with alpha < 1 become rgba()
@@ -104,6 +104,8 @@ function renderVars(entries) {
 // ── Compose CSS ─────────────────────────────────────────────────────────────
 const darkEntries = Object.entries(darkFlat).map(([k, v]) => [k, toCSSValue(v)])
 
+const darkThemeableEntries = [...themeable].map((k) => [k, toCSSValue(darkFlat[k])])
+
 const lightEntries = [...themeable]
   .filter((k) => lightFlat[k])
   .map((k) => [k, toCSSValue(lightFlat[k])])
@@ -132,6 +134,7 @@ const focusRing = `
 const css =
   header +
   `:root {\n${renderVars(darkEntries)}${focusRing}}\n\n` +
+  `[data-theme='dark'] {\n${renderVars(darkThemeableEntries)}}\n\n` +
   `[data-theme='light'] {\n${renderVars(lightEntries)}}\n`
 
 // ── Write ────────────────────────────────────────────────────────────────────
