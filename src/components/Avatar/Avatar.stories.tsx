@@ -1,6 +1,26 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { faUser, faGear, faShield } from '@fortawesome/free-solid-svg-icons'
+import {
+  faUser,
+  faGear,
+  faShield,
+  faHouse,
+  faBell,
+  faMagnifyingGlass,
+  faPlus,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons'
 import { Avatar } from './Avatar'
+
+const iconMap = {
+  user: faUser,
+  gear: faGear,
+  shield: faShield,
+  house: faHouse,
+  bell: faBell,
+  search: faMagnifyingGlass,
+  plus: faPlus,
+  xmark: faXmark,
+}
 
 const SAMPLE_IMAGE = 'https://i.pravatar.cc/64'
 
@@ -19,6 +39,11 @@ const meta: Meta<typeof Avatar> = {
     type: { control: 'select', options: ['initials', 'icon', 'image'] },
     size: { control: 'select', options: ['default', 'small'] },
     color: { control: 'select', options: ['brandPrimary', 'brandSecondary'] },
+    icon: {
+      control: 'select',
+      options: Object.keys(iconMap),
+      mapping: iconMap,
+    },
   },
 }
 
