@@ -216,7 +216,11 @@ export const NavDrawer = ({
       aria-label="Primary navigation"
     >
       <div className={styles.logoSection}>
-        <Logo variant={isCollapsed ? 'icon' : 'horizontal'} aria-label={appName} />
+        <Logo
+          variant={isCollapsed ? 'icon' : 'horizontal'}
+          className={isCollapsed ? undefined : styles.drawerLogo}
+          aria-label={appName}
+        />
       </div>
 
       <div className={styles.navList} role="list">

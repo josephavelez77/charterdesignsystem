@@ -21,6 +21,7 @@
 .logoSection {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 72px;
   padding: 0 var(--container-padding-static-small);
   border-bottom: var(--border-width-static-primary) solid var(--border-color-themeable-secondary);
@@ -169,6 +170,14 @@
   position: fixed;
   z-index: 500;
   min-width: 160px;
+}
+
+/* ── Logo size override (horizontal only) ────────────────────────────────── */
+
+.drawerLogo {
+  /* scale the 196×57 horizontal SVG down ~18% to fit the 240px drawer comfortably */
+  width: 160px;
+  height: 47px;
 }
 
 /* ── Collapsed: icon-only nav items ──────────────────────────────────────── */
