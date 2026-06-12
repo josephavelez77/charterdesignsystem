@@ -1,1 +1,1 @@
-{"version":3,"file":"Divider.d.ts","sourceRoot":"","sources":["../../../src/components/Divider/Divider.tsx"],"names":[],"mappings":"AAGA,MAAM,WAAW,YAAY;IAC3B,WAAW,CAAC,EAAE,YAAY,GAAG,UAAU,CAAA;IACvC,SAAS,CAAC,EAAE,MAAM,CAAA;CACnB;AAED,eAAO,MAAM,OAAO;iCAA+C,YAAY;;CAY9E,CAAA"}
+{"version":3,"file":"Divider.d.ts","sourceRoot":"","sources":["../../../src/components/Divider/Divider.tsx"],"names":[],"mappings":"AAGA,MAAM,WAAW,YAAY;IAC3B,wGAAwG;IACxG,WAAW,CAAC,EAAE,YAAY,GAAG,UAAU,CAAA;IACvC,6EAA6E;IAC7E,SAAS,CAAC,EAAE,MAAM,CAAA;CACnB;AAED,eAAO,MAAM,OAAO;iCAA+C,YAAY;;CAY9E,CAAA"}

@@ -1,8 +1,9 @@
 export interface GlobalToolbarProps {
-    /** Avatar image URL */
+    /** URL of the current user's avatar photo; when omitted, falls back to initials. */
     avatarSrc?: string;
-    /** Avatar initials fallback */
+    /** 1–2 character initials displayed in the avatar when no `avatarSrc` is provided. Defaults to `"AB"`. */
     avatarInitials?: string;
+    /** Additional CSS class applied to the root element for layout overrides. */
     className?: string;
 }
 export declare const GlobalToolbar: {

@@ -1,9 +1,9 @@
 import { default as React } from 'react';
 import { SwitchProps } from '../Switch';
 export interface SwitchItemProps extends SwitchProps {
-    /** Label text displayed beside the switch */
+    /** Text label displayed to the right of the switch. */
     label?: string;
-    /** Shows a red asterisk after the label */
+    /** When true, shows a red asterisk after the label. */
     required?: boolean;
 }
 export declare const SwitchItem: React.ForwardRefExoticComponent<SwitchItemProps & React.RefAttributes<HTMLInputElement>>;

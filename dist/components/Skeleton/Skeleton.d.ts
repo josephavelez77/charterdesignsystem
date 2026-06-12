@@ -1,10 +1,12 @@
 export type SkeletonShape = 'bar' | 'circle';
 export interface SkeletonProps {
-    /** Width of the skeleton — number treated as px, string passed through (e.g. '60%') */
+    /** Width of the skeleton — a number is treated as px; a string is passed through as-is (e.g. `'60%'`). */
     width?: number | string;
-    /** Height in px. For shape="circle" this also sets the width. */
+    /** Height in px. For `shape="circle"` this also controls the width to keep a square aspect ratio. */
     height?: number;
+    /** `bar` renders a rounded rectangle; `circle` renders a circular disc. */
     shape?: SkeletonShape;
+    /** Additional CSS class applied to the root element for layout overrides. */
     className?: string;
 }
 export declare const Skeleton: {

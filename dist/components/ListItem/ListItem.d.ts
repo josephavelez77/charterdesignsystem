@@ -1,7 +1,9 @@
 import { default as React } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { AvatarProps } from '../Avatar/Avatar';
-type LeadingSlot = {
+type LeadingSlot = 
+/** Mutually exclusive leading slot: provide either an icon or an avatar, not both. */
+{
     leadingIcon: IconDefinition;
     leadingAvatar?: never;
 } | {
@@ -11,9 +13,11 @@ type LeadingSlot = {
     leadingIcon?: never;
     leadingAvatar?: never;
 };
-type InteractiveProps = {
-    interactive: true;
-    onClick?: React.MouseEventHandler<HTMLButtonElement>;
+type InteractiveProps = 
+/** When `interactive` is true the item renders as a `<button>` and shows a trailing chevron. */
+{
+    interactive: true; /** Called when the interactive item is clicked. */
+    onClick?: React.MouseEventHandler<HTMLButtonElement>; /** When true, the item is non-interactive and appears muted. */
     disabled?: boolean;
 } | {
     interactive?: false;
@@ -21,8 +25,11 @@ type InteractiveProps = {
     disabled?: never;
 };
 export type ListItemProps = {
+    /** Primary text displayed in the list item. */
     title: string;
+    /** Optional secondary text or node displayed below the title. */
     subtitle?: React.ReactNode;
+    /** Additional CSS class applied to the root element for layout overrides. */
     className?: string;
 } & LeadingSlot & InteractiveProps;
 export declare const ListItem: React.ForwardRefExoticComponent<ListItemProps & React.RefAttributes<HTMLElement>>;
