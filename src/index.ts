@@ -164,7 +164,7 @@ export { Skeleton } from './components/Skeleton'
 export type { SkeletonProps, SkeletonShape } from './components/Skeleton'
 
 export { Logo } from './components/Logo'
-export type { LogoProps, LogoOrientation, LogoSize } from './components/Logo'
+export type { LogoProps, LogoVariant } from './components/Logo'
 
 export { TabGroup } from './components/TabGroup'
 export type { TabGroupProps, TabItem } from './components/TabGroup'
