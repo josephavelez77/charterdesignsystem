@@ -128,7 +128,7 @@ export function MyPage() {
         ]}
       />
 
-      <Alert severity="info">You have 3 pending invitations.</Alert>
+      <Alert severity="info" message="You have 3 pending invitations." />
 
       <Card>
         <div className={styles.filters}>
@@ -351,25 +351,23 @@ This library does NOT use Tailwind CSS or shadcn/ui. Do not use Tailwind utility
 **Alert**
 ```tsx
 <Alert
+  message: string               // plain-text message
   severity?: 'error' | 'warning' | 'success' | 'info'  // default: info
   dismissible?: boolean
   onDismiss?: () => void
->
-  Message text
-</Alert>
+/>
 ```
 
 **Toast**
 ```tsx
 <Toast
+  message: string               // plain-text message
   urgency?: 'error' | 'warning' | 'success' | 'information' | 'none'
   action?: string               // label for optional action button
   onAction?: () => void
   duration?: number             // ms before auto-dismiss; 0 = permanent
   onDismiss?: () => void
->
-  Message
-</Toast>
+/>
 ```
 
 **Badge**

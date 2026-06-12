@@ -392,7 +392,7 @@ Inline status banner for error, warning, success, or info messages. Add `dismiss
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `severity` | `AlertSeverity` | 'info' | Visual severity: `error` (red), `warning` (amber), `success` (green), or `info` (blue). Defaults to `info`. |
-| `children` | `React.ReactNode` | — | Content rendered inside the component. |
+| `message` | `string` | — | Plain-text message displayed inside the alert. |
 | `dismissible` | `boolean` | false | When true, renders an ✕ button that removes the alert from the DOM on click. |
 | `onDismiss` | `() => void` | — | Called after the user clicks the dismiss button, once the alert has been hidden. |
 | `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
@@ -400,9 +400,7 @@ Inline status banner for error, warning, success, or info messages. Add `dismiss
 ### Usage
 
 ```tsx
-<Alert severity="error" dismissible onDismiss={handleDismiss}>
-  File upload failed — check the file format and try again.
-</Alert>
+<Alert severity="error" message="File upload failed — check the file format and try again." dismissible onDismiss={handleDismiss} />
 ```
 
 ---
@@ -419,7 +417,7 @@ Transient notification that auto-dismisses after `duration` ms. Pass `action` to
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `urgency` | `ToastUrgency` | 'none' | Semantic severity: `error` (red), `warning` (amber), `success` (green), `information` (blue), or `none` (neutral). Controls icon and background. |
-| `children` | `React.ReactNode` | — | Content rendered inside the component. |
+| `message` | `string` | — | Plain-text message displayed inside the toast. |
 | `action` | `string` | — | Label for the optional action button, e.g. `"Undo"` — renders the button when provided. |
 | `onAction` | `() => void` | — | Called when the user clicks the action button. |
 | `duration` | `number` | 5000 | Duration in ms before the toast auto-dismisses. Pass `0` to keep it visible until the user acts. Defaults to `5000`. |
@@ -429,13 +427,9 @@ Transient notification that auto-dismisses after `duration` ms. Pass `action` to
 ### Usage
 
 ```tsx
-<Toast urgency="success" duration={4000} onDismiss={() => removeToast(id)}>
-  Record saved successfully.
-</Toast>
+<Toast urgency="success" message="Record saved successfully." duration={4000} onDismiss={() => removeToast(id)} />
 
-<Toast urgency="error" action="Retry" onAction={retryUpload} onDismiss={() => removeToast(id)}>
-  Upload failed.
-</Toast>
+<Toast urgency="error" message="Upload failed." action="Retry" onAction={retryUpload} onDismiss={() => removeToast(id)} />
 ```
 
 ---
