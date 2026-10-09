@@ -1298,7 +1298,7 @@ Horizontal tab bar. Active tab uses brand-primary fill; unselected tabs use neut
 ---
 ## Stepper
 
-Multi-step form progress indicator with step badges, connecting dividers, and Back/Next/Cancel/Done control buttons.
+Single-row footer bar combining step badges (with connecting dividers) on the left and Back/Next/Cancel/Done control buttons on the right.
 
 **Import:** `import { Stepper } from '@josephavelez77/charter-design-system'`
 

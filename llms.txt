@@ -659,7 +659,7 @@ Active tab uses brand-primary fill. Unselected tabs use neutral text — not bra
 **Stepper**
 ```tsx
 <Stepper
-  steps: StepItem[]             // { label, description? }
+  steps: StepItem[]             // { label }
   activeStep: number
 />
 ```
