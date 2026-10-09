@@ -513,7 +513,7 @@ const COMPONENTS = [
   {
     exports: ['Stepper'],
     category: 'Layout',
-    description: 'Multi-step form progress indicator with step badges, connecting dividers, and Back/Next/Cancel/Done control buttons.',
+    description: 'Single-row footer bar combining step badges (with connecting dividers) on the left and Back/Next/Cancel/Done control buttons on the right.',
     files: ['Stepper/Stepper.tsx'],
     example: `<Stepper
   steps={[{ label: 'Details' }, { label: 'Review' }, { label: 'Confirm' }]}
