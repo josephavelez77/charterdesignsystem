@@ -76,8 +76,8 @@ scripts/
 | `--container-gap-static-primary` | `16px` |
 | `--container-gap-static-small` | `12px` |
 | `--container-gap-static-xs` | `8px` |
-| `--border-color-static-brand-primary` | Brand blue `#006992` |
-| `--border-color-static-brand-secondary` | Brand amber `#ECA400` |
+| `--border-color-static-brand-primary` | Brand blue `#007DAF` |
+| `--border-color-static-brand-secondary` | Brand rose `#B15873` |
 
 ## Component API conventions
 

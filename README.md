@@ -126,10 +126,9 @@ export function App() {
 | `IconButton` | Icon-only button |
 | `KpiCard` | Key performance indicator card |
 | `ListCard` / `ListGroup` / `ListItem` | List layout primitives |
-| `Logo` | Brand logo — `horizontal` (mark + wordmark) or `icon` only |
 | `Menu` / `MenuItem` | Dropdown context menu |
 | `MultiSelectField` | Multi-value select input |
-| `NavDrawer` | Sidebar navigation drawer |
+| `NavDrawer` | Sidebar navigation drawer — pass `logo` / `logoCollapsed` to use your own brand |
 | `NumberField` | Numeric text input |
 | `PageHeader` | Page-level heading with actions |
 | `Pagination` / `SimplePagination` | Page navigation controls |
@@ -177,6 +176,45 @@ To import just the raw CSS variables without the Google Fonts `@import`:
 ```ts
 import '@josephavelez77/charter-design-system/tokens'
 ```
+
+### Brand customization
+
+To apply your own brand colors, create a CSS file that loads **after** the design system tokens and override the relevant custom properties on `:root`:
+
+```css
+/* brand-overrides.css */
+:root {
+  --border-color-static-brand-primary: #7B2FBE;
+  --container-color-static-brand-primary: #7B2FBE;
+  --container-color-static-hover-brand-primary: #F3E8FF;
+  --text-color-static-brand-primary: #7B2FBE;
+
+  --border-color-static-brand-secondary: #E05252;
+  --container-color-static-brand-secondary: #E05252;
+  --container-color-static-hover-brand-secondary: #FEF2F2;
+  --text-color-static-brand-secondary: #E05252;
+}
+```
+
+Import it after the design system tokens so it wins the cascade:
+
+```ts
+import '@josephavelez77/charter-design-system/tokens'
+import './brand-overrides.css'  // must come after
+```
+
+| Token | What it affects |
+|---|---|
+| `--border-color-static-brand-primary` | Brand-primary borders and strokes |
+| `--container-color-static-brand-primary` | Brand-primary fills and backgrounds |
+| `--container-color-static-hover-brand-primary` | Hover state over brand-primary surfaces |
+| `--text-color-static-brand-primary` | Brand-primary text |
+| `--border-color-static-brand-secondary` | Brand-secondary borders and strokes |
+| `--container-color-static-brand-secondary` | Brand-secondary fills and backgrounds |
+| `--container-color-static-hover-brand-secondary` | Hover state over brand-secondary surfaces |
+| `--text-color-static-brand-secondary` | Brand-secondary text |
+
+These eight tokens cover the full brand color surface — buttons, active states, links, selected tabs, and focus rings all derive from them.
 
 ---
 

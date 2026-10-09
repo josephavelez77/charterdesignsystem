@@ -1,3 +1,4 @@
+import { default as React } from 'react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 export interface NavChildItem {
     /** Visible text for this child navigation link. */
@@ -20,8 +21,19 @@ export interface NavItemConfig {
     children?: NavChildItem[];
 }
 export interface NavDrawerProps {
-    /** Application name displayed in the drawer header when expanded. */
+    /** Application name — used as the accessible label for the default Charter logo. When you pass `logo`, give it its own accessible name (e.g. `alt` on an `<img>`). */
     appName: string;
+    /**
+     * Custom brand logo shown in the drawer header when expanded. Accepts any node — an `<img>`, inline `<svg>`, or component.
+     * Scaled to fit within the header (max 40px tall, full drawer width) while keeping its aspect ratio.
+     * Defaults to the Charter horizontal logo.
+     */
+    logo?: React.ReactNode;
+    /**
+     * Custom brand mark shown when the drawer is collapsed — typically a square icon version of `logo`.
+     * Scaled to fit within 40×40px. Falls back to `logo` when omitted, then to the Charter icon mark.
+     */
+    logoCollapsed?: React.ReactNode;
     /** Navigation item definitions rendered in the drawer's primary nav list. */
     items: NavItemConfig[];
     /** Controlled collapsed state. When provided, the drawer is fully controlled — pair with `onCollapsedChange`. */
@@ -34,7 +46,7 @@ export interface NavDrawerProps {
     className?: string;
 }
 export declare const NavDrawer: {
-    ({ appName, items, collapsed: collapsedProp, defaultCollapsed, onCollapsedChange, className, }: NavDrawerProps): import("react/jsx-runtime").JSX.Element;
+    ({ appName, logo, logoCollapsed, items, collapsed: collapsedProp, defaultCollapsed, onCollapsedChange, className, }: NavDrawerProps): import("react/jsx-runtime").JSX.Element;
     displayName: string;
 };
 //# sourceMappingURL=NavDrawer.d.ts.map

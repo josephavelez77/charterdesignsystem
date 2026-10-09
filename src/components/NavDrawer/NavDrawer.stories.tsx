@@ -65,6 +65,48 @@ export const Collapsed: Story = {
   args: { appName: 'Charter', items: navItems, defaultCollapsed: true },
 }
 
+// Stand-in for a consumer's own brand assets — in an app these would usually be <img src="/logo.svg" />.
+const AcmeMark = () => (
+  <svg viewBox="0 0 40 40" width="40" height="40" role="img" aria-label="Acme">
+    <rect width="40" height="40" rx="8" fill="var(--border-color-static-brand-secondary)" />
+    <path d="M20 9 31 31H26.5L24.3 26.5H15.7L13.5 31H9L20 9ZM17.4 22.8H22.6L20 17.4Z" fill="var(--container-color-themeable-primary)" />
+  </svg>
+)
+
+const AcmeWordmark = () => (
+  <svg viewBox="0 0 160 40" width="160" height="40" role="img" aria-label="Acme Ops">
+    <rect width="40" height="40" rx="8" fill="var(--border-color-static-brand-secondary)" />
+    <path d="M20 9 31 31H26.5L24.3 26.5H15.7L13.5 31H9L20 9ZM17.4 22.8H22.6L20 17.4Z" fill="var(--container-color-themeable-primary)" />
+    <text
+      x="52"
+      y="27"
+      fill="var(--text-color-themeable-primary)"
+      fontFamily="var(--text-family-static-headline)"
+      fontSize="22"
+    >
+      Acme Ops
+    </text>
+  </svg>
+)
+
+/**
+ * Swap in your own brand with `logo` (expanded) and `logoCollapsed` (collapsed).
+ * Toggle the drawer with the `collapsed` control to see both.
+ */
+export const CustomLogo: Story = {
+  render: (args) => (
+    <div style={{ height: '100vh', display: 'flex' }}>
+      <NavDrawer {...args} />
+    </div>
+  ),
+  args: {
+    appName: 'Acme Ops',
+    items: navItems,
+    logo: <AcmeWordmark />,
+    logoCollapsed: <AcmeMark />,
+  },
+}
+
 export const WithToolbar: Story = {
   render: (args) => {
     const [collapsed, setCollapsed] = useState(false)

@@ -1,11 +1,14 @@
 import React from 'react'
-import styles from './Logo.module.css'
+import styles from './NavDrawer.module.css'
 
-export type LogoVariant = 'horizontal' | 'icon'
+// Internal default logo for NavDrawer — not part of the public API.
+// Consumers supply their own brand via NavDrawer's `logo` / `logoCollapsed` props.
 
-export interface LogoProps extends Omit<React.SVGProps<SVGSVGElement>, 'ref'> {
+export type CharterLogoVariant = 'horizontal' | 'icon'
+
+export interface CharterLogoProps extends Omit<React.SVGProps<SVGSVGElement>, 'ref'> {
   /** Which form to render: `icon` mark only, or `horizontal` (mark + wordmark + tagline side by side). */
-  variant?: LogoVariant
+  variant?: CharterLogoVariant
   /** Additional CSS class for size or position overrides. */
   className?: string
 }
@@ -70,8 +73,8 @@ const Mark = () => (
   </>
 )
 
-export const Logo = ({ variant = 'horizontal', className, ...rest }: LogoProps) => {
-  const cls = [styles.logo, className].filter(Boolean).join(' ')
+export const CharterLogo = ({ variant = 'horizontal', className, ...rest }: CharterLogoProps) => {
+  const cls = [styles.charterLogo, className].filter(Boolean).join(' ')
 
   if (variant === 'icon') {
     return (
@@ -110,4 +113,4 @@ export const Logo = ({ variant = 'horizontal', className, ...rest }: LogoProps) 
   )
 }
 
-Logo.displayName = 'Logo'
+CharterLogo.displayName = 'CharterLogo'

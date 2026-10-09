@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import type { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 import { Icon } from '../Icon/Icon'
-import { Logo } from '../Logo/Logo'
+import { CharterLogo } from './CharterLogo'
 import { Menu } from '../Menu'
 import { MenuItem } from '../MenuItem'
 import { Tooltip } from '../Tooltip/Tooltip'
@@ -171,8 +171,19 @@ const NavItem = ({ item, collapsed, flyoutOpen, onOpenFlyout, onCloseFlyout }: N
 // ─── NavDrawer ────────────────────────────────────────────────────────────────
 
 export interface NavDrawerProps {
-  /** Application name displayed in the drawer header when expanded. */
+  /** Application name — used as the accessible label for the default Charter logo. When you pass `logo`, give it its own accessible name (e.g. `alt` on an `<img>`). */
   appName: string
+  /**
+   * Custom brand logo shown in the drawer header when expanded. Accepts any node — an `<img>`, inline `<svg>`, or component.
+   * Scaled to fit within the header (max 40px tall, full drawer width) while keeping its aspect ratio.
+   * Defaults to the Charter horizontal logo.
+   */
+  logo?: React.ReactNode
+  /**
+   * Custom brand mark shown when the drawer is collapsed — typically a square icon version of `logo`.
+   * Scaled to fit within 40×40px. Falls back to `logo` when omitted, then to the Charter icon mark.
+   */
+  logoCollapsed?: React.ReactNode
   /** Navigation item definitions rendered in the drawer's primary nav list. */
   items: NavItemConfig[]
   /** Controlled collapsed state. When provided, the drawer is fully controlled — pair with `onCollapsedChange`. */
@@ -187,6 +198,8 @@ export interface NavDrawerProps {
 
 export const NavDrawer = ({
   appName,
+  logo,
+  logoCollapsed,
   items,
   collapsed: collapsedProp,
   defaultCollapsed = false,
@@ -198,6 +211,8 @@ export const NavDrawer = ({
   const isCollapsed = isControlled ? collapsedProp! : internalCollapsed
 
   const [openFlyoutLabel, setOpenFlyoutLabel] = useState<string | null>(null)
+
+  const customLogo = isCollapsed ? (logoCollapsed ?? logo) : logo
 
   const handleCollapsedChange = (next: boolean) => {
     if (!isControlled) setInternalCollapsed(next)
@@ -216,11 +231,15 @@ export const NavDrawer = ({
       aria-label="Primary navigation"
     >
       <div className={styles.logoSection}>
-        <Logo
-          variant={isCollapsed ? 'icon' : 'horizontal'}
-          className={isCollapsed ? undefined : styles.drawerLogo}
-          aria-label={appName}
-        />
+        {customLogo != null ? (
+          <div className={styles.customLogo}>{customLogo}</div>
+        ) : (
+          <CharterLogo
+            variant={isCollapsed ? 'icon' : 'horizontal'}
+            className={isCollapsed ? undefined : styles.drawerLogo}
+            aria-label={appName}
+          />
+        )}
       </div>
 
       <div className={styles.navList} role="list">

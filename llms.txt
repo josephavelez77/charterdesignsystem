@@ -6,7 +6,7 @@
 
 - npm: `@josephavelez77/charter-design-system`
 - GitHub: `github:josephavelez77/charterdesignsystem`
-- Version: 0.0.4
+- Version: 0.0.9
 
 ## Critical rules — read before writing any code
 
@@ -260,6 +260,27 @@ Token naming convention: `--{category}-{property}-{themeable|static}-{name}`
 - `--text-color-*`, `--text-size-*`, `--text-weight-*`, `--text-family-*`
 - `--icon-color-*`, `--icon-width-*`, `--icon-height-*`
 - `--focus-ring`, `--focus-ring-offset`
+
+### Brand customization
+
+To apply custom brand colors, create a CSS file loaded **after** `@josephavelez77/charter-design-system/tokens` and override these eight properties on `:root`:
+
+```css
+/* brand-overrides.css — import this after /tokens */
+:root {
+  --border-color-static-brand-primary: #7B2FBE;
+  --container-color-static-brand-primary: #7B2FBE;
+  --container-color-static-hover-brand-primary: #F3E8FF;
+  --text-color-static-brand-primary: #7B2FBE;
+
+  --border-color-static-brand-secondary: #E05252;
+  --container-color-static-brand-secondary: #E05252;
+  --container-color-static-hover-brand-secondary: #FEF2F2;
+  --text-color-static-brand-secondary: #E05252;
+}
+```
+
+These eight tokens cover the full brand color surface — buttons, active states, selected tabs, and focus rings all derive from them.
 
 ---
 
@@ -598,9 +619,14 @@ const [on, setOn] = useState(false)
 **NavDrawer**
 ```tsx
 <NavDrawer
+  appName: string               // accessible label for the default Charter logo
+  logo?: React.ReactNode        // custom logo when expanded — <img>, <svg>, or component (max 40px tall)
+  logoCollapsed?: React.ReactNode  // custom mark when collapsed (max 40×40px); falls back to logo
   items: NavItemConfig[]        // { label, icon?, selected?, onClick?, children?: NavChildItem[] }
   collapsed?: boolean
-  onCollapseToggle?: () => void
+  defaultCollapsed?: boolean
+  onCollapsedChange?: (collapsed: boolean) => void
+  className?: string
 />
 ```
 
@@ -699,11 +725,6 @@ Active tab uses brand-primary fill. Unselected tabs use neutral text — not bra
 **Divider**
 ```tsx
 <Divider orientation?: 'horizontal' | 'vertical' />
-```
-
-**Logo**
-```tsx
-<Logo orientation?: 'horizontal' | 'stacked' size?: 'small' | 'medium' | 'large' />
 ```
 
 **UserIdentificationTag**

@@ -159,14 +159,6 @@ const COMPONENTS = [
   avatarSrc="https://…/avatar.jpg"
 />`,
   },
-  {
-    exports: ['Logo'],
-    category: 'Display',
-    description: 'Brand logo as an inline SVG. Monochrome, themeable via text-color tokens. `variant="horizontal"` renders the mark plus "Charter" wordmark and tagline; `variant="icon"` renders the mark only. Size via `className`, `width`/`height`, or `style`.',
-    files: ['Logo/Logo.tsx'],
-    example: `<Logo variant="horizontal" />
-<Logo variant="icon" className={styles.smallLogo} />`,
-  },
 
   // ── Feedback ─────────────────────────────────────────────────────────────────
   {
@@ -579,12 +571,17 @@ const COMPONENTS = [
   {
     exports: ['NavDrawer'],
     category: 'Navigation',
-    description: 'Collapsible vertical sidebar for application navigation. Typically placed on the left of the page layout.',
+    description: 'Collapsible vertical sidebar for application navigation. Typically placed on the left of the page layout. Shows the Charter logo by default — pass `logo` (expanded) and `logoCollapsed` (collapsed) to use your own brand.',
     files: ['NavDrawer/NavDrawer.tsx'],
-    example: `<NavDrawer>
-  <NavItem label="Dashboard" icon={faHome} href="/" active />
-  <NavItem label="Projects"  icon={faFolder} href="/projects" />
-</NavDrawer>`,
+    example: `<NavDrawer
+  appName="Acme Ops"
+  logo={<img src="/acme-wordmark.svg" alt="Acme Ops" />}
+  logoCollapsed={<img src="/acme-mark.svg" alt="Acme Ops" />}
+  items={[
+    { label: 'Dashboard', icon: faHouse, selected: true },
+    { label: 'Reports', icon: faChartBar, children: [{ label: 'Overview' }, { label: 'Exports' }] },
+  ]}
+/>`,
   },
   {
     exports: ['PageHeader'],
@@ -882,6 +879,7 @@ function buildHeader(version) {
 - **All imports are from the top-level package** — never from sub-paths like \`/dist/components/Button\`.
 - **Standard page layout: NavDrawer + GlobalToolbar + PageHeader.** 99.9% of pages should use this shell — NavDrawer as a full-height left column, GlobalToolbar at the top of the right column, PageHeader below it, then scrollable content that takes up 100% of the available width. See the BasicPage template for the canonical implementation.
 - **Page background is always \`--container-color-themeable-primary\`.** Every page wrapper and \`<main>\` must set \`background: var(--container-color-themeable-primary)\`. Never leave it as the browser default (white) — that will look broken in dark mode. Also set this on \`html\` and \`body\` via global CSS to prevent flash of white on load.
+- **Brand colors are overridable via CSS custom properties.** To apply a custom brand, create a CSS file loaded after \`/tokens\` and override these eight \`:root\` vars: \`--border-color-static-brand-primary\`, \`--container-color-static-brand-primary\`, \`--container-color-static-hover-brand-primary\`, \`--text-color-static-brand-primary\`, and the four \`-brand-secondary\` equivalents. Buttons, active states, selected tabs, and focus rings all derive from these tokens.
 
 \`\`\`tsx
 // Standard page shell — use this for virtually every page

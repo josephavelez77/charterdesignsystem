@@ -172,12 +172,43 @@
   min-width: 160px;
 }
 
+/* ── Default Charter logo ─────────────────────────────────────────────────── */
+
+.charterLogo {
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 /* ── Logo size override (horizontal only) ────────────────────────────────── */
 
 .drawerLogo {
   /* scale the 238×64 horizontal SVG down to fit the 240px drawer comfortably */
   width: 149px;
   height: 40px;
+}
+
+/* ── Custom logo slot ─────────────────────────────────────────────────────── */
+
+.customLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  height: 40px;
+}
+
+.customLogo > img,
+.customLogo > svg {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+.collapsed .customLogo {
+  max-width: 40px;
 }
 
 /* ── Collapsed: icon-only nav items ──────────────────────────────────────── */
