@@ -1116,6 +1116,50 @@ Radio button set. Use `RadioButtonGroup` to manage selection with a shared `name
 ```
 
 ---
+## Slider
+
+Range input for picking a number between `min` and `max`. `variant="discrete"` snaps to marked steps (designed for 3–12 positions); `variant="continuous"` moves smoothly. `onChange` receives the number directly.
+
+> **Note:** Selection text, end labels and `aria-valuetext` all come from `formatValue`, so they always match the thumb. Pass `aria-label` when there is no visible `label`.
+
+**Import:** `import { Slider } from '@josephavelez77/charter-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `SliderVariant` | 'discrete' | `discrete` snaps between marked steps; `continuous` moves smoothly along an unmarked track. Defaults to `discrete`. |
+| `label` | `string` | — | Visible label shown above the track (rendered as `Label:`). When omitted, pass `aria-label` for an accessible name. |
+| `value` | `number` | — | Controlled value; when provided the component is controlled. |
+| `defaultValue` | `number` | — | Initial value for uncontrolled usage — ignored when `value` is provided. Defaults to `min`. |
+| `min` | `number` | 0 | Lowest selectable value. Defaults to `0`. |
+| `max` | `number` | 100 | Highest selectable value. Defaults to `100`. |
+| `step` | `number` | — | Distance between selectable values. Discrete sliders draw a tick at every step and are designed for 3–12 positions; defaults to five evenly spaced positions. Continuous sliders default to `1`. |
+| `formatValue` | `(value: number) => string` | — | Formats the value for the selection text, end labels and screen readers (e.g. `v => \`${v}%\``). Defaults to `String(value)`. |
+| `showSelection` | `boolean` | true | Show the current selection next to the label. Defaults to `true`. |
+| `lowLabel` | `string` | — | Text under the start of the track. Defaults to `formatValue(min)`. |
+| `highLabel` | `string` | — | Text under the end of the track. Defaults to `formatValue(max)`. |
+| `showLowLabel` | `boolean` | true | Show the low end label. Defaults to `true`. |
+| `showHighLabel` | `boolean` | true | Show the high end label. Defaults to `true`. |
+| `disabled` | `boolean` | — | When true, the slider is non-interactive and rendered in muted colors. |
+| `onChange` | `(value: number) => void` | — | Called with the new numeric value whenever the user moves the slider. |
+| `className` | `string` | — | Additional CSS class applied to the root element for layout overrides. |
+
+### Usage
+
+```tsx
+<Slider
+  label="Volume"
+  min={0}
+  max={100}
+  step={25}
+  value={volume}
+  onChange={setVolume}
+  formatValue={v => `${v}%`}
+/>
+```
+
+---
 ## Switch
 
 Toggle switch for binary on/off settings. Supports controlled and uncontrolled modes.

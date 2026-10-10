@@ -35,6 +35,7 @@
    | `<table>` | `<Table>` or `<DataGrid>` |
    | `<input type="password">` | `<PasswordField>` |
    | `<input type="number">` | `<NumberField>` |
+| `<input type="range">` | `<Slider>` |
    | `<hr>` | `<Divider>` |
    | `<dialog>` / modal | `<Dialog>` |
 
@@ -571,6 +572,32 @@ Variant semantics: `neutral` = default for most icon buttons (close, dismiss, se
   orientation?: 'horizontal' | 'vertical'
   onChange?: (values: string[]) => void
 />
+```
+
+**Slider**
+```tsx
+// onChange receives the number directly (not an event)
+<Slider
+  variant?: 'discrete' | 'continuous'   // default 'discrete' — ticks + snapping
+  label?: string                        // omit → pass aria-label
+  value?: number
+  defaultValue?: number
+  min?: number                          // default 0
+  max?: number                          // default 100
+  step?: number                         // discrete default: 5 positions; continuous default: 1
+  formatValue?: (v: number) => string   // drives selection text, end labels, aria-valuetext
+  showSelection?: boolean
+  lowLabel?: string
+  highLabel?: string
+  showLowLabel?: boolean
+  showHighLabel?: boolean
+  disabled?: boolean
+  onChange?: (value: number) => void
+/>
+
+// Example:
+const [volume, setVolume] = useState(50)
+<Slider label="Volume" step={25} value={volume} onChange={setVolume} formatValue={v => `${v}%`} />
 ```
 
 **Switch / SwitchGroup**

@@ -76,6 +76,8 @@ export { SelectField } from './components/SelectField';
 export type { SelectFieldProps, SelectOption } from './components/SelectField';
 export { Toast } from './components/Toast';
 export type { ToastProps, ToastUrgency } from './components/Toast';
+export { Slider } from './components/Slider';
+export type { SliderProps, SliderVariant } from './components/Slider';
 export { Switch } from './components/Switch';
 export type { SwitchProps } from './components/Switch';
 export { SwitchItem } from './components/SwitchItem';

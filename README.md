@@ -139,6 +139,7 @@ export function App() {
 | `RadioButton` / `RadioButtonGroup` / `RadioButtonItem` | Radio input and grouped set |
 | `SelectField` | Single-value select input |
 | `Skeleton` | Loading placeholder shapes |
+| `Slider` | Discrete or continuous range input |
 | `Spinner` | Loading spinner |
 | `SplitButton` | Button with a secondary dropdown action |
 | `StatusChip` | Status indicator chip |

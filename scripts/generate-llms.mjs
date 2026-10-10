@@ -443,6 +443,22 @@ const COMPONENTS = [
 </RadioButtonGroup>`,
   },
   {
+    exports: ['Slider'],
+    category: 'Form Fields',
+    description: 'Range input for picking a number between `min` and `max`. `variant="discrete"` snaps to marked steps (designed for 3–12 positions); `variant="continuous"` moves smoothly. `onChange` receives the number directly.',
+    files: ['Slider/Slider.tsx'],
+    notes: 'Selection text, end labels and `aria-valuetext` all come from `formatValue`, so they always match the thumb. Pass `aria-label` when there is no visible `label`.',
+    example: `<Slider
+  label="Volume"
+  min={0}
+  max={100}
+  step={25}
+  value={volume}
+  onChange={setVolume}
+  formatValue={v => \`\${v}%\`}
+/>`,
+  },
+  {
     exports: ['Switch'],
     category: 'Form Fields',
     description: 'Toggle switch for binary on/off settings. Supports controlled and uncontrolled modes.',
