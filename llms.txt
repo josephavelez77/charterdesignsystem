@@ -467,6 +467,7 @@ Variant semantics: `neutral` = default for most icon buttons (close, dismiss, se
   dismissible?: boolean
   primaryAction?: DrawerAction  // { label, onClick, disabled? }
   secondaryAction?: DrawerAction
+  width?: 'sm' | 'md' | 'lg'  // 300px (default) | 480px | 640px
 >
   {/* content */}
 </Drawer>

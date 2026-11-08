@@ -600,6 +600,7 @@ Side-panel overlay that slides in from the right. Same structure as Dialog but a
 | `children` | `React.ReactNode` | — | Custom content rendered in the drawer body — takes precedence over `content`. |
 | `primaryAction` | `DrawerAction` | — | Primary call-to-action button shown in the drawer footer. |
 | `secondaryAction` | `DrawerAction` | — | Secondary action button shown alongside the primary action in the footer. |
+| `width` | `DrawerWidth` | 'sm' | Width of the drawer panel. `sm` (default) is 300px, `md` 480px, `lg` 640px. Always capped to the viewport. |
 | `className` | `string` | — | Additional CSS class applied to the drawer panel for layout overrides. |
 
 ### Usage

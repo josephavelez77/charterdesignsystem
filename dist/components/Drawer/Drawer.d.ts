@@ -7,6 +7,7 @@ export interface DrawerAction {
     /** When true, the action button is non-interactive. */
     disabled?: boolean;
 }
+export type DrawerWidth = 'sm' | 'md' | 'lg';
 export interface DrawerProps {
     /** When true, slides the drawer into view; when false, slides it out with an exit animation. */
     open: boolean;
@@ -26,11 +27,13 @@ export interface DrawerProps {
     primaryAction?: DrawerAction;
     /** Secondary action button shown alongside the primary action in the footer. */
     secondaryAction?: DrawerAction;
+    /** Width of the drawer panel. `sm` (default) is 300px, `md` 480px, `lg` 640px. Always capped to the viewport. */
+    width?: DrawerWidth;
     /** Additional CSS class applied to the drawer panel for layout overrides. */
     className?: string;
 }
 export declare const Drawer: {
-    ({ open, onClose, title, subtitle, dismissible, content, children, primaryAction, secondaryAction, className, }: DrawerProps): import("react/jsx-runtime").JSX.Element | null;
+    ({ open, onClose, title, subtitle, dismissible, content, children, primaryAction, secondaryAction, width, className, }: DrawerProps): import("react/jsx-runtime").JSX.Element | null;
     displayName: string;
 };
 //# sourceMappingURL=Drawer.d.ts.map

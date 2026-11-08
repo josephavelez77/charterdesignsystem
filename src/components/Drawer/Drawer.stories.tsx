@@ -24,6 +24,10 @@ const meta: Meta<typeof Drawer> = {
     subtitle: 'Optional drawer subtitle',
     content: SAMPLE_CONTENT,
     dismissible: true,
+    width: 'sm',
+  },
+  argTypes: {
+    width: { control: 'inline-radio', options: ['sm', 'md', 'lg'] },
   },
 }
 
@@ -60,6 +64,24 @@ export const NoDismiss: Story = {
   },
 }
 
+export const WidthMedium: Story = {
+  decorators: [withBoundedScrim],
+  args: {
+    width: 'md',
+    primaryAction: { label: 'Confirm' },
+    secondaryAction: { label: 'Cancel' },
+  },
+}
+
+export const WidthLarge: Story = {
+  decorators: [withBoundedScrim],
+  args: {
+    width: 'lg',
+    primaryAction: { label: 'Confirm' },
+    secondaryAction: { label: 'Cancel' },
+  },
+}
+
 export const WithCustomContent: Story = {
   decorators: [withBoundedScrim],
   render: () => (
@@ -85,7 +107,7 @@ export const WithCustomContent: Story = {
 // ── Interactive ───────────────────────────────────────────────────────────────
 
 export const Interactive: Story = {
-  render: () => {
+  render: (args) => {
     const [open, setOpen] = useState(false)
     return (
       <div
@@ -100,11 +122,9 @@ export const Interactive: Story = {
           Open drawer
         </Button>
         <Drawer
+          {...args}
           open={open}
           onClose={() => setOpen(false)}
-          title="Drawer title"
-          subtitle="Optional drawer subtitle"
-          content={SAMPLE_CONTENT}
           primaryAction={{ label: 'Confirm', onClick: () => setOpen(false) }}
           secondaryAction={{ label: 'Cancel', onClick: () => setOpen(false) }}
         />

@@ -49,7 +49,7 @@ export type { TextFieldProps } from './components/TextField';
 export { Dialog } from './components/Dialog';
 export type { DialogProps, DialogAction } from './components/Dialog';
 export { Drawer } from './components/Drawer';
-export type { DrawerProps, DrawerAction } from './components/Drawer';
+export type { DrawerProps, DrawerAction, DrawerWidth } from './components/Drawer';
 export { MenuItem } from './components/MenuItem';
 export type { MenuItemProps } from './components/MenuItem';
 export { Menu } from './components/Menu';

@@ -13,6 +13,9 @@ export interface DrawerAction {
   disabled?: boolean
 }
 
+// Preset drawer widths: sm 300px, md 480px, lg 640px
+export type DrawerWidth = 'sm' | 'md' | 'lg'
+
 export interface DrawerProps {
   /** When true, slides the drawer into view; when false, slides it out with an exit animation. */
   open: boolean
@@ -32,6 +35,8 @@ export interface DrawerProps {
   primaryAction?: DrawerAction
   /** Secondary action button shown alongside the primary action in the footer. */
   secondaryAction?: DrawerAction
+  /** Width of the drawer panel. `sm` (default) is 300px, `md` 480px, `lg` 640px. Always capped to the viewport. */
+  width?: DrawerWidth
   /** Additional CSS class applied to the drawer panel for layout overrides. */
   className?: string
 }
@@ -46,6 +51,7 @@ export const Drawer = ({
   children,
   primaryAction,
   secondaryAction,
+  width = 'sm',
   className,
 }: DrawerProps) => {
   const titleId = useId()
@@ -76,7 +82,7 @@ export const Drawer = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={[styles.drawer, isExiting ? styles.drawerExit : styles.drawerEnter, className].filter(Boolean).join(' ')}
+        className={[styles.drawer, styles[width], isExiting ? styles.drawerExit : styles.drawerEnter, className].filter(Boolean).join(' ')}
         onClick={(e) => e.stopPropagation()}
         onAnimationEnd={handleAnimationEnd}
       >
