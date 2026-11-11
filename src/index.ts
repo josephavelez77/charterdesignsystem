@@ -118,6 +118,9 @@ export type { SelectFieldProps, SelectOption } from './components/SelectField'
 export { Toast } from './components/Toast'
 export type { ToastProps, ToastUrgency } from './components/Toast'
 
+export { SegmentedControl } from './components/SegmentedControl'
+export type { SegmentedControlProps, SegmentedControlOption, SegmentedControlVariant } from './components/SegmentedControl'
+
 export { Slider } from './components/Slider'
 export type { SliderProps, SliderVariant } from './components/Slider'
 

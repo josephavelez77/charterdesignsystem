@@ -443,6 +443,23 @@ const COMPONENTS = [
 </RadioButtonGroup>`,
   },
   {
+    exports: ['SegmentedControl'],
+    category: 'Form Fields',
+    description: 'Compact connected row of 2–5 mutually exclusive options with one active segment. Use it to switch views or filters within the same context. `onChange` receives the selected option\'s `value` string directly.',
+    files: ['SegmentedControl/SegmentedControl.tsx'],
+    notes: 'Built on native radio inputs (`role="radiogroup"`), so arrow keys move the selection and screen readers announce the checked option. Always pass `aria-label` or `aria-labelledby`. Segments share the widest label\'s width by default; set `equalWidth={false}` to let each hug its label. Every option should be a choice — never mix in actions like Save or Export.',
+    example: `<SegmentedControl
+  aria-label="Calendar view"
+  options={[
+    { value: 'day', label: 'Day' },
+    { value: 'week', label: 'Week' },
+    { value: 'month', label: 'Month' },
+  ]}
+  value={view}
+  onChange={setView}
+/>`,
+  },
+  {
     exports: ['Slider'],
     category: 'Form Fields',
     description: 'Range input for picking a number between `min` and `max`. `variant="discrete"` snaps to marked steps (designed for 3–12 positions); `variant="continuous"` moves smoothly. `onChange` receives the number directly.',

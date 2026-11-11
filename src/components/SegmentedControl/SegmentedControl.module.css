@@ -1,0 +1,117 @@
+/* ── Root ─────────────────────────────────────────────────────────────────── */
+
+.root {
+  display: inline-grid;
+  grid-auto-flow: column;
+  grid-auto-columns: auto;
+}
+
+/* Equal 1fr tracks in an intrinsically sized grid all grow to the widest label */
+.equalWidth {
+  grid-auto-columns: 1fr;
+}
+
+/* ── Segment ──────────────────────────────────────────────────────────────── */
+
+.segment {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--container-gap-static-xs);
+  padding: var(--container-padding-static-small);
+  font-family: var(--text-family-static-body);
+  font-size: var(--text-size-static-body2);
+  font-weight: var(--text-weight-static-medium);
+  line-height: var(--text-line-static-body2);
+  letter-spacing: var(--text-letter-static-primary);
+  color: var(--text-color-themeable-primary);
+  background-color: transparent;
+  border: var(--border-width-static-primary) solid var(--border-color-themeable-primary);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+}
+
+/* Collapse adjacent borders into a single divider */
+.segment + .segment {
+  border-inline-start-width: 0;
+}
+
+.segment:first-child {
+  border-start-start-radius: var(--border-radius-static-primary);
+  border-end-start-radius: var(--border-radius-static-primary);
+}
+
+.segment:last-child {
+  border-start-end-radius: var(--border-radius-static-primary);
+  border-end-end-radius: var(--border-radius-static-primary);
+}
+
+/* Hover overlay */
+.segment::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: transparent;
+  transition: background-color 120ms ease;
+  pointer-events: none;
+}
+
+.segment:not(.active):not(.segmentDisabled):hover::after {
+  background-color: var(--container-color-themeable-hover);
+}
+
+.active:not(.segmentDisabled):hover::after {
+  background-color: var(--container-color-static-hover-darken);
+}
+
+/* Native radio stays in the accessibility tree and keyboard order, but is invisible */
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.segment:has(.input:focus-visible) {
+  z-index: 1;
+  outline: 2px solid var(--border-color-static-brand-primary);
+  outline-offset: 2px;
+}
+
+/* ── Active segment per variant ───────────────────────────────────────────── */
+
+.brandPrimary .active {
+  background-color: var(--container-color-static-brand-primary);
+  color: var(--text-color-static-primary-light);
+}
+
+.brandSecondary .active {
+  background-color: var(--container-color-static-brand-secondary);
+  color: var(--text-color-static-primary-light);
+}
+
+.neutral .active {
+  background-color: var(--container-color-themeable-tertiary-inverse);
+  color: var(--text-color-themeable-primary-inverse);
+}
+
+/* ── Disabled — after variant rules so it wins ────────────────────────────── */
+
+.segment.segmentDisabled {
+  color: var(--text-color-themeable-disabled);
+  cursor: not-allowed;
+}
+
+.disabled .segment {
+  border-color: var(--border-color-themeable-disabled);
+}
+
+.segment.active.segmentDisabled {
+  background-color: var(--container-color-themeable-disabled);
+}

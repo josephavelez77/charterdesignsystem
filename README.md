@@ -137,6 +137,7 @@ export function App() {
 | `PriorityChip` | Priority-level indicator chip |
 | `ProgressBar` | Linear progress indicator |
 | `RadioButton` / `RadioButtonGroup` / `RadioButtonItem` | Radio input and grouped set |
+| `SegmentedControl` | Connected row of mutually exclusive options with one active segment |
 | `SelectField` | Single-value select input |
 | `Skeleton` | Loading placeholder shapes |
 | `Slider` | Discrete or continuous range input |

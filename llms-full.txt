@@ -1,6 +1,6 @@
 # @josephavelez77/charter-design-system — Full Component Reference
 
-> Version: 0.4.0
+> Version: 0.4.1
 > Package: `npm install @josephavelez77/charter-design-system`
 > Repository: https://github.com/josephavelez77/charterdesignsystem
 
@@ -1114,6 +1114,51 @@ Radio button set. Use `RadioButtonGroup` to manage selection with a shared `name
   <RadioButtonItem value="monthly" label="Monthly" />
   <RadioButtonItem value="annual" label="Annual" hint="Save 20%" />
 </RadioButtonGroup>
+```
+
+---
+## SegmentedControl
+
+Compact connected row of 2–5 mutually exclusive options with one active segment. Use it to switch views or filters within the same context. `onChange` receives the selected option's `value` string directly.
+
+> **Note:** Built on native radio inputs (`role="radiogroup"`), so arrow keys move the selection and screen readers announce the checked option. Always pass `aria-label` or `aria-labelledby`. Segments share the widest label's width by default; set `equalWidth={false}` to let each hug its label. Every option should be a choice — never mix in actions like Save or Export.
+
+**Import:** `import { SegmentedControl } from '@josephavelez77/charter-design-system'`
+
+### Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | — | Value reported to `onChange` and matched against `value` / `defaultValue`. Must be unique within the control. |
+| `label` | `string` | — | Visible text label for the segment. Keep it short — one or two words. |
+| `leadingIcon` | `IconDefinition` | — | Optional icon shown before the label — an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `trailingIcon` | `IconDefinition` | — | Optional icon shown after the label — an `IconDefinition` from `@fortawesome/fontawesome-svg-core`. |
+| `disabled` | `boolean` | false | When true, only this segment is non-interactive. Defaults to `false`. |
+| `options` | `SegmentedControlOption[]` | — | The segments to render, in order. Two to five options are recommended. |
+| `value` | `string` | — | Value of the active segment (controlled). Pair with `onChange`. |
+| `defaultValue` | `string` | — | Value of the initially active segment (uncontrolled). Defaults to the first option's value. |
+| `onChange` | `(value: string) => void` | — | Called with the newly selected option's `value` when the user picks a segment. |
+| `variant` | `SegmentedControlVariant` | 'brandPrimary' | Fill colour of the active segment: `brandPrimary` (blue), `brandSecondary` (rose) or `neutral` (inverse). Defaults to `brandPrimary`. |
+| `disabled` | `boolean` | false | When true, the whole control is non-interactive and rendered in the disabled colours. Defaults to `false`. |
+| `equalWidth` | `boolean` | true | When true, every segment takes the width of the widest one so the control reads as an even row. When false, each segment hugs its own label. Defaults to `true`. |
+| `name` | `string` | — | Form field name shared by the underlying radio inputs. Defaults to an auto-generated id. |
+| `aria-label` | `string` | — | Accessible name for the group. Required unless `aria-labelledby` is provided. |
+| `aria-labelledby` | `string` | — | Id of an element that labels the group, as an alternative to `aria-label`. |
+| `className` | `string` | — | Additional CSS class applied to the root element. |
+
+### Usage
+
+```tsx
+<SegmentedControl
+  aria-label="Calendar view"
+  options={[
+    { value: 'day', label: 'Day' },
+    { value: 'week', label: 'Week' },
+    { value: 'month', label: 'Month' },
+  ]}
+  value={view}
+  onChange={setView}
+/>
 ```
 
 ---

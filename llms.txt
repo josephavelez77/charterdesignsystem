@@ -575,6 +575,26 @@ Variant semantics: `neutral` = default for most icon buttons (close, dismiss, se
 />
 ```
 
+**SegmentedControl**
+```tsx
+// onChange receives the selected value string directly (not an event)
+<SegmentedControl
+  aria-label: string                    // or aria-labelledby — the group needs a name
+  options: { value: string, label: string, leadingIcon?: IconDefinition, trailingIcon?: IconDefinition, disabled?: boolean }[]
+  value?: string                        // controlled
+  defaultValue?: string                 // uncontrolled — defaults to the first option
+  variant?: 'brandPrimary' | 'brandSecondary' | 'neutral'   // default 'brandPrimary'
+  disabled?: boolean
+  equalWidth?: boolean                  // default true — every segment matches the widest label
+  name?: string
+  onChange?: (value: string) => void
+/>
+
+// Example: 2–5 short, related choices — never mix in actions
+const [view, setView] = useState('week')
+<SegmentedControl aria-label="Calendar view" options={[{ value: 'day', label: 'Day' }, { value: 'week', label: 'Week' }, { value: 'month', label: 'Month' }]} value={view} onChange={setView} />
+```
+
 **Slider**
 ```tsx
 // onChange receives the number directly (not an event)
