@@ -220,6 +220,110 @@ These eight tokens cover the full brand color surface — buttons, active states
 
 ---
 
+## Charts
+
+`ChartCard` is a layout shell: it renders the card chrome, a headline `value`, a `description`, and a `children` slot for your chart. **The package does not include a chart library** — bring whichever one your app already uses (MUI X Charts, Recharts, Victory, Nivo, visx, ECharts, or plain SVG). Nothing chart-related is added to your bundle.
+
+```tsx
+import { ChartCard } from '@josephavelez77/charter-design-system'
+
+<ChartCard value="$102K" description="Monthly revenue" layout="vertical">
+  <YourChart />
+</ChartCard>
+```
+
+| `layout` | Use for |
+|---|---|
+| `horizontal` (default) | Value/description on the left, chart on the right — sparklines and small bar charts |
+| `vertical` | Value/description on top, chart full-width below — detailed charts with axes and legends |
+
+### Matching the design system
+
+Chart libraries render their own SVG, so they won't pick up Charter styles on their own. Point their colors and fonts at the CSS tokens so charts follow the active theme:
+
+| Chart element | Token |
+|---|---|
+| Axis labels, legend text | `--text-color-themeable-secondary` |
+| Axis lines, ticks, grid lines | `--border-color-themeable-primary` |
+| Font | `--text-family-static-body` |
+
+Recommended series palette, in order:
+
+```ts
+const chartColors = ['#007DAF', '#B15873', '#00C950', '#FF6900', '#2B7FFF']
+// brand-primary blue, brand-secondary rose, success green, warning orange, accent blue
+```
+
+### Example: MUI X Charts
+
+The Storybook stories use [MUI X Charts](https://mui.com/x/react-charts/) as the reference integration. Install it in your app (it is not a dependency of this package):
+
+```bash
+npm install @mui/x-charts @emotion/react @emotion/styled
+```
+
+```tsx
+import { BarChart } from '@mui/x-charts/BarChart'
+import { ChartCard } from '@josephavelez77/charter-design-system'
+
+// Axes + grid lines
+const chartSx = {
+  '& .MuiChartsAxis-tickLabel': {
+    fill: 'var(--text-color-themeable-secondary) !important',
+    fontFamily: 'var(--text-family-static-body) !important',
+  },
+  '& .MuiChartsAxis-line': { stroke: 'var(--border-color-themeable-primary) !important' },
+  '& .MuiChartsAxis-tick': { stroke: 'var(--border-color-themeable-primary) !important' },
+  '& .MuiChartsGrid-horizontalLine': {
+    stroke: 'var(--border-color-themeable-primary) !important',
+    strokeDasharray: '4 4',
+  },
+}
+
+// The legend is HTML, so style it through slotProps (an ancestor sx won't win specificity)
+const legend = {
+  sx: {
+    color: 'var(--text-color-themeable-secondary)',
+    fontFamily: 'var(--text-family-static-body)',
+  },
+}
+
+<ChartCard value="$102K" description="Monthly revenue" layout="vertical">
+  <BarChart
+    width={480}
+    height={220}
+    colors={chartColors}
+    xAxis={[{ scaleType: 'band', data: ['Jan', 'Feb', 'Mar'] }]}
+    yAxis={[{ position: 'none' }]}
+    series={[{ data: [32, 41, 29], label: 'Revenue' }]}
+    grid={{ horizontal: true }}
+    sx={chartSx}
+    slotProps={{ legend }}
+  />
+</ChartCard>
+```
+
+MUI X Charts needs an explicit pixel `width`. To fill the card, measure the container with a `ResizeObserver` and pass the result. See `ChartCard.stories.tsx` for a `useAutoWidth` hook, plus line, pie, and sparkline examples.
+
+### Example: no library
+
+For something simple like a sparkline, inline SVG works and uses the tokens directly:
+
+```tsx
+<ChartCard value="1,234" description="Active users">
+  <svg viewBox="0 0 100 30" width="100%" height="40" preserveAspectRatio="none">
+    <polyline
+      points="0,25 20,18 40,20 60,10 80,12 100,4"
+      fill="none"
+      stroke="var(--border-color-static-brand-primary)"
+      strokeWidth="2"
+    />
+  </svg>
+</ChartCard>
+```
+
+---
+
 ## TypeScript
 
 All components ship full type definitions. Every component exports its props type:
