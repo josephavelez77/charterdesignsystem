@@ -1,6 +1,6 @@
 # @josephavelez77/charter-design-system — Full Component Reference
 
-> Version: 0.4.1
+> Version: 0.5.0
 > Package: `npm install @josephavelez77/charter-design-system`
 > Repository: https://github.com/josephavelez77/charterdesignsystem
 
